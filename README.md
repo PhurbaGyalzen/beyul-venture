@@ -1,1 +1,1 @@
-# beyul-venture edited by Sanjib
+# beyul-venture
