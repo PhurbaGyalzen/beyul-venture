@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import {BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from './components/Pages/Home';
+import Home from './components/Pages/Landing/Home';
 import About from './components/Pages/About';
 import Services from './components/Pages/Services';
 const App = () => {
