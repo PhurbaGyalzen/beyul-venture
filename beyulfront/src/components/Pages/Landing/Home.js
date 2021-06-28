@@ -13,6 +13,8 @@ const useStyles = makeStyles((theme)=>({
     },
 }))
 
+const MaxViewPortHeightWrapper = (props) => <div style={{maxHeight: '100vh'}}>{props.children}</div>
+
 const Home = () => {
     const [packageData, setpackageData] = useState(
     [
@@ -35,15 +37,35 @@ const Home = () => {
             image: "/static/images/gokyo.jpg",
             description: "The sparkling, pristine blue and green waters of the Gokyo Lakes are one of Nepal’s most memorable sights. They comprise the highest freshwater lake system in the world, at around 5,000 meters. The Gokyo Lakes trek is ideal for people who want to trek in the Everest region, but who want more variety of views and fewer nights spent at very high altitude."
         }
-    ]
-    );
+    ]);
+
+    const [imagesInfo, setImageInfos] = useState([
+        {
+            position: 1,
+            alt: "Annarpuna",
+            src: "/static/images/annapurna.jpg",
+            desc: "Travel with Us",
+        },
+        {
+            position: 2,
+            alt: "Gokyo",
+            src: "/static/images/gokyo.jpg",
+            desc: "Let us Help you create memories",
+        },
+        {
+            position: 3,
+            alt: "Peace Pagoda",
+            src: "/static/images/peacePagoda.jpg",
+            desc: "The GOAT",
+        },
+    ])
 
     const classes = useStyles()
     return (
         <>
-        
-        <CarouselResponsive />
-        
+        <MaxViewPortHeightWrapper>
+            <CarouselResponsive cars={imagesInfo} />
+        </MaxViewPortHeightWrapper>
         <Box mt="5rem">
             <Container>
                 <Typography variant="h4" 
@@ -52,9 +74,7 @@ const Home = () => {
                     Popular Packages
                 </Typography>
                 <Grid container spacing={4} align="center" style={{ flexGrow:1 }}>
-                    
-                    {packageData.map((data)=> <Package key={data.id} data={data} />)}
-                    
+                    {packageData.map((data) => <Package key={data.id} data={data} />)}
                 </Grid>
             </Container>
         </Box>
