@@ -27,20 +27,21 @@ const Package = (props) => {
             <Card className={classes.card}>
                 <div className={classes.cardImage}>
                     <CardMedia
-                    component="img" 
-                    className={classes.cardImage}
-                    image ={props.data.image}
-                    title={props.data.title} 
-                    // style={{height: "3rem", paddingTop: '56.25%'}}
+                        component="img" 
+                        className={classes.cardImage}
+                        image ={props.data.image}
+                        title={props.data.title} 
+                        // style={{height: "3rem", paddingTop: '56.25%'}}
                     />
                 </div>
-                <CardContent classname={classes.cardCont}>
-                <CardMedia 
-                className={classes.cardImage}
-                image ={props.data.image}
-                title={props.data.title} 
-                style={{height: "3rem", paddingTop: '56.25%'}}
-                />
+                {/*<CardContent classname={classes.cardCont}>
+                    <CardMedia 
+                        className={classes.cardImage}
+                        image ={props.data.image}
+                        title={props.data.title} 
+                        style={{height: "3rem", paddingTop: '56.25%'}}
+                    />
+                </CardContent> */}
                 <CardContent className={classes.cardCont}>
                     <Typography gutterBottom variant="h5" align="justify">
                         {props.data.title}
