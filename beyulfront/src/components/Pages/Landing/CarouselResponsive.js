@@ -10,6 +10,7 @@ function BrushyText(props) {
 
 const CarouselResponsive = (props) => {
     return (
+        
         <Carousel autoplay infiniteLoop showThumbs={false}>
             <div>
                 <img alt="Annarpuna" src="/static/images/annapurna.jpg" style={{filter:"brightness(50%)"}}/>

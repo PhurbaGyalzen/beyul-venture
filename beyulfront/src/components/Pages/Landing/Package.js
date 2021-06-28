@@ -1,5 +1,6 @@
 import React from 'react';
 import {Grid, Card, CardContent,CardMedia ,Typography,makeStyles} from '@material-ui/core';
+import Rating from '@material-ui/lab/Rating';
 import './landingstyle.css'
 
 const useStyles = makeStyles((theme)=>({
@@ -14,10 +15,10 @@ const useStyles = makeStyles((theme)=>({
 
     },
     cardCont:{
-        height: "40px",
+        height: "80px",
         overflow: "hidden",
     }
-}))
+}));
 
 
 const Package = (props) => {
@@ -34,17 +35,20 @@ const Package = (props) => {
                     // style={{height: "3rem", paddingTop: '56.25%'}}
                     />
                 </div>
-                <CardContent classname={classes.cardCont}>
-                <CardMedia 
-                className={classes.cardImage}
-                image ={props.data.image}
-                title={props.data.title} 
-                style={{height: "3rem", paddingTop: '56.25%'}}
-                />
                 <CardContent className={classes.cardCont}>
                     <Typography gutterBottom variant="h5" align="justify">
                         {props.data.title}
                     </Typography>
+                    <Typography gutterBottom align="left">
+                        User Rating: <Rating 
+                        name="Average Rating"
+                        value={props.data.rating}
+                        precision={0.5}
+                        size="medium"
+                        style={{paddingLeft:"2rem"}}
+                        />
+                    </Typography>
+                    
                     <Typography align="justify">
                         {props.data.description}
                     </Typography>
@@ -55,4 +59,4 @@ const Package = (props) => {
 }
 
 
-export default Package;
+export default Package
