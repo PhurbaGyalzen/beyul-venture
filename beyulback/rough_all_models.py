@@ -305,10 +305,10 @@ class Blog(models.Model):
     # update below field when publishing. 
     published_at = models.DateTimeField(default=aware_utc_now)
     thumbnail = models.ImageField(
-            max_length=200,
-            upload_to='blog_thumbs/',
-            default='blog_thumbs/default.jpeg',
-        )
+        max_length=200,
+        upload_to='blog_thumbs/',
+        default='blog_thumbs/default.jpeg',
+    )
     author = models.OneToOneField('Staff', on_delete=models.CASCADE)
 
 

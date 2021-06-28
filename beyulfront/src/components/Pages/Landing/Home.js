@@ -6,15 +6,12 @@ import Package from './Package'
 import CarouselResponsive from './CarouselResponsive';
 
 const useStyles = makeStyles((theme)=>({
-    subHeading:{
-        
+    subHeading: {
         fontWeight:"Bold",
         fontFamily:"sans-serif",
         fontSize:"2rem",
     },
 }))
-
-
 
 const Home = () => {
     const [packageData, setpackageData] = useState(
@@ -41,7 +38,6 @@ const Home = () => {
     ]
     );
 
-
     const classes = useStyles()
     return (
         <>
@@ -57,7 +53,7 @@ const Home = () => {
                 </Typography>
                 <Grid container spacing={4} align="center" style={{ flexGrow:1 }}>
                     
-                    {packageData.map((data)=> <Package data={data} />)}
+                    {packageData.map((data)=> <Package key={data.id} data={data} />)}
                     
                 </Grid>
             </Container>

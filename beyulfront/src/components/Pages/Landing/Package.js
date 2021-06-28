@@ -29,7 +29,7 @@ const Package = (props) => {
                 title={props.data.title} 
                 style={{height: "3rem", paddingTop: '56.25%'}}
                 />
-                <CardContent classname={classes.cardCont}>
+                <CardContent className={classes.cardCont}>
                     <Typography gutterBottom variant="h5" align="justify">
                         {props.data.title}
                     </Typography>
