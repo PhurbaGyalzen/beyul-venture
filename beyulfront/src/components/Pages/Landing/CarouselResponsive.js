@@ -2,13 +2,18 @@ import React from 'react';
 import {Carousel} from  'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
+function BrushyText(props) {
+    let {style, ...attrs} = props
+    style = {...style, ...{fontFamily: 'pioneerbrush'}}
+    return <p {...attrs} style={style} >{props.children}</p>
+}
 
 const CarouselResponsive = (props) => {
     return (
         <Carousel autoplay infiniteLoop showThumbs={false}>
             <div>
                 <img alt="Annarpuna" src="/static/images/annapurna.jpg" style={{filter:"brightness(50%)"}}/>
-                <p className="legend">Travel with Us</p>
+                <BrushyText className="legend">Travel with Us</BrushyText>
             </div>
             <div>
                 <img alt="Gokyo" src="/static/images/gokyo.jpg" style={{filter:"brightness(50%)"}} />

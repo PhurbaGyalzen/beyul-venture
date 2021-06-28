@@ -35,6 +35,13 @@ const Package = (props) => {
                     />
                 </div>
                 <CardContent classname={classes.cardCont}>
+                <CardMedia 
+                className={classes.cardImage}
+                image ={props.data.image}
+                title={props.data.title} 
+                style={{height: "3rem", paddingTop: '56.25%'}}
+                />
+                <CardContent className={classes.cardCont}>
                     <Typography gutterBottom variant="h5" align="justify">
                         {props.data.title}
                     </Typography>
@@ -42,10 +49,10 @@ const Package = (props) => {
                         {props.data.description}
                     </Typography>
                 </CardContent> 
-            </Card>
-        </Grid>
+            </ Card>
+        </ Grid>
     )
 }
 
 
-export default Package
+export default Package;
