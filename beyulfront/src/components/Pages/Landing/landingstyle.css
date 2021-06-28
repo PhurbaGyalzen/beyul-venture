@@ -1,0 +1,12 @@
+.makeStyles-cardImage-8 img.MuiCardMedia-img{
+    filter:brightness(0.5);
+    transform:scale(1);
+    transition: 0.4s ease-in-out;
+}
+
+.makeStyles-cardImage-8:hover img.MuiCardMedia-img{
+    filter: none;
+    cursor: pointer;
+    transform: scale(1.5);  
+    
+}
