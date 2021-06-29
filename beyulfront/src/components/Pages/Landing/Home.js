@@ -82,7 +82,6 @@ const Home = () => {
             </Container>
             
         </Box>
-        
         </>
     )
 };
