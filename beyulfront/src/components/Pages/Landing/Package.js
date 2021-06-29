@@ -51,8 +51,7 @@ const Package = (props) => {
                     <Typography variant="h5" align="justify" style={{fontWeight:"bold"}}>
                         {props.data.title}
                     </Typography>
-                    <Box display="flex" style={{fontSize:"0.9rem",color:"grey"}}>
-                        <span>User Rating:</span>
+                    <Box display="flex" justifyContent="space-between" style={{fontSize:"0.9rem", color:"grey", gap: '1rem'}}>
                         <StyledRating 
                             name="Average Rating"
                             value={props.data.rating}
@@ -60,15 +59,15 @@ const Package = (props) => {
                             readOnly
                             icon={<FavoriteIcon />}
                             size="medium"
-                            style={{paddingLeft:"0.5rem"}}
+                            // style={{paddingLeft:"0.5rem"}}
                         />
+                        <Typography align="justify" style={{fontSize:"1rem",fontWeight:"bold", color:"#505050"}}>
+                            Price: Rs. {props.data.price} /-
+                        </Typography>
                     </Box>
                     {/*<Typography gutterBottom align="left">
                     </Typography>
                     */}
-                    <Typography align="justify" style={{fontSize:"1rem",fontWeight:"bold", color:"#505050"}}>
-                        Price: Rs. {props.data.price}
-                    </Typography>
                 </CardContent> 
             </ Card>
         </ Grid>
