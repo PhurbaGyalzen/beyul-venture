@@ -50,21 +50,21 @@ const Package = (props) => {
                     <Typography gutterBottom variant="h5" align="justify">
                         {props.data.title}
                     </Typography>
-                    <Typography gutterBottom align="left">
-                        <Box display="flex">
-                            <span>User Rating:</span>
-                            <StyledRating 
-                                name="Average Rating"
-                                value={props.data.rating}
-                                precision={0.5}
-                                readOnly
-                                icon={<FavoriteIcon />}
-                                size="medium"
-                                style={{paddingLeft:"2rem"}}
-                            />
-                        </Box>
+                    <Box display="flex">
+                        <span>User Rating:</span>
+                        <StyledRating 
+                            name="Average Rating"
+                            value={props.data.rating}
+                            precision={0.5}
+                            readOnly
+                            icon={<FavoriteIcon />}
+                            size="medium"
+                            style={{paddingLeft:"0.5rem"}}
+                        />
+                    </Box>
+                    {/*<Typography gutterBottom align="left">
                     </Typography>
-                    
+                    */}
                     <Typography align="justify">
                         {props.data.description}
                     </Typography>
