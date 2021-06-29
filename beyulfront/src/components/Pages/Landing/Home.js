@@ -83,8 +83,6 @@ const Home = () => {
             </Container>
             
         </Box>
-        <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-        <div class="elfsight-app-93f2b927-f005-4b5a-90ac-f40e3c7319f8"></div>
         </>
     )
 };
