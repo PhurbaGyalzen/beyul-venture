@@ -35,6 +35,7 @@ const CarouselWithText = ({imgProps, text}) => {
 
 const CarouselResponsive = ({cars}) => {
     return (
+        
         <Carousel autoplay infiniteLoop showThumbs={false}>
             {cars.map((car) => {
                 const imgProps = {
