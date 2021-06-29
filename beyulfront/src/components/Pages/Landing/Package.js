@@ -48,10 +48,15 @@ const Package = (props) => {
 
                 <CardContent className={classes.cardCont}>
                     <Typography align="left" style={{color:"#9d9fa5",fontSize:"0.8rem",fontWeight:"bold"}}>Duration: {props.data.duration}</Typography>
-                    <Typography variant="h5" align="justify" style={{fontWeight:"bold"}}>
+                    <Typography variant="h5" align="justify" style={{fontWeight:"bold", margin: "0.2rem auto"}}>
                         {props.data.title}
                     </Typography>
-                    <Box display="flex" justifyContent="space-between" style={{fontSize:"0.9rem", color:"grey", gap: '1rem'}}>
+                    <Box
+                        display="flex"
+                        justifyContent="space-between"
+                        alignItems="center"
+                        style={{fontSize:"0.9rem", color:"grey", gap: '1rem'}}
+                    >
                         <StyledRating 
                             name="Average Rating"
                             value={props.data.rating}
@@ -61,8 +66,8 @@ const Package = (props) => {
                             size="medium"
                             // style={{paddingLeft:"0.5rem"}}
                         />
-                        <Typography align="justify" style={{fontSize:"1rem",fontWeight:"bold", color:"#505050"}}>
-                            Price: Rs. {props.data.price} /-
+                        <Typography style={{fontSize:"1rem",fontWeight:"bold", color:"#505050"}}>
+                            Price: Rs. {props.data.price}
                         </Typography>
                     </Box>
                     {/*<Typography gutterBottom align="left">
