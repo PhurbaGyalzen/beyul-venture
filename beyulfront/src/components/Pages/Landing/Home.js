@@ -82,6 +82,7 @@ const Home = () => {
             </Container>
             
         </Box>
+        <div className="elfsight-app-93f2b927-f005-4b5a-90ac-f40e3c7319f8"></div>
         </>
     )
 };
