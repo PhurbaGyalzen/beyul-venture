@@ -47,10 +47,11 @@ const Package = (props) => {
                 </div>
 
                 <CardContent className={classes.cardCont}>
-                    <Typography gutterBottom variant="h5" align="justify">
+                    <Typography align="left" style={{color:"#9d9fa5",fontSize:"0.8rem",fontWeight:"bold"}}>Duration: {props.data.duration}</Typography>
+                    <Typography variant="h5" align="justify" style={{fontWeight:"bold"}}>
                         {props.data.title}
                     </Typography>
-                    <Box display="flex">
+                    <Box display="flex" style={{fontSize:"0.9rem",color:"grey"}}>
                         <span>User Rating:</span>
                         <StyledRating 
                             name="Average Rating"
@@ -65,8 +66,8 @@ const Package = (props) => {
                     {/*<Typography gutterBottom align="left">
                     </Typography>
                     */}
-                    <Typography align="justify">
-                        Price: {props.data.price}
+                    <Typography align="justify" style={{fontSize:"1rem",fontWeight:"bold", color:"#505050"}}>
+                        Price: Rs. {props.data.price}
                     </Typography>
                 </CardContent> 
             </ Card>
