@@ -12,7 +12,15 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Beyul Venture - Home</title>
-    <script src="https://apps.elfsight.com/p/platform.js"></script>
+    <!-- <script src="https://apps.elfsight.com/p/platform.js"></script>
+    <script type="module">
+          {document.addEventListener('load', setTimeout(() => {
+              console.log('removing insta widget')
+              document.querySelector('.eapps-link').remove()
+              }, 3000
+            ))
+          }
+    </script> -->
   </head>
   
   <body>
@@ -20,13 +28,6 @@
     <div id="root"></div>
     <br>
     <br>
-    <div class="elfsight-app-93f2b927-f005-4b5a-90ac-f40e3c7319f8"></div>
-    <script type="module">
-      document.addEventListener('load', setTimeout(() => {
-          console.log('removing insta widget')
-          document.querySelector('.eapps-link').remove()
-          }, 2000
-        ))
-    </script>
+    
   </body>
 </html>

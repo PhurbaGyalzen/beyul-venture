@@ -11,15 +11,17 @@ const useStyles = makeStyles((theme) => {
   // console.log({theme});
   return ({
     appBar: {
-      borderBottom: `1px solid ${theme.palette.divider}`,
-      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+      // borderBottom: `1px solid ${theme.palette.divider}`,
+      backgroundColor: 'rgba(0, 0, 0, 0.0)',
       height: "4rem",
+      boxShadow: 'none',
     },
     root:{
       width: "100%",
     },
     navTitle:{
-      color: "#60DEF7",
+      // color: "#60DEF7",
+      color: "#fff",
       fontWeight: "bold",
       flexGrow: 1,
     },
@@ -27,15 +29,11 @@ const useStyles = makeStyles((theme) => {
       display: "none",
       [theme.breakpoints.up("md")]:{
         display: "flex",
+        gap: '0.5rem'
       },
+
     signUp:{
       backgroundColor: theme.palette.primary[300],
-
-    },
-    testing:{
-      color: theme.palette.primary[100],
-      fontweight:"bold",
-      textDecoration:"none",
     },
     }
   })
@@ -49,11 +47,10 @@ const Header = () => {
         <AppBar className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" className={classes.navTitle}>Beyul Venture</Typography>
-            
             <div className={classes.sectionDesktop}>
-              <Button component={ Link } to="/"> Home</Button>
-              <Button component={ Link } to="/about">About</Button>
-              <Button component={ Link } to="/services">Services</Button>
+              <Button variant="outlined" component={ Link } to="/"> Home</Button>
+              <Button variant="outlined" component={ Link } to="/about">About</Button>
+              <Button variant="outlined" component={ Link } to="/services">Services</Button>
               <Button component={ Link } variant="contained" color="primary" size="medium">
                 Sign Up
               </Button>
