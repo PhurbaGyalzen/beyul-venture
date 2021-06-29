@@ -49,11 +49,12 @@ const Package = (props) => {
                     </Typography>
                     <Typography gutterBottom align="left">
                         User Rating: <Rating 
-                        name="Average Rating"
-                        value={props.data.rating}
-                        precision={0.5}
-                        size="medium"
-                        style={{paddingLeft:"2rem"}}
+                            name="Average Rating"
+                            value={props.data.rating}
+                            precision={0.5}
+                            readOnly
+                            size="medium"
+                            style={{paddingLeft:"2rem"}}
                         />
                     </Typography>
                     
