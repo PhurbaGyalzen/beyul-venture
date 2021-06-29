@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useState, useEffect } from 'react';
 import Package from './Package'
 import CarouselResponsive from './CarouselResponsive';
-
 const useStyles = makeStyles((theme)=>({
     subHeading: {
         fontWeight:"Bold",
@@ -59,7 +58,7 @@ const Home = () => {
             position: 3,
             alt: "Peace Pagoda",
             src: "/static/images/peacePagoda.jpg",
-            desc: "The GOAT",
+            desc: "An investment in travel is an investment into yourself",
         },
     ])
 
@@ -83,8 +82,7 @@ const Home = () => {
             </Container>
             
         </Box>
-        <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-        <div class="elfsight-app-93f2b927-f005-4b5a-90ac-f40e3c7319f8"></div>
+        
         </>
     )
 };
