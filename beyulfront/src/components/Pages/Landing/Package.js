@@ -58,7 +58,7 @@ const Package = (props) => {
                     </Typography>
                     
                     <Typography align="justify">
-                        {props.data.description}
+                        Price: {props.data.price}
                     </Typography>
                 </CardContent> 
             </ Card>
