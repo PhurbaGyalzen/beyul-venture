@@ -118,26 +118,26 @@ const Home = () => {
                 </Container> 
             </Box>
             <Container className={classes.spacious}>
-                <Container>
-                <Typography
-                    variant="h4"
-                    color="textPrimary" 
-                    className={classes.subHeading}
-                    gutterBottom={true}
-                >
-                    Recommended Destinations
-                </Typography>
-                <Grid container justify="space-evenly" alignItems="center" spacing={8}>
-                    {places.map((place) => {
-                        return (
-                            <Grid key={place.id} item>
-                                <Place place={place} />
-                            </Grid>
-                        )
-                    })
-                    }
-                </Grid>
-                </Container>
+                <div>
+                    <Typography
+                        variant="h4"
+                        color="textPrimary" 
+                        className={classes.subHeading}
+                        gutterBottom={true}
+                    >
+                        Recommended Destinations
+                    </Typography>
+                    <Grid container justify="space-evenly" alignItems="center">
+                        {places.map((place) => {
+                            return (
+                                <Grid key={place.id} item>
+                                    <Place place={place} />
+                                </Grid>
+                            )
+                        })
+                        }
+                    </Grid>
+                </div>
             </Container>
             {/*for insta widget*/}
             <div className="elfsight-app-93f2b927-f005-4b5a-90ac-f40e3c7319f8"></div>
