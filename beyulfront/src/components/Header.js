@@ -4,7 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { CssBaseline, Container, Button, IconButton, Menu, MenuItem } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles((theme) => {
@@ -22,7 +22,9 @@ const useStyles = makeStyles((theme) => {
     navTitle:{
       // color: "#60DEF7",
       color: "#fff",
-      fontWeight: "bold",
+      fontFamily:"sans-serif",
+      fontWeight: "900",
+      fontSize:"1.5rem",
       flexGrow: 1,
     },
     sectionDesktop: {
@@ -35,6 +37,10 @@ const useStyles = makeStyles((theme) => {
     signUp:{
       backgroundColor: theme.palette.primary[300],
     },
+    navBtn:{
+      color: "#fffff",
+      fontWeight:"bold"
+    }
     }
   })
 });
@@ -48,16 +54,29 @@ const Header = () => {
           <Toolbar>
             <Typography variant="h6" className={classes.navTitle}>Beyul Venture</Typography>
             <div className={classes.sectionDesktop}>
-              <Button variant="outlined" component={ Link } to="/"> Home</Button>
-              <Button variant="outlined" component={ Link } to="/about">About</Button>
-              <Button variant="outlined" component={ Link } to="/services">Services</Button>
+              <Button 
+              variant="outlined"
+              component={ NavLink }
+              style={{ fontWeight:"bold", color:"#fff" }} 
+              activeStyle={{ fontWeight:"bold",color:"#3C416F" }} 
+              exact to="/">Home</Button>
+
+              <Button component={ NavLink } 
+              style={{ fontWeight:"bold", color:"#fff" }} 
+              activeStyle={{ fontWeight:"bold",color:"#3C416F" }} 
+              exact to="/about">About</Button>
+
+              <Button component={ NavLink }
+              style={{ fontWeight:"bold", color:"#fff" }} 
+              activeStyle={{ fontWeight:"bold",color:"#3C416F" }} 
+              exact to="/services">Services</Button>
               <Button component={ Link } variant="contained" color="primary" size="medium">
                 Sign Up
               </Button>
             </div>
-            <IconButton>
+            {/* <IconButton>
               <MenuIcon />
-            </IconButton>
+            </IconButton> */}
           </Toolbar>
           
         </AppBar>
