@@ -3,7 +3,11 @@ import {Box, Typography, Container, Grid} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useState, useEffect } from 'react';
 import Package from './Package'
+import Place from './Place'
 import CarouselResponsive from './CarouselResponsive';
+import trek from '../../../assets/img/trek_1.png'
+
+
 const useStyles = makeStyles((theme)=>({
     subHeading: {
         fontWeight:"Bold",
@@ -46,6 +50,29 @@ const Home = () => {
         }
     ]);
 
+    const [places, setPlaces] = useState([
+        {
+            id: 1,
+            title: 'Annapurna Trekking',
+            thumb_src: trek,
+        },
+        {
+            id: 2,
+            title: 'Dhaulagiri Trekking',
+            thumb_src: trek,
+        },
+        {
+            id: 3,
+            title: 'Machapuchhare Trekking',
+            thumb_src: trek,
+        },
+        {
+            id: 4,
+            title: 'Everest Trekking',
+            thumb_src: trek,
+        },
+    ])
+
     const [imagesInfo, setImageInfos] = useState([
         {
             position: 1,
@@ -70,24 +97,46 @@ const Home = () => {
     const classes = useStyles()
     return (
         <>
-        <MaxViewPortHeightWrapper>
-            <CarouselResponsive cars={imagesInfo} />
-        </MaxViewPortHeightWrapper>
-        <Box mt="5rem">
+            <MaxViewPortHeightWrapper>
+                <CarouselResponsive cars={imagesInfo} />
+            </MaxViewPortHeightWrapper>
+            <Box mt="1rem">
+                <Container>
+                    <Typography
+                        variant="h4"
+                        color="textPrimary" 
+                        className={classes.subHeading}
+                    >
+                        Popular Packages 
+                    </Typography>
+                    <Grid container spacing={4} align="center" style={{ flexGrow:1 }}>
+                        {packageData.map((data) => <Package key={data.id} data={data} />)}
+                    </Grid>
+                </Container> 
+            </Box>
             <Container>
-                <Typography variant="h4" 
-                color="textPrimary" 
-                className={classes.subHeading}>
-                    Popular Packages
+                <Typography
+                    variant="h4"
+                    color="textPrimary" 
+                    className={classes.subHeading}
+                >
+                    Recommended Destinations
                 </Typography>
-                <Grid container spacing={4} align="center" style={{ flexGrow:1 }}>
-                    {packageData.map((data) => <Package key={data.id} data={data} />)}
+                <Grid container justify="space-evenly" alignItems="center" spacing={4}>
+                    {places.map((place) => {
+                        return (
+                            // <Grid item>
+                                <Place key={place.id} place={place} />
+                            // </Grid>
+                        )
+                    })
+                    }
                 </Grid>
-                
             </Container>
-            
-        </Box>
-        <div className="elfsight-app-93f2b927-f005-4b5a-90ac-f40e3c7319f8"></div>
+
+
+            {/*for insta widget*/}
+            <div className="elfsight-app-93f2b927-f005-4b5a-90ac-f40e3c7319f8"></div>
         </>
     )
 };

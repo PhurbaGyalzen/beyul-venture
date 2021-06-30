@@ -6,17 +6,16 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import './landingstyle.css'
 
 const useStyles = makeStyles((theme)=>({
-    cardImage:{
+    card: {
+        height: '100%',
+        display: 'flex',
+        flexDirection : 'column'
+    },
+    cardImage: {
         height:"15rem",
         overflow: "hidden"
     },
-    card:{
-        height: '100%',
-        display: 'Flex',
-        flexDirection : 'column'
-
-    },
-    cardCont:{
+    cardCont: {
         height: "80px",
         overflow: "hidden",
     }
@@ -34,7 +33,7 @@ const StyledRating = withStyles({
 const Package = (props) => {
     const classes = useStyles();
     return (
-        <Grid item key={props.data.id} xs={12} md={4} sm={6}>
+        <Grid item xs={12} md={4} sm={6}>
             <Card className={classes.card}>
                 <div className={classes.cardImage}>
                     <CardMedia
