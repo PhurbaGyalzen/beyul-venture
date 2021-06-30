@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme)=>({
         fontFamily:"sans-serif",
         fontSize:"2rem",
     },
+    spacious: {
+        margin: "2rem auto"
+    }
 }))
 
 const MaxViewPortHeightWrapper = (props) => <div style={{maxHeight: '100vh'}}>{props.children}</div>
@@ -114,24 +117,27 @@ const Home = () => {
                     </Grid>
                 </Container> 
             </Box>
-            <Container>
+            <Container className={classes.spacious}>
+                <Container>
                 <Typography
                     variant="h4"
                     color="textPrimary" 
                     className={classes.subHeading}
+                    gutterBottom={true}
                 >
                     Recommended Destinations
                 </Typography>
-                <Grid container justify="space-evenly" alignItems="center" spacing={4}>
+                <Grid container justify="space-evenly" alignItems="center" spacing={8}>
                     {places.map((place) => {
                         return (
-                            // <Grid item>
-                                <Place key={place.id} place={place} />
-                            // </Grid>
+                            <Grid key={place.id} item>
+                                <Place place={place} />
+                            </Grid>
                         )
                     })
                     }
                 </Grid>
+                </Container>
             </Container>
 
 
