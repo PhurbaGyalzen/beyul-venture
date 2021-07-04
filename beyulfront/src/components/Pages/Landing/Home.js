@@ -114,24 +114,27 @@ const Home = () => {
                     </Grid>
                 </Container> 
             </Box>
-            <Container>
-                <Typography
-                    variant="h4"
-                    color="textPrimary" 
-                    className={classes.subHeading}
-                >
-                    Recommended Destinations
-                </Typography>
-                <Grid mt={4} container justify="space-evenly" alignItems="center" spacing={4}>
-                    {places.map((place) => {
-                        return (
-                            // <Grid item>
-                                <Place key={place.id} place={place} />
-                            // </Grid>
-                        )
-                    })
-                    }
-                </Grid>
+            <Container className={classes.spacious}>
+                <div>
+                    <Typography
+                        variant="h4"
+                        color="textPrimary" 
+                        className={classes.subHeading}
+                        gutterBottom={true}
+                    >
+                        Recommended Destinations
+                    </Typography>
+                    <Grid container justify="space-evenly" alignItems="center">
+                        {places.map((place) => {
+                            return (
+                                <Grid key={place.id} item>
+                                    <Place place={place} />
+                                </Grid>
+                            )
+                        })
+                        }
+                    </Grid>
+                </div>
             </Container>
             {/*for insta widget*/}
             <Box mt={5}>
