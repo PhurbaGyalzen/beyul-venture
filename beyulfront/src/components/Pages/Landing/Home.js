@@ -6,7 +6,7 @@ import Package from './Package'
 import Place from './Place'
 import CarouselResponsive from './CarouselResponsive';
 import trek from '../../../assets/img/trek_1.png'
-
+import CarouselOwl from './CarouselOwl';
 
 const useStyles = makeStyles((theme)=>({
     subHeading: {
@@ -14,9 +14,6 @@ const useStyles = makeStyles((theme)=>({
         fontFamily:"sans-serif",
         fontSize:"2rem",
     },
-    spacious: {
-        margin: "2rem auto"
-    }
 }))
 
 const MaxViewPortHeightWrapper = (props) => <div style={{maxHeight: '100vh'}}>{props.children}</div>
@@ -117,29 +114,32 @@ const Home = () => {
                     </Grid>
                 </Container> 
             </Box>
-            <Container className={classes.spacious}>
-                <Container>
+            <Container>
                 <Typography
                     variant="h4"
                     color="textPrimary" 
                     className={classes.subHeading}
-                    gutterBottom={true}
                 >
                     Recommended Destinations
                 </Typography>
-                <Grid container justify="space-evenly" alignItems="center" spacing={8}>
+                <Grid mt={4} container justify="space-evenly" alignItems="center" spacing={4}>
                     {places.map((place) => {
                         return (
-                            <Grid key={place.id} item>
-                                <Place place={place} />
-                            </Grid>
+                            // <Grid item>
+                                <Place key={place.id} place={place} />
+                            // </Grid>
                         )
                     })
                     }
                 </Grid>
-                </Container>
             </Container>
             {/*for insta widget*/}
+            <Box mt={5}>
+                <Container>
+                    <Typography variant="h4">Recommended Trekking</Typography>
+                    <CarouselOwl />
+                </Container>
+            </Box>
             <div className="elfsight-app-93f2b927-f005-4b5a-90ac-f40e3c7319f8"></div>
         </>
     )

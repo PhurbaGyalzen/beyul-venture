@@ -62,11 +62,13 @@ const Header = () => {
               exact to="/">Home</Button>
 
               <Button component={ NavLink } 
+              variant="outlined"
               style={{ fontWeight:"bold", color:"#fff" }} 
               activeStyle={{ fontWeight:"bold",color:"#3C416F" }} 
               exact to="/about">About</Button>
 
               <Button component={ NavLink }
+              variant="outlined"
               style={{ fontWeight:"bold", color:"#fff" }} 
               activeStyle={{ fontWeight:"bold",color:"#3C416F" }} 
               exact to="/services">Services</Button>

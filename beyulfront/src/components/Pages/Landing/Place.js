@@ -9,8 +9,8 @@ const useStyles = makeStyles((theme)=>({
     card: {
     },
     cardImage: {
-        height: "15rem",
-        width: "15rem",
+        height: "16rem",
+        width: "16rem",
     },
     cardCont: {
     }

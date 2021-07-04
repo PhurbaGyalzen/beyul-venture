@@ -1,12 +1,22 @@
-.makeStyles-cardImage-8 img.MuiCardMedia-img{
+.makeStyles-cardImage-9 img.MuiCardMedia-img{
     filter: brightness(0.6);
     transform: scale(1);
     transition: transform 2.5s ease-in-out, filter 2s;
 }
 
-.makeStyles-cardImage-8:hover img.MuiCardMedia-img{
+.makeStyles-cardImage-9:hover img.MuiCardMedia-img{
     filter: none;
     cursor: pointer;
     transform: scale(1.1);
     transition: transform 0.9s ease-in-out, filter 2s;
+}
+
+
+.owl-img-div{
+    height: 15rem;
+    width: 15rem;
+}
+.owl-img-div img{
+    width:100%;
+    height: 100%;
 }
