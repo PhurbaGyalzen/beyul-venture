@@ -5,7 +5,8 @@ import Home from './components/Pages/Landing/Home';
 import About from './components/Pages/About';
 import Services from './components/Pages/Services';
 import PackageDetail from './components/Pages/PackageDetail/PackageDetail';
-
+import SignUp from './components/SignUp';
+import SignIn from './components/SignIn';
 const App = () => {
   return (
     <BrowserRouter>
@@ -16,6 +17,9 @@ const App = () => {
           <Route exact path="/about" component={About} />
           <Route exact path="/services" component={Services} />
           <Route exact path="/package-detail" component={PackageDetail} />
+          <Route exact path="/sign-up" component={SignUp} />
+          <Route exact path="/sign-in" component={SignIn} />
+          <Route exact path="/package/:id" component={PackageDetail} />
         </Switch>
       </div>
     </BrowserRouter>

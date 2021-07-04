@@ -114,7 +114,8 @@ const Home = () => {
                     </Grid>
                 </Container> 
             </Box>
-            <Container className={classes.spacious}>
+            <Box>
+                <Container className={classes.spacious}>
                 <div>
                     <Typography
                         variant="h4"
@@ -136,6 +137,8 @@ const Home = () => {
                     </Grid>
                 </div>
             </Container>
+            </Box>
+            
             {/*for insta widget*/}
             <Box mt={5}>
                 <Container>

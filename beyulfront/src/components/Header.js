@@ -59,20 +59,24 @@ const Header = () => {
               component={ NavLink }
               style={{ fontWeight:"bold", color:"#fff" }} 
               activeStyle={{ fontWeight:"bold",color:"#3C416F" }} 
-              exact to="/">Home</Button>
+               to="/">Home</Button>
 
               <Button component={ NavLink } 
               variant="outlined"
               style={{ fontWeight:"bold", color:"#fff" }} 
               activeStyle={{ fontWeight:"bold",color:"#3C416F" }} 
-              exact to="/about">About</Button>
+               to="/about">About</Button>
 
               <Button component={ NavLink }
               variant="outlined"
               style={{ fontWeight:"bold", color:"#fff" }} 
               activeStyle={{ fontWeight:"bold",color:"#3C416F" }} 
               exact to="/services">Services</Button>
-              <Button component={ Link } variant="contained" color="primary" size="medium">
+              <Button component={ NavLink }
+               to="/sign-up" 
+              variant="contained" 
+              color="primary" 
+              size="medium">
                 Sign Up
               </Button>
             </div>
