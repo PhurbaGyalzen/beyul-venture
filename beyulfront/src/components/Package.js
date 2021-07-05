@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core'
 import Rating from '@material-ui/lab/Rating'
 import FavoriteIcon from '@material-ui/icons/Favorite'
+import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import './Package.css'
 
@@ -18,14 +19,26 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    '&:hover': {
+      '& $cardImage': {
+        filter: 'none',
+        cursor: 'pointer',
+        transform: 'scale(1.1)',
+        transition: 'transform 0.9s ease-in-out, filter 2s',
+      },
+    },
   },
   cardImage: {
     height: '15rem',
+    filter: 'brightness(0.6)',
+    transform: 'scale(1)',
+    transition: 'transform 2.5s ease-in-out, filter 2s',
+  },
+  imageContainer: {
     overflow: 'hidden',
   },
   cardCont: {
     height: '80px',
-    overflow: 'hidden',
   },
 }))
 
@@ -44,13 +57,12 @@ const Package = (props) => {
     <Grid item xs={12} md={4} sm={6}>
       <Link to='package/1'>
         <Card className={classes.card}>
-          <div className={classes.cardImage}>
+          <div className={classes.imageContainer}>
             <CardMedia
               component='img'
               className={classes.cardImage}
               image={props.data.image}
               title={props.data.title}
-              // style={{height: "3rem", paddingTop: '56.25%'}}
             />
           </div>
 
@@ -87,9 +99,7 @@ const Package = (props) => {
                 value={props.data.rating}
                 precision={0.5}
                 readOnly
-                icon={<FavoriteIcon />}
                 size='medium'
-                // style={{paddingLeft:"0.5rem"}}
               />
               <Typography
                 style={{
@@ -101,9 +111,6 @@ const Package = (props) => {
                 Price: Rs. {props.data.price}
               </Typography>
             </Box>
-            {/*<Typography gutterBottom align="left">
-                    </Typography>
-                    */}
           </CardContent>
         </Card>
       </Link>
