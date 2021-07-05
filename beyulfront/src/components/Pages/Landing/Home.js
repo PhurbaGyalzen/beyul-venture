@@ -140,7 +140,7 @@ const Home = () => {
             </Box>
             
             {/*for insta widget*/}
-            <Box mt={5}>
+            <Box mt={5} mb={5}>
                 <Container>
                     <Typography variant="h4">Recommended Trekking</Typography>
                     <CarouselOwl />

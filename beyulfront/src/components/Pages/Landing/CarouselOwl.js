@@ -11,7 +11,7 @@ import trek4 from '../../../assets/img/trek_4.png'
 const CarouselOwl = (props) => {
     return (
         <>
-        <OwlCarousel className='owl-theme' loop margin={10} nav>
+        <OwlCarousel className='owl-theme' loop={true} items={3} animateIn={true} margin={10}>
             
             <div className="item owl-img-div">
                 <img src={trek1}/>

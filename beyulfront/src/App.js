@@ -7,6 +7,7 @@ import Services from './components/Pages/Services';
 import PackageDetail from './components/Pages/PackageDetail/PackageDetail';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
+import Blog from './components/Pages/BlogPage/Blog';
 const App = () => {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ const App = () => {
           <Route exact path="/sign-up" component={SignUp} />
           <Route exact path="/sign-in" component={SignIn} />
           <Route exact path="/package/:id" component={PackageDetail} />
+          <Route exact path="/blog/:id" component={Blog} />
         </Switch>
       </div>
     </BrowserRouter>
