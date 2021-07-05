@@ -12,6 +12,7 @@ import {
 import Place from 'components/Place'
 import Package from 'components/Package'
 import CarouselResponsive from './CarouselResponsive'
+import Parliament from 'components/Owls'
 import PackageDetail from 'pages/package-detail/PackageDetail'
 
 import trek from 'img/trek_1.png'
@@ -153,7 +154,11 @@ const HomePage = () => {
                     </Grid>
                 </div>
             </Container>
-            
+            <Container>
+                <Typography variant='h4'>Recommended Trekking</Typography>
+                <Parliament cars={packageData} />
+            </Container>
+
             {/*for insta widget*/}
             <div className='elfsight-app-93f2b927-f005-4b5a-90ac-f40e3c7319f8'></div>
         </>

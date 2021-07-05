@@ -20,7 +20,7 @@ const GreenBtn = styled(BlueBtn)`
   background-color: #2fc32c;
 `
 
-const fetchPackageInfo = (packageId) => {
+const getPackageInfo = (packageId) => {
   const info = {
     id: 1,
     name: '6 Days',
@@ -44,7 +44,7 @@ const fetchPackageInfo = (packageId) => {
 }
 
 const PackageDetail = ({ packageId }) => {
-  const packageInfo = fetchPackageInfo(packageId)
+  const packageInfo = getPackageInfo(packageId)
 
   return (
     <TwoColGrid>
