@@ -1,25 +1,40 @@
-import React from 'react';
-import Header from './components/Header';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import Home from './components/Pages/Landing/Home';
-import About from './components/Pages/About';
-import Services from './components/Pages/Services';
-import PackageDetail from './components/Pages/PackageDetail/PackageDetail';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useParams,
+} from 'react-router-dom'
+import Header from './components/Header'
+import HomePage from './pages/landing/HomePage'
+import AboutPage from './pages/AboutPage'
+import ServicesPages from './pages/ServicesPage'
+import PackageDetail from './pages/package-detail/PackageDetail'
+
+const Routes = () => {
+  const params = useParams()
+  return (
+    <Switch>
+      <Route exact path='/about' component={AboutPage} />
+      <Route exact path='/services' component={ServicesPages} />
+      <Route exact path='/package/:packageId'>
+        <PackageDetail packageId={params} />
+      </Route>
+      <Route exact path='/'>
+        <HomePage />
+      </Route>
+    </Switch>
+  )
+}
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <div className="App">
+    <Router>
+      <div className='App'>
         <Header />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/services" component={Services} />
-          <Route exact path="/package-detail" component={PackageDetail} />
-        </Switch>
+        <Routes />
       </div>
-    </BrowserRouter>
-  );
+    </Router>
+  )
 }
 
-export default App;
+export default App
