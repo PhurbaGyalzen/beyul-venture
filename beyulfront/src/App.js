@@ -1,31 +1,49 @@
-import React from 'react';
-import Header from './components/Header';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import Home from './components/Pages/Landing/Home';
-import About from './components/Pages/About';
-import Services from './components/Pages/Services';
-import PackageDetail from './components/Pages/PackageDetail/PackageDetail';
-import SignUp from './components/SignUp';
-import SignIn from './components/SignIn';
-import Blog from './components/Pages/BlogPage/Blog';
-const App = () => {
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useParams,
+} from 'react-router-dom'
+import Header from './components/Header'
+import HomePage from './pages/landing/HomePage'
+import AboutPage from './pages/AboutPage'
+import ServicesPages from './pages/ServicesPage'
+import PackageDetail from './pages/package-detail/PackageDetail'
+import SignUp from './components/SignUp'
+import SignIn from './components/SignIn'
+import Blog from './pages/BlogPage/Blog'
+
+const Routes = () => {
+  const params = useParams()
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Header />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/services" component={Services} />
-          <Route exact path="/package-detail" component={PackageDetail} />
-          <Route exact path="/sign-up" component={SignUp} />
-          <Route exact path="/sign-in" component={SignIn} />
-          <Route exact path="/package/:id" component={PackageDetail} />
-          <Route exact path="/blog/:id" component={Blog} />
-        </Switch>
-      </div>
-    </BrowserRouter>
-  );
+    <Switch>
+      <Route exact path='/about' component={AboutPage} />
+      <Route exact path='/services' component={ServicesPages} />
+      <Route exact path='/package/:packageId'>
+        <PackageDetail packageId={params} />
+      </Route>
+      <Route exact path="/sign-up" component={SignUp} />
+      <Route exact path="/sign-in" component={SignIn} />
+      <Route exact path="/blog/:id" component={Blog} />
+      <Route exact path='/'>
+        <HomePage />
+      </Route>
+    </Switch>
+  )
 }
 
-export default App;
+const App = () => {
+  return (
+    <Router>
+      <div className='App'>
+        <Header />
+        <Switch>
+          <Routes />
+          
+        </Switch>
+      </div>
+    </Router>
+  )
+}
+
+export default App

@@ -3,10 +3,10 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import './landingstyle.css'
-import trek1 from '../../../assets/img/trek_1.png'
-import trek2 from '../../../assets/img/trek_2.png'
-import trek3 from '../../../assets/img/trek_3.png'
-import trek4 from '../../../assets/img/trek_4.png'
+import trek1 from 'img/trek_1.png'
+import trek2 from 'img/trek_2.png'
+import trek3 from 'img/trek_3.png'
+import trek4 from 'img/trek_4.png'
 
 const CarouselOwl = (props) => {
     return (

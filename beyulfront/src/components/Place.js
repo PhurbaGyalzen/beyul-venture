@@ -1,19 +1,24 @@
-import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import {Card, CardContent,CardMedia ,Typography,makeStyles} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles'
+import {
+    Card,
+    CardContent,
+    CardMedia,
+    Typography,
+    makeStyles,
+} from '@material-ui/core'
 import styled from 'styled-components'
 
-const useStyles = makeStyles((theme)=>({
+const useStyles = makeStyles((theme) => ({
     cardImage: {
         // height: "15rem",
     },
     onTopCard: {
-        position: "absolute",
+        position: 'absolute',
         width: '100%',
-        padding: '0.7rem',
-        backgroundColor: '#000000bb'
-    }
-}));
+        padding: '0.8rem',
+        backgroundColor: '#000000bb',
+    },
+}))
 
 const SimpleCard = styled(Card)`
     display: flex;
@@ -21,14 +26,14 @@ const SimpleCard = styled(Card)`
     align-items: center;
     justify-content: flex-end;
     position: relative;
-`;
+`
 
 const ResponsiveCardMedia = styled(CardMedia)`
     width: clamp(10vw, 15rem, 40vw);
-`;
+`
 
-const Place = ({place}) => {
-    const classes = useStyles();
+const Place = ({ place }) => {
+    const classes = useStyles()
     return (
         <SimpleCard>
             <ResponsiveCardMedia
@@ -39,9 +44,15 @@ const Place = ({place}) => {
             />
             <CardContent className={classes.onTopCard}>
                 <Typography
-                    align="center"
-                    style={{color: "white", fontSize: "0.8rem", fontWeight: "bold"}}
-                >{place.title}</Typography>
+                    align='center'
+                    style={{
+                        color: 'white',
+                        fontSize: '0.8rem',
+                        fontWeight: 'bold',
+                    }}
+                >
+                    {place.title}
+                </Typography>
             </CardContent>
         </SimpleCard>
     )
