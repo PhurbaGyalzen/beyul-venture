@@ -13,8 +13,6 @@ import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'
 import BlogDetail from './pages/BlogPage/BlogDetail'
 import Blog from './pages/BlogPage/Blog'
-
-
 const Routes = () => {
   const params = useParams()
   return (
@@ -26,6 +24,7 @@ const Routes = () => {
       </Route>
       <Route exact path="/sign-up" component={SignUp} />
       <Route exact path="/sign-in" component={SignIn} />
+      
       <Route exact path="/blog/:blogid" component={BlogDetail} />
       <Route exact path="/blog" component={Blog} />
       <Route exact path='/'>
