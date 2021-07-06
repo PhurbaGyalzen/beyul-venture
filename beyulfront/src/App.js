@@ -4,16 +4,16 @@ import {
   Switch,
   useParams,
 } from 'react-router-dom'
-import Header from './components/Header'
-import HomePage from './pages/landing/HomePage'
-import AboutPage from './pages/AboutPage'
-import ServicesPages from './pages/ServicesPage'
-import PackageDetail from './pages/package-detail/PackageDetail'
-import SignUp from './components/SignUp'
-import SignIn from './components/SignIn'
-import BlogDetail from './pages/BlogPage/BlogDetail'
-import Blog from './pages/BlogPage/Blog'
-
+import Blog from 'pages/BlogPage/Blog'
+import AboutPage from 'pages/AboutPage'
+import HomePage from 'pages/landing/HomePage'
+import ServicesPages from 'pages/ServicesPage'
+import BlogDetail from 'pages/BlogPage/BlogDetail'
+import PackageDetail from 'pages/package-detail/PackageDetail'
+import Header from 'components/Header'
+import SignIn from 'components/SignIn'
+import SignUp from 'components/SignUp'
+// import { default as SignUp } from 'components/SignUpDialog'
 
 const Routes = () => {
   const params = useParams()
@@ -24,10 +24,10 @@ const Routes = () => {
       <Route exact path='/package/:packageId'>
         <PackageDetail packageId={params} />
       </Route>
-      <Route exact path="/sign-up" component={SignUp} />
-      <Route exact path="/sign-in" component={SignIn} />
-      <Route exact path="/blog/:blogid" component={BlogDetail} />
-      <Route exact path="/blog" component={Blog} />
+      <Route exact path='/sign-up' component={SignUp} />
+      <Route exact path='/sign-in' component={SignIn} />
+      <Route exact path='/blog/:blogid' component={BlogDetail} />
+      <Route exact path='/blog' component={Blog} />
       <Route exact path='/'>
         <HomePage />
       </Route>
@@ -40,10 +40,7 @@ const App = () => {
     <Router>
       <div className='App'>
         <Header />
-        <Switch>
-          <Routes />
-          
-        </Switch>
+        <Routes />
       </div>
     </Router>
   )

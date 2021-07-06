@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import CustomizedDialogs from './SignUpDialog'
 import {
   CssBaseline,
   Container,
@@ -83,15 +82,15 @@ const Header = () => {
             <NavBtn to='/about'>About</NavBtn>
             <NavBtn to='/services'>Services</NavBtn>
             <Button
-              size='medium'
+              component={NavLink}
               to='/sign-up'
+              variant='contained'
+              color='primary'
+              size='medium'
             >
-              <CustomizedDialogs/>
+              Sign Up
             </Button>
           </div>
-          {/* <IconButton>
-            <MenuIcon />
-          </IconButton> */}
         </Toolbar>
       </AppBar>
     </Container>
