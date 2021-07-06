@@ -58,7 +58,7 @@ const NavBtn = (props) => {
     <Button
       variant='outlined'
       component={NavLink}
-      style={{ fontWeight: 'bold', color: '#fff' }}
+      style={{ fontWeight: 'bold', color: '#000' }}
       activeStyle={{ border: '2px solid white' }}
       exact
       {...props}

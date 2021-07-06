@@ -12,29 +12,29 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Beyul Venture - Home</title>
-    <!-- <script src="https://apps.elfsight.com/p/platform.js"></script>
+    <script src="https://apps.elfsight.com/p/platform.js"></script>
     <script type="module">
-          {document.addEventListener('load', setTimeout(() => {
-              console.log('removing insta widget')
-              document.querySelector('.eapps-link').remove()
-              }, 3000
-            ))
-          }
-    </script> -->
+      {
+        document.addEventListener(
+          'load',
+          setTimeout(() => {
+            console.log('removing insta widget')
+            document.querySelector('.eapps-link').remove()
+          }, 3000),
+        )
+      }
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script type="module" defer>
       const navBar = document.querySelector('header')
       window.addEventListener('scroll', () => {
-          if (window.scrollY === 0) {
-            // navBar.style.backgroundColor = 'rgba(10, 10, 10, 0)'
-            navBar.classList.remove('nonTransparentBg')
-            navBar.classList.add('transparentBg')
-          }
-          else {
-            navBar.classList.remove('transparentBg')
-            navBar.classList.add('nonTransparentBg')
-            // navBar.style.backgroundColor = 'rgba(10, 10, 10, 1)'
-          }
+        if (window.scrollY === 0) {
+          navBar.classList.remove('nonTransparentBg')
+          navBar.classList.add('transparentBg')
+        } else {
+          navBar.classList.remove('transparentBg')
+          navBar.classList.add('nonTransparentBg')
+        }
       })
     </script>
   </head>
