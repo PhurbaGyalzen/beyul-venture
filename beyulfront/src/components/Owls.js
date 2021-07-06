@@ -27,7 +27,6 @@ const Owl = ({ imgSrc, text }) => {
 
 // A group of owl is called a Parliament
 const Parliament = ({ cars }) => {
-    console.log(cars)
     return (
         <OwlCarousel className='owl-theme' 
         loop ={true}
