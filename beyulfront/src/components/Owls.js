@@ -13,8 +13,9 @@ const MediumOwl = styled.div``
 // width: 15rem;
 
 const FullWidthImage = styled.img`
-    width: 100%;
-    height: 100%;
+    width: 15rem;
+    height: 15rem;
+    max-height: auto;
     object-fit: contain;
 `
 
@@ -28,7 +29,13 @@ const Owl = ({ imgSrc, text }) => {
 const Parliament = ({ cars }) => {
     console.log(cars)
     return (
-        <OwlCarousel className='owl-theme' loop margin={10} nav>
+        <OwlCarousel className='owl-theme' 
+        loop ={true}
+        margin={10} 
+        nav={true}
+        autoplay={true}
+        autoplayTimeout={2000}
+        >
             {cars.map((car) => {
                 return <Owl key={car.id} imgSrc={car.image} text={car.title} />
             })}

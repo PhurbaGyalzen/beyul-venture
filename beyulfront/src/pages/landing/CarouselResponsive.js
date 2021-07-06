@@ -36,7 +36,7 @@ const CarouselWithText = ({imgProps, text}) => {
 const CarouselResponsive = ({cars}) => {
     return (
         
-        <Carousel autoplay infiniteLoop showThumbs={false} showStatus={false}>
+        <Carousel autoPlay={true} interval={2000} infiniteLoop={true} showThumbs={false} showStatus={false}>
             {cars.map((car) => {
                 const imgProps = {
                     alt: car.alt,
