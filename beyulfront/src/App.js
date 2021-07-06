@@ -14,6 +14,7 @@ import SignIn from './components/SignIn'
 import BlogDetail from './pages/BlogPage/BlogDetail'
 import Blog from './pages/BlogPage/Blog'
 
+
 const Routes = () => {
   const params = useParams()
   return (

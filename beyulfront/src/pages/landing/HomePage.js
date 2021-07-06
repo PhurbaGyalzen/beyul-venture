@@ -148,7 +148,7 @@ const HomePage = () => {
                     </Typography>
                     <Grid container spacing={4} align='center'>
                         {packageData.map((data) => {
-                            return <Package data={data} />
+                            return <Package key={data.id} data={data} />
                         })}
                     </Grid>
                 </Container>

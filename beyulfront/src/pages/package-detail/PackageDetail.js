@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import pck from 'img/pck_1.webp'
 
 const TwoColGrid = styled.div`
   display: grid;
