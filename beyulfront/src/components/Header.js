@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
+import CustomizedDialogs from './SignUpDialog'
 import {
   CssBaseline,
   Container,
@@ -13,7 +14,7 @@ import {
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import { Link, NavLink } from 'react-router-dom'
-
+import { OpenDialog } from './SignUp'
 const useStyles = makeStyles((theme) => {
   // console.log({theme});
   return {
@@ -93,12 +94,9 @@ const Header = () => {
               Services
             </Button>
             <Button
-              component={Link}
-              variant='contained'
-              color='primary'
               size='medium'
             >
-              Sign Up
+              <CustomizedDialogs/>
             </Button>
           </div>
           {/* <IconButton>

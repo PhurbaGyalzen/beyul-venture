@@ -13,6 +13,7 @@ import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'
 import Blog from './pages/BlogPage/Blog'
 
+
 const Routes = () => {
   const params = useParams()
   return (
