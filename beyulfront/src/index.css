@@ -1,13 +1,13 @@
 @font-face {
   font-family: 'pioneerbrush';
-  src: url("./fonts/pioneerbrush-webfont.woff2") format('woff2');
+  src: url('./fonts/pioneerbrush-webfont.woff2') format('woff2');
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -15,4 +15,14 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.transparentBg {
+  background-color: rgba(10, 10, 10, 0) !important;
+  transition: background-color 1s ease-in-out !important;
+}
+
+.nonTransparentBg {
+  background-color: rgba(10, 10, 10, 0.7) !important;
+  transition: background-color 2s ease-in-out !important;
 }

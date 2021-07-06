@@ -36,9 +36,6 @@ const useStyles = makeStyles((theme) => ({
   imageContainer: {
     overflow: 'hidden',
   },
-  cardCont: {
-    height: '80px',
-  },
 }))
 
 const StyledRating = withStyles({
@@ -69,7 +66,7 @@ const Package = (props) => {
             />
           </div>
 
-          <CardContent className={classes.cardCont}>
+          <CardContent>
             <Typography
               align='left'
               style={{
