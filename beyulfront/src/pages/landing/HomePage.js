@@ -65,6 +65,16 @@ const HomePage = () => {
                 'The sparkling, pristine blue and green waters of the Gokyo Lakes are one of Nepal’s most memorable sights. They comprise the highest freshwater lake system in the world, at around 5,000 meters. The Gokyo Lakes trek is ideal for people who want to trek in the Everest region, but who want more variety of views and fewer nights spent at very high altitude.',
             price: 18000,
         },
+        {
+            id: 4,
+            title: 'Manang Trek',
+            image: '/static/images/langtang.jpg',
+            duration: '10 Days',
+            rating: 5,
+            description:
+                'The sparkling, pristine blue and green waters of the Gokyo Lakes are one of Nepal’s most memorable sights. They comprise the highest freshwater lake system in the world, at around 5,000 meters. The Gokyo Lakes trek is ideal for people who want to trek in the Everest region, but who want more variety of views and fewer nights spent at very high altitude.',
+            price: 18000,
+        },
     ])
 
     const [places, setPlaces] = useState([

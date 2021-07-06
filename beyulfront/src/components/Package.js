@@ -12,7 +12,6 @@ import Rating from '@material-ui/lab/Rating'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import './Package.css'
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -51,11 +50,15 @@ const StyledRating = withStyles({
   },
 })(Rating)
 
+const CustomLink = styled(Link)`
+  text-decoration: none;
+`
+
 const Package = (props) => {
   const classes = useStyles()
   return (
     <Grid item xs={12} md={4} sm={6}>
-      <Link to='package/1'>
+      <CustomLink to='package/1'>
         <Card className={classes.card}>
           <div className={classes.imageContainer}>
             <CardMedia
@@ -113,7 +116,7 @@ const Package = (props) => {
             </Box>
           </CardContent>
         </Card>
-      </Link>
+      </CustomLink>
     </Grid>
   )
 }
