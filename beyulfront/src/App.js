@@ -11,6 +11,7 @@ import ServicesPages from './pages/ServicesPage'
 import PackageDetail from './pages/package-detail/PackageDetail'
 import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'
+import BlogDetail from './pages/BlogPage/BlogDetail'
 import Blog from './pages/BlogPage/Blog'
 
 const Routes = () => {
@@ -24,7 +25,8 @@ const Routes = () => {
       </Route>
       <Route exact path="/sign-up" component={SignUp} />
       <Route exact path="/sign-in" component={SignIn} />
-      <Route exact path="/blog/:id" component={Blog} />
+      <Route exact path="/blog/:blogid" component={BlogDetail} />
+      <Route exact path="/blog" component={Blog} />
       <Route exact path='/'>
         <HomePage />
       </Route>
