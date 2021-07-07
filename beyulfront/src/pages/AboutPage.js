@@ -15,7 +15,7 @@ import save_1 from 'img/savePayment.png'
 
 const About = () => {
     return (
-        <Container>
+        <>
             <main>
                 <img
                     src={aboutPic_1}
@@ -62,7 +62,7 @@ const About = () => {
                     more recently with desktop publishing software like Aldus
                     PageMaker including versions of Lorem Ipsum
                 </Typography>
-                <Container style={{ backgroundColor: '#f4f9ff' }}>
+                <div style={{ backgroundColor: '#f4f9ff' }}>
                     <Typography
                         variant='h5'
                         color='primary'
@@ -80,7 +80,7 @@ const About = () => {
                     >
                         <Grid item>
                             <Card
-                                style={{ width: '15rem', height: '18rem' }}
+                                style={{ width: '15rem', height: '18.9rem' }}
                                 align='center'
                             >
                                 <CardMedia
@@ -106,7 +106,7 @@ const About = () => {
 
                         <Grid item>
                             <Card
-                                style={{ width: '15rem', height: '18rem' }}
+                                style={{ width: '15rem', height: '18.9rem' }}
                                 align='center'
                             >
                                 <CardMedia
@@ -135,7 +135,7 @@ const About = () => {
                         {/* third */}
                         <Grid item>
                             <Card
-                                style={{ width: '15rem', height: '18rem' }}
+                                style={{ width: '15rem', height: '18.9rem' }}
                                 align='center'
                             >
                                 <CardMedia
@@ -149,7 +149,7 @@ const About = () => {
 
                                 <CardContent style={{ paddingTop: '0' }}>
                                     <Typography variant='h6' color='primary'>
-                                        Excellent customer service
+                                        Excellent service
                                     </Typography>
                                     <Typography style={{ fontSize: '14px' }}>
                                         With Beyul.com, you always travel
@@ -166,7 +166,7 @@ const About = () => {
 
                         <Grid item>
                             <Card
-                                style={{ width: '15rem', height: '18rem' }}
+                                style={{ width: '15rem', height: '18.9rem' }}
                                 align='center'
                             >
                                 <CardMedia
@@ -194,9 +194,9 @@ const About = () => {
                             </Card>
                         </Grid>
                     </Grid>
-                </Container>
+                </div>
             </main>
-        </Container>
+        </>
     )
 }
 

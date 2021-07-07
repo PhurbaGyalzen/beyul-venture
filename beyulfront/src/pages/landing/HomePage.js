@@ -79,7 +79,7 @@ const HomePage = () => {
             id: 5,
             title: 'Chitwan Safari Package',
             image: '/static/images/chitwan2.jpg',
-            duration:'3 Days',
+            duration: '3 Days',
             rating: 4,
             description:
                 'They are all around 6/7hours distance of each other (depending on traffic) via the tourist buses which run daily.Most travel offices in Kathmandu or Pokhara will have buses which run to Chitwan and it should cost no more than $8-$15 USD (800-1500 Nepalese rupees) depending on what bus company you choose and if it includes lunch.Blue Sky Travels, Mountain Overland and Greenline were the popular choices and recommended in Lonely Planet.But, there are many companies which go the same route, you’re really just paying for the bus quality. For some reason, all buses seemed to leave at the same time of 7am to the popular tourist destinations in Kathmandu, Pokhara and ChitwanIf you wanted to avoid commission fees you could just turn up at the bus stand and pay on the bus.But, you’re not guaranteed to find a bus with a seat available.Obviously, it’s good to check when and where the buses go from',
@@ -88,13 +88,13 @@ const HomePage = () => {
         {
             id: 6,
             title: 'Illam Package',
-            image:'/static/images/illam1.jpg',
+            image: '/static/images/illam1.jpg',
             duration: '4days',
             rating: 3,
-            description: 
+            description:
                 'he name Ilam is derived from the Limbu language in which “Ii” means twisted and “Lam” means road. Ilam was one of the ten self ruling states of Limbuwan before the unification of Nepal, its ruler King Hangshu Phuba Lingdom of Lingdom dynasty ruled Ilam as a confederate state of Limbuwan until 1813 AD. The treaty between the other Limbuwan states and the King of Gorkha (Gorkha-Limbuwan Treaty of 1774 AD) and the conflict of Gorkha and Sikkim led to the unification of Ilam with Gorkha. Ilam was the last of the ten kingdoms of Limbuwan to join the union of Nepal. The King of Gorkha gave the ruler of Ilam full autonomy to rule and the right of Kipat. Ilam was an independent Limbu kingdom until 1813 CE/1869 BS.',
             price: 15000,
-        }
+        },
     ])
 
     const [places, setPlaces] = useState([
@@ -190,7 +190,7 @@ const HomePage = () => {
             </Container>
 
             {/*for insta widget*/}
-            <div className='elfsight-app-93f2b927-f005-4b5a-90ac-f40e3c7319f8'></div>
+            <div class='elfsight-app-93f2b927-f005-4b5a-90ac-f40e3c7319f8'></div>
         </>
     )
 }
