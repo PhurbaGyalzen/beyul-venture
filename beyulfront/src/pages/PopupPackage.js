@@ -5,7 +5,7 @@ import { Grid} from '@material-ui/core';
 import popupImg from 'img/travel.png';
 import { makeStyles } from '@material-ui/core';
 import { useState, useEffect} from 'react';
-import {Spring, useSpring,animated} from 'react-spring';
+import {Spring, useSpring,animated} from '@react-spring/web';
 import { blue , purple} from '@material-ui/core/colors';
 
 //Defining custom styles for popup package
