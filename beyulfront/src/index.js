@@ -2,10 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import PopupPackage from './pages/PopupPackage';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <PopupPackage/>
+
   </React.StrictMode>,
   document.getElementById('root')
 );
