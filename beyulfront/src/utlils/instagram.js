@@ -1,14 +1,14 @@
 const fetchPosts = async () => {
-    CORS_HOST = 'https://softwarica-cors.herokuapp.com/'
-    BIBLIOGRAM_ORIGIN = CORS_HOST + 'https://bibliogram.snopyta.org'
+    const CORS_HOST = 'https://softwarica-cors.herokuapp.com/'
+    const BIBLIOGRAM_ORIGIN = CORS_HOST + 'https://bibliogram.snopyta.org'
 
-    var fetchPosts = async (username, limit = 12) => {
+    const fetchPosts = async (username, limit = 12) => {
         const url = `${BIBLIOGRAM_ORIGIN}/u/${username}/rss.xml`
         const resp = await fetch(url, { method: 'GET' })
         const contents = await resp.text()
         const parser = new DOMParser()
         const root = parser.parseFromString(contents, 'application/xml')
-        posts = root.querySelectorAll('item')
+        const posts = root.querySelectorAll('item')
         const feeds = []
         // ordering? is it good?
         for (const post of Array.from(posts).slice(0, limit)) {
