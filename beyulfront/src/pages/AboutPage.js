@@ -8,6 +8,7 @@ import {
     CardMedia,
 } from '@material-ui/core'
 import aboutPic_1 from 'img/aboutUs_pic.jpg'
+import aboutUs from 'img/aboutUS.png'
 import globe_1 from 'img/globe.jpg'
 import price_1 from 'img/last1.png'
 import review_1 from 'img/review3.png'
@@ -17,51 +18,65 @@ const About = () => {
     return (
         <>
             <main>
-                <img
+                {/* <img
                     src={aboutPic_1}
                     style={{ width: '100%', height: '27rem' }}
-                />
+                /> */}
                 <Typography
                     variant='h5'
-                    align='center'
+                    align='start'
                     color='primary'
-                    style={{ marginTop: '1rem', marginBottom: '1rem' }}
+                    style={{ marginTop: '5rem',marginLeft:'5rem', marginBottom: '1rem' }}
                 >
                     About us
                 </Typography>
-                <Typography style={{ margin: '0 5rem' }}>
-                    Lorem Ipsum has been the industry's standard dummy text
-                    ever since the 1500s, scrambled it to make a type specimen
-                    book. It has survived not only five centuries, but also the
-                    leap into electronic typesetting, remaining essentially
-                    unchanged. It was popularised in the 1960s with the release
-                    of Letraset sheets containing Lorem Ipsum passages, and
-                    more recently with desktop publishing software like Aldus
-                    PageMaker including versions of Lorem Ipsum
-                </Typography>
-                <Typography style={{ margin: '1.2rem 5rem' }}>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book. It has survived not only five
-                    centuries, but also the leap into electronic typesetting,
-                    remaining essentially unchanged. It was popularised in the
-                    1960s with the release of Letraset sheets containing Lorem
-                    Ipsum passages, and more recently with desktop publishing
-                    software like Aldus PageMaker including versions of Lorem
-                    Ipsum
-                </Typography>
-                <Typography style={{ margin: ' 0 5rem 2rem' }}>
-                    Lorem Ipsum has been the industry's standard dummy text
-                    ever since the 1500s, scrambled it to make a type specimen
-                    book. It has survived not only five centuries, but also the
-                    leap into electronic typesetting, remaining essentially
-                    unchanged. It was popularised in the 1960s with the release
-                    of Letraset sheets containing Lorem Ipsum passages, and
-                    more recently with desktop publishing software like Aldus
-                    PageMaker including versions of Lorem Ipsum
-                </Typography>
+                <div style={{display:'flex', direction:'row', margin:'0 5rem'}}>
+                        <Typography paragraph>
+                            Lorem Ipsum has been the industry's standard dummy text
+                            ever since the 1500s, scrambled it to make a type specimen
+                            book. It has survived not only five centuries, but also the
+                            leap into electronic typesetting, remaining essentially
+                            unchanged. It was popularised in the 1960s with the release
+                            of Letraset sheets containing Lorem Ipsum passages, and
+                            more recently with desktop publishing software like Aldus
+                            PageMaker including versions of Lorem Ipsum.
+                            Lorem Ipsum has been the industry's standard dummy text
+                            ever since the 1500s, scrambled it to make a type specimen
+                            book. It has survived not only five centuries, but also the
+                            leap into electronic typesetting, remaining essentially
+                            unchanged. It was popularised in the 1960s with the release
+                            of Letraset sheets containing Lorem Ipsum passages, and
+                            more recently with desktop publishing software like Aldus
+                            PageMaker including versions of Lorem Ipsum.
+                        </Typography>
+                        <img
+                            src={aboutUs}
+                            style={{ width: '100%', height: '20rem' }}
+                        />
+                        {/* <Typography style={{ margin: '1.2rem 5rem' }}>
+                            Lorem Ipsum is simply dummy text of the printing and
+                            typesetting industry. Lorem Ipsum has been the industry's
+                            standard dummy text ever since the 1500s, when an unknown
+                            printer took a galley of type and scrambled it to make a
+                            type specimen book. It has survived not only five
+                            centuries, but also the leap into electronic typesetting,
+                            remaining essentially unchanged. It was popularised in the
+                            1960s with the release of Letraset sheets containing Lorem
+                            Ipsum passages, and more recently with desktop publishing
+                            software like Aldus PageMaker including versions of Lorem
+                            Ipsum
+                        </Typography>
+                        <Typography style={{ margin: ' 0 5rem 2rem' }}>
+                            Lorem Ipsum has been the industry's standard dummy text
+                            ever since the 1500s, scrambled it to make a type specimen
+                            book. It has survived not only five centuries, but also the
+                            leap into electronic typesetting, remaining essentially
+                            unchanged. It was popularised in the 1960s with the release
+                            of Letraset sheets containing Lorem Ipsum passages, and
+                            more recently with desktop publishing software like Aldus
+                            PageMaker including versions of Lorem Ipsum
+                        </Typography> */}
+                </div>
                 <div style={{ backgroundColor: '#f4f9ff' }}>
                     <Typography
                         variant='h5'
@@ -82,6 +97,7 @@ const About = () => {
                             <Card
                                 style={{ width: '15rem', height: '18.9rem' }}
                                 align='center'
+                                sm={12}
                             >
                                 <CardMedia
                                     image={globe_1}
