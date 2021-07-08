@@ -7,8 +7,8 @@ import {
     CardContent,
     CardMedia,
 } from '@material-ui/core'
-import aboutPic_1 from 'img/aboutUs_pic.jpg'
-import aboutUs from 'img/aboutUS.png'
+
+import aboutUs from 'img/aboutUs_2.png'
 import globe_1 from 'img/globe.jpg'
 import price_1 from 'img/last1.png'
 import review_1 from 'img/review3.png'
@@ -31,7 +31,7 @@ const About = () => {
                     About us
                 </Typography>
                 <div style={{display:'flex', direction:'row', margin:'0 5rem'}}>
-                        <Typography paragraph>
+                        <Typography paragraph align='justify'>
                             Lorem Ipsum has been the industry's standard dummy text
                             ever since the 1500s, scrambled it to make a type specimen
                             book. It has survived not only five centuries, but also the
@@ -45,13 +45,17 @@ const About = () => {
                             book. It has survived not only five centuries, but also the
                             leap into electronic typesetting, remaining essentially
                             unchanged. It was popularised in the 1960s with the release
+                            of Letraset sheets containing Lorem Ipsum passages, and
+                            more recently with desktop publishing software like Aldus
+                            PageMaker including versions of Lorem Ipsum. It was popularised
+                            in the 1960s with the release
                             of Letraset sheets containing Lorem Ipsum passages, and
                             more recently with desktop publishing software like Aldus
                             PageMaker including versions of Lorem Ipsum.
                         </Typography>
                         <img
                             src={aboutUs}
-                            style={{ width: '100%', height: '20rem' }}
+                            style={{ width: '49rem', height: '22rem' }}
                         />
                         {/* <Typography style={{ margin: '1.2rem 5rem' }}>
                             Lorem Ipsum is simply dummy text of the printing and
