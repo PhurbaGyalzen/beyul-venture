@@ -14,7 +14,8 @@ import Package from 'components/Package'
 import CarouselResponsive from './CarouselResponsive'
 import Parliament from 'components/Owls'
 import PackageDetail from 'pages/package-detail/PackageDetail'
-
+import InstagramWidget from 'components/InstaWidget'
+import { fetchPosts } from 'utils/instagram'
 import trek from 'img/trek_1.png'
 import pck from 'img/pck_1.webp'
 
@@ -34,6 +35,16 @@ const MaxViewPortHeightWrapper = (props) => (
 )
 
 const HomePage = () => {
+    const [instaPosts, setInstaPosts] = useState(null)
+    useEffect(() => {
+        if (!instaPosts) {
+            fetcher()
+        }
+    }, [])
+    const fetcher = async () => {
+        const posts = await fetchPosts('nepal.nature')
+        setInstaPosts(posts)
+    }
     const [packageData, setpackageData] = useState([
         {
             id: 1,
@@ -190,7 +201,18 @@ const HomePage = () => {
             </Container>
 
             {/*for insta widget*/}
-            <div class='elfsight-app-93f2b927-f005-4b5a-90ac-f40e3c7319f8'></div>
+            {/*<div class='elfsight-app-93f2b927-f005-4b5a-90ac-f40e3c7319f8'></div>*/}
+
+            {instaPosts ? (
+                <Container>
+                    <Typography variant='h4'>
+                        Our adventures on Instagram.
+                    </Typography>
+                    <InstagramWidget posts={instaPosts} />
+                </Container>
+            ) : (
+                ''
+            )}
         </>
     )
 }
