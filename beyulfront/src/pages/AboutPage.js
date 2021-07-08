@@ -7,8 +7,8 @@ import {
     CardContent,
     CardMedia,
 } from '@material-ui/core'
-import aboutPic_1 from 'img/aboutUs_pic.jpg'
-import aboutUs from 'img/aboutUS.png'
+
+import aboutUs from 'img/aboutUs_2.png'
 import globe_1 from 'img/globe.jpg'
 import price_1 from 'img/last1.png'
 import review_1 from 'img/review3.png'
@@ -31,7 +31,8 @@ const About = () => {
                     About us
                 </Typography>
                 <div style={{display:'flex', direction:'row', margin:'0 5rem'}}>
-                        <Typography paragraph>
+                        <Typography paragraph align='justify'
+                        style={{marginRight:'2rem' }}>
                             Lorem Ipsum has been the industry's standard dummy text
                             ever since the 1500s, scrambled it to make a type specimen
                             book. It has survived not only five centuries, but also the
@@ -47,42 +48,24 @@ const About = () => {
                             unchanged. It was popularised in the 1960s with the release
                             of Letraset sheets containing Lorem Ipsum passages, and
                             more recently with desktop publishing software like Aldus
-                            PageMaker including versions of Lorem Ipsum.
+                            PageMaker including versions of Lorem Ipsum. It was popularised
+                            in the 1960s with the release
+                            of Letraset sheets containing Lorem Ipsum passages, and
+                            more recently with desktop publishing software like Aldus
+                            PageMaker including versions.
                         </Typography>
                         <img
                             src={aboutUs}
-                            style={{ width: '100%', height: '20rem' }}
+                            style={{ width: '40rem', height: '22rem' }}
                         />
-                        {/* <Typography style={{ margin: '1.2rem 5rem' }}>
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the industry's
-                            standard dummy text ever since the 1500s, when an unknown
-                            printer took a galley of type and scrambled it to make a
-                            type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic typesetting,
-                            remaining essentially unchanged. It was popularised in the
-                            1960s with the release of Letraset sheets containing Lorem
-                            Ipsum passages, and more recently with desktop publishing
-                            software like Aldus PageMaker including versions of Lorem
-                            Ipsum
-                        </Typography>
-                        <Typography style={{ margin: ' 0 5rem 2rem' }}>
-                            Lorem Ipsum has been the industry's standard dummy text
-                            ever since the 1500s, scrambled it to make a type specimen
-                            book. It has survived not only five centuries, but also the
-                            leap into electronic typesetting, remaining essentially
-                            unchanged. It was popularised in the 1960s with the release
-                            of Letraset sheets containing Lorem Ipsum passages, and
-                            more recently with desktop publishing software like Aldus
-                            PageMaker including versions of Lorem Ipsum
-                        </Typography> */}
+                        
                 </div>
-                <div style={{ backgroundColor: '#f4f9ff' }}>
+                <div style={{ backgroundColor: '#d1e2f0' }}>
                     <Typography
                         variant='h5'
                         color='primary'
                         align='center'
-                        style={{ padding: '2.5rem 0' }}
+                        style={{ padding: '2.5rem 0 0rem' }}
                     >
                         Why book with us?
                     </Typography>
@@ -90,7 +73,8 @@ const About = () => {
                         style={{
                             display: 'flex',
                             justifyContent: 'space-evenly',
-                            margin: '0 3rem 0 3rem ',
+                            margin: '0 3rem 0rem 3rem ',
+                            padding:' 1.3rem 3rem 3rem 3rem'
                         }}
                     >
                         <Grid item>
