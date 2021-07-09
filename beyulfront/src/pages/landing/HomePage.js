@@ -9,6 +9,7 @@ import {
     useParams,
     useRouteMatch,
 } from 'react-router-dom'
+import Header from 'components/Header'
 import Place from 'components/Place'
 import Package from 'components/Package'
 import CarouselResponsive from './CarouselResponsive'
@@ -155,6 +156,7 @@ const HomePage = () => {
 
     return (
         <>
+            <Header />
             <MaxViewPortHeightWrapper>
                 <CarouselResponsive cars={imagesInfo} />
             </MaxViewPortHeightWrapper>
