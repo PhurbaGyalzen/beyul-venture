@@ -11,6 +11,7 @@ import AboutUsPage from './pages/AboutUsPage'
 
 import BlogDetail from 'pages/BlogPage/BlogDetail'
 import PackageDetail from 'pages/package-detail/PackageDetail'
+import Header from 'components/Header'
 import SignIn from 'components/SignIn'
 import SignUp from 'components/SignUp'
 // import { default as SignUp } from 'components/SignUpDialog'
@@ -27,7 +28,7 @@ const Routes = () => {
       <Route exact path='/sign-in' component={SignIn} />
       <Route exact path='/blog' component={Blog} />
       <Route exact path='/blog/:blogid' component={BlogDetail} />
-
+      
       <Route exact path='/'>
         <HomePage />
       </Route>
@@ -39,6 +40,7 @@ const App = () => {
   return (
     <Router>
       <div className='App'>
+        <Header />
         <Routes />
       </div>
     </Router>
