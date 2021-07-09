@@ -5,7 +5,7 @@ import {
   useParams,
 } from 'react-router-dom'
 import Blog from 'pages/BlogPage/Blog'
-// import AboutPage from 'pages/AboutPage'
+import AboutPage from 'pages/AboutPage'
 import AboutUsPage from './pages/AboutUsPage'
 import HomePage from 'pages/landing/HomePage'
 import ServicesPages from 'pages/ServicesPage'
@@ -20,6 +20,7 @@ const Routes = () => {
   const params = useParams()
   return (
     <Switch>
+      <Route exact path='/about' component={AboutPage} />
       <Route exact path='/about' component={AboutUsPage} />
       <Route exact path='/services' component={ServicesPages} />
       <Route exact path='/package/:packageId'>
