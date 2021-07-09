@@ -24,10 +24,7 @@ const blogStyles = makeStyles((theme)=>({
     },
     authorStyle:{
         textDecoration:"None",
-        color:"black",
-        fontFamily:"sans-serif",
-        fontSize:"1rem",
-        fontWeight:"600",
+        color:"#fff",
         marginRight:"0.7rem",
         '&:hover':{
             textDecoration:'Underline'
@@ -35,6 +32,37 @@ const blogStyles = makeStyles((theme)=>({
     },
     dateStyle:{
         color:"rgba(117,117,117,1)"
+    },
+    articleTitle:{
+        fontWeight:"600",
+        color:"#fff",
+        textTransform:"uppercase",
+        [theme.breakpoints.down('sm')]:{
+            fontWeight:"400",
+        }
+    },
+    articleInfo:{
+        fontSize:"1rem",
+        fontWeight:"600",
+        color:"#fff",
+        textTransform:"uppercase",
+        "& span":{
+            marginRight: "1rem"
+        }
+    },
+    
+    articleDetail:{
+        marginRight:"6vh", 
+        paddingTop: "60vh",
+        padding: "0 4rem",
+        [theme.breakpoints.down('sm')]:{
+            marginRight:"2rem", 
+            paddingTop: "50vh",
+            padding:"0 1rem"
+        },
+        // [theme.breakpoints.up('md')]:{
+        //     padding: "0 2rem"
+        // }
     }
 
 }))
@@ -46,17 +74,37 @@ const BlogDetail = props => {
     const classes = blogStyles()
     return (
         <>
-        <Box mt={7}> 
-            <Container className={classes.blogContainer}>
-                <div className={classes.blogImageContainer}>
-                    <img src={"/static/images/annapurna.jpg"} className={classes.imageCustomize} />
+        <Container maxWidth='xl' 
+                style={
+                    {
+                        background:`linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("/static/images/annapurna.jpg")`,
+                        height:"100vh",
+                        padding:"0",
+                        
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize:"cover",
+                        backgroundAttachment:"fixed",
+                    }
+                    }>
+            <Container maxWidth='lg' mt={10}>
+                <div className={classes.articleDetail}>
+                    <div>
+                        <Typography variant="h4" align="left" className={classes.articleTitle}>
+                            Through the Trails of Annapurna where we build memories and live the best moment
+                        </Typography>
+                    </div>
+                    <div className={classes.articleInfo}>
+                        <span>By: <Link className={classes.authorStyle}>Jaikant Shikre</Link></span>
+                        <span>|</span>
+                        <span>19 July, 2021</span>
+                    </div>
                 </div>
-                <Typography>{blog_id}</Typography>
-                <Typography variant="h4" gutterBottom>Through the trails of Annapurna</Typography>
-                <Typography variant="subtitle2" gutterBottom>
-                    <Link className={classes.authorStyle}>Jaikant Shikre</Link>
-                    <span className={classes.dateStyle}>July 4,2021</span>
-                </Typography>
+            </Container>    
+
+        </Container>
+        <Box mt={7} maxWidth='lg'> 
+            
+            <Container className={classes.blogContainer}>
                 <Typography align="justify" paragraph>
                     The legendary Annapurna region is the most diverse and popular trekking area in Nepal. From the full three-week Annapurna Circuit, which stretches into the historic Mustang region to short three-day treks, there's a trek suitable for everyone here. 
                     Mountains & Rivers in the Annapurna Region As the name suggests, the centre piece of this part of Nepal is the range of mountains that includes 
