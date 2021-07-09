@@ -8,7 +8,8 @@ import {
     CardMedia,
 } from '@material-ui/core'
 
-import aboutUs from 'img/aboutUs_2.png'
+import aboutUs from 'img/another.svg'
+import history from 'img/history.svg'
 import globe_1 from 'img/globe.jpg'
 import price_1 from 'img/last1.png'
 import review_1 from 'img/review3.png'
@@ -21,8 +22,8 @@ const About = () => {
                
                
                 <div style={{display:'flex', direction:'row', margin:'5rem 5rem 0rem 5rem'}}>
-                        <Typography paragraph align='justify'
-                        style={{marginRight:'2rem' }}>
+                        <Typography m={8} paragraph align='justify'
+                        style={{ width:'40rem',marginRight:'2rem' }}>
                              <Typography
                                 variant='h4'
                                 align='start'
@@ -59,10 +60,11 @@ const About = () => {
                 <div style={{display:'flex', direction:'row', margin:'2rem 5rem 2rem'}}>
                         
                         <img
-                            src={aboutUs}
-                            style={{ width: '40rem', height: '25rem' ,marginRight:'2rem'}}
+                            src={history}
+                            style={{width:'40rem', height:'25rem',marginRight:'2rem'}}
                         />
                         <Typography paragraph align='justify'
+                        style={{width:'40rem'}}
                         >
                              <Typography
                                 variant='h4'
