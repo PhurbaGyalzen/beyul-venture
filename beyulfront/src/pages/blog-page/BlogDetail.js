@@ -53,7 +53,7 @@ const blogStyles = makeStyles((theme)=>({
     
     articleDetail:{
         marginRight:"6vh", 
-        paddingTop: "80vh",
+        paddingTop: "75vh",
         padding: "0 4rem",
         [theme.breakpoints.down('sm')]:{
             marginRight:"2rem", 
