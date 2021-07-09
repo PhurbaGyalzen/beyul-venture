@@ -1,11 +1,12 @@
 from rest_framework import viewsets
 from .models import Blog
-from django.contrib.auth.models import User
 from .serializers import BlogSerializer, UserSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import CustomTokenObtainPairSerializer
+from django.contrib.auth import get_user_model
+User = get_user_model()  # User is now the CustomUser
 
 
 class CustomObtainTokenPairView(TokenObtainPairView):
