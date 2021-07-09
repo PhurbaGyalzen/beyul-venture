@@ -4,13 +4,14 @@ import {
   Switch,
   useParams,
 } from 'react-router-dom'
-import Blog from 'pages/BlogPage/Blog'
+import Blog from 'pages/blog-page/Blog'
 import AboutPage from 'pages/AboutPage'
 import HomePage from 'pages/landing/HomePage'
 import AboutUsPage from './pages/AboutUsPage'
 
-import BlogDetail from 'pages/BlogPage/BlogDetail'
+import BlogDetail from 'pages/blog-page/BlogDetail'
 import PackageDetail from 'pages/package-detail/PackageDetail'
+import Header from 'components/Header'
 import SignIn from 'components/SignIn'
 import SignUp from 'components/SignUp'
 // import { default as SignUp } from 'components/SignUpDialog'
@@ -22,7 +23,7 @@ const Routes = () => {
       <Route exact path='/about' component={AboutUsPage} />
       <Route exact path='/package/:packageId'>
         <PackageDetail packageId={params} />
-    </Route>
+      </Route>
       <Route exact path='/sign-up' component={SignUp} />
       <Route exact path='/sign-in' component={SignIn} />
       <Route exact path='/blog' component={Blog} />
@@ -39,6 +40,7 @@ const App = () => {
   return (
     <Router>
       <div className='App'>
+        <Header />
         <Routes />
       </div>
     </Router>

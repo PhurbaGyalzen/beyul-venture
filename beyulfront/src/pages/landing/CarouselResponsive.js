@@ -1,9 +1,9 @@
-import React from 'react'
-import { Carousel } from 'react-responsive-carousel'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import React from 'react';
+import {Carousel} from  'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const BrushyText = (props) => {
-    let { style, ...attrs } = props
+    let {style, ...attrs} = props
     style = {
         ...style,
         ...{
@@ -11,49 +11,40 @@ const BrushyText = (props) => {
             bottom: '50%', // cant use top cuz bottom is used by default and never use top and bottom
             backgroundColor: '#ffffff00',
             fontSize: '4rem',
-            transform: 'translateY(+50%)',
-        },
+            transform: 'translateY(+50%)'
+        }
     }
-    return (
-        <span {...attrs} style={style}>
-            {props.children}
-        </span>
-    )
+    return <span {...attrs} style={style} >{props.children}</span>
 }
 
-const CarouselWithText = ({ imgProps, text }) => {
+const CarouselWithText = ({imgProps, text}) => {
     const imgStyles = {
-        filter: 'brightness(60%)',
-        maxHeight: '100vh',
+        filter:"brightness(50%)",
+        maxHeight: '100vh'
     }
     return (
         <>
-            <img {...imgProps} style={imgStyles} />
-            <BrushyText className='legend'>{text}</BrushyText>
+            <img
+                {...imgProps}
+                style={imgStyles}
+            />
+            <BrushyText className="legend">{text}</BrushyText>
         </>
     )
 }
 
-const CarouselResponsive = ({ cars }) => {
+const CarouselResponsive = ({cars}) => {
     return (
-        <Carousel
-            autoPlay={true}
-            interval={2000}
-            infiniteLoop={true}
-            showThumbs={false}
-            showStatus={false}
-        >
+        
+        <Carousel autoPlay={true} interval={2000} infiniteLoop={true} showThumbs={false} showStatus={false}>
             {cars.map((car) => {
                 const imgProps = {
                     alt: car.alt,
-                    src: car.src,
+                    src: car.src
                 }
                 return (
                     <div key={car.position}>
-                        <CarouselWithText
-                            imgProps={imgProps}
-                            text={car.desc}
-                        />
+                        <CarouselWithText imgProps={imgProps} text={car.desc}/>
                     </div>
                 )
             })}
@@ -61,4 +52,4 @@ const CarouselResponsive = ({ cars }) => {
     )
 }
 
-export default CarouselResponsive
+export default CarouselResponsive;

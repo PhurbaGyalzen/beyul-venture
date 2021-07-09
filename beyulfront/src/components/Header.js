@@ -15,7 +15,6 @@ import MenuIcon from '@material-ui/icons/Menu'
 import styled from 'styled-components'
 import { Link, NavLink } from 'react-router-dom'
 import { OpenDialog } from './SignUp'
-
 const useStyles = makeStyles((theme) => {
   // console.log({theme});
   return {
@@ -57,19 +56,10 @@ const useStyles = makeStyles((theme) => {
 const NavBtn = (props) => {
   return (
     <Button
-      // variant='outlined'
+      variant='outlined'
       component={NavLink}
-      style={{
-        fontWeight: 'bold',
-        color: props.color || '#fff',
-        borderRadius: '0',
-        padding: '0.1rem 1.5rem',
-      }}
-      activeStyle={{
-        border: 'none',
-        // color: 'white',
-        borderBottom: '2px solid #3ba5ee',
-      }}
+      style={{ fontWeight: 'bold', color: '#000' }}
+      activeStyle={{ border: '2px solid white' }}
       exact
       {...props}
     >
@@ -78,7 +68,7 @@ const NavBtn = (props) => {
   )
 }
 
-const Header = ({ fgColor }) => {
+const Header = () => {
   const classes = useStyles()
   return (
     <Container className={classes.root}>
@@ -88,15 +78,9 @@ const Header = ({ fgColor }) => {
             Beyul Venture
           </Typography>
           <div className={classes.sectionDesktop}>
-            <NavBtn color={fgColor} to='/'>
-              Home
-            </NavBtn>
-            <NavBtn color={fgColor} to='/about'>
-              About
-            </NavBtn>
-            <NavBtn color={fgColor} to='/blog'>
-              Blog
-            </NavBtn>
+            <NavBtn to='/'>Home</NavBtn>
+            <NavBtn to='/about'>About</NavBtn>
+            <NavBtn to='/blog'>Blog</NavBtn>
             <Button
               component={NavLink}
               to='/sign-up'

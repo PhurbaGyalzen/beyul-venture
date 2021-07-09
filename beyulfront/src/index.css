@@ -3,9 +3,6 @@
   src: url('./fonts/pioneerbrush-webfont.woff2') format('woff2');
 }
 
-:root {
-}
-
 html {
   box-sizing: border-box;
 }
@@ -36,6 +33,6 @@ code {
 }
 
 .nonTransparentBg {
-  background-color: rgba(10, 10, 10, 0.5) !important;
-  transition: background-color 1s ease-in-out !important;
+  background-color: rgba(10, 10, 10, 0) !important;
+  transition: background-color 2s ease-in-out !important;
 }
