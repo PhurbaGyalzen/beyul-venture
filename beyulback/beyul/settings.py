@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'blog.apps.BlogConfig',
     'rest_framework_simplejwt',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -146,6 +147,9 @@ CORS_ALLOWED_ORIGINS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Swapped out the default Django auth.User to CustomUser
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # customize JWT settings
 SIMPLE_JWT = {
