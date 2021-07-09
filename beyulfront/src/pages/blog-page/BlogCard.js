@@ -1,17 +1,23 @@
-import { Grid,Card, CardMedia,Typography,CardContent } from "@material-ui/core"
+import {
+    Grid,
+    Card,
+    CardMedia,
+    Typography,
+    CardContent,
+} from '@material-ui/core'
 
-import { makeStyles } from "@material-ui/core"
+import { makeStyles } from '@material-ui/core'
 
-const cardStyle= makeStyles((theme)=>({
-    cardStyle:{
-        height: "100%",
+const cardStyle = makeStyles((theme) => ({
+    cardStyle: {
+        borderRadius: 0,
     },
     cardImage: {
-        height: "12rem",
-    }
+        height: '12rem',
+    },
 }))
 
-export const BlogCard = (props) => {
+/*export const BlogCard = (props) => {
     const classes = cardStyle();
     return (
         <>
@@ -30,5 +36,28 @@ export const BlogCard = (props) => {
             </Card>
         </Grid>
         </>
+    )
+}*/
+
+export const BlogCard = ({ slug, thumbnail, title, author, description }) => {
+    const classes = cardStyle()
+    return (
+        <article>
+            <a href={'/blog/' + slug}>
+                <Card className={classes.cardStyle}>
+                    <CardMedia
+                        component='img'
+                        className='wide-img'
+                        image={thumbnail}
+                        title={title}
+                    />
+                    <CardContent>
+                        <Typography variant='h5'>{title}</Typography>
+                        <p class='author'>{author}</p>
+                        <summary>{description}</summary>
+                    </CardContent>
+                </Card>
+            </a>
+        </article>
     )
 }
