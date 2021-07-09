@@ -1,15 +1,15 @@
 #col-container {
   display: flex;
-  gap: 0.3rem;
+  gap: 0rem;
   flex-wrap: wrap;
 }
 
 #col-container section {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  padding: 0 0.2rem;
-  /*border: 1px solid #00000054;*/
+  gap: 3rem;
+  padding: 0 0.5rem;
+  border: 1px solid #00000054;
 }
 
 #col-container section:nth-child(odd) {
@@ -23,7 +23,7 @@
   max-height: 20rem;
 }
 
-#col-container article .wide-img {
+#col-container article img {
   width: 100%;
   max-height: 15rem;
   object-fit: cover;

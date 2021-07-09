@@ -3,6 +3,26 @@
   src: url('./fonts/pioneerbrush-webfont.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'PublicoHead';
+  src: url('./fonts/PublicoHeadline-Black.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'PublicoHead';
+  src: url('./fonts/PublicoHeadline-Roman-Web.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'PublicoHead';
+  src: url('./fonts/PublicoHeadline-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'PublicoHead';
+  src: url('./fonts/PublicoHeadline-Light-Web.woff') format('woff');
+}
+
 html {
   box-sizing: border-box;
 }
