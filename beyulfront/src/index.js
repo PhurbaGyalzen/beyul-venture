@@ -9,6 +9,7 @@ ReactDOM.render(
     <App />
     <PopupPackage/>
 
+
   </React.StrictMode>,
   document.getElementById('root')
 );
