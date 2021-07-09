@@ -80,7 +80,7 @@ const Header = () => {
           <div className={classes.sectionDesktop}>
             <NavBtn to='/'>Home</NavBtn>
             <NavBtn to='/about'>About</NavBtn>
-            <NavBtn to='/services'>Services</NavBtn>
+            <NavBtn to='/blog'>Blog</NavBtn>
             <Button
               component={NavLink}
               to='/sign-up'
