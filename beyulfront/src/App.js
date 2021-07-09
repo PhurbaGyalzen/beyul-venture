@@ -7,6 +7,7 @@ import {
 import Blog from 'pages/BlogPage/Blog'
 import AboutPage from 'pages/AboutPage'
 import HomePage from 'pages/landing/HomePage'
+import AboutUsPage from './pages/AboutUsPage'
 
 import BlogDetail from 'pages/BlogPage/BlogDetail'
 import PackageDetail from 'pages/package-detail/PackageDetail'
@@ -19,10 +20,10 @@ const Routes = () => {
   const params = useParams()
   return (
     <Switch>
-      <Route exact path='/about' component={AboutPage} />
+      <Route exact path='/about' component={AboutUsPage} />
       <Route exact path='/package/:packageId'>
         <PackageDetail packageId={params} />
-      </Route>
+    </Route>
       <Route exact path='/sign-up' component={SignUp} />
       <Route exact path='/sign-in' component={SignIn} />
       <Route exact path='/blog' component={Blog} />
