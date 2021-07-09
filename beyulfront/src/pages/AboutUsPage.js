@@ -10,7 +10,9 @@ import { blue, grey} from '@material-ui/core/colors';
 import { Button } from '@material-ui/core';
 
 // All image import 
-import aboutUs from 'img/aboutUs_2.png'
+import aboutUs from 'img/another.svg'
+import history from 'img/history.svg'
+
 import globe_1 from 'img/globe.png'
 import price_1 from 'img/last1.png'
 import service from 'img/service.png'
@@ -99,7 +101,7 @@ export default function AboutUsPage(){
                     </Grid>
 
                     <Grid item xs={12} md={6} sm={6} ml={5}>
-                        <img src={aboutUs} className={classes.aboutUsImg}
+                        <img src={history} className={classes.aboutUsImg}
                             />
                     </Grid>
 
