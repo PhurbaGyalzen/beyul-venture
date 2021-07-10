@@ -12,7 +12,7 @@ from rest_framework_simplejwt.views import TokenRefreshView
 
 router = DefaultRouter()
 router.register(r'blog', BlogView)
-router.register(r'users', UserViewSet)
+router.register(r'user', UserViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
