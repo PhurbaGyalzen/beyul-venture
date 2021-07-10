@@ -16,16 +16,16 @@ class CustomPageNumberPagination(PageNumberPagination):
     """
     # Overriding page size activates pagination.
     # Defaults to `None`, meaning pagination is disabled.
-    page_size = 1  # only 2 for testing
+    page_size = 1  # only 1 for testing
 
     # Users can control the page size using this query parameter.
-    # Default is 'None'. Set to eg 'page_size' to enable usage.
+    # Default is 'None'. Set to eg 'records' to enable usage.
     page_size_query_param = 'records'
 
     # Maximum page size limit the User may request.
     # Only relevant if 'page_size_query_param' has also been set.
     # eg: http://127.0.0.1:8000/api/blog/?page=1&records=4
-    # this will give 4 records in page 1 if the records are available
+    # This will proivde 4 records in page 1 if the records are available
     max_page_size = 10
 
     invalid_page_message = "Invalid Page Number. Please check your page number."
