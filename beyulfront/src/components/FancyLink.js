@@ -38,6 +38,7 @@ const Anchor = styled(Link)`
 `
 
 const FancyLink = (props) => {
+    /*Extended from react-router-dom/Link. Hence takes all params Link takes*/
     const { children, ...rest } = props
     return (
         <AnchorBar>
