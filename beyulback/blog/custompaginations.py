@@ -40,3 +40,10 @@ class CustomPageNumberPagination(PageNumberPagination):
             ('previous_page_link', self.get_previous_link()),
             ('results', data)
         ]))
+
+
+class RemovePageNumberPagination(PageNumberPagination):
+    """
+    Removes PageNumberPagination
+    """
+    page_size = None
