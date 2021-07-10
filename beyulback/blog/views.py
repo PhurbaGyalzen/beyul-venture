@@ -1,10 +1,11 @@
-from rest_framework import viewsets
 from .models import Blog
+from .serializers import CustomTokenObtainPairSerializer
 from .serializers import BlogSerializer, UserSerializer
+from .custompaginations import RemovePageNumberPagination
+from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.views import TokenObtainPairView
-from .serializers import CustomTokenObtainPairSerializer
 from django.contrib.auth import get_user_model
 User = get_user_model()  # User is now the CustomUser
 
@@ -22,8 +23,10 @@ class BlogView(viewsets.ModelViewSet):
     # anyone can read the post but user must be logged in to post or delete
     permission_classes = [IsAuthenticatedOrReadOnly]
     lookup_field = 'slug'
+    # pagination_class = RemovePageNumberPagination
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    pagination_class = RemovePageNumberPagination

@@ -24,9 +24,8 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
             'author',
             'status',
         )
-        lookup_field = 'slug'
         extra_kwargs = {
-            'url': {'lookup_field': 'slug'}
+            'url': {'view_name': 'blog-detail', 'lookup_field': 'slug'}
         }
 
 
