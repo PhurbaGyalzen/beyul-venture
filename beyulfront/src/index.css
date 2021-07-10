@@ -23,6 +23,16 @@
   src: url('./fonts/PublicoHeadline-Light-Web.woff') format('woff');
 }
 
+:root {
+  --primary-color: 'white';
+  --secondary-color: 'blue';
+  --primary-text-color: 'black';
+  --secondary-text-color: 'white';
+  --theme-color: '#fe7e6c';
+  --btn-color: 'white';
+  --btn-text-color: 'black';
+}
+
 html {
   box-sizing: border-box;
 }
@@ -44,6 +54,7 @@ body {
 
 a {
   text-decoration: none !important;
+  color: var(--primary-text-color);
 }
 
 code {

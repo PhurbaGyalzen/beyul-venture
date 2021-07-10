@@ -5,9 +5,12 @@ import {
     Typography,
     CardContent,
 } from '@material-ui/core'
-import styled from 'styled-components'
 import { makeStyles } from '@material-ui/core'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import FancyLink from 'components/FancyLink'
 
+/*
 const cardStyle = makeStyles((theme) => ({
     cardStyle: {
         height: '100%',
@@ -17,7 +20,7 @@ const cardStyle = makeStyles((theme) => ({
     },
 }))
 
-/*export const BlogCard = (props) => {
+export const BlogCard = (props) => {
     const classes = cardStyle();
     return (
         <>
@@ -45,32 +48,31 @@ const Title = styled.h2`
     font-size: 2rem;
 `
 
-const FancyLink = styled.a`
-    color: black;
-    padding: 1px 3px;
-    background: linear-gradient(#0470ffab, #0954fcc7) bottom no-repeat;
-    background-size: 100% 2px;
-    transition: background-size 0.2s ease-in, color 0.2s ease-in;
-    &:hover {
-        color: white;
-        transition: background-size 0.1s ease-in, color 0.1s ease-in;
-        background-size: 100% 100%;
-    }
-`
-
-export const BlogCard = ({ slug, thumbnail, title, author, description }) => {
+export const BlogCard = ({
+    slug,
+    thumbnail,
+    title,
+    authorId,
+    authorName,
+    description,
+}) => {
     return (
         <article>
-            <a href={'/blog/' + slug}>
+            <Link to={'/blog/' + slug}>
                 <img src={thumbnail} />
-                <div style={{ color: 'black' }}>
+                <div>
                     <Title>{title}</Title>
                     <p>
-                        <FancyLink href='#'>{author}</FancyLink>
+                        {/*<FancyLink href='#'>{author}</FancyLink>*/}
+                        <FancyLink to={'/author/' + authorId}>
+                            <Typography color='textPrimary'>
+                                {authorName}
+                            </Typography>
+                        </FancyLink>
                     </p>
                     <summary>{description}</summary>
                 </div>
-            </a>
+            </Link>
         </article>
     )
 }

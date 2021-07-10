@@ -15,6 +15,7 @@
 #col-container section:nth-child(odd) {
   flex: 1 1 480px;
 }
+
 #col-container section:nth-child(even) {
   flex: 1 1 205px;
 }

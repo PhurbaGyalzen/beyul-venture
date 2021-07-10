@@ -15,6 +15,7 @@ const Blog = (props) => {
             title: 'Memories on the trails of Annapurna',
             thumbnail: '/static/images/annapurna.jpg',
             created_on: '2020/10/12',
+            author_id: 1,
             author: 'Jaikant Shikre',
             likes: 4,
             description:
@@ -25,6 +26,7 @@ const Blog = (props) => {
             title: 'Experience with the undeniable Beauty of Pokhara',
             thumbnail: '/static/images/peacePagoda.jpg',
             created_on: '2020/10/12',
+            author_id: 1,
             author: 'Jaikant Shikre',
             likes: 4,
             description:
@@ -35,6 +37,7 @@ const Blog = (props) => {
             title: 'Snowy trek to the Gokyo lake',
             thumbnail: '/static/images/gokyo.jpg',
             created_on: '2020/10/12',
+            author_id: 1,
             author: 'Jaikant Shikre',
             likes: 4,
             description:
@@ -45,6 +48,7 @@ const Blog = (props) => {
             title: 'Through dry desert of Manang',
             thumbnail: '/static/images/langtang.jpg',
             created_on: '2020/10/12',
+            author_id: 1,
             author: 'Jaikant Shikre',
             likes: 4,
             description:
@@ -55,6 +59,7 @@ const Blog = (props) => {
             title: 'Into the wild safari in Chitwan',
             thumbnail: '/static/images/chitwan2.jpg',
             created_on: '2020/10/12',
+            author_id: 1,
             author: 'Jaikant Shikre',
             likes: 4,
             description:
@@ -65,6 +70,7 @@ const Blog = (props) => {
             title: 'The Beauty of of Eastern Nepal',
             thumbnail: '/static/images/illam1.jpg',
             created_on: '2020/10/12',
+            author_id: 1,
             author: 'Jaikant Shikre',
             likes: 4,
             description:
@@ -97,7 +103,8 @@ const Blog = (props) => {
                                         slug={blog.id}
                                         thumbnail={blog.thumbnail}
                                         title={blog.title}
-                                        author={blog.author}
+                                        authorId={blog.author_id}
+                                        authorName={blog.author}
                                         description={blog.description}
                                     />
                                 )
@@ -110,7 +117,8 @@ const Blog = (props) => {
                                         slug={blog.id}
                                         thumbnail={blog.thumbnail}
                                         title={blog.title}
-                                        author={blog.author}
+                                        authorId={blog.author_id}
+                                        authorName={blog.author}
                                         description={blog.description}
                                     />
                                 )
