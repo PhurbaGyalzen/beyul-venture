@@ -44,7 +44,6 @@ class Blog(models.Model):
         _('Descripiton'), max_length=500, help_text=_('Write a short description about your post'), blank=True)
     tags = models.ManyToManyField(Tag, help_text=_(
         'choose suitable tags for your blog'), related_name='post')
-    likes = models.PositiveIntegerField(_('likes'))
     content = models.TextField(
         _('content'), help_text=_('Put your actual content here.'))
     created_on = models.DateTimeField(_('create on'), auto_now_add=True)
@@ -91,3 +90,21 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.user.first_name}{self.user.id}, In ({self.blog.title})-> comment: {self.body} "
+
+
+class Clap(models.Model):
+    count = models.PositiveSmallIntegerField()
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="claps")
+    blog = models.ForeignKey(
+        Blog, on_delete=models.CASCADE, related_name="claps")
+
+    created_on = models.DateTimeField(_('create on'), auto_now_add=True)
+    updated_on = models.DateTimeField(_('update_on'), auto_now=True)
+
+    def __str__(self):
+        return f"{self.user.first_name} clapped {self.count} times in {self.blog.title} blog."
+
+    class Meta:
+        ordering = ['created_on']
+        unique_together = ('user', 'blog',)
