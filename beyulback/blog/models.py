@@ -95,7 +95,9 @@ class Comment(models.Model):
 
 
 class Clap(models.Model):
-    count = models.PositiveSmallIntegerField(validators=[validate_clap])
+    count = models.PositiveSmallIntegerField(
+        _('count'), validators=[validate_clap]
+    )
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="claps")
     blog = models.ForeignKey(
