@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework.validators import UniqueTogetherValidator
 
 User = get_user_model()  # User is now the CustomUser
 
@@ -25,6 +26,13 @@ class ClapSerializer(serializers.HyperlinkedModelSerializer):
         extra_kwargs = {
             'blog': {'view_name': 'blog-detail', 'lookup_field': 'slug'}
         }
+    validators = [
+        UniqueTogetherValidator(
+            queryset=Clap.objects.all(),
+            fields=['user', 'blog'],
+            message=_("User and blog fields must be unique together")
+        )
+    ]
 
     def validate_count(self, value):
         if value > 10:
