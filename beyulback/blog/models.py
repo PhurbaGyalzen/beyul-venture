@@ -85,7 +85,7 @@ class Comment(models.Model):
 
     body = models.TextField()
     created_on = models.DateTimeField(_('create on'), auto_now_add=True)
-    updated_on = models.DateTimeField(_('update_on'), auto_now=True)
+    updated_on = models.DateTimeField(_('update on'), auto_now=True)
 
     class Meta:
         ordering = ['created_on']
@@ -104,7 +104,7 @@ class Clap(models.Model):
         Blog, on_delete=models.CASCADE, related_name="claps")
 
     created_on = models.DateTimeField(_('create on'), auto_now_add=True)
-    updated_on = models.DateTimeField(_('update_on'), auto_now=True)
+    updated_on = models.DateTimeField(_('update on'), auto_now=True)
 
     def __str__(self):
         return f"{self.user.first_name} clapped {self.count} times in {self.blog.title} blog."
