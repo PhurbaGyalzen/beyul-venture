@@ -3,6 +3,7 @@ from blog.views import (
     BlogView,
     UserViewSet,
     TagViewSet,
+    CommentViewSet,
 )
 
 from django.urls import path, include
@@ -17,6 +18,7 @@ router = DefaultRouter()
 router.register(r'blog', BlogView)
 router.register(r'user', UserViewSet)
 router.register(r'tag', TagViewSet)
+router.register(r'comment', CommentViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
