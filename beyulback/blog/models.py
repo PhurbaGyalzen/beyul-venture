@@ -90,4 +90,4 @@ class Comment(models.Model):
         ordering = ['created_on']
 
     def __str__(self):
-        return f"{self.user.first_name} comment"
+        return f"{self.user.first_name}{self.user.id}, In ({self.blog.title})-> comment: {self.body} "
