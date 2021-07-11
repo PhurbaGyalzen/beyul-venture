@@ -24,6 +24,15 @@ class ClapSerializer(serializers.HyperlinkedModelSerializer):
             'blog': {'view_name': 'blog-detail', 'lookup_field': 'slug'}
         }
 
+    def validate_count(self, value):
+        if value > 10:
+            raise serializers.ValidationError(
+                'You can only clap maximum 10 times.')
+        elif value < 0:
+            raise serializers.ValidationError(
+                'Does not support negative claps.')
+        return value
+
 
 class BlogSerializer(serializers.HyperlinkedModelSerializer):
     comment = CommentSerializer(many=True, read_only=True, source="comments")
