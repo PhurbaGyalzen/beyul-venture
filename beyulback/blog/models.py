@@ -1,10 +1,11 @@
-
 from datetime import datetime, timezone
+
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
+
 User = get_user_model()  # User is now the CustomUser
 
 
@@ -14,20 +15,41 @@ STATUS = (
 )
 
 
+class Tag(models.Model):
+    name = models.CharField(_('name'), help_text=_(
+        'Enter your tag name here.'), max_length=200, unique=True)
+    slug = models.SlugField(_('slug'), help_text=_(
+        'Tag name will be default slug if you leave it blank.'), blank=True, unique=True)
+
+    def get_absolute_url(self):
+        return reverse('cateogry_detail', kwargs={'slug': self.slug})
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+
+
 class Blog(models.Model):
     title = models.CharField(_('title'), max_length=200)
     slug = models.SlugField(_('slug'), help_text=_(
         'Your title will be default slug if you leave it blank'), blank=True, unique=True)
     description = models.CharField(
         _('Descripiton'), max_length=500, help_text=_('Write a short description about your post'), blank=True)
-    tags = models.CharField(_('tags'), help_text=_(
-        'choose suitable tags for your blog'), max_length=100)
+    tags = models.ManyToManyField(Tag, help_text=_(
+        'choose suitable tags for your blog'), related_name='post')
     likes = models.PositiveIntegerField(_('likes'))
     content = models.TextField(
         _('content'), help_text=_('Put your actual content here.'))
     created_on = models.DateTimeField(_('create on'), auto_now_add=True)
     updated_on = models.DateTimeField(_('update_on'), auto_now=True)
-    thumbnail = models.ImageField(_('profile picture'),
+    thumbnail = models.ImageField(_('thumbnail'),
                                   upload_to="blog",
                                   blank=True,
                                   help_text=_(
