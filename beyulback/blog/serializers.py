@@ -1,9 +1,11 @@
 from .models import Blog, Tag, Comment, Clap
 
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
 
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
 User = get_user_model()  # User is now the CustomUser
 
 
@@ -27,10 +29,12 @@ class ClapSerializer(serializers.HyperlinkedModelSerializer):
     def validate_count(self, value):
         if value > 10:
             raise serializers.ValidationError(
-                'You can only clap maximum 10 times.')
+                _('You can only clap maximum 10 times.')
+            )
         elif value < 0:
             raise serializers.ValidationError(
-                'Does not support negative claps.')
+                _('Does not support negative claps.')
+            )
         return value
 
 
