@@ -1,3 +1,5 @@
+from .customvalidators import validate_clap
+
 from datetime import datetime, timezone
 
 from django.db import models
@@ -93,7 +95,7 @@ class Comment(models.Model):
 
 
 class Clap(models.Model):
-    count = models.PositiveSmallIntegerField()
+    count = models.PositiveSmallIntegerField(validators=[validate_clap])
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="claps")
     blog = models.ForeignKey(
