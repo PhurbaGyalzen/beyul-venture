@@ -74,3 +74,20 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='comments')
+    blog = models.ForeignKey(
+        Blog, on_delete=models.CASCADE, related_name='comments')
+
+    body = models.TextField()
+    created_on = models.DateTimeField(_('create on'), auto_now_add=True)
+    updated_on = models.DateTimeField(_('update_on'), auto_now=True)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return f"{self.user.first_name} comment"
