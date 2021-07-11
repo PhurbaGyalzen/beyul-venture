@@ -4,6 +4,7 @@ from blog.views import (
     UserViewSet,
     TagViewSet,
     CommentViewSet,
+    ClapViewSet,
 )
 
 from django.urls import path, include
@@ -19,6 +20,7 @@ router.register(r'blog', BlogView)
 router.register(r'user', UserViewSet)
 router.register(r'tag', TagViewSet)
 router.register(r'comment', CommentViewSet)
+router.register(r'clap', ClapViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
