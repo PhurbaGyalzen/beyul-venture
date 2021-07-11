@@ -1,7 +1,9 @@
-from rest_framework import serializers
-from .models import Blog
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from .models import Blog, Tag
+
 from django.contrib.auth import get_user_model
+
+from rest_framework import serializers
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 User = get_user_model()  # User is now the CustomUser
 
 
@@ -25,11 +27,12 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
             'status',
         )
         extra_kwargs = {
-            'url': {'view_name': 'blog-detail', 'lookup_field': 'slug'}
+            'url': {'view_name': 'blog-detail', 'lookup_field': 'slug'},
+            'tags': {'view_name': 'tag-detail', 'lookup_field': 'slug'}
         }
 
 
-class ReadOnlyModelSerializer(serializers.ModelSerializer):
+class ReadOnlyModelSerializer(serializers.HyperlinkedModelSerializer):
     """
         Custom serializers for read only
     """
@@ -39,6 +42,17 @@ class ReadOnlyModelSerializer(serializers.ModelSerializer):
         for field in fields:
             fields[field].read_only = True
         return fields
+
+
+class TagSerializer(ReadOnlyModelSerializer):
+    posts = BlogSerializer(many=True, read_only=True, source="post")
+
+    class Meta:
+        model = Tag
+        fields = ['url', 'name', 'posts']
+        extra_kwargs = {
+            'url': {'view_name': 'tag-detail', 'lookup_field': 'slug'}
+        }
 
 
 class UserSerializer(ReadOnlyModelSerializer):
