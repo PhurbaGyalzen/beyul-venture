@@ -9,7 +9,7 @@ import {
 const formStyle = makeStyles((theme)=>({
     commentField:{
         width: "inherit",
-        height: "40vh",
+        // height: "40vh",
     },
     
 }))
@@ -38,6 +38,7 @@ export const CommentSec = () => {
                         rows={7}
                         rowsmax={10}
                         fullWidth={true}
+                        required
                         // InputProps={{className: classes.commentField}}
                         value={values.comment} 
                         onChange={handleChange} 

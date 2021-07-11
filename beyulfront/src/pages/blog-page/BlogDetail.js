@@ -1,6 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import {Box, Container,Paper, Typography, makeStyles} from '@material-ui/core';
+
+import {Box, Container,Paper, Typography, makeStyles, Divider} from '@material-ui/core';
 import ImageDiv from './ImageDiv';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -137,20 +137,20 @@ const BlogDetail = props => {
                     <img src={"/static/images/annapurna7.jpg"} className={classes.imageCustomize} />
                 </div>
             </Container>
-
-
+            
+            
+            
+            <Divider style={{ maxWidth:"700px",marginRight:"auto", marginLeft:"auto", marginTop:"3rem" }} />
+            
             <Container 
             mt={6} mb={6}
             className={classes.commentSection}>
+                
                 <CommentSec />
             </Container>
         </Box>
         </>
     )
-}
-
-BlogDetail.propTypes = {
-
 }
 
 export default BlogDetail
