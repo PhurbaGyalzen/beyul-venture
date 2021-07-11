@@ -4,6 +4,7 @@ import {Box, Container,Paper, Typography, makeStyles} from '@material-ui/core';
 import ImageDiv from './ImageDiv';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { CommentSec } from './CommentSec';
 
 const blogStyles = makeStyles((theme)=>({
     blogContainer:{
@@ -63,6 +64,13 @@ const blogStyles = makeStyles((theme)=>({
         // [theme.breakpoints.up('md')]:{
         //     padding: "0 2rem"
         // }
+    },
+    commentSection:{
+        maxWidth: '750px',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginTop: "3rem",
+        marginBottom:"3rem"
     }
 
 }))
@@ -128,6 +136,13 @@ const BlogDetail = props => {
                 <div className={classes.blogImageContainer}>
                     <img src={"/static/images/annapurna7.jpg"} className={classes.imageCustomize} />
                 </div>
+            </Container>
+
+
+            <Container 
+            mt={6} mb={6}
+            className={classes.commentSection}>
+                <CommentSec />
             </Container>
         </Box>
         </>
