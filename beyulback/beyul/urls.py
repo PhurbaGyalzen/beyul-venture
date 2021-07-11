@@ -1,18 +1,26 @@
-from django.contrib import admin
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
 from blog.views import (
     CustomObtainTokenPairView,
     BlogView,
     UserViewSet,
+    TagViewSet,
+    CommentViewSet,
+    ClapViewSet,
 )
+
+from django.urls import path, include
+from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+
 from rest_framework_simplejwt.views import TokenRefreshView
+from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register(r'blog', BlogView)
 router.register(r'user', UserViewSet)
+router.register(r'tag', TagViewSet)
+router.register(r'comment', CommentViewSet)
+router.register(r'clap', ClapViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

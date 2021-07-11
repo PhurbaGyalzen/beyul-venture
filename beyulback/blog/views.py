@@ -1,12 +1,21 @@
-from .models import Blog
+from .models import Blog, Tag, Comment, Clap
 from .serializers import CustomTokenObtainPairSerializer
-from .serializers import BlogSerializer, UserSerializer
+from .serializers import (
+    BlogSerializer,
+    UserSerializer,
+    TagSerializer,
+    CommentSerializer,
+    ClapSerializer,
+)
 from .custompaginations import RemovePageNumberPagination
+
+from django.contrib.auth import get_user_model
+
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.views import TokenObtainPairView
-from django.contrib.auth import get_user_model
+
 User = get_user_model()  # User is now the CustomUser
 
 
@@ -29,4 +38,23 @@ class BlogView(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    pagination_class = RemovePageNumberPagination
+
+
+class TagViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+    pagination_class = RemovePageNumberPagination
+    lookup_field = 'slug'
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    pagination_class = RemovePageNumberPagination
+
+
+class ClapViewSet(viewsets.ModelViewSet):
+    queryset = Clap.objects.all()
+    serializer_class = ClapSerializer
     pagination_class = RemovePageNumberPagination
