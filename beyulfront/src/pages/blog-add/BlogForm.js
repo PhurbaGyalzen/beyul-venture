@@ -78,21 +78,6 @@ export const BlogForm = () => {
                         </div>
 
 
-                        
-                        {/* <TextField 
-                        variant= "outlined"
-                        name="comment"
-                        placeholder="Write a Comment"
-                        multiline={true}
-                        rows={7}
-                        rowsmax={10}
-                        fullWidth={true}
-                        required
-                        // InputProps={{className: classes.commentField}}
-                        value={values.comment} 
-                        onChange={handleChange} 
-                        onBlur={handleBlur} 
-                        /> */}
                     <div style={{marginTop:"0.8rem"}}>
                         
                         <Button 
