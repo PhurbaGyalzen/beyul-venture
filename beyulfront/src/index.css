@@ -43,6 +43,22 @@ html {
   box-sizing: inherit;
 }
 
+a {
+  text-decoration: none !important;
+  color: var(--primary-text-color);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@media not screen and (prefers-reduced-motion) {
+  body {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
@@ -52,14 +68,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  text-decoration: none !important;
-  color: var(--primary-text-color);
+html::-webkit-scrollbar {
+  width: 0.6rem;
+  width: 0.6rem; /*for horizontal*/
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html::-webkit-scrollbar-thumb {
+  background-color: #504be854;
+  border-radius: 0.2rem;
+  box-shadow: inset 2px 2px 2px hsl(0deg 0% 100% / 25%),
+    inset -2px -2px 2px rgb(0 0 0 / 25%);
+}
+
+html::-webkit-scrollbar-track {
+  background: linear-gradient(0deg, #77b6dd59, #f2af9775);
+  /*border: 2px solid #7685a429;*/
 }
 
 .transparentBg {

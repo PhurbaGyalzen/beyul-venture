@@ -71,6 +71,7 @@ const UnorderList = styled.ul`
     margin: 0.7rem 0;
     padding: 0;
     display: flex;
+    flex-wrap: wrap;
     list-style-type: none;
     gap: 0.5rem;
 `
