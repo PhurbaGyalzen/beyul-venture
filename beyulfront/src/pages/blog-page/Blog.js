@@ -106,6 +106,7 @@ const Blog = (props) => {
                             {evenIndexBlog.map((blog) => {
                                 return (
                                     <BlogCard
+                                        key={blog.id}
                                         slug={blog.id}
                                         thumbnail={blog.thumbnail}
                                         title={blog.title}
@@ -122,6 +123,7 @@ const Blog = (props) => {
                             {oddIndexBlog.map((blog) => {
                                 return (
                                     <BlogCard
+                                        key={blog.id}
                                         slug={blog.id}
                                         thumbnail={blog.thumbnail}
                                         title={blog.title}
