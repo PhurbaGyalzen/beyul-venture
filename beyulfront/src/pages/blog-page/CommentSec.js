@@ -1,6 +1,9 @@
 import { Formik } from 'formik';
-import { TextField,
-    makeStyles } from '@material-ui/core';
+import { 
+    TextField,
+    makeStyles,
+    Button
+} from '@material-ui/core';
 // import './index.css'
 
 const formStyle = makeStyles((theme)=>({
@@ -17,11 +20,15 @@ export const CommentSec = () => {
         <div>
             <Formik
             initialValues={{ comment:"" }}
-            onSubmit={(data)=>{
-                console.log(data);
+            onSubmit={(data, {setSubmitting,resetForm})=>{
+                setSubmitting(true);
+                //make async call
+                console.log("Submit:",data);
+                setSubmitting(false);
+                resetForm();
             }}
             >
-                {({ values, handleChange, handleBlur, handleSubmit }) => (
+                {({ values, isSubmitting ,handleChange, handleBlur, handleSubmit }) => (
                     <form onSubmit={handleSubmit} >
                         <TextField 
                         variant= "outlined"
@@ -36,6 +43,15 @@ export const CommentSec = () => {
                         onChange={handleChange} 
                         onBlur={handleBlur} 
                         />
+                    <div style={{marginTop:"0.8rem"}}>
+                        <Button 
+                        variant="outlined"
+                        disabled={isSubmitting} 
+                        type="submit">
+                            Post Comment
+                        </Button>
+                    </div>
+                    
                     </form>
                 )}
 
