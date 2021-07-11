@@ -1,9 +1,10 @@
-from .models import Blog, Tag
+from .models import Blog, Tag, Comment
 from .serializers import CustomTokenObtainPairSerializer
 from .serializers import (
     BlogSerializer,
     UserSerializer,
     TagSerializer,
+    CommentSerializer,
 )
 from .custompaginations import RemovePageNumberPagination
 
@@ -44,3 +45,9 @@ class TagViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = TagSerializer
     pagination_class = RemovePageNumberPagination
     lookup_field = 'slug'
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    pagination_class = RemovePageNumberPagination
