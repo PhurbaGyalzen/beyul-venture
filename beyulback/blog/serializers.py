@@ -1,4 +1,4 @@
-from .models import Blog, Tag, Comment
+from .models import Blog, Tag, Comment, Clap
 
 from django.contrib.auth import get_user_model
 
@@ -10,11 +10,24 @@ User = get_user_model()  # User is now the CustomUser
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Comment
-        fields = ['url', 'body', 'user']
+        fields = ['url', 'body', 'user', 'blog']
+        extra_kwargs = {
+            'blog': {'view_name': 'blog-detail', 'lookup_field': 'slug'}
+        }
+
+
+class ClapSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Clap
+        fields = ['url', 'count', 'user', 'blog']
+        extra_kwargs = {
+            'blog': {'view_name': 'blog-detail', 'lookup_field': 'slug'}
+        }
 
 
 class BlogSerializer(serializers.HyperlinkedModelSerializer):
     comment = CommentSerializer(many=True, read_only=True, source="comments")
+    clap = ClapSerializer(many=True, read_only=True, source="claps")
 
     class Meta:
         model = Blog
@@ -25,14 +38,14 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
             'slug',
             'description',
             'tags',
-            'likes',
             'content',
             'created_on',
             'updated_on',
             'thumbnail',
             'author',
             'status',
-            'comment'
+            'comment',
+            'clap'
         )
         extra_kwargs = {
             'url': {'view_name': 'blog-detail', 'lookup_field': 'slug'},
