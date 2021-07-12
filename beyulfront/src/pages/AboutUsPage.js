@@ -1,5 +1,5 @@
 // All dependences import 
-import { makeStyles } from '@material-ui/core';
+import { Container, makeStyles, Link } from '@material-ui/core';
 import { Box } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
@@ -14,9 +14,22 @@ import aboutUs from 'img/another.svg'
 import history from 'img/history.svg'
 
 import globe_1 from 'img/globe.png'
+import location from 'img/map.jpg'
 import price_1 from 'img/last1.png'
 import service from 'img/service.png'
 import save_1 from 'img/savePayment.png'
+
+
+// icons
+import CallIcon from '@material-ui/icons/Call';
+import EmailIcon from '@material-ui/icons/Email';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import PaymentIcon from '@material-ui/icons/Payment';
 
 //Defining CustomStyles for AboutUs Page
 const useStyles = makeStyles((theme) => ({
@@ -36,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 
     whyWithUsTitle:{
         padding: '2.5rem 0 0rem',
-        marginBottom:'2rem'
+        marginBottom:'1rem'
     },
 
     aboutUs:{
@@ -52,7 +65,6 @@ const useStyles = makeStyles((theme) => ({
             color:grey[50]
         }
     }
-
 }))
 
 // Card Information
@@ -61,8 +73,8 @@ export default function AboutUsPage(){
     return (
         <>
             {/* First row */}
-            <Box maxWidth="100%" ml={5} mt={10} mb={5}>
-                <Grid container spacing={3} xs={12} item>
+            <Box maxWidth="100%" ml={5} mt={10} mb={3}>
+                <Grid container spacing={3} xs={12} item style={{padding:" 0 1.6rem 0 1.6rem "}}>
                     <Grid item xs={12} md={6} sm={6} ml={5}>
                         <Typography variant="h5"
                         color="primary"
@@ -145,9 +157,13 @@ export default function AboutUsPage(){
 
             <Box>
                 <Grid container 
-                style={{ backgroundColor: '#d1e2f0' }}
+                style={{ backgroundColor: '#d1e2f0', padding:'0 2rem 3rem 2rem'}}
                 className={classes.whyWithUs}
-                xs={12}>
+                xs={12}
+                
+            
+
+                >
 
                     <Grid item xs={12} md={12} sm={12}>
                         <Typography
@@ -167,6 +183,7 @@ export default function AboutUsPage(){
                             className={classes.card}
                             align='center'
                             sm={12}
+                        
                         >
                             <CardMedia
                                 image={globe_1}
@@ -282,9 +299,159 @@ export default function AboutUsPage(){
                             </CardContent>
                         </Card>
                     </Grid>
-
                 </Grid>
             </Box>
+
+            {/* footer */}
+            <footer>
+                <Box  color='white'>
+                        <Grid container  justifyContent="space-around"  style={{backgroundColor:'#4688e3',padding:'2.2rem 1rem 2.2rem 1rem'}}>
+
+                            {/* first col */}
+                            <Grid item md={3} xs={12}>
+                                <Typography variant='h5'>
+                                    Beyul Venture Logo
+                                </Typography>
+                                <Typography align='justify'>
+                                    Lorem Ipsum has been the industry's standard dummy text
+                                    ever since the 1500s, scrambled it to make a type specimen
+                                    book. It has survived not only five centuries.
+                                </Typography>
+                                {/* <Card>
+                                    <CardMedia
+                                    image={location}
+                                    style={{
+                                        height:'10rem',
+                                        width:'15rem'
+                                }}
+                                    />                        
+                                </Card> */}
+                            </Grid>
+
+    
+
+
+                            {/* second col */}
+                            <Grid item>
+                                <Box borderBottom={1} style={{marginBottom:'1rem'}}>
+                                    <Typography variant='h6' >
+                                        Our office
+                                    </Typography>
+                                </Box>
+                                <Typography>
+                                <LocationOnIcon fontSize='small'/>   
+                                    Dillibazar, Kathmandu
+                                </Typography>
+                                <Typography style={{paddingLeft:'1.2rem'}}>
+                                 Nepal
+                                </Typography>
+                                <Typography>
+                                    <CallIcon fontSize='small'/> +977 9807631204
+                                </Typography>
+                                <Typography>
+                                    <EmailIcon fontSize='small'/> BeyulVenture2021@gmail.com
+                                </Typography>
+                                
+                                    
+                            </Grid>
+
+                            {/* third col */}
+
+                            <Grid item>
+                                <Box borderBottom={1} style={{marginBottom:'1rem'}}>
+                                    <Typography variant='h6' >
+                                        Links
+                                    </Typography>
+                                </Box>
+                                <Box>
+                                    <Link href='#' color='inherit'>
+                                        Home
+                                    </Link>
+                                </Box>  
+                                <Box>
+                                    <Link href='#' color='inherit'>
+                                        About Us
+                                    </Link>
+                                </Box>  
+                                <Box>
+                                    <Link href='#' color='inherit'>
+                                        Blog
+                                    </Link>
+                                </Box> 
+                                <Box>
+                                    <Link href='#' color='inherit'>
+                                        Privacy Policy
+                                    </Link>
+                                </Box>
+                                <Box>
+                                    <Link href='#' color='inherit'>
+                                        FAQs
+                                    </Link>
+                                </Box>
+                                    
+                            </Grid>
+
+
+                            {/* fourth col */}
+                            <Grid item>
+                                <Box borderBottom={1} style={{marginBottom:'1rem'}}>
+                                    <Typography variant='h6' >
+                                        Follow us on
+                                    </Typography>
+                                </Box>
+                                <Box>
+                                    <Link href='#' color='Primary'>
+                                        <FacebookIcon fontSize='large'/>
+                                    </Link>
+                                    <Link href='#' color='Primary'>
+                                        <TwitterIcon fontSize='large'/>
+                                    </Link>
+                                    <Link href='#' color='Primary'>
+                                        <InstagramIcon fontSize='large'/>
+                                    </Link>
+                                    <Link href='#' color='Primary'>
+                                        <YouTubeIcon fontSize='large'/>
+                                    </Link>
+                                    <Link href='#' color='Primary'>
+                                        <LinkedInIcon fontSize='large'/>
+                                    </Link>
+                                </Box>  
+                                
+                                    
+                            </Grid>
+
+
+                            {/* fifth col */}
+                            <Grid item>
+                                <Box borderBottom={1} style={{marginBottom:'1rem'}}>
+                                    <Typography variant='h6' >
+                                        Payment
+                                    </Typography>
+                                </Box>
+                                <Box>
+                                    <PaymentIcon fontSize='large'/>    
+                                </Box> 
+                                <Box>
+                                    <PaymentIcon fontSize='large'/>    
+                                </Box>
+                                <Box>
+                                    <PaymentIcon fontSize='large'/>    
+                                </Box> 
+                                
+                                    
+                            </Grid>
+
+
+
+
+                            
+                           
+                        </Grid>
+                    
+                </Box>
+            </footer>
+
+
 
         </>
     )
