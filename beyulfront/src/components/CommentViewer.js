@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import { useState, useEffect } from 'react'
+import { Button } from '@material-ui/core'
+import styled, { css } from 'styled-components'
 
 const FlexWrapAlign = styled.div`
     display: flex;
@@ -11,6 +13,8 @@ const CommentContainer = styled.div`
     border: 1px solid black;
     padding: 1rem 0.8rem;
     border-radius: 0.4rem;
+    margin: 0.3rem 0;
+    margin-left: ${(props) => props.indent + 'rem' || '0rem'};
 `
 
 const CommentHead = styled(FlexWrapAlign)`
@@ -18,8 +22,11 @@ const CommentHead = styled(FlexWrapAlign)`
 `
 
 const Author = styled(FlexWrapAlign)`
-    gap: 0.2rem;
+    gap: 0.4rem;
+    flex: 1 1 0;
 `
+
+const Options = styled.div``
 
 const AuthorImage = styled.img`
     width: 2rem;
@@ -27,117 +34,266 @@ const AuthorImage = styled.img`
     object-fit: cover;
     border-radius: 50%;
 
-    & + .date::before {
-        content: ".";
+    & ~ .date::before {
+        content: '· ';
     }
 `
 
 const CommentText = styled.div`
-    margin: 0.4rem 0.2rem;
+    margin: 0.4rem 0.2rem 0.6rem 0.2rem;
 `
 
-const CommentTop = styled.div`
-
+const CommentBottomAction = styled(FlexWrapAlign)`
+    justify-content: space-between;
+    margin: 0.3rem;
 `
 
-const SingleComment = (props) => {
+const CommentAction = styled(FlexWrapAlign)`
+    gap: 1rem;
+`
+
+const Reaction = styled(FlexWrapAlign)`
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+`
+
+const reacted = (fn, emoji) => {
+    return
+}
+
+// const ReactionItem = ({ emoji, count, onClick }) => {
+//     return (
+//         <li key={emoji} onClick={() => reacted(onClick, emoji)}>
+//             <div>{emoji}</div>
+//             <div>{count}</div>
+//         </li>
+//     )
+// }
+
+const ReactionList = styled(FlexWrapAlign)`
+    gap: 0.2rem;
+    cursor: pointer;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid black;
+    border-radius: 1rem;
+    &::selection,
+    & *::selection {
+        background: #ffffff00;
+    }
+    &::-moz-selection,
+    & *::-moz-selection {
+        background: #ffffff00;
+    }
+    &:hover {
+        background-color: #6c9ae227;
+    }
+    ${(props) =>
+        props.reacted &&
+        css`
+            background-color: #6c9ae247;
+            color: blue;
+        `}
+`
+
+const Emoji = styled.div``
+
+const ReactionItem = ({ emoji, count, reacted, onClick }) => {
     return (
-        <div class="comment-container">
-            <div class="comment-top">
-                <div class="comment-author">
-                    <img src="https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/637629/95087942-1f8d-4160-a644-9a3ff89cf3d8.png" />
-                    <span>Jack Sparrow</span>
-                    <span class="date">10 July, 2022</span>
-                </div>
-                <div class="opts"><button>...</button></div>
-            </div>
-            <div class="comment-text">This is a comment</div>
-            <div class="comment-bottom">
-                <div class="actions">
-                    <ul class="reactions">
-                        <li>
-                            <div>😍</div>
-                            <div>5</div>
-                        </li>
-                        <li>
-                            <div>😇</div>
-                            <div>199</div>
-                        </li>
-                        <li>
-                            <div>😎</div>
-                            <div>1000</div>
-                        </li>       
-                    </ul>
-                    <div class="reply">Reply</div>
-                </div>
-                <div class="expand-collapse">Collapse</div>
-            </div>
-        </div>
+        <ReactionList
+            as='li'
+            reacted={reacted}
+            onClick={onClick}
+            data-id={emoji}
+        >
+            <Emoji>{emoji}</Emoji>
+            <div>{count}</div>
+        </ReactionList>
+    )
+}
+
+const insertCommentBox = (that) => {
+    console.log(that)
+}
+
+const flatten = (arr) => {
+    let indent = -1
+    const inner = (innerArr) => {
+        indent += 1
+        console.log(indent)
+        const r = []
+        for (const parent of innerArr) {
+            if (parent.kids && parent.kids.length > 0) {
+                const { kids, ...rest } = parent
+                r.push({ ...{ indent: indent }, ...rest })
+                r.push(...inner(parent['kids']))
+            } else {
+                r.push({ ...{ indent: indent }, ...parent })
+            }
+        }
+        indent -= 1
+        return r
+    }
+
+    return inner(arr)
+}
+
+const Comment = (props) => {
+    const comment = props.comment
+    // const [reactions, setReactions] = useState([
+    //     {
+    //         id: '😍',
+    //         count: 5,
+    //         // reacted: true, // set after current user reacts. if this key is not present
+    //         // treat it as false.
+    //     },
+    //     {
+    //         id: '😇',
+    //         count: 199,
+    //     },
+    //     {
+    //         id: '😎',
+    //         count: 2000,
+    //     },
+    // ])
+    const [reactions, setReactions] = useState(comment.reactions)
+
+    return (
+        <CommentContainer indent={props.indent} data-id={comment.id}>
+            <CommentHead>
+                <Author>
+                    <AuthorImage src='https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/637629/95087942-1f8d-4160-a644-9a3ff89cf3d8.png' />
+                    <span>{comment.by}</span>
+                    <span className='date'>
+                        {new Date(comment.time).toLocaleString()}
+                    </span>
+                </Author>
+                <Options>
+                    <button>...</button>
+                </Options>
+            </CommentHead>
+            <CommentText>{comment.text}</CommentText>
+            <CommentBottomAction>
+                <CommentAction>
+                    <Reaction>
+                        {reactions.map((reaction) => {
+                            return (
+                                <ReactionItem
+                                    key={reaction.id}
+                                    emoji={reaction.id}
+                                    count={reaction.count}
+                                    reacted={reaction.reacted}
+                                    onClick={() => {
+                                        const recs = []
+                                        for (const r of reactions) {
+                                            if (r.id === reaction.id) {
+                                                if (r.reacted) {
+                                                    r.count = r.count - 1
+                                                    r.reacted = false
+                                                } else {
+                                                    r.count = r.count + 1
+                                                    r.reacted = true
+                                                }
+                                            }
+                                            recs.push(r)
+                                        }
+                                        setReactions(recs)
+                                    }}
+                                />
+                                /*<ReactionItem emoji={reaction.id} count={reaction.count} onClick={setReactions} />*/
+                            )
+                        })}
+                    </Reaction>
+                    <div className='reply'>
+                        <Button
+                            variant='outlined'
+                            onClick={function () {
+                                console.log(this)
+                            }}
+                        >
+                            Reply
+                        </Button>
+                    </div>
+                </CommentAction>
+                <div className='expand-collapse'>Collapse</div>
+            </CommentBottomAction>
+        </CommentContainer>
     )
 }
 
 const AllComments = (props) => {
     const [comments, setComments] = useState([
-    {
-        id: 103,
-        by: 'Nishan Jung Thapa', // fullname(ok)/username/id
-        time: 1626009900, // epoch
-        reactions: [
-            '😍': 3,
-            '😇': 1,
-            '😎': 2,
-        ],
-        text: 'I am the guardian in the dark. I vow to defend this planet with my life. I shall father no children and love no one. I am the carrier of my sword and my sword shall carry me. I am the saviour of this world and the pace of humanity. I pledge my sword and my soul to the old Gods and the old Gods will protect me from evil. I shall not be tempted by the demon and the Gods will welcome me in heavens gate and feast me in the great Heaven halls of paradise.',
-        parent: null,
-        kids: [
-            {
-                id: 109,
-                by: 'Nischal Parsad Khatri',
-                time: 1626203900,
-                reactions: ['😍': 4],
-                text: 'I will make baby.',
-                parent: 103
-            },
-            {
-                id: 129,
-                by: 'Another Nischal Parsad Khatri',
-                time: 1626204900,
-                reactions: ['😍': 5],
-                text: 'Nice.',
-                parent: 103
-            },
-        ],
-        id: 106,
-        by: 'Limbu nimbu',
-        time: 1626009400,
-        reactions: [
-            '😍': 300,
-        ],
-        text: 'Pee pee poo poo',
-        parent: null,
-        kids: [
-            {
-                id: 129,
-                by: 'Sunil',
-                time: 1626204900,
-                reactions: ['😍': 5],
-                text: 'Nice.',
-                parent: 106
-            },
-        ],
-        id: 107,
-        by: 'galzin',
-        time: 1626009400,
-        reactions: [
-            '😍': 300,
-        ],
-        text: '*ba dam tssk*',
-        parent: null,
-        kids: [],
-    }
+        {
+            id: 103,
+            by: 'Nishan Jung Thapa',
+            time: 1626009900,
+            reactions: [
+                { id: '😍', count: 3 },
+                { id: '😇', count: 1 },
+                { id: '😎', count: 2 },
+            ],
+            text: 'I am the guardian in the dark',
+            parent: null,
+            kids: [
+                {
+                    id: 109,
+                    by: 'Nischal Parsad Khatri',
+                    time: 1626203900,
+                    reactions: [{ id: '😍', count: 4 }],
+                    text: 'I will make baby.',
+                    parent: 103,
+                    kids: [
+                        {
+                            id: 129,
+                            by: 'Another Nischal Parsad Khatri',
+                            time: 1626204900,
+                            reactions: [{ id: '😍', count: 5 }],
+                            text: 'Nice.',
+                            parent: 103,
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 106,
+            by: 'Limbu nimbu',
+            time: 1626009400,
+            reactions: [{ id: '😍', count: 300 }],
+            text: 'Pee pee poo poo',
+            parent: null,
+            kids: [
+                {
+                    id: 127,
+                    by: 'Sunil',
+                    time: 1626204900,
+                    reactions: [{ id: '😍', count: 5 }],
+                    text: 'Nice.',
+                    parent: 106,
+                },
+            ],
+        },
+        {
+            id: 107,
+            by: 'galzin',
+            time: 1626009400,
+            reactions: [{ id: '😍', count: 300 }],
+            text: '*ba dam tssk*',
+            parent: null,
+            kids: [],
+        },
     ])
+    const flatComments = flatten(comments)
 
     return (
-
+        <>
+            {flatComments.map((comment) => {
+                return (
+                    <Comment indent={2 * comment.indent} comment={comment} />
+                )
+            })}
+        </>
     )
 }
+
+export default AllComments
