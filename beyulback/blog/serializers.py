@@ -54,7 +54,6 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
         model = Blog
         fields = (
             'url',
-            'id',
             'title',
             'slug',
             'description',
