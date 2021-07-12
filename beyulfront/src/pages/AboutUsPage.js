@@ -309,9 +309,11 @@ export default function AboutUsPage(){
 
                             {/* first col */}
                             <Grid item md={3} xs={12}>
-                                <Typography variant='h5'>
-                                    Beyul Venture Logo
-                                </Typography>
+                                <Box style={{marginBottom:'1rem'}}>
+                                    <Typography variant='h5'>
+                                        Beyul Venture Logo
+                                    </Typography>
+                                </Box>
                                 <Typography align='justify'>
                                     Lorem Ipsum has been the industry's standard dummy text
                                     ever since the 1500s, scrambled it to make a type specimen
@@ -326,6 +328,7 @@ export default function AboutUsPage(){
                                 }}
                                     />                        
                                 </Card> */}
+                            
                             </Grid>
 
     
