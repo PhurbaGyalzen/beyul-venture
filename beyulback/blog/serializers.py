@@ -13,7 +13,7 @@ User = get_user_model()  # User is now the CustomUser
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Comment
-        fields = ['url', 'body', 'user', 'blog']
+        fields = ['url', 'body', 'user', 'blog', 'parent']
         extra_kwargs = {
             'blog': {'view_name': 'blog-detail', 'lookup_field': 'slug'}
         }
@@ -54,7 +54,6 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
         model = Blog
         fields = (
             'url',
-            'id',
             'title',
             'slug',
             'description',

@@ -28,4 +28,5 @@ urlpatterns = [
     path('api/token/', CustomObtainTokenPairView.as_view(),
          name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('ckeditor/',include('ckeditor_uploader.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

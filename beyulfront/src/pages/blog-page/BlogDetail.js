@@ -6,7 +6,10 @@ import {
     Paper,
     Typography,
     makeStyles,
+    Divider,
+    Breadcrumbs,
 } from '@material-ui/core'
+
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import ImageDiv from './ImageDiv'
@@ -182,14 +185,29 @@ const BlogDetail = (props) => {
                         />
                     </div>
                 </Container>
-
-                <Container mt={6} mb={6} className={classes.commentSection}>
-                    <CommentSec />
-                </Container>
-                <Container>
-                    <AllComments />
-                </Container>
             </Box>
+
+            <Divider
+                style={{
+                    maxWidth: '700px',
+                    marginRight: 'auto',
+                    marginLeft: 'auto',
+                    marginTop: '3rem',
+                }}
+            />
+
+            <Container mt={6} mb={6} className={classes.commentSection}>
+                <CommentSec />
+            </Container>
+            <Container>
+                <AllComments />
+            </Container>
+
+            <Container>
+                <Typography variant='h5' gutterBottom>
+                    Related Articles
+                </Typography>
+            </Container>
         </>
     )
 }

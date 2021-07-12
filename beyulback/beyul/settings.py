@@ -40,10 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'mptt',
     'corsheaders',
     'blog.apps.BlogConfig',
     'rest_framework_simplejwt',
     'users.apps.UsersConfig',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -148,6 +151,9 @@ CORS_ALLOWED_ORIGINS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+#inside media folder to upload images inside the ckeditor textfield
+CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 # Swapped out the default Django auth.User to CustomUser
 AUTH_USER_MODEL = 'users.CustomUser'
