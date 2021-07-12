@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from '@material-ui/core'
 import styled, { css } from 'styled-components'
 
@@ -62,15 +62,6 @@ const reacted = (fn, emoji) => {
     return
 }
 
-// const ReactionItem = ({ emoji, count, onClick }) => {
-//     return (
-//         <li key={emoji} onClick={() => reacted(onClick, emoji)}>
-//             <div>{emoji}</div>
-//             <div>{count}</div>
-//         </li>
-//     )
-// }
-
 const ReactionList = styled(FlexWrapAlign)`
     gap: 0.2rem;
     cursor: pointer;
@@ -96,8 +87,6 @@ const ReactionList = styled(FlexWrapAlign)`
         `}
 `
 
-const Emoji = styled.div``
-
 const ReactionItem = ({ emoji, count, reacted, onClick }) => {
     return (
         <ReactionList
@@ -106,7 +95,7 @@ const ReactionItem = ({ emoji, count, reacted, onClick }) => {
             onClick={onClick}
             data-id={emoji}
         >
-            <Emoji>{emoji}</Emoji>
+            <div>{emoji}</div>
             <div>{count}</div>
         </ReactionList>
     )
@@ -120,7 +109,6 @@ const flatten = (arr) => {
     let indent = -1
     const inner = (innerArr) => {
         indent += 1
-        console.log(indent)
         const r = []
         for (const parent of innerArr) {
             if (parent.kids && parent.kids.length > 0) {
@@ -159,7 +147,7 @@ const Comment = (props) => {
             <CommentText>{comment.text}</CommentText>
             <CommentBottomAction>
                 <CommentAction>
-                    <Reaction>
+                    <Reaction as='ul'>
                         {reactions.map((reaction) => {
                             return (
                                 <ReactionItem
@@ -187,6 +175,7 @@ const Comment = (props) => {
                                 /*<ReactionItem emoji={reaction.id} count={reaction.count} onClick={setReactions} />*/
                             )
                         })}
+                        <li></li>
                     </Reaction>
                     <div className='reply'>
                         <Button
@@ -209,7 +198,7 @@ const AllComments = (props) => {
     const [comments, setComments] = useState([
         {
             id: 103,
-            by: 'Nishan Jung Thapa',
+            by: 'Nishan Thapa',
             time: 1626009900,
             reactions: [
                 { id: '😍', count: 3 },
@@ -224,7 +213,7 @@ const AllComments = (props) => {
                     by: 'Nischal Parsad Khatri',
                     time: 1626203900,
                     reactions: [{ id: '😍', count: 4 }],
-                    text: 'I will make baby.',
+                    text: 'I am 14 and this is deep.',
                     parent: 103,
                     kids: [
                         {
@@ -244,7 +233,7 @@ const AllComments = (props) => {
             by: 'Limbu nimbu',
             time: 1626009400,
             reactions: [{ id: '😍', count: 300 }],
-            text: 'Pee pee poo poo',
+            text: 'Writing could be improved.',
             parent: null,
             kids: [
                 {
@@ -261,8 +250,8 @@ const AllComments = (props) => {
             id: 107,
             by: 'galzin',
             time: 1626009400,
-            reactions: [{ id: '😍', count: 300 }],
-            text: '*ba dam tssk*',
+            reactions: [{ id: '😍', count: 3 }],
+            text: 'Beautiful.',
             parent: null,
             kids: [],
         },
