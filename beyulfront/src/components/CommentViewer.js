@@ -140,22 +140,6 @@ const flatten = (arr) => {
 
 const Comment = (props) => {
     const comment = props.comment
-    // const [reactions, setReactions] = useState([
-    //     {
-    //         id: '😍',
-    //         count: 5,
-    //         // reacted: true, // set after current user reacts. if this key is not present
-    //         // treat it as false.
-    //     },
-    //     {
-    //         id: '😇',
-    //         count: 199,
-    //     },
-    //     {
-    //         id: '😎',
-    //         count: 2000,
-    //     },
-    // ])
     const [reactions, setReactions] = useState(comment.reactions)
 
     return (
@@ -232,7 +216,7 @@ const AllComments = (props) => {
                 { id: '😇', count: 1 },
                 { id: '😎', count: 2 },
             ],
-            text: 'I am the guardian in the dark',
+            text: 'I am the guardian in the dark. I vow to defend this planet with my life. I shall father no children and love no one. I am the carrier of my sword and my sword shall carry me. I am the saviour of this world and the pace of humanity. I pledge my sword and my soul to the old Gods and the old Gods will protect me from evil. I shall not be tempted by the demon and the Gods will welcome me in heavens gate and feast me in the great Heaven halls of paradise.',
             parent: null,
             kids: [
                 {
