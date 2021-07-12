@@ -9,6 +9,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 
 from mptt.models import MPTTModel, TreeForeignKey
+from ckeditor_uploader.fields import RichTextUploadingField
 
 User = get_user_model()  # User is now the CustomUser
 
@@ -48,8 +49,10 @@ class Blog(models.Model):
         _('Descripiton'), max_length=500, help_text=_('Write a short description about your post'), blank=True)
     tags = models.ManyToManyField(Tag, help_text=_(
         'choose suitable tags for your blog'), related_name='post')
-    content = models.TextField(
-        _('content'), help_text=_('Put your actual content here.'))
+    # content = models.TextField(
+    #     _('content'), help_text=_('Put your actual content here.'))
+    content = RichTextUploadingField(blank=True,null=True)
+
     created_on = models.DateTimeField(_('create on'), auto_now_add=True)
     updated_on = models.DateTimeField(_('update_on'), auto_now=True)
     thumbnail = models.ImageField(_('thumbnail'),

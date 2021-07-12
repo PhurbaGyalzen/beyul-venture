@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Box, Container,Paper, Typography, makeStyles, Divider} from '@material-ui/core';
+import {Box, Container,Paper, Typography, makeStyles, Divider, Breadcrumbs} from '@material-ui/core';
 import ImageDiv from './ImageDiv';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -148,6 +148,13 @@ const BlogDetail = props => {
                 
                 <CommentSec />
             </Container>
+
+            <Container>
+                <Typography variant="h5" gutterBottom>Related Articles</Typography>
+                
+
+            </Container>
+
         </Box>
         </>
     )
