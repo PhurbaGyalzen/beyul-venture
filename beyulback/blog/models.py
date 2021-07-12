@@ -8,6 +8,8 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 
+from mptt.models import MPTTModel, TreeForeignKey
+
 User = get_user_model()  # User is now the CustomUser
 
 
@@ -77,18 +79,19 @@ class Blog(models.Model):
         return self.title
 
 
-class Comment(models.Model):
+class Comment(MPTTModel):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='comments')
     blog = models.ForeignKey(
         Blog, on_delete=models.CASCADE, related_name='comments')
-
     body = models.TextField()
     created_on = models.DateTimeField(_('create on'), auto_now_add=True)
     updated_on = models.DateTimeField(_('update on'), auto_now=True)
+    parent = TreeForeignKey('self', on_delete=models.CASCADE,
+                            null=True, blank=True, related_name='children')
 
-    class Meta:
-        ordering = ['created_on']
+    class MPTTMeta:
+        order_insertion_by = ['created_on']
 
     def __str__(self):
         return f"{self.user.first_name}{self.user.id}, In ({self.blog.title})-> comment: {self.body} "
