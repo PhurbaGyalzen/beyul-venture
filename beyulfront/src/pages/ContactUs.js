@@ -95,7 +95,8 @@ const useStyles = makeStyles((theme) => ({
     },
 
     thirdRow:{
-        height:1000
+        height:'auto',
+        padding:20
     },
 
     faq:{
@@ -104,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     faqText:{
-        marginBottom:20
+        marginBottom:30
     },
 
     questionImg:{
@@ -128,10 +129,15 @@ const useStyles = makeStyles((theme) => ({
     },
 
     askButton:{
-        width:"90%",
+        width:"100%",
         border:"2px solid black",
         marginTop:20,
-        fontWeight:'bold'
+        marginBottom:40,
+        fontWeight:'bold',
+        '&:hover':{
+            
+         
+        }
 
     }
 
