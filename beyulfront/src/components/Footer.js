@@ -17,7 +17,7 @@ export const Footer = () => {
         <div>
             <footer>
                 <Box  color='white'>
-                        <Grid container  justifyContent="space-around"  style={{backgroundColor:'#4688e3',padding:'2.2rem 1rem'}}>
+                        <Grid container  justifyContent="space-around"  style={{backgroundColor:'#4688e3',padding:'2.2rem 2.2rem 1rem 2.2rem'}}>
 
                             {/* first col */}
                             <Grid item md={3} xs={12}>
@@ -125,7 +125,7 @@ export const Footer = () => {
                                         <InstagramIcon fontSize='large'/>
                                     </Link>
                                     <Link href='#' color='Primary'>
-                                        <YouTubeIcon fontSize='large'/>
+                                        <YouTubeIcon fontSize='large' color='Secondary'/>
                                     </Link>
                                     <Link href='#' color='Primary'>
                                         <LinkedInIcon fontSize='large'/>
@@ -154,6 +154,13 @@ export const Footer = () => {
                                 </Box> 
                                 
                                     
+                            </Grid>
+
+                            <Grid item xs={12} md={12} lg={12}>
+                                <Box textAlign='center' pt={{xs:5, sm:6, md:5}} pb={{xs:0, sm:0}}>
+                                    BeyulVenture &reg; 2021
+
+                                </Box>
                             </Grid>
 
 
