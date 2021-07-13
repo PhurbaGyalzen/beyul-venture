@@ -17,7 +17,7 @@ export const Footer = () => {
         <div>
             <footer>
                 <Box  color='white'>
-                        <Grid container  justifyContent="space-around"  style={{backgroundColor:'#4688e3',padding:'2.2rem'}}>
+                        <Grid container  justifyContent="space-around"  style={{backgroundColor:'#4e524f',padding:'2.2rem 2.2rem 1rem 2.2rem'}}>
 
                             {/* first col */}
                             <Grid item md={3} xs={12}>
@@ -115,20 +115,20 @@ export const Footer = () => {
                                     </Typography>
                                 </Box>
                                 <Box>
-                                    <Link href='#' color='Primary'>
-                                        <FacebookIcon fontSize='large'/>
+                                    <Link href='#'>
+                                        <FacebookIcon fontSize='large' style={{color:'#4267B2'}}/>
                                     </Link>
-                                    <Link href='#' color='Primary'>
-                                        <TwitterIcon fontSize='large'/>
+                                    <Link href='#'>
+                                        <TwitterIcon fontSize='large' style={{color:'#1DA1F2'}}/>
                                     </Link>
-                                    <Link href='#' color='Primary'>
-                                        <InstagramIcon fontSize='large'/>
+                                    <Link href='#'>
+                                        <InstagramIcon fontSize='large' style={{color:'#DD2A7B'}}/>
                                     </Link>
-                                    <Link href='#' color='Primary'>
-                                        <YouTubeIcon fontSize='large'/>
+                                    <Link href='#'>
+                                        <YouTubeIcon fontSize='large' style={{color:'#FF0000'}}/>
                                     </Link>
-                                    <Link href='#' color='Primary'>
-                                        <LinkedInIcon fontSize='large'/>
+                                    <Link href='#'>
+                                        <LinkedInIcon fontSize='large' style={{color:'#2867B2'}}/>
                                     </Link>
                                 </Box>  
                                 
@@ -154,6 +154,13 @@ export const Footer = () => {
                                 </Box> 
                                 
                                     
+                            </Grid>
+
+                            <Grid item xs={12} md={12} lg={12}>
+                                <Box textAlign='center' pt={{xs:5, sm:6, md:5}} pb={{xs:0, sm:0}}>
+                                    BeyulVenture &reg; 2021
+
+                                </Box>
                             </Grid>
 
 
