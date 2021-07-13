@@ -156,6 +156,13 @@ export const Footer = () => {
                                     
                             </Grid>
 
+                            <Grid item xs={12} md={12} lg={12}>
+                                <Box textAlign='center' pt={{xs:5, sm:6, md:5}} pb={{xs:0, sm:0}}>
+                                    BeyulVenture &reg; 2021
+
+                                </Box>
+                            </Grid>
+
 
 
 
