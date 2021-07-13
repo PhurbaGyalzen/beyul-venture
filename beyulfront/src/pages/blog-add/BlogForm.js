@@ -20,6 +20,7 @@ export const BlogForm = () => {
             tags: [],
             isDraft: false   
         }}
+        
             onSubmit={(data, {setSubmitting,resetForm})=>{
                 setSubmitting(true);
                 //make async call

@@ -15,6 +15,7 @@ import Header from 'components/Header'
 import SignIn from 'components/SignIn'
 import SignUp from 'components/SignUp'
 import { AddBlog } from './pages/blog-add/AddBlog'
+import { Footer } from './components/Footer'
 // import { default as SignUp } from 'components/SignUpDialog'
 
 const Routes = () => {
@@ -45,6 +46,7 @@ const App = () => {
       <div className='App'>
         <Header />
         <Routes />
+        <Footer />
       </div>
     </Router>
   )
