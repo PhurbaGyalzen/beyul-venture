@@ -1,1 +1,5 @@
-ECHO is on.
+const fetchProtype = window.fetch
+
+const fetch = async (...rest) {
+  
+}
