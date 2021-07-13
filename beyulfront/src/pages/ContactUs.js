@@ -11,9 +11,9 @@ import { Button } from '@material-ui/core';
 import Faq from '../pages/faq/Faq';
 import {questions} from '../pages/faq/FaqData';
 import { deepOrange } from "@material-ui/core/colors";
-import TextField from '@material-ui/core/TextField'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import CardActions from '@material-ui/core/CardActions';
 
 
 // All image import 
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
         '&:hover':{
             backgroundColor:blue[500],
             cursor:'pointer',
-            color:grey[50]
+            color:grey[100]
         }
     },
 
@@ -59,13 +59,9 @@ const useStyles = makeStyles((theme) => ({
         backgroundPosition: "center center",
         backgroundSize: "cover",
         backgroundAttachment: "fixed",
-        backgroundColor:grey[900],
-        opacity:0.4,
-        transition:" ease-out 1s",
-        '&:hover':{
-            opacity:1
-         
-        }
+        backgroundColor:"#F9F9F9",
+        opacity:1,
+        
     },
     firstRowItem1:{
         paddingTop:480,
@@ -81,6 +77,9 @@ const useStyles = makeStyles((theme) => ({
         height:'100vh',
         paddingTop:50,
         paddingLeft:30,
+        backgroundColor:"#F0F0F0",
+        marginBottom:50,
+        marginTop:50
     },
 
     map:{
@@ -139,6 +138,12 @@ const useStyles = makeStyles((theme) => ({
          
         }
 
+    },
+
+    fourthRow:{
+        marginTop:50,
+        height:'80vh',
+        backgroundColor:"#F0F0F0"
     }
 
     
@@ -177,7 +182,7 @@ export default function ContactUs (){
                         </Grid>
                     </Grid>
 
-                    <Grid container className={classes.thirdRow} style={{backgroundColor:"#EA6547"}}>
+                    <Grid container className={classes.thirdRow} style={{backgroundColor:"#FFE8DF"}}>
                         <Grid item className={classes.faq} xs={12} md={5} sm={5}>
                             <Typography variant="h4" className={classes.faqText}>
                                 Popular Questions
@@ -188,16 +193,31 @@ export default function ContactUs (){
                         <Grid item xs={12} md={6} sm={6}>
                             <img src={question} alt="have any question" className={classes.questionImg}/>
                             <Typography variant="h4" align="center">Have a question we didn't answer ?</Typography>
-                            <Typography variant="body2" align="left">If you have any questions or queries a member of staff will always be happy to help. Feel free to contact us by telephone or email and we will be sure to get back to you as soon as possible.</Typography>
+                            <Typography variant="body2" align="left" color="textSecondary">If you have any questions or queries a member of staff will always be happy to help. Feel free to contact us by telephone or email and we will be sure to get back to you as soon as possible.</Typography>
 
                             <form noValidate autoComplete="off" className={classes.form}>
-                                <TextField placeholder="name" name="name" id="name" className={classes.textField}></TextField>
-                                <TextField type="email" name="email" id="email" placeholder="email" className={classes.textField}></TextField>
-                                <TextField type="number" name="phone" id="phone" placeholder="phone" className={classes.textField}></TextField>
-                                <TextField type="message" multiline rows={4} placeholder="message" className={classes.textField}></TextField>
+                                <TextField placeholder="name" name="name" id="name" className={classes.textField} required></TextField>
+                                <TextField type="email" name="email" id="email" placeholder="email" className={classes.textField} required></TextField>
+                                <TextField type="number" name="phone" id="phone" placeholder="phone" className={classes.textField} required></TextField>
+                                <TextField type="message" multiline rows={4} placeholder="message" className={classes.textField} required></TextField>
                                 <Button variant="outlined" size="large" className={classes.askButton}> CATAPULT YOUR MESSAGE TO BEYUL VENTURE </Button>
                             </form>
 
+                        </Grid>
+
+                    </Grid>
+                    
+                    <Grid container className={classes.fourthRow}>
+                        <Grid xs={12} md={6} sm={6}>
+                            <Typography variant="h4" align="center">Office Locations</Typography>
+                            <Card className={classes.root} variant="outlined">
+                                <CardContent>
+                                    <h1>Hello world</h1>
+                                </CardContent>
+                                <CardActions>
+                                    <Button size="small">Learn More</Button>
+                                </CardActions>
+                            </Card>
                         </Grid>
 
                     </Grid>
