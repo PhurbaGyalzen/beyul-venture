@@ -125,6 +125,14 @@ const useStyles = makeStyles((theme) => ({
         outline:0,
         marginBottom:20
         
+    },
+
+    askButton:{
+        width:"90%",
+        border:"2px solid black",
+        marginTop:20,
+        fontWeight:'bold'
+
     }
 
     
@@ -181,7 +189,7 @@ export default function ContactUs (){
                                 <TextField type="email" name="email" id="email" placeholder="email" className={classes.textField}></TextField>
                                 <TextField type="number" name="phone" id="phone" placeholder="phone" className={classes.textField}></TextField>
                                 <TextField type="message" multiline rows={4} placeholder="message" className={classes.textField}></TextField>
-                                <Button> </Button>
+                                <Button variant="outlined" size="large" className={classes.askButton}> CATAPULT YOUR MESSAGE TO BEYUL VENTURE </Button>
                             </form>
 
                         </Grid>
