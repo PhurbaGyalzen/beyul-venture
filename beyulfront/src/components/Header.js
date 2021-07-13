@@ -81,6 +81,7 @@ const Header = () => {
             <NavBtn to='/'>Home</NavBtn>
             <NavBtn to='/about'>About</NavBtn>
             <NavBtn to='/blog'>Blog</NavBtn>
+            <NavBtn to='/contact-us'>Contact Us</NavBtn>
             <Button
               component={NavLink}
               to='/sign-up'
