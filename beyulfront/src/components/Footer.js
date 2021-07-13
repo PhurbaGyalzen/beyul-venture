@@ -17,7 +17,7 @@ export const Footer = () => {
         <div>
             <footer>
                 <Box  color='white'>
-                        <Grid container  justifyContent="space-around"  style={{backgroundColor:'#4688e3',padding:'2.2rem 1rem 2.2rem 1rem'}}>
+                        <Grid container  justifyContent="space-around"  style={{backgroundColor:'#4688e3',padding:'2.2rem'}}>
 
                             {/* first col */}
                             <Grid item md={3} xs={12}>
