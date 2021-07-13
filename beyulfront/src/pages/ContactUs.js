@@ -5,15 +5,13 @@ import { Typography } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 import { Card } from '@material-ui/core';
 import { CardContent } from '@material-ui/core';
-import { CardMedia } from '@material-ui/core';
 import { blue, grey} from '@material-ui/core/colors';
 import { Button } from '@material-ui/core';
 import Faq from '../pages/faq/Faq';
-import {questions} from '../pages/faq/FaqData';
-import { deepOrange } from "@material-ui/core/colors";
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import CardActions from '@material-ui/core/CardActions';
+import { Divider } from '@material-ui/core';
+import RoomIcon from '@material-ui/icons/Room';
 
 
 // All image import 
@@ -144,6 +142,13 @@ const useStyles = makeStyles((theme) => ({
         marginTop:50,
         height:'80vh',
         backgroundColor:"#F0F0F0"
+    },
+
+    contactCard:{
+        width:'80%',
+        height:'auto',
+        marginTop:50,
+        marginLeft:45
     }
 
     
@@ -208,11 +213,14 @@ export default function ContactUs (){
                     </Grid>
                     
                     <Grid container className={classes.fourthRow}>
-                        <Grid xs={12} md={6} sm={6}>
-                            <Typography variant="h4" align="center">Office Locations</Typography>
-                            <Card className={classes.root} variant="outlined">
+                        <Grid xs={12} md={5} sm={5}>
+                            <Card className={classes.contactCard} variant="outlined" elevation={3}>
                                 <CardContent>
-                                    <h1>Hello world</h1>
+                                    <Typography varinat="h5" style={{fontWeight:'bold'}}>Contact Information</Typography>
+                                    <Divider/><br/>
+                                    <RoomIcon/>
+                                    
+                                    
                                 </CardContent>
                                 <CardActions>
                                     <Button size="small">Learn More</Button>
