@@ -95,9 +95,17 @@ const Blog = (props) => {
     */
     const [blogData, setBlogData] = useState([])
     useEffect(async () => {
-        const resp = await fetch('http://127.0.0.1:8000/api/blog/')
-        const data = await resp.json()
-        setBlogData(data['results'])
+        const blogs = []
+        let url = 'http://127.0.0.1:8000/api/blog/'
+        for (let _ = 0; _ < 10; _++) {
+            const resp = await fetch(url)
+            const data = await resp.json()
+            blogs.push(...data.results)
+            const nextPageURL = data.next_page_link
+            if (!nextPageURL) break
+            url = data.next_page_link
+        }
+        setBlogData(blogs)
     }, [])
     // one problem is every other article will move to bottom in mobile.
     // soln is prob useEffect hook on viewport size
@@ -106,6 +114,7 @@ const Blog = (props) => {
     for (let i = 0; i < blogData.length; i++) {
         const blog = blogData[i]
         blog.id = blog.slug
+        blog.author = 'Jaikant Shikre'
         if (i % 2 === 0) evenIndexBlog.push(blog)
         else oddIndexBlog.push(blog)
     }
