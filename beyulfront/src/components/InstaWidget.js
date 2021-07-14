@@ -54,7 +54,7 @@ const InstagramWidget = ({ posts }) => {
             {/*use grid instead of slicing*/}
             {posts.slice(0, 20).map((post) => {
                 return (
-                    <div
+                    <a
                         key={post.id}
                         href={`https://www.instagram.com/p/${post.id}/`}
                         target='_blank'
@@ -71,7 +71,7 @@ const InstagramWidget = ({ posts }) => {
                                 data-caption={post.caption}
                             ></FigCaption>
                         </Figure>
-                    </div>
+                    </a>
                 )
             })}
         </FlexBox>
