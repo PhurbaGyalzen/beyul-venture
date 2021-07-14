@@ -8,12 +8,14 @@ const FlexWrapAlign = styled.div`
     align-items: center;
     gap: 0.5rem;
 `
-
-const CommentContainer = styled.div`
-    border: 1px solid black;
+const GeneralCommentContainer = styled.div`
+    border: 1px solid #eae6e6;
     padding: 1rem 0.8rem;
     border-radius: 0.4rem;
     margin: 0.3rem 0;
+`
+
+const CommentContainer = styled(GeneralCommentContainer)`
     margin-left: ${(props) => props.indent + 'rem' || '0rem'};
 `
 
