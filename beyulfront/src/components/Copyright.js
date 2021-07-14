@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography'
 function Copyright() {
   console.log(process.env)
   return (
-    <Typography variant='body2' color='textSecondary' align='center'>
+    <Typography variant='body2' color='White' align='center'>
       {'Copyright © '}
       <Link color='inherit' href={process.env.PUBLIC_URL}>
         Beyul Venture
