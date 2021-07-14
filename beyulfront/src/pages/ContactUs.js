@@ -9,7 +9,6 @@ import { blue, grey} from '@material-ui/core/colors';
 import { Button } from '@material-ui/core';
 import Faq from '../pages/faq/Faq';
 import TextField from '@material-ui/core/TextField';
-import CardActions from '@material-ui/core/CardActions';
 import { Divider } from '@material-ui/core';
 import RoomIcon from '@material-ui/icons/Room';
 import LocalPhoneIcon from '@material-ui/icons/LocalPhone';
@@ -19,13 +18,20 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import LockIcon from '@material-ui/icons/Lock';
+import Avatar from '@material-ui/core/Avatar';
+
 
 
 
 // All image import 
 import contactUsImg from 'img/contactUs.jpg';
 import mapImg from 'img/map.png';
-import question from 'img/question1.png'
+import question from 'img/question1.png';
+import nischalImg from 'img/nischal.jpg';
+import nishanImg from 'img/nishan.png';
+import phurbaImg from 'img/phurba.jpg';
+import sanjibImg from 'img/sanjib.jpg';
+import sunilImg from 'img/sunil.png';
 
 //Defining CustomStyles for ContactUs Page
 const useStyles = makeStyles((theme) => ({
@@ -252,7 +258,11 @@ export default function ContactUs (){
                                     <CardContent>
                                         <Typography variant="h5" style={{fontWeight:'bold', marginBottom:15}}>Meet our brilliant and knowledgable support team</Typography>
                                         <Divider/><br/> 
-                                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={classes.large} />
+                                        <Avatar alt="Remy Sharp" src={nischalImg} className={classes.large} />
+                                        <Avatar alt="Remy Sharp" src={nishanImg} className={classes.large} />
+                                        <Avatar alt="Remy Sharp" src={phurbaImg} className={classes.large} />
+                                        <Avatar alt="Remy Sharp" src={sanjibImg} className={classes.large} />
+                                        <Avatar alt="Remy Sharp" src={sunilImg} className={classes.large} />
                                        
                                     </CardContent>
                             </Card>
