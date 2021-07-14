@@ -17,6 +17,7 @@ import Copyright from 'components/Copyright'
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
+    paddingBottom:'3rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -89,7 +90,7 @@ export default function SignIn() {
                 Forgot password?
               </Link>
             </Grid>
-            <Grid item>
+            <Grid item >
               <Link href='/sign-up' variant='body2'>
                 {"Don't have an account? Sign Up"}
               </Link>
@@ -97,9 +98,9 @@ export default function SignIn() {
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
+      {/* <Box mt={8}>
+        <Copyright /
+      </Box> */}
     </Container>
   )
 }

@@ -12,6 +12,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import PaymentIcon from '@material-ui/icons/Payment';
+import Copyright from 'components/Copyright'
 export const Footer = () => {
     return (
         <div>
@@ -20,7 +21,7 @@ export const Footer = () => {
                         <Grid container  justifyContent="space-around"  style={{backgroundColor:'#4e524f',padding:'2.2rem 2.2rem 1rem 2.2rem'}}>
 
                             {/* first col */}
-                            <Grid item md={3} xs={12}>
+                            <Grid item md={3} xs={11}>
                                 <Box style={{marginBottom:'1rem'}}>
                                     <Typography variant='h5'>
                                         Beyul Venture Logo
@@ -47,7 +48,7 @@ export const Footer = () => {
 
 
                             {/* second col */}
-                            <Grid item>
+                            <Grid item xs={8} md={3}>
                                 <Box borderBottom={1} style={{marginBottom:'1rem'}}>
                                     <Typography variant='h6' >
                                         Our office
@@ -63,16 +64,20 @@ export const Footer = () => {
                                 <Typography>
                                     <CallIcon fontSize='small'/> +977 9807631204
                                 </Typography>
-                                <Typography>
-                                    <EmailIcon fontSize='small'/> BeyulVenture2021@gmail.com
-                                </Typography>
+                                <Box>
+                                    
+                                    <Link href='#' color='inherit'>
+                                    <   EmailIcon fontSize='small'/> BeyulVenture@gmail.com
+                                        
+                                    </Link>
+                                </Box>
                                 
                                     
                             </Grid>
 
                             {/* third col */}
 
-                            <Grid item>
+                            <Grid item md={2} xs={2}>
                                 <Box borderBottom={1} style={{marginBottom:'1rem'}}>
                                     <Typography variant='h6' >
                                         Links
@@ -108,7 +113,7 @@ export const Footer = () => {
 
 
                             {/* fourth col */}
-                            <Grid item>
+                            <Grid item md={2} xs={8}>
                                 <Box borderBottom={1} style={{marginBottom:'1rem'}}>
                                     <Typography variant='h6' >
                                         Follow us on
@@ -137,7 +142,7 @@ export const Footer = () => {
 
 
                             {/* fifth col */}
-                            <Grid item>
+                            <Grid item md={1} xs={2}>
                                 <Box borderBottom={1} style={{marginBottom:'1rem'}}>
                                     <Typography variant='h6' >
                                         Payment
@@ -158,7 +163,8 @@ export const Footer = () => {
 
                             <Grid item xs={12} md={12} lg={12}>
                                 <Box textAlign='center' pt={{xs:5, sm:6, md:5}} pb={{xs:0, sm:0}}>
-                                    BeyulVenture &reg; 2021
+                                    {/* BeyulVenture &reg; 2021 */}
+                                    <Copyright/>
 
                                 </Box>
                             </Grid>
