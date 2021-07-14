@@ -25,7 +25,7 @@ export const questions =[
 
     {
         id:5,
-        question:'HOW DO I KNOW I CAN TRUST THIS TRAVEL VENDOR?',
+        question:'HOW DO I KNOW I CAN TRUST BEYUL VENTURE?',
         answer: 'Professional Travel a Direct Travel Company is extremely cautious when it comes to choosing our business partners and vendors. This vetting of travel suppliers and support of the ‘good ones’ over the past 50+ years has given us preferred access to the world’s top trusted suppliers. In turn, they trust us to represent and care for the reputations they have earned over the years and to deliver the same high standard of care to our mutual clients. As the trusted travel management provider for nearly 300 corporate accounts and thousands of business travelers, we are dedicated to delivering top level service every time. We choose to work only with known, reliable providers in order to maintain a high standard of quality service.'
     },
 
