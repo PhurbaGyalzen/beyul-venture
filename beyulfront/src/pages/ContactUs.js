@@ -9,15 +9,29 @@ import { blue, grey} from '@material-ui/core/colors';
 import { Button } from '@material-ui/core';
 import Faq from '../pages/faq/Faq';
 import TextField from '@material-ui/core/TextField';
-import CardActions from '@material-ui/core/CardActions';
 import { Divider } from '@material-ui/core';
 import RoomIcon from '@material-ui/icons/Room';
+import LocalPhoneIcon from '@material-ui/icons/LocalPhone';
+import EmailIcon from '@material-ui/icons/Email';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import LockIcon from '@material-ui/icons/Lock';
+import Avatar from '@material-ui/core/Avatar';
+
+
 
 
 // All image import 
 import contactUsImg from 'img/contactUs.jpg';
 import mapImg from 'img/map.png';
-import question from 'img/question1.png'
+import question from 'img/question1.png';
+import nischalImg from 'img/nischal.jpg';
+import nishanImg from 'img/nishan.png';
+import phurbaImg from 'img/phurba.jpg';
+import sanjibImg from 'img/sanjib.jpg';
+import sunilImg from 'img/sunil.png';
 
 //Defining CustomStyles for ContactUs Page
 const useStyles = makeStyles((theme) => ({
@@ -129,7 +143,7 @@ const useStyles = makeStyles((theme) => ({
         width:"100%",
         border:"2px solid black",
         marginTop:20,
-        marginBottom:40,
+        marginBottom:10,
         fontWeight:'bold',
         '&:hover':{
             
@@ -140,7 +154,7 @@ const useStyles = makeStyles((theme) => ({
 
     fourthRow:{
         marginTop:50,
-        height:'80vh',
+        height:'auto',
         backgroundColor:"#F0F0F0"
     },
 
@@ -149,6 +163,10 @@ const useStyles = makeStyles((theme) => ({
         height:'auto',
         marginTop:50,
         marginLeft:45
+    },
+
+    icon:{
+        marginRight:20
     }
 
     
@@ -160,7 +178,7 @@ export default function ContactUs (){
     const classes=useStyles();
     return(
         <>
-                <Box className={classes.mainDiv} component="div" >
+                <Box className={classes.mainDiv} component="div" style={{backgroundColor:"#F0F0F0"}}>
                     <Grid container direction="row" justifyContent="flex-end" alignItems="center"
                         className={classes.firstRow}>
 
@@ -206,25 +224,47 @@ export default function ContactUs (){
                                 <TextField type="number" name="phone" id="phone" placeholder="phone" className={classes.textField} required></TextField>
                                 <TextField type="message" multiline rows={4} placeholder="message" className={classes.textField} required></TextField>
                                 <Button variant="outlined" size="large" className={classes.askButton}> CATAPULT YOUR MESSAGE TO BEYUL VENTURE </Button>
+                               <Typography variant="body2" color="textSecondary" style={{marginBottom:40}}><LockIcon fontSize="small" style={{marginRight:5, marginTop:20}}/> We never share your private data. <span style={{color:"blue"}}>Privacy Policy</span></Typography> 
                             </form>
 
                         </Grid>
 
                     </Grid>
                     
-                    <Grid container className={classes.fourthRow}>
+                    <Grid container className={classes.fourthRow} style={{backgroundColor:"#888888"}}>
                         <Grid xs={12} md={5} sm={5}>
                             <Card className={classes.contactCard} variant="outlined" elevation={3}>
                                 <CardContent>
-                                    <Typography varinat="h5" style={{fontWeight:'bold'}}>Contact Information</Typography>
+                                    <Typography varinat="h5" style={{fontWeight:'bold', marginBottom:5}}>CONTACT INFORMATION</Typography>
                                     <Divider/><br/>
-                                    <RoomIcon/>
-                                    
+                                    <Typography ><RoomIcon className={classes.icon}/>Thamel, Kathmandu, Nepal</Typography>
+                                    <Typography><LocalPhoneIcon className={classes.icon}/>+977 9848859531</Typography>
+                                    <Typography><EmailIcon className={classes.icon}/><span style={{color:"blue"}}>beyulventure@gmail.com</span></Typography>
                                     
                                 </CardContent>
-                                <CardActions>
-                                    <Button size="small">Learn More</Button>
-                                </CardActions>
+                                <CardContent>
+                                    <Typography varinat="h5" style={{fontWeight:'bold', marginBottom:5}}>CONNECT WITH US</Typography>
+                                    <Divider/><br/>
+                                    <FacebookIcon fontSize="small" className={classes.icon}/>
+                                    <InstagramIcon fontSize="small" className={classes.icon}/>
+                                    <WhatsAppIcon fontSize="small" className={classes.icon}/>
+                                    <YouTubeIcon fontSize="small" className={classes.icon}/>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+
+                        <Grid item xs={12} sm={6} md={6}>
+                            <Card className={classes.contactCard} variant="outlined" elevation={3}>
+                                    <CardContent>
+                                        <Typography variant="h5" style={{fontWeight:'bold', marginBottom:15}}>Meet our brilliant and knowledgable support team</Typography>
+                                        <Divider/><br/> 
+                                        <Avatar alt="Remy Sharp" src={nischalImg} className={classes.large} />
+                                        <Avatar alt="Remy Sharp" src={nishanImg} className={classes.large} />
+                                        <Avatar alt="Remy Sharp" src={phurbaImg} className={classes.large} />
+                                        <Avatar alt="Remy Sharp" src={sanjibImg} className={classes.large} />
+                                        <Avatar alt="Remy Sharp" src={sunilImg} className={classes.large} />
+                                       
+                                    </CardContent>
                             </Card>
                         </Grid>
 
