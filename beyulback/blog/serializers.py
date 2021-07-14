@@ -46,14 +46,17 @@ class ClapSerializer(serializers.HyperlinkedModelSerializer):
             )
         return value
 
+
 SEARCH_PATTERNN = 'src=\"/media/uploads/'
 SITE_DOMAIN = "http://127.0.0.1:8000"
 REPLACE_WITH = 'src=\"%s/media/uploads/' % SITE_DOMAIN
 
+
 class FixAbsolutePathSerializer(serializers.Field):
     def to_representation(self, value):
-        text = value.replace(SEARCH_PATTERNN,REPLACE_WITH)
+        text = value.replace(SEARCH_PATTERNN, REPLACE_WITH)
         return text
+
 
 class BlogSerializer(serializers.HyperlinkedModelSerializer):
     comment = CommentSerializer(many=True, read_only=True, source="comments")
@@ -81,8 +84,6 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
             'url': {'view_name': 'blog-detail', 'lookup_field': 'slug'},
             'tags': {'view_name': 'tag-detail', 'lookup_field': 'slug'},
         }
-
-
 
 
 class ReadOnlyModelSerializer(serializers.HyperlinkedModelSerializer):
