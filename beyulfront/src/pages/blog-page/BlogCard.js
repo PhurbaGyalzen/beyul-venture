@@ -92,11 +92,18 @@ export const BlogCard = ({
                 <img src={thumbnail} />
                 <div>
                     <UnorderList>
-                        {tags.map((tag, index) => (
-                            <li key={index}>
-                                <Banner>{tag}</Banner>
-                            </li>
-                        ))}
+                        {tags.map((tag) => {
+                            const splitted = tag.split('/')
+                            return (
+                                <li key={tag}>
+                                    <Link to={tag}>
+                                        <Banner>
+                                            {splitted[splitted.length - 2]}
+                                        </Banner>
+                                    </Link>
+                                </li>
+                            )
+                        })}
                     </UnorderList>
                     <Title>{title}</Title>
                     <div>

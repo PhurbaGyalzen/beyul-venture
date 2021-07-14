@@ -92,11 +92,10 @@ const BlogDetail = (props) => {
         const resp = await fetch(
             'http://127.0.0.1:8000/api/blog/mardi-himal-trek-travel-blog-in-the-shadow-of-the/',
         )
-        const apiData = await resp.json();
+        const apiData = await resp.json()
         setBlog(apiData)
-        console.log(apiData);
     }, [])
-    console.log(blog.content)
+
     if (blog) {
         return (
             <>
