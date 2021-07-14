@@ -101,13 +101,12 @@ const BlogDetail = (props) => {
         )
         const apiData = await resp.json()
         setBlog(apiData)
-    }, [])
-
-    useEffect(async () => {
-        const content = await fetch(blog.author)
+        const content = await fetch(apiData.author)
         const authorData = await content.json();
         setAuthor(authorData);
-    },[])
+    }, [])
+
+    
 
     if (blog) {
         return (
