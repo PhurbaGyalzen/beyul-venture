@@ -48,7 +48,7 @@ export const Footer = () => {
 
 
                             {/* second col */}
-                            <Grid item xs={5} md={3}>
+                            <Grid item xs={8} md={3}>
                                 <Box borderBottom={1} style={{marginBottom:'1rem'}}>
                                     <Typography variant='h6' >
                                         Our office
@@ -64,16 +64,20 @@ export const Footer = () => {
                                 <Typography>
                                     <CallIcon fontSize='small'/> +977 9807631204
                                 </Typography>
-                                <Typography>
-                                    <EmailIcon fontSize='small'/> BeyulVenture2021@gmail.com
-                                </Typography>
+                                <Box>
+                                    
+                                    <Link href='#' color='inherit'>
+                                    <   EmailIcon fontSize='small'/> BeyulVenture@gmail.com
+                                        
+                                    </Link>
+                                </Box>
                                 
                                     
                             </Grid>
 
                             {/* third col */}
 
-                            <Grid item md={2} xs={5}>
+                            <Grid item md={2} xs={2}>
                                 <Box borderBottom={1} style={{marginBottom:'1rem'}}>
                                     <Typography variant='h6' >
                                         Links
@@ -109,7 +113,7 @@ export const Footer = () => {
 
 
                             {/* fourth col */}
-                            <Grid item md={2} xs={5}>
+                            <Grid item md={2} xs={8}>
                                 <Box borderBottom={1} style={{marginBottom:'1rem'}}>
                                     <Typography variant='h6' >
                                         Follow us on
@@ -138,7 +142,7 @@ export const Footer = () => {
 
 
                             {/* fifth col */}
-                            <Grid item md={1} xs={5}>
+                            <Grid item md={1} xs={2}>
                                 <Box borderBottom={1} style={{marginBottom:'1rem'}}>
                                     <Typography variant='h6' >
                                         Payment
