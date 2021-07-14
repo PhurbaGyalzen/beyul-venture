@@ -76,6 +76,11 @@ const useStyles = makeStyles((theme) => ({
         marginRight:20
     },
 
+    large: {
+        width: theme.spacing(7),
+        height: theme.spacing(7),
+      },
+
     //thirdRow
     thirdRow:{
         height:'auto',
@@ -117,7 +122,6 @@ const useStyles = makeStyles((theme) => ({
         marginTop:20,
         fontWeight:'bold',
         '&:hover':{
-            
          
         }
 
@@ -141,9 +145,7 @@ const useStyles = makeStyles((theme) => ({
         paddingTop:50,
         width:'90%',
         height:'90%'
-    },
-
-    
+    }
 
 }))
 
