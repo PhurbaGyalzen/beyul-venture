@@ -9,12 +9,21 @@ const TwoColGrid = styled.div`
   /*height: 200px;*/
 `
 
+const Enquiry = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
+
 const BlueBtn = styled.button`
   background-color: #36c9f8;
   color: white;
+  font-size: 1.2rem;
   width: 100%;
-  max-width: 300px;
+  max-width: 15rem;
   border-radius: 3px;
+  /*height: 2rem;*/
+  margin: 0.2rem auto;
+  flex: 0 1 100%;
 `
 
 const GreenBtn = styled(BlueBtn)`
@@ -76,8 +85,10 @@ const PackageDetail = ({ packageId }) => {
             <TickedList>Lorem ipsum donot eyy donot luike</TickedList>
           </ul>
         </div>
-        <BlueBtn>Ask a question</BlueBtn>
-        <GreenBtn>BOOK THIS TOUR</GreenBtn>
+        <Enquiry>
+          <BlueBtn>Ask a question</BlueBtn>
+          <GreenBtn>Book this tour</GreenBtn>
+        </Enquiry>
       </div>
     </TwoColGrid>
   )
