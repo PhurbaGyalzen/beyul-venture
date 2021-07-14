@@ -28,7 +28,7 @@ import contactUsImg from 'img/contactUs.jpg';
 import mapImg from 'img/map.png';
 import question from 'img/question1.png';
 import nischalImg from 'img/nischal.jpg';
-import nishanImg from 'img/nishan.png';
+import nishanImg from 'img/nishan.jpg';
 import phurbaImg from 'img/phurba.jpg';
 import sanjibImg from 'img/sanjib.jpg';
 import sunilImg from 'img/sunil.png';
