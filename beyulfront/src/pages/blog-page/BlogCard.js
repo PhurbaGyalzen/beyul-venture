@@ -88,35 +88,35 @@ export const BlogCard = ({
 }) => {
     return (
         <article>
-            <Link to={'/blog/' + slug}>
-                <img src={thumbnail} />
-                <div>
-                    <UnorderList>
-                        {tags.map((tag) => {
-                            const splitted = tag.split('/')
-                            return (
-                                <li key={tag}>
-                                    <Link to={tag}>
-                                        <Banner>
-                                            {splitted[splitted.length - 2]}
-                                        </Banner>
-                                    </Link>
-                                </li>
-                            )
-                        })}
-                    </UnorderList>
+            <img src={thumbnail} />
+            <div>
+                <UnorderList>
+                    {tags.map((tag) => {
+                        const splitted = tag.split('/')
+                        return (
+                            <li key={tag}>
+                                <Link to={tag}>
+                                    <Banner>
+                                        {splitted[splitted.length - 2]}
+                                    </Banner>
+                                </Link>
+                            </li>
+                        )
+                    })}
+                </UnorderList>
+                <Link to={'/blog/' + slug}>
                     <Title>{title}</Title>
-                    <div>
-                        {/*<FancyLink href='#'>{author}</FancyLink>*/}
-                        <FancyLink to={'/author/' + authorId}>
-                            <Typography color='textPrimary'>
-                                {authorName}
-                            </Typography>
-                        </FancyLink>
-                    </div>
-                    <summary>{description}</summary>
+                </Link>
+                <div>
+                    {/*<FancyLink href='#'>{author}</FancyLink>*/}
+                    <FancyLink to={'/author/' + authorId}>
+                        <Typography color='textPrimary'>
+                            {authorName}
+                        </Typography>
+                    </FancyLink>
                 </div>
-            </Link>
+                <summary>{description}</summary>
+            </div>
         </article>
     )
 }

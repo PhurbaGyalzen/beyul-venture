@@ -96,10 +96,12 @@ const Blog = (props) => {
     const [blogData, setBlogData] = useState([])
     useEffect(async () => {
         const blogs = []
-        let url = 'http://127.0.0.1:8000/api/blog/'
+        // let url = 'http://127.0.0.1:8000/api/blog/'
+        let url = '/api/blog/'
         for (let _ = 0; _ < 10; _++) {
-            const resp = await fetch(url)
-            const data = await resp.json()
+            const data = await ajax(url)
+            // const data = await resp.json()
+            if (!data) break
             blogs.push(...data.results)
             const nextPageURL = data.next_page_link
             if (!nextPageURL) break

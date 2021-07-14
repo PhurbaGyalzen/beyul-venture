@@ -84,29 +84,26 @@ const blogStyles = makeStyles((theme) => ({
 }))
 
 const formatDate = (datetime) => {
-    let toConvert = new Date(datetime);
-    return `${toConvert.toLocaleString('default', { month: 'long' })} ${toConvert.getDate()}, ${toConvert.getFullYear()}`
-
+    let toConvert = new Date(datetime)
+    return `${toConvert.toLocaleString('default', {
+        month: 'long',
+    })} ${toConvert.getDate()}, ${toConvert.getFullYear()}`
 }
 
 const BlogDetail = (props) => {
-    const { blog_id } = useParams();
-    const classes = blogStyles();
-    const [blog, setBlog] = useState([]);
-    const [author,setAuthor]= useState([]);
-    // const resp = await fetch('http://127.0.0.1:8000/api/blog/' + blog_id + '/')
+    const { blog_id } = useParams()
+    const classes = blogStyles()
+    const [blog, setBlog] = useState([])
+    const [author, setAuthor] = useState([])
+    // const resp = await ajax('/api/blog/' + blog_id + '/')
     useEffect(async () => {
-        const resp = await fetch(
-            'http://127.0.0.1:8000/api/blog/mardi-himal-trek-travel-blog-in-the-shadow-of-the/',
+        const apiData = await ajax(
+            '/api/blog/mardi-himal-trek-travel-blog-in-the-shadow-of-the/',
         )
-        const apiData = await resp.json()
         setBlog(apiData)
-        const content = await fetch(apiData.author)
-        const authorData = await content.json();
-        setAuthor(authorData);
+        const authorData = await ajax(apiData.author)
+        setAuthor(authorData)
     }, [])
-
-    
 
     if (blog) {
         return (
@@ -142,7 +139,9 @@ const BlogDetail = (props) => {
                                     </Link>
                                 </span>
                                 <span>|</span>
-                                <span>Uploaded On: {formatDate(blog.created_on)}</span>
+                                <span>
+                                    Uploaded On: {formatDate(blog.created_on)}
+                                </span>
                             </div>
                         </div>
                     </Container>

@@ -17,8 +17,11 @@ import SignUp from 'components/SignUp'
 import { AddBlog } from './pages/blog-add/AddBlog'
 import { Footer } from './components/Footer'
 import ContactUs from './pages/ContactUs.js'
+import ajax from './api'
 
 // import { default as SignUp } from 'components/SignUpDialog'
+
+window.ajax = ajax
 
 const Routes = () => {
   const params = useParams()
@@ -34,7 +37,6 @@ const Routes = () => {
       <Route exact path='/blog/add' component={AddBlog} />
       <Route exact path='/blog/:blogid' component={BlogDetail} />
       <Route exact path='/contact-us' component={ContactUs} />
-      
 
       <Route exact path='/'>
         <HomePage />

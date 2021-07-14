@@ -103,10 +103,6 @@ const ReactionItem = ({ emoji, count, reacted, onClick }) => {
     )
 }
 
-const insertCommentBox = (that) => {
-    console.log(that)
-}
-
 const flatten = (arr) => {
     let indent = -1
     const inner = (innerArr) => {
