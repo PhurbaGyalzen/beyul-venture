@@ -1,6 +1,6 @@
+import { useState, useEffect } from 'react'
 import { Box, Container, Card, Grid, Typography } from '@material-ui/core'
 import styled from 'styled-components'
-import { useState } from 'react'
 import { BlogCard } from './BlogCard'
 import './index.css'
 
@@ -9,6 +9,7 @@ const Section = (props) => {
 }
 
 const Blog = (props) => {
+    /*
     const [blogData, setBlogData] = useState([
         {
             id: 1,
@@ -91,11 +92,13 @@ const Blog = (props) => {
                 'he name Ilam is derived from the Limbu language in which “Ii” means twisted and “Lam” means road. Ilam was one of the ten self ruling states of Limbuwan before the unification of Nepal, its ruler King Hangshu Phuba Lingdom of Lingdom dynasty ruled Ilam as a confederate state of Limbuwan until 1813 AD. The treaty between the other Limbuwan states and the King of Gorkha (Gorkha-Limbuwan Treaty of 1774 AD) and the conflict of Gorkha and Sikkim led to the unification of Ilam with Gorkha. Ilam was the last of the ten kingdoms of Limbuwan to join the union of Nepal. The King of Gorkha gave the ruler of Ilam full autonomy to rule and the right of Kipat. Ilam was an independent Limbu kingdom until 1813 CE/1869 BS.',
         },
     ])
-    // let blogData, setBlogData
-    // ;(async () => {
-    //     const resp = await fetch('https://127.0.0.1:8000/api/blog/')
-    //     [blogData, setBlogData] = useState(resp.json()['results'])
-    // })()
+    */
+    const [blogData, setBlogData] = useState([])
+    useEffect(async () => {
+        const resp = await fetch('http://127.0.0.1:8000/api/blog/')
+        const data = await resp.json()
+        setBlogData(data['results'])
+    }, [])
     // one problem is every other article will move to bottom in mobile.
     // soln is prob useEffect hook on viewport size
     const oddIndexBlog = []
@@ -103,7 +106,6 @@ const Blog = (props) => {
     for (let i = 0; i < blogData.length; i++) {
         const blog = blogData[i]
         blog.id = blog.slug
-        blog.tags = blog.tags.split('/')[-2]
         if (i % 2 === 0) evenIndexBlog.push(blog)
         else oddIndexBlog.push(blog)
     }
