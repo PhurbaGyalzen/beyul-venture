@@ -83,10 +83,17 @@ const blogStyles = makeStyles((theme) => ({
     },
 }))
 
+const formatDate = (datetime) => {
+    let toConvert = new Date(datetime);
+    return `${toConvert.toLocaleString('default', { month: 'long' })} ${toConvert.getDate()}, ${toConvert.getFullYear()}`
+
+}
+
 const BlogDetail = (props) => {
-    const { blog_id } = useParams()
-    const classes = blogStyles()
-    const [blog, setBlog] = useState([])
+    const { blog_id } = useParams();
+    const classes = blogStyles();
+    const [blog, setBlog] = useState([]);
+    const [author,setAuthor]= useState([]);
     // const resp = await fetch('http://127.0.0.1:8000/api/blog/' + blog_id + '/')
     useEffect(async () => {
         const resp = await fetch(
@@ -95,6 +102,12 @@ const BlogDetail = (props) => {
         const apiData = await resp.json()
         setBlog(apiData)
     }, [])
+
+    useEffect(async () => {
+        const content = await fetch(blog.author)
+        const authorData = await content.json();
+        setAuthor(authorData);
+    },[])
 
     if (blog) {
         return (
@@ -126,11 +139,11 @@ const BlogDetail = (props) => {
                                 <span>
                                     By:{' '}
                                     <Link className={classes.authorStyle}>
-                                        Jaikant Shikre
+                                        {author.email}
                                     </Link>
                                 </span>
                                 <span>|</span>
-                                <span>{blog.created_on}</span>
+                                <span>Uploaded On: {formatDate(blog.created_on)}</span>
                             </div>
                         </div>
                     </Container>
