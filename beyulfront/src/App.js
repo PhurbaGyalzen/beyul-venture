@@ -18,6 +18,7 @@ import { AddBlog } from './pages/blog-add/AddBlog'
 import { Footer } from './components/Footer'
 import ContactUs from './pages/ContactUs.js'
 import ajax from './api'
+import { BlogTag } from './pages/blog-page/BlogTag'
 
 // import { default as SignUp } from 'components/SignUpDialog'
 
@@ -35,6 +36,7 @@ const Routes = () => {
       <Route exact path='/sign-in' component={SignIn} />
       <Route exact path='/blog' component={Blog} />
       <Route exact path='/blog/add' component={AddBlog} />
+      <Route exact path= '/blog/tag/:tagname' component={BlogTag} />
       <Route exact path='/blog/:blogid' component={BlogDetail} />
       <Route exact path='/contact-us' component={ContactUs} />
 

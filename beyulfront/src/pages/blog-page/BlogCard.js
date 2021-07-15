@@ -4,11 +4,13 @@ import {
     CardMedia,
     Typography,
     CardContent,
+    Chip
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import FancyLink from 'components/FancyLink'
+import { useHistory } from "react-router-dom";
 
 /*
 const cardStyle = makeStyles((theme) => ({
@@ -86,6 +88,8 @@ export const BlogCard = ({
     tags,
     description,
 }) => {
+
+    const history = useHistory();
     return (
         <article>
             <img src={thumbnail} />
@@ -95,11 +99,13 @@ export const BlogCard = ({
                         const splitted = tag.split('/')
                         return (
                             <li key={tag}>
-                                <Link to={tag}>
-                                    <Banner>
-                                        {splitted[splitted.length - 2]}
-                                    </Banner>
-                                </Link>
+                                
+                                <Chip 
+                                label = {splitted[splitted.length - 2]}
+                                variant = "outlined"
+                                onClick = {()=>{history.push(`/blog/tag/${splitted[splitted.length - 2]}`)}}
+                                />
+                                
                             </li>
                         )
                     })}
