@@ -1,14 +1,12 @@
 from .models import Blog, Tag, Comment, Clap
-from .serializers import CustomTokenObtainPairSerializer
+from users.serializers import CustomTokenObtainPairSerializer
 from .serializers import (
     BlogSerializer,
-    UserSerializer,
     TagSerializer,
     CommentSerializer,
     ClapSerializer,
 )
 from .custompaginations import RemovePageNumberPagination
-
 from django.contrib.auth import get_user_model
 
 from rest_framework import viewsets
@@ -33,12 +31,6 @@ class BlogView(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
     lookup_field = 'slug'
     # pagination_class = RemovePageNumberPagination
-
-
-class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    pagination_class = RemovePageNumberPagination
 
 
 class TagViewSet(viewsets.ReadOnlyModelViewSet):
