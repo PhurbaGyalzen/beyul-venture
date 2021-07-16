@@ -44,11 +44,12 @@ INSTALLED_APPS = [
     'mptt',
     'corsheaders',
     'django_extensions',
-    'blog.apps.BlogConfig',
     'rest_framework_simplejwt',
     'users.apps.UsersConfig',
     'ckeditor',
     'ckeditor_uploader',
+    'blog.apps.BlogConfig',
+    'package.apps.PackageConfig',
 ]
 
 MIDDLEWARE = [
