@@ -39,20 +39,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'rest_framework',
     'mptt',
     'corsheaders',
     'django_extensions',
-    'blog.apps.BlogConfig',
     'rest_framework_simplejwt',
     'users.apps.UsersConfig',
     'ckeditor',
     'ckeditor_uploader',
+    'blog.apps.BlogConfig',
+    'package.apps.PackageConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -154,7 +157,7 @@ CORS_ALLOWED_ORIGINS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-#inside media folder to upload images inside the ckeditor textfield
+# inside media folder to upload images inside the ckeditor textfield
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 # Swapped out the default Django auth.User to CustomUser
@@ -165,3 +168,8 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(hours=4),
 }
+
+# Debug Toolbar is shown only if your IP address is listed
+INTERNAL_IPS = [
+    '127.0.0.1',
+]

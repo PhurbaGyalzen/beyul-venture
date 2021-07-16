@@ -3,15 +3,13 @@ from .customvalidators import validate_clap
 from datetime import datetime, timezone
 
 from django.db import models
+from django.conf import settings
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth import get_user_model
 
 from mptt.models import MPTTModel, TreeForeignKey
 from ckeditor_uploader.fields import RichTextUploadingField
-
-User = get_user_model()  # User is now the CustomUser
 
 
 STATUS = (
@@ -49,9 +47,9 @@ class Blog(models.Model):
         _('Descripiton'), max_length=500, help_text=_('Write a short description about your post'), blank=True)
     tags = models.ManyToManyField(Tag, help_text=_(
         'choose suitable tags for your blog'), related_name='post')
-    # content = models.TextField(
-    #     _('content'), help_text=_('Put your actual content here.'))
-    content = RichTextUploadingField(blank=True,null=True)
+
+    content = RichTextUploadingField(_('content'), help_text=_(
+        'Put your actual content here.'), blank=True, null=True)
 
     created_on = models.DateTimeField(_('create on'), auto_now_add=True)
     updated_on = models.DateTimeField(_('update_on'), auto_now=True)
@@ -63,7 +61,7 @@ class Blog(models.Model):
                                   null=True
                                   )
     author = models.ForeignKey(
-        User, related_name="post", on_delete=models.CASCADE)
+        settings.AUTH_USER_MODEL, related_name="post", on_delete=models.CASCADE)
     status = models.IntegerField(choices=STATUS, help_text=_(
         'publish or draft your blog (default=publish)'), default=1)
 
@@ -84,7 +82,7 @@ class Blog(models.Model):
 
 class Comment(MPTTModel):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='comments')
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='comments')
     blog = models.ForeignKey(
         Blog, on_delete=models.CASCADE, related_name='comments')
     body = models.TextField()
@@ -105,7 +103,7 @@ class Clap(models.Model):
         _('count'), validators=[validate_clap]
     )
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="claps")
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="claps")
     blog = models.ForeignKey(
         Blog, on_delete=models.CASCADE, related_name="claps")
 
