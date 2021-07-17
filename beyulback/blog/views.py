@@ -23,7 +23,7 @@ class CustomObtainTokenPairView(TokenObtainPairView):
 
 
 class BlogView(viewsets.ModelViewSet):
-    queryset = Blog.objects.all()
+    queryset = Blog.objects.prefetch_related('author', 'tags',).all()
     serializer_class = BlogSerializer
     # access the view functions,if a valid token is provided
     authentication_classes = [JWTAuthentication]
@@ -41,12 +41,13 @@ class TagViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class CommentViewSet(viewsets.ModelViewSet):
-    queryset = Comment.objects.all()
+    queryset = Comment.objects.prefetch_related(
+        'user', 'blog', 'parent',).all()
     serializer_class = CommentSerializer
     pagination_class = RemovePageNumberPagination
 
 
 class ClapViewSet(viewsets.ModelViewSet):
-    queryset = Clap.objects.all()
+    queryset = Clap.objects.select_related('user', 'blog',).all()
     serializer_class = ClapSerializer
     pagination_class = RemovePageNumberPagination
