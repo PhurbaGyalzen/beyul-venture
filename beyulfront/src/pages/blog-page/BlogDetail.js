@@ -91,18 +91,20 @@ const formatDate = (datetime) => {
 }
 
 const BlogDetail = (props) => {
-    const { blog_id } = useParams()
+    const { blogid } = useParams()
     const classes = blogStyles()
     const [blog, setBlog] = useState([])
     const [author, setAuthor] = useState([])
     // const resp = await ajax('/api/blog/' + blog_id + '/')
+    
     useEffect(async () => {
         const apiData = await ajax(
-            '/api/blog/mardi-himal-trek-travel-blog-in-the-shadow-of-the/',
+            '/api/blog/'+blogid+'/',
         )
         setBlog(apiData)
         const authorData = await ajax(apiData.author)
         setAuthor(authorData)
+        console.log(blogid);
     }, [])
 
     if (blog) {
@@ -111,7 +113,7 @@ const BlogDetail = (props) => {
                 <Container
                     maxWidth='xl'
                     style={{
-                        background: `linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("/static/images/annapurna.jpg")`,
+                        backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("${blog.thumbnail}")`,
                         height: '100vh',
                         padding: '0',
 
@@ -128,7 +130,7 @@ const BlogDetail = (props) => {
                                     align='left'
                                     className={classes.articleTitle}
                                 >
-                                    {blog.description}
+                                    {blog.title}
                                 </Typography>
                             </div>
                             <div className={classes.articleInfo}>
