@@ -32,10 +32,19 @@ const Rim = styled.img`
     left: 0;
 `
 
+const directions = ['E', 'W', 'N', 'S']
+const getRandomDegree = () => {
+    const deg = Math.floor(Math.random() * 361)
+    return deg.toString() + '°' + directions[deg % 4]
+}
+
 const Compass = (props) => {
     const needleRef = useRef(null)
+    const compassRef = useRef(null)
     const [needle, setNeedle] = useState(null)
     const [angle, setAngle] = useState(1)
+    const [randomDegree, setRandomDegree] = useState('404°N')
+    const [intervalID, setIntervalID] = useState()
     const mul = 300
     const [middlePoints, setMiddlePoints] = useState([])
 
@@ -55,10 +64,23 @@ const Compass = (props) => {
         ])
     }, [needle])
 
+    useEffect(() => {
+        compassRef.current.addEventListener('transitionstart', () => {
+            const intId = setInterval(() => {
+                setRandomDegree(getRandomDegree())
+            }, 100)
+            setIntervalID((i) => {
+                // not inside a cleanup func cuz it requires variable `i`
+                clearInterval(i)
+                return intId
+            })
+        })
+    }, [])
+
     const animate = (event) => {
+        let degree
         const diffX = event.movementX
         const diffY = event.movementY
-        let degree
         if (Math.abs(diffY) >= Math.abs(diffX)) {
             if (
                 (diffY >= 0 && event.clientX >= middlePoints[0]) ||
@@ -85,16 +107,25 @@ const Compass = (props) => {
         setAngle(degree)
     }
 
+    const stopAnimation = () => {
+        clearInterval(intervalID)
+        // setRandomDegree('404°N')
+    }
+
     return (
         <CompassContainer>
-            <CompassNode onMouseMove={animate}>
+            <CompassNode
+                ref={compassRef}
+                onMouseMove={animate}
+                onTransitionEnd={stopAnimation}
+            >
                 <Needle
                     ref={needleRef}
                     src='https://maptia.imgix.net/assets/images/404/compass-arrow.png?w=300&dpr=1.5&cs=srgb'
                 />
                 <Rim src='https://maptia.imgix.net/assets/images/404/compass-rim.png?w=300&dpr=1.5&cs=srgb' />
             </CompassNode>
-            <CompassDegree>404°N</CompassDegree>
+            <CompassDegree>{randomDegree}</CompassDegree>
         </CompassContainer>
     )
 }

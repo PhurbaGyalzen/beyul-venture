@@ -260,7 +260,11 @@ const AllComments = (props) => {
         <>
             {flatComments.map((comment) => {
                 return (
-                    <Comment indent={2 * comment.indent} comment={comment} />
+                    <Comment
+                        key={comment.id}
+                        indent={2 * comment.indent}
+                        comment={comment}
+                    />
                 )
             })}
         </>

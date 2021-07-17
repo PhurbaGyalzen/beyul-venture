@@ -16,6 +16,7 @@ const Wrapper = styled(Container)`
 
 const Helptext = styled(Typography)`
     color: white;
+    padding-top: 1rem;
     text-shadow: 0px 0px 1px black;
 `
 

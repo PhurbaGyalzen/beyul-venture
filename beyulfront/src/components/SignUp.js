@@ -17,7 +17,7 @@ import Copyright from 'components/Copyright'
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    paddingBottom:'3rem',
+    paddingBottom: '3rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -112,7 +112,7 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
-          <Grid container justify='flex-end'>
+          <Grid container justifyContent='flex-end'>
             <Grid item>
               <Link href='/sign-in' variant='body2'>
                 Already have an account? Sign in

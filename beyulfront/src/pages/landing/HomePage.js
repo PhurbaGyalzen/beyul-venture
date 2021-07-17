@@ -184,7 +184,11 @@ const HomePage = () => {
                     >
                         Recommended Destinations
                     </Typography>
-                    <Grid container justify='space-evenly' alignItems='center'>
+                    <Grid
+                        container
+                        justifyContent='space-evenly'
+                        alignItems='center'
+                    >
                         {places.map((place) => {
                             return (
                                 <Grid key={place.id} item>

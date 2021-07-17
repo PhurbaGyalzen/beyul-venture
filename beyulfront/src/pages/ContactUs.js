@@ -178,7 +178,7 @@ export default function ContactUs() {
                     className={classes.secondRow}
                     style={{ backgroundColor: '#888888' }}
                 >
-                    <Grid xs={12} md={5} sm={5}>
+                    <Grid item xs={12} md={5} sm={5}>
                         <Card
                             className={classes.contactCard}
                             variant='outlined'
