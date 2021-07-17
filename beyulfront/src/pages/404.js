@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
-import bg404 from 'img/404 (1).jpg'
-// import bg404 from 'img/404 (4).jpg'
+import bg404 from 'img/404 (4).jpg'
 
 const CompassContainer = styled.div`
     height: 100vh;
