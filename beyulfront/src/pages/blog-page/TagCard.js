@@ -45,6 +45,12 @@ const cardstyles = makeStyles((theme)=>({
       }
 }))
 
+const formatDate = (datetime) => {
+    let toConvert = new Date(datetime)
+    return `${toConvert.toLocaleString('default', {
+        month: 'long',
+    })} ${toConvert.getDate()}, ${toConvert.getFullYear()}`
+}
 
 export const TagCard = (props) => {
     const classes = cardstyles();
@@ -62,7 +68,7 @@ export const TagCard = (props) => {
                     <Typography align='left' 
                     className={classes.dateStyle} 
                     gutterBottom>
-                        {props.data.created_on}
+                        {formatDate(props.data.created_on)}
                     </Typography>
                     <Typography 
                     align='left' 

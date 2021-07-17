@@ -157,7 +157,19 @@ export const BlogTag = () => {
                 'he name Ilam is derived from the Limbu language in which “Ii” means twisted and “Lam” means road. Ilam was one of the ten self ruling states of Limbuwan before the unification of Nepal, its ruler King Hangshu Phuba Lingdom of Lingdom dynasty ruled Ilam as a confederate state of Limbuwan until 1813 AD. The treaty between the other Limbuwan states and the King of Gorkha (Gorkha-Limbuwan Treaty of 1774 AD) and the conflict of Gorkha and Sikkim led to the unification of Ilam with Gorkha. Ilam was the last of the ten kingdoms of Limbuwan to join the union of Nepal. The King of Gorkha gave the ruler of Ilam full autonomy to rule and the right of Kipat. Ilam was an independent Limbu kingdom until 1813 CE/1869 BS.',
         },
     ])
-    
+
+    const [tagData,setTagData] = useState([]);
+
+    useEffect(async () => {
+        const tagApi = await ajax('/api/tag/adventure/')
+        setTagData(tagApi);
+        setBlogData(tagApi.posts);
+        console.log(tagApi);
+    }  
+        
+        ,[])
+
+
     const classes = blogStyles();
 
     return (
@@ -198,7 +210,7 @@ export const BlogTag = () => {
 
                 <Grid container spacing={4} align='center'>
                     {blogData.map((data) => {
-                        return <TagCard key={data.id} data={data} />
+                        return <TagCard key={data.slug} data={data} />
                     })}
                 </Grid>
               </Container>
