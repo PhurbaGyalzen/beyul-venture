@@ -134,7 +134,10 @@ const BlogDetail = (props) => {
                             <div className={classes.articleInfo}>
                                 <span>
                                     By:{' '}
-                                    <Link className={classes.authorStyle}>
+                                    <Link
+                                        to='/jaikant'
+                                        className={classes.authorStyle}
+                                    >
                                         {author.email}
                                     </Link>
                                 </span>
@@ -150,7 +153,7 @@ const BlogDetail = (props) => {
                     <Container
                         className={classes.blogContainer}
                         dangerouslySetInnerHTML={{ __html: blog.content }}
-                    ></Container>
+                    />
                 </Box>
 
                 <Divider
