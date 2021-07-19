@@ -7,7 +7,8 @@ from blog.views import (
 )
 
 from users.views import(
-    UserViewSet
+    UserViewSet,
+    RegistrationAPIView,
 )
 
 from django.urls import path, include
@@ -28,9 +29,12 @@ router.register(r'clap', ClapViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('api/token/', CustomObtainTokenPairView.as_view(),
-         name='token_obtain_pair'),
+    # user this .../api/login/ to get access tokens
+    path('api/login/', CustomObtainTokenPairView.as_view(),
+         name='login'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    # register new users using .../api/register/ endpoint
+    path('api/register/', RegistrationAPIView.as_view(), name='register'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
