@@ -1,10 +1,9 @@
 // All dependences import
-import { Container, makeStyles } from '@material-ui/core'
+import { Container, makeStyles, Card,CardContent,CardMedia, CardActions } from '@material-ui/core'
 import { Box } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import { Grid } from '@material-ui/core'
-import { Card } from '@material-ui/core'
-import { CardContent } from '@material-ui/core'
+
 import { blue, grey } from '@material-ui/core/colors'
 import { Button } from '@material-ui/core'
 import Faq from '../pages/faq/Faq'
@@ -15,6 +14,7 @@ import LocalPhoneIcon from '@material-ui/icons/LocalPhone'
 import EmailIcon from '@material-ui/icons/Email'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import InstagramIcon from '@material-ui/icons/Instagram'
+import TwitterIcon from '@material-ui/icons/Twitter'
 import WhatsAppIcon from '@material-ui/icons/WhatsApp'
 import YouTubeIcon from '@material-ui/icons/YouTube'
 import LockIcon from '@material-ui/icons/Lock'
@@ -553,10 +553,323 @@ export default function ContactUs() {
 
 
                 {/* second row  our team*/}
-                <Grid container>
-                    <Grid item>
+                <Grid container justifyContent='space-evenly' style={{backgroundColor:'#FFE8DF'}} >
+
+
+                    <Grid item xs={12} sm={12} md={12} style={{paddingTop:'1%',paddingBottom:'1%'}} align='center'>
+
+                        <Typography variant='h5' style={{color:'Black'}}>
+                            Meet Our Team
+
+                        </Typography>
+                        
+                    </Grid>
+                    {/* nischal */}
+                    <Grid item md={2}  sm={5} xs={12} style={{paddingBottom:'2%'}}>
+
+                    
+                        <Card>
+                            <CardMedia
+                            image={nischalImg}
+                            style={{ height: '10rem', width: '100%' }}
+                            />
+
+                            
+                            <CardContent>
+                                <Box align='Center'>
+                                    <Typography  variant='h9' color='Primary'>
+                                        CEO
+                                    </Typography>
+                                </Box>
+                                <Box align='Center' fontWeight='500'>
+                                    <Typography variant='h8'  >
+                                        Nischal Khatri
+                                    </Typography>
+                                </Box>
+                                <Box align='Center' fontWeight='Light'>
+                                    <Typography  variant='h9'>
+                                    Lorem Ipsum has been the industry's standard dummy
+                                    text ever since the 1500s, scrambled it to make a
+                                    type specimen book.
+                                    </Typography>
+                                </Box>
+
+                            </CardContent>
+                            
+                                <Box align='Center' pb={1}>
+                                    <Link href='#' style={{paddingRight:'4%'}}>
+                                        <FacebookIcon
+                                            fontSize='small'
+                                            style={{ color: '#4267B2' }}
+                                        />
+                                    </Link>
+                                    <Link href='#' style={{paddingRight:'4%'}}>
+                                        <TwitterIcon
+                                            fontSize='small'
+                                            style={{ color: '#1DA1F2' }}
+                                        />
+                                    </Link>
+                                    <Link href='#' style={{paddingRight:'4%'}}>
+                                        <InstagramIcon
+                                            fontSize='small'
+                                            style={{ color: '#DD2A7B' }}
+                                         />
+                                    </Link>
+                                </Box>
+
+                            
+                            
+                        </Card>
+
 
                     </Grid>
+
+                    {/* nishan */}
+                    <Grid item md={2}  sm={5} xs={12} style={{paddingBottom:'2%'}}> 
+
+                    
+                        <Card>
+                            <CardMedia
+                            image={nishanImg}
+                            style={{ height: '10rem', width: '100%' }}
+                            />
+
+                            
+                            <CardContent>
+                                <Box align='Center'>
+                                    <Typography  variant='h9' color='Primary'>
+                                        Backend Developer
+                                    </Typography>
+                                </Box>
+                                <Box align='Center' fontWeight='500'>
+                                    <Typography variant='h8'  >
+                                        Nishan Thapa
+                                    </Typography>
+                                </Box>
+                                <Box align='Center' fontWeight='Light'>
+                                    <Typography  variant='h9'>
+                                    Lorem Ipsum has been the industry's standard dummy
+                                    text ever since the 1500s, scrambled it to make a
+                                    type specimen book.
+                                    </Typography>
+                                </Box>
+
+                            </CardContent>
+                            
+                                <Box align='Center' pb={1}>
+                                    <Link href='#' style={{paddingRight:'4%'}}>
+                                        <FacebookIcon
+                                            fontSize='small'
+                                            style={{ color: '#4267B2' }}
+                                        />
+                                    </Link>
+                                    <Link href='#' style={{paddingRight:'4%'}}>
+                                        <TwitterIcon
+                                            fontSize='small'
+                                            style={{ color: '#1DA1F2' }}
+                                        />
+                                    </Link>
+                                    <Link href='#' style={{paddingRight:'4%'}}>
+                                        <InstagramIcon
+                                            fontSize='small'
+                                            style={{ color: '#DD2A7B' }}
+                                         />
+                                    </Link>
+                                </Box>
+
+                            
+                            
+                        </Card>
+
+
+                    </Grid>
+
+                    {/* phurba */}
+                    <Grid item md={2} md={2}  sm={5} xs={12} style={{paddingBottom:'2%'}}>
+
+                    
+                        <Card>
+                            <CardMedia
+                            image={phurbaImg}
+                            style={{ height: '10rem', width: '100%' }}
+                            />
+
+                            
+                            <CardContent>
+                                <Box align='Center'>
+                                    <Typography  variant='h9' color='Primary'>
+                                        Backend Developer
+                                    </Typography>
+                                </Box>
+                                <Box align='Center' fontWeight='500'>
+                                    <Typography variant='h8'  >
+                                        Phurba Gyalzen Sherpa 
+                                    </Typography>
+                                </Box>
+                                <Box align='Center' fontWeight='Light'>
+                                    <Typography  variant='h9'>
+                                    Lorem Ipsum has been the industry's standard dummy
+                                    text ever since the 1500s, scrambled it to make a
+                                    type specimen book.
+                                    </Typography>
+                                </Box>
+
+                            </CardContent>
+                            
+                                <Box align='Center' pb={1}>
+                                    <Link href='#' style={{paddingRight:'4%'}}>
+                                        <FacebookIcon
+                                            fontSize='small'
+                                            style={{ color: '#4267B2' }}
+                                        />
+                                    </Link>
+                                    <Link href='#' style={{paddingRight:'4%'}}>
+                                        <TwitterIcon
+                                            fontSize='small'
+                                            style={{ color: '#1DA1F2' }}
+                                        />
+                                    </Link>
+                                    <Link href='#' style={{paddingRight:'4%'}}>
+                                        <InstagramIcon
+                                            fontSize='small'
+                                            style={{ color: '#DD2A7B' }}
+                                         />
+                                    </Link>
+                                </Box>
+
+                            
+                            
+                        </Card>
+
+
+                    </Grid>
+
+
+
+                    {/* sunil */}
+                    <Grid item md={2}  sm={5} xs={12} style={{paddingBottom:'2%'}}>
+
+                    
+                        <Card>
+                            <CardMedia
+                            image={sunilImg}
+                            style={{ height: '10rem', width: '100%' }}
+                            />
+
+                            
+                            <CardContent>
+                                <Box align='Center'>
+                                    <Typography  variant='h9' color='Primary'>
+                                        Frontend Developer
+                                    </Typography>
+                                </Box>
+                                <Box align='Center' fontWeight='500'>
+                                    <Typography variant='h8'  >
+                                        Sunil Tamang
+                                    </Typography>
+                                </Box>
+                                <Box align='Center' fontWeight='Light'>
+                                    <Typography  variant='h9'>
+                                    Lorem Ipsum has been the industry's standard dummy
+                                    text ever since the 1500s, scrambled it to make a
+                                    type specimen book.
+                                    </Typography>
+                                </Box>
+
+                            </CardContent>
+                            
+                                <Box align='Center' pb={1}>
+                                    <Link href='#' style={{paddingRight:'4%'}}>
+                                        <FacebookIcon
+                                            fontSize='small'
+                                            style={{ color: '#4267B2' }}
+                                        />
+                                    </Link>
+                                    <Link href='#' style={{paddingRight:'4%'}}>
+                                        <TwitterIcon
+                                            fontSize='small'
+                                            style={{ color: '#1DA1F2' }}
+                                        />
+                                    </Link>
+                                    <Link href='#' style={{paddingRight:'4%'}}>
+                                        <InstagramIcon
+                                            fontSize='small'
+                                            style={{ color: '#DD2A7B' }}
+                                         />
+                                    </Link>
+                                </Box>
+
+                            
+                            
+                        </Card>
+
+
+                    </Grid>
+
+
+                    {/* sanjib */}
+                    <Grid item md={2}  sm={5} xs={12} style={{paddingBottom:'2%'}}>
+
+                    
+                        <Card>
+                            <CardMedia
+                            image={sanjibImg}
+                            style={{ height: '10rem', width: '100%' }}
+                            />
+
+                            
+                            <CardContent>
+                                <Box align='Center'>
+                                    <Typography  variant='h9' color='Primary'>
+                                        Frontend Developer
+                                    </Typography>
+                                </Box>
+                                <Box align='Center' fontWeight='500'>
+                                    <Typography variant='h8'  >
+                                        Sanjib Limbu
+                                    </Typography>
+                                </Box>
+                                <Box align='Center' fontWeight='Light'>
+                                    <Typography  variant='h9'>
+                                    Lorem Ipsum has been the industry's standard dummy
+                                    text ever since the 1500s, scrambled it to make a
+                                    type specimen book.
+                                    </Typography>
+                                </Box>
+
+                            </CardContent>
+                            
+                                <Box align='Center' pb={1}>
+                                    <Link href='#' style={{paddingRight:'4%'}}>
+                                        <FacebookIcon
+                                            fontSize='small'
+                                            style={{ color: '#4267B2' }}
+                                        />
+                                    </Link>
+                                    <Link href='#' style={{paddingRight:'4%'}}>
+                                        <TwitterIcon
+                                            fontSize='small'
+                                            style={{ color: '#1DA1F2' }}
+                                        />
+                                    </Link>
+                                    <Link href='#' style={{paddingRight:'4%'}}>
+                                        <InstagramIcon
+                                            fontSize='small'
+                                            style={{ color: '#DD2A7B' }}
+                                         />
+                                    </Link>
+                                </Box>
+
+                            
+                            
+                        </Card>
+
+
+                    </Grid>
+
+
+
+
 
                 </Grid>
 
@@ -672,6 +985,8 @@ export default function ContactUs() {
                             className={classes.worldmap}
                         />
                     </Grid>
+
+                    
                 </Grid>
             </Box>
         </>
