@@ -106,9 +106,9 @@ const useStyles = makeStyles((theme) => ({
 
     textField: {
         width: '100%',
-        border: 0,
-        borderBottom: '2px solid black',
-        outline: 0,
+       
+        
+       
         marginBottom: 20,
     },
     askButton: {
@@ -173,7 +173,78 @@ export default function ContactUs() {
                 </Grid>
 
                 {/* Second Row */}
-                <Grid
+
+{/* 
+                <Grid container>
+                    <Grid item xs={12} md={4} sm={5}>
+                        <Card
+                                
+                                variant='outlined'
+                                elevation={3}
+                            >
+                                <CardContent>
+                                    <Typography
+                                        varinat='h5'
+                                        style={{
+                                            fontWeight: 'bold',
+                                            marginBottom: 5,
+                                        }}
+                                    >
+                                        CONTACT INFORMATION
+                                    </Typography>
+                                    <Divider />
+                                    <br />
+                                    <Typography>
+                                        <RoomIcon className={classes.icon} />
+                                        Thamel, Kathmandu, Nepal
+                                    </Typography>
+                                    <Typography>
+                                        <LocalPhoneIcon className={classes.icon} />
+                                        +977 9848859531
+                                    </Typography>
+                                    <Typography>
+                                        <EmailIcon className={classes.icon} />
+                                        <span style={{ color: 'blue' }}>
+                                            beyulventure@gmail.com
+                                        </span>
+                                    </Typography>
+                                </CardContent>
+                                <CardContent>
+                                    <Typography
+                                        varinat='h5'
+                                        style={{
+                                            fontWeight: 'bold',
+                                            marginBottom: 5,
+                                        }}
+                                    >
+                                        CONNECT WITH US
+                                    </Typography>
+                                    <Divider />
+                                    <br />
+                                    <FacebookIcon
+                                        fontSize='small'
+                                        className={classes.icon}
+                                    />
+                                    <InstagramIcon
+                                        fontSize='small'
+                                        className={classes.icon}
+                                    />
+                                    <WhatsAppIcon
+                                        fontSize='small'
+                                        className={classes.icon}
+                                    />
+                                    <YouTubeIcon
+                                        fontSize='small'
+                                        className={classes.icon}
+                                    />
+                                </CardContent>
+                            </Card>
+                            
+                    </Grid>
+
+
+                </Grid> */}
+                {/* <Grid
                     container
                     className={classes.secondRow}
                     style={{ backgroundColor: '#888888' }}
@@ -478,13 +549,23 @@ export default function ContactUs() {
                             </CardContent>
                         </Card>
                     </Grid>
+                </Grid> */}
+
+
+                {/* second row  our team*/}
+                <Grid container>
+                    <Grid item>
+
+                    </Grid>
+
                 </Grid>
 
                 {/* Third Row */}
                 <Grid
                     container
+                    justifyContent='center'
                     className={classes.thirdRow}
-                    style={{ backgroundColor: '#FFE8DF' }}
+                    style={{ backgroundColor: '#FFE8DF'}}
                 >
                     <Grid item className={classes.faq} xs={12} md={5} sm={5}>
                         <Typography variant='h4' className={classes.faqText}>
@@ -513,42 +594,23 @@ export default function ContactUs() {
                             sure to get back to you as soon as possible.
                         </Typography>
 
+
+                        {/* form */}
+                        
+
                         <form
                             noValidate
                             autoComplete='off'
                             className={classes.form}
                         >
-                            <TextField
-                                placeholder='name'
-                                name='name'
-                                id='name'
-                                className={classes.textField}
-                                required
-                            ></TextField>
-                            <TextField
-                                type='email'
-                                name='email'
-                                id='email'
-                                placeholder='email'
-                                className={classes.textField}
-                                required
-                            ></TextField>
-                            <TextField
-                                type='number'
-                                name='phone'
-                                id='phone'
-                                placeholder='phone'
-                                className={classes.textField}
-                                required
-                            ></TextField>
-                            <TextField
-                                type='message'
-                                multiline
-                                rows={4}
-                                placeholder='message'
-                                className={classes.textField}
-                                required
-                            ></TextField>
+                            <TextField className={classes.textField} style={{width:'49%', marginRight:'2%'}} id="firstName" label="First Name" variant="outlined" size='small'/>
+                            <TextField className={classes.textField} style={{width:'49%'}} id="lastName" label="Last Name" variant="outlined" size='small'/>
+                            <TextField className={classes.textField} id="email" label="Email" variant="outlined" size='small'/>
+                            <TextField className={classes.textField} id="phone" label="Phone" variant="outlined" size='small'/>
+                            <TextField className={classes.textField} id="outlined-basic" label="Messages"  multiline
+                                rows={5} variant="outlined" size='small'/>
+                            
+                           
                             <Button
                                 variant='outlined'
                                 size='large'
