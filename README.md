@@ -10,12 +10,12 @@
    > pip install -r requirements.txt
    ```
 
-3. Install Redis by following this [tutorial](https://www.youtube.com/watch?v=188Fy-oCw4w "redis installation tutorial"). Github repo for [redis on windows](https://github.com/microsoftarchive/redis/releases "windows redis")
+3. Install the latest version of Redis by following this [tutorial](https://www.youtube.com/watch?v=1psWME8UH_0 "redis installation tutorial").
 
-4. After setting up Redis, open a terminal and start redis server in background
+4. After setting up Redis, open a linux terminal and start redis server in background
 
    ```
-   > redis-server
+   $ redis-server
    ```
 
 5. Finally, run the Django development server in a new shell
