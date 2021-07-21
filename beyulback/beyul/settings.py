@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'blog.apps.BlogConfig',
     'package.apps.PackageConfig',
+    'cacheops',
 ]
 
 MIDDLEWARE = [
@@ -173,3 +174,28 @@ SIMPLE_JWT = {
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+# Redis Caching Settings
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": f"redis://redis:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+
+CACHEOPS_REDIS = "redis://localhost:6379/1"
+
+CACHEOPS_DEGRADE_ON_FAILURE = True
+
+CACHEOPS_DEFAULTS = {
+    'timeout': 60 * 60
+}
+
+CACHEOPS = {
+    'blog.*': {'ops': 'all', 'timeout': 60 * 60},
+    'users.*': {'ops': 'all', 'timeout': 60 * 60},
+}
