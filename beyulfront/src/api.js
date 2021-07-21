@@ -15,7 +15,7 @@ const post = async (path, body) => {
 }
 
 const storeJWT = async () => {
-    const data = await post('/api/token/', {
+    const data = await post('/api/login/', {
         email: 'admin@gmail.com',
         password: 'admin',
     })
