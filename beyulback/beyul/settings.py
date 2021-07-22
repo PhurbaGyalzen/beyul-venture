@@ -196,6 +196,6 @@ CACHEOPS_DEFAULTS = {
 }
 
 CACHEOPS = {
-    'blog.*': {'ops': 'all', 'timeout': 60 * 60},
-    'users.*': {'ops': 'all', 'timeout': 60 * 60},
+    'blog.*': {'ops': 'all'},
+    'users.*': {'ops': 'all'},
 }
