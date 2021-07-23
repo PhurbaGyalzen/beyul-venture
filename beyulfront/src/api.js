@@ -1,6 +1,6 @@
-let access = null,
-    refresh
-const tokenTimeout = 5
+let access = null
+let refresh
+const tokenTimeout = 5 // in mins
 let lastts = new Date().getTime()
 const origin = 'http://127.0.0.1:8000'
 
@@ -43,7 +43,7 @@ const refreshJWT = async () => {
     }
 }
 
-/*Pass either abs or relative url. If relative, use origin variable defined above.*/
+/*Pass either abs or relative url. If relative, uses origin variable defined above.*/
 const ajax = async (path, ...rest) => {
     if (path.indexOf('/') === 0) {
         path = origin + path
