@@ -82,7 +82,7 @@ class Blog(models.Model):
         if img.height > 1080 or img.width > 1920:
             output_size = (1920, 1080)
             img.thumbnail(output_size)  # preserves the image aspect ratio
-        img.save(self.thumbnail.path, optimize=True)
+        img.save(self.thumbnail.path, optimize=True, progressive=True)
 
     def __str__(self):
         return self.title
