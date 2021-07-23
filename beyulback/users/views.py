@@ -11,7 +11,11 @@ User = get_user_model()
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = User.objects.all()
+    queryset = User.objects.prefetch_related(
+        'post__tags',
+        'post__comments',
+        'post__claps'
+    ).all()
     serializer_class = UserSerializer
     pagination_class = RemovePageNumberPagination
 
