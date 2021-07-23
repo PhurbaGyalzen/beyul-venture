@@ -5,6 +5,8 @@ from django.utils.translation import gettext_lazy as _
 from django.core.mail import send_mail
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
+from PIL import Image
+
 
 class CustomUserManager(BaseUserManager):
 
@@ -85,3 +87,15 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+    def save(self, *args, **kwargs):
+        super(CustomUser, self).save(*args, **kwargs)
+
+        img = Image.open(self.profile_pic.path)
+        # resizing the image before saving it in file system
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.profile_pic.path, optimize=True)
+        else:
+            img.save(self.profile_pic.path, optimize=True)
