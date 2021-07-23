@@ -78,7 +78,7 @@ class Blog(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         img = Image.open(self.thumbnail.path)
-        # compressing the thumnail image for better latency and page reload
+        # compressing the thumbnail image for better latency and page reload
         if img.height > 1080 or img.width > 1920:
             output_size = (1080, 1920)
             img.thumbnail(output_size)
