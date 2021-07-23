@@ -29,7 +29,7 @@ router.register(r'clap', ClapViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    # user this .../api/login/ to get access tokens
+    # use this .../api/login/ to get access tokens
     path('api/login/', CustomObtainTokenPairView.as_view(),
          name='login'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
