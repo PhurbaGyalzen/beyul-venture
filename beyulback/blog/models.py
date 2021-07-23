@@ -80,8 +80,8 @@ class Blog(models.Model):
         img = Image.open(self.thumbnail.path)
         # compressing the thumbnail image for better latency and page reload
         if img.height > 1080 or img.width > 1920:
-            output_size = (1080, 1920)
-            img.thumbnail(output_size)
+            output_size = (1920, 1080)
+            img.thumbnail(output_size)  # preserves the image aspect ratio
         img.save(self.thumbnail.path, optimize=True)
 
     def __str__(self):
