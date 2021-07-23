@@ -2,6 +2,8 @@ from .customvalidators import validate_clap
 
 from datetime import datetime, timezone
 
+from PIL import Image
+
 from django.db import models
 from django.conf import settings
 from django.template.defaultfilters import slugify
@@ -72,9 +74,15 @@ class Blog(models.Model):
         return reverse('blog_detail', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
+        super(Blog, self).save(*args, **kwargs)
         if not self.slug:
             self.slug = slugify(self.title)
-        return super().save(*args, **kwargs)
+        img = Image.open(self.thumbnail.path)
+        # compressing the thumnail image for better latency and page reload
+        if img.height > 1080 or img.width > 1920:
+            output_size = (1080, 1920)
+            img.thumbnail(output_size)
+        img.save(self.thumbnail.path, optimize=True)
 
     def __str__(self):
         return self.title
