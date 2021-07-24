@@ -3,7 +3,7 @@ import { Container, makeStyles, Card,CardContent,CardMedia, CardActions } from '
 import { Box } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import { Grid } from '@material-ui/core'
-
+import { useState, useEffect } from 'react'
 import { blue, grey } from '@material-ui/core/colors'
 import { Button } from '@material-ui/core'
 import Faq from '../pages/faq/Faq'
@@ -17,7 +17,7 @@ import InstagramIcon from '@material-ui/icons/Instagram'
 import TwitterIcon from '@material-ui/icons/Twitter'
 import WhatsAppIcon from '@material-ui/icons/WhatsApp'
 import YouTubeIcon from '@material-ui/icons/YouTube'
-import LockIcon from '@material-ui/icons/Lock'
+
 import Avatar from '@material-ui/core/Avatar'
 import Link from '@material-ui/core/Link'
 
@@ -34,6 +34,8 @@ import sunilImg from 'img/sunil.png'
 //validation import
 import { Formik, Field, Form, useField } from 'formik'
 import * as yup from 'yup';
+import { ContactUsForm } from '../components/ContactUsForm'
+import { DeveloperCard } from '../components/DeveloperCard'
 
 //Defining CustomStyles for ContactUs Page
 const useStyles = makeStyles((theme) => ({
@@ -144,25 +146,79 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-const ValidatingTextField = ({...props}) => {
-    const[field,meta] = useField(props);
-    const errorText = meta.error && meta.touched ? meta.error: '';
-    return(
-        <TextField {...field} {...props} helperText={errorText} error={!!errorText}  />
-    ) 
-}
 
-const validationSchema = yup.object({
-    firstName: yup.string().max(50).required(),
-    lastName: yup.string().max(50).required(),
-    email: yup.string().email().required(),
-    phone: yup.number().required(),
-    messages: yup.string().required(),
-    });
 
 // ContactUs component
 export default function ContactUs() {
     const classes = useStyles()
+
+    const [devProfile,setDevProfile] =  useState([
+        {
+            id: 1,
+            name:"Nischal Khatri",
+            post: "FrontEnd Developer",
+            bio: `Lorem Ipsum has been the industry's standard dummy
+            text ever since the 1500s, scrambled it to make a
+            type specimen book.`,
+            image:nischalImg,
+            fb:"https://www.facebook.com/nischal.khatri.1",
+            instagram:"#",
+            twitter:"#"
+        },
+        {
+            id: 2,
+            name:"Nishan Thapa",
+            post: "Backend Developer",
+            bio: `Lorem Ipsum has been the industry's standard dummy
+            text ever since the 1500s, scrambled it to make a
+            type specimen book.`,
+            image:nishanImg,
+            fb:"#",
+            instagram:"https://www.instagram.com/n._.tc/",
+            twitter:"#"
+        },
+        {
+            id: 3,
+            name:"Phurba Gyalzen Sherpa",
+            post: "Backend Developer",
+            bio: `Lorem Ipsum has been the industry's standard dummy
+            text ever since the 1500s, scrambled it to make a
+            type specimen book.`,
+            image:phurbaImg,
+            fb:"https://www.facebook.com/Gyalzen.sherpa.360",
+            instagram:"#",
+            twitter:"#"
+        },
+        {
+            id: 1,
+            name:"Sunil Tamang",
+            post: "FrontEnd Developer",
+            bio: `Lorem Ipsum has been the industry's standard dummy
+            text ever since the 1500s, scrambled it to make a
+            type specimen book.`,
+            image:sunilImg,
+            fb:"https://www.facebook.com/suniltamangvlog/",
+            instagram:"#",
+            twitter:"#"
+        },
+        {
+            id: 1,
+            name:"Sanjib Limbu",
+            post: "Project Manager",
+            bio: `Lorem Ipsum has been the industry's standard dummy
+            text ever since the 1500s, scrambled it to make a
+            type specimen book.`,
+            image:sanjibImg,
+            fb:"https://www.facebook.com/sanjiv.limbu.92",
+            instagram:"#",
+            twitter:"#"
+        }
+
+    ]);
+
+
+
+
     return (
         <>
             <Box component='div' style={{ backgroundColor: '#F0F0F0' }}>
@@ -195,383 +251,6 @@ export default function ContactUs() {
 
                 {/* Second Row */}
 
-{/* 
-                <Grid container>
-                    <Grid item xs={12} md={4} sm={5}>
-                        <Card
-                                
-                                variant='outlined'
-                                elevation={3}
-                            >
-                                <CardContent>
-                                    <Typography
-                                        varinat='h5'
-                                        style={{
-                                            fontWeight: 'bold',
-                                            marginBottom: 5,
-                                        }}
-                                    >
-                                        CONTACT INFORMATION
-                                    </Typography>
-                                    <Divider />
-                                    <br />
-                                    <Typography>
-                                        <RoomIcon className={classes.icon} />
-                                        Thamel, Kathmandu, Nepal
-                                    </Typography>
-                                    <Typography>
-                                        <LocalPhoneIcon className={classes.icon} />
-                                        +977 9848859531
-                                    </Typography>
-                                    <Typography>
-                                        <EmailIcon className={classes.icon} />
-                                        <span style={{ color: 'blue' }}>
-                                            beyulventure@gmail.com
-                                        </span>
-                                    </Typography>
-                                </CardContent>
-                                <CardContent>
-                                    <Typography
-                                        varinat='h5'
-                                        style={{
-                                            fontWeight: 'bold',
-                                            marginBottom: 5,
-                                        }}
-                                    >
-                                        CONNECT WITH US
-                                    </Typography>
-                                    <Divider />
-                                    <br />
-                                    <FacebookIcon
-                                        fontSize='small'
-                                        className={classes.icon}
-                                    />
-                                    <InstagramIcon
-                                        fontSize='small'
-                                        className={classes.icon}
-                                    />
-                                    <WhatsAppIcon
-                                        fontSize='small'
-                                        className={classes.icon}
-                                    />
-                                    <YouTubeIcon
-                                        fontSize='small'
-                                        className={classes.icon}
-                                    />
-                                </CardContent>
-                            </Card>
-                            
-                    </Grid>
-
-
-                </Grid> */}
-                {/* <Grid
-                    container
-                    className={classes.secondRow}
-                    style={{ backgroundColor: '#888888' }}
-                >
-                    <Grid item xs={12} md={5} sm={5}>
-                        <Card
-                            className={classes.contactCard}
-                            variant='outlined'
-                            elevation={3}
-                        >
-                            <CardContent>
-                                <Typography
-                                    varinat='h5'
-                                    style={{
-                                        fontWeight: 'bold',
-                                        marginBottom: 5,
-                                    }}
-                                >
-                                    CONTACT INFORMATION
-                                </Typography>
-                                <Divider />
-                                <br />
-                                <Typography>
-                                    <RoomIcon className={classes.icon} />
-                                    Thamel, Kathmandu, Nepal
-                                </Typography>
-                                <Typography>
-                                    <LocalPhoneIcon className={classes.icon} />
-                                    +977 9848859531
-                                </Typography>
-                                <Typography>
-                                    <EmailIcon className={classes.icon} />
-                                    <span style={{ color: 'blue' }}>
-                                        beyulventure@gmail.com
-                                    </span>
-                                </Typography>
-                            </CardContent>
-                            <CardContent>
-                                <Typography
-                                    varinat='h5'
-                                    style={{
-                                        fontWeight: 'bold',
-                                        marginBottom: 5,
-                                    }}
-                                >
-                                    CONNECT WITH US
-                                </Typography>
-                                <Divider />
-                                <br />
-                                <FacebookIcon
-                                    fontSize='small'
-                                    className={classes.icon}
-                                />
-                                <InstagramIcon
-                                    fontSize='small'
-                                    className={classes.icon}
-                                />
-                                <WhatsAppIcon
-                                    fontSize='small'
-                                    className={classes.icon}
-                                />
-                                <YouTubeIcon
-                                    fontSize='small'
-                                    className={classes.icon}
-                                />
-                            </CardContent>
-                        </Card>
-                    </Grid>
-
-                    <Grid item xs={12} sm={7} md={7}>
-                        <Card
-                            className={classes.contactCard}
-                            variant='outlined'
-                            elevation={3}
-                            style={{ marginBottom: 50 }}
-                        >
-                            <CardContent>
-                                <Typography
-                                    variant='h5'
-                                    style={{
-                                        fontWeight: 'bold',
-                                        marginBottom: 15,
-                                    }}
-                                >
-                                    Meet our brilliant and knowledgable support
-                                    team
-                                </Typography>
-                                <Divider />
-                                <br />
-
-                                <Grid container>
-                                    <Grid
-                                        item
-                                        xs={12}
-                                        md={3}
-                                        sm={3}
-                                        style={{
-                                            marginRight: 25,
-                                            marginLeft: 20,
-                                            marginBottom: 25,
-                                        }}
-                                    >
-                                        <Card
-                                            style={{ padding: 10 }}
-                                            elevation={4}
-                                        >
-                                            <Avatar
-                                                alt='Nischal Khatri'
-                                                src={nischalImg}
-                                                className={classes.large}
-                                            />
-                                            <Link
-                                                style={{ fontSize: 12 }}
-                                                href='https://www.facebook.com/nischal.khatri.1'
-                                            >
-                                                Nischal Khatri
-                                            </Link>
-                                            <Typography
-                                                style={{ fontSize: 10 }}
-                                            >
-                                                +977/9801234567
-                                            </Typography>
-                                            <Typography
-                                                style={{
-                                                    fontSize: 10,
-                                                    color: 'blue',
-                                                }}
-                                            >
-                                                nischalkhatri@gmail.com
-                                            </Typography>
-                                        </Card>
-                                    </Grid>
-
-                                    <Grid
-                                        item
-                                        xs={12}
-                                        md={3}
-                                        sm={3}
-                                        style={{
-                                            marginRight: 25,
-                                            marginBottom: 25,
-                                            marginLeft: 20,
-                                        }}
-                                    >
-                                        <Card
-                                            style={{ padding: 10 }}
-                                            elevation={4}
-                                        >
-                                            <Avatar
-                                                alt='Nishan Thapa'
-                                                src={nishanImg}
-                                                className={classes.large}
-                                            />
-                                            <Link
-                                                style={{ fontSize: 12 }}
-                                                href='https://www.instagram.com/n._.tc/'
-                                            >
-                                                Nishan Thapa
-                                            </Link>
-                                            <Typography
-                                                style={{ fontSize: 10 }}
-                                            >
-                                                +977/9801234567
-                                            </Typography>
-                                            <Typography
-                                                style={{
-                                                    fontSize: 10,
-                                                    color: 'blue',
-                                                }}
-                                            >
-                                                nishanthapa@gmail.com
-                                            </Typography>
-                                        </Card>
-                                    </Grid>
-
-                                    <Grid
-                                        item
-                                        xs={12}
-                                        md={3}
-                                        sm={3}
-                                        style={{
-                                            marginRight: 25,
-                                            marginBottom: 25,
-                                            marginLeft: 20,
-                                        }}
-                                    >
-                                        <Card
-                                            style={{ padding: 10 }}
-                                            elevation={4}
-                                        >
-                                            <Avatar
-                                                alt='Phurba Gyalzen Sherpa'
-                                                src={phurbaImg}
-                                                className={classes.large}
-                                            />
-                                            <Link
-                                                style={{ fontSize: 12 }}
-                                                href='https://www.facebook.com/Gyalzen.sherpa.360'
-                                            >
-                                                Phurba Gyalzen Sherpa
-                                            </Link>
-                                            <Typography
-                                                style={{ fontSize: 10 }}
-                                            >
-                                                +977/9801234567
-                                            </Typography>
-                                            <Typography
-                                                style={{
-                                                    fontSize: 10,
-                                                    color: 'blue',
-                                                }}
-                                            >
-                                                phurbasherpa@gmail.com
-                                            </Typography>
-                                        </Card>
-                                    </Grid>
-
-                                    <Grid
-                                        item
-                                        xs={12}
-                                        md={3}
-                                        sm={3}
-                                        style={{
-                                            marginRight: 25,
-                                            marginLeft: 20,
-                                            marginBottom: 25,
-                                        }}
-                                    >
-                                        <Card
-                                            style={{ padding: 10 }}
-                                            elevation={4}
-                                        >
-                                            <Avatar
-                                                alt='Sanjib Limbu'
-                                                src={sanjibImg}
-                                                className={classes.large}
-                                            />
-                                            <Link
-                                                style={{ fontSize: 12 }}
-                                                href='https://www.facebook.com/sanjiv.limbu.92'
-                                            >
-                                                Sanjib Limbu
-                                            </Link>
-                                            <Typography
-                                                style={{ fontSize: 10 }}
-                                            >
-                                                +977/9801234567
-                                            </Typography>
-                                            <Typography
-                                                style={{
-                                                    fontSize: 10,
-                                                    color: 'blue',
-                                                }}
-                                            >
-                                                sanjiblimbu@gmail.com
-                                            </Typography>
-                                        </Card>
-                                    </Grid>
-
-                                    <Grid
-                                        item
-                                        xs={12}
-                                        md={3}
-                                        sm={3}
-                                        style={{
-                                            marginRight: 25,
-                                            marginBottom: 25,
-                                            marginLeft: 20,
-                                        }}
-                                    >
-                                        <Card
-                                            style={{ padding: 10 }}
-                                            elevation={4}
-                                        >
-                                            <Avatar
-                                                alt='Sunil Tamang'
-                                                src={sunilImg}
-                                                className={classes.large}
-                                            />
-                                            <Link
-                                                style={{ fontSize: 12 }}
-                                                href='https://www.facebook.com/suniltamangvlog/'
-                                            >
-                                                Sunil Tamang
-                                            </Link>
-                                            <Typography
-                                                style={{ fontSize: 10 }}
-                                            >
-                                                +977/9801234567
-                                            </Typography>
-                                            <Typography
-                                                style={{
-                                                    fontSize: 10,
-                                                    color: 'blue',
-                                                }}
-                                            >
-                                                suniltamang@gmail.com
-                                            </Typography>
-                                        </Card>
-                                    </Grid>
-                                </Grid>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                </Grid> */}
-
 
                 {/* second row  our team*/}
                 <Grid container justifyContent='space-evenly' style={{backgroundColor:'#FFE8DF'}} >
@@ -585,312 +264,11 @@ export default function ContactUs() {
                         </Typography>
                         
                     </Grid>
-                    {/* nischal */}
-                    <Grid item md={2}  sm={5} xs={12} style={{paddingBottom:'2%'}}>
-
                     
-                        <Card>
-                            <CardMedia
-                            image={nischalImg}
-                            style={{ height: '10rem', width: '100%' }}
-                            />
-
-                            
-                            <CardContent>
-                                <Box align='Center'>
-                                    <Typography  variant='h9' color='Primary'>
-                                        CEO
-                                    </Typography>
-                                </Box>
-                                <Box align='Center' fontWeight='500'>
-                                    <Typography variant='h8'  >
-                                        Nischal Khatri
-                                    </Typography>
-                                </Box>
-                                <Box align='Center' fontWeight='Light'>
-                                    <Typography  variant='h9'>
-                                    Lorem Ipsum has been the industry's standard dummy
-                                    text ever since the 1500s, scrambled it to make a
-                                    type specimen book.
-                                    </Typography>
-                                </Box>
-
-                            </CardContent>
-                            
-                                <Box align='Center' pb={1}>
-                                    <Link href='#' style={{paddingRight:'4%'}}>
-                                        <FacebookIcon
-                                            fontSize='small'
-                                            style={{ color: '#4267B2' }}
-                                        />
-                                    </Link>
-                                    <Link href='#' style={{paddingRight:'4%'}}>
-                                        <TwitterIcon
-                                            fontSize='small'
-                                            style={{ color: '#1DA1F2' }}
-                                        />
-                                    </Link>
-                                    <Link href='#' style={{paddingRight:'4%'}}>
-                                        <InstagramIcon
-                                            fontSize='small'
-                                            style={{ color: '#DD2A7B' }}
-                                         />
-                                    </Link>
-                                </Box>
-
-                            
-                            
-                        </Card>
-
-
-                    </Grid>
-
-                    {/* nishan */}
-                    <Grid item md={2}  sm={5} xs={12} style={{paddingBottom:'2%'}}> 
-
-                    
-                        <Card>
-                            <CardMedia
-                            image={nishanImg}
-                            style={{ height: '10rem', width: '100%' }}
-                            />
-
-                            
-                            <CardContent>
-                                <Box align='Center'>
-                                    <Typography  variant='h9' color='Primary'>
-                                        Backend Developer
-                                    </Typography>
-                                </Box>
-                                <Box align='Center' fontWeight='500'>
-                                    <Typography variant='h8'  >
-                                        Nishan Thapa
-                                    </Typography>
-                                </Box>
-                                <Box align='Center' fontWeight='Light'>
-                                    <Typography  variant='h9'>
-                                    Lorem Ipsum has been the industry's standard dummy
-                                    text ever since the 1500s, scrambled it to make a
-                                    type specimen book.
-                                    </Typography>
-                                </Box>
-
-                            </CardContent>
-                            
-                                <Box align='Center' pb={1}>
-                                    <Link href='#' style={{paddingRight:'4%'}}>
-                                        <FacebookIcon
-                                            fontSize='small'
-                                            style={{ color: '#4267B2' }}
-                                        />
-                                    </Link>
-                                    <Link href='#' style={{paddingRight:'4%'}}>
-                                        <TwitterIcon
-                                            fontSize='small'
-                                            style={{ color: '#1DA1F2' }}
-                                        />
-                                    </Link>
-                                    <Link href='#' style={{paddingRight:'4%'}}>
-                                        <InstagramIcon
-                                            fontSize='small'
-                                            style={{ color: '#DD2A7B' }}
-                                         />
-                                    </Link>
-                                </Box>
-
-                            
-                            
-                        </Card>
-
-
-                    </Grid>
-
-                    {/* phurba */}
-                    <Grid item md={2} md={2}  sm={5} xs={12} style={{paddingBottom:'2%'}}>
-
-                    
-                        <Card>
-                            <CardMedia
-                            image={phurbaImg}
-                            style={{ height: '10rem', width: '100%' }}
-                            />
-
-                            
-                            <CardContent>
-                                <Box align='Center'>
-                                    <Typography  variant='h9' color='Primary'>
-                                        Backend Developer
-                                    </Typography>
-                                </Box>
-                                <Box align='Center' fontWeight='500'>
-                                    <Typography variant='h8'  >
-                                        Phurba Gyalzen Sherpa 
-                                    </Typography>
-                                </Box>
-                                <Box align='Center' fontWeight='Light'>
-                                    <Typography  variant='h9'>
-                                    Lorem Ipsum has been the industry's standard dummy
-                                    text ever since the 1500s, scrambled it to make a
-                                    type specimen book.
-                                    </Typography>
-                                </Box>
-
-                            </CardContent>
-                            
-                                <Box align='Center' pb={1}>
-                                    <Link href='#' style={{paddingRight:'4%'}}>
-                                        <FacebookIcon
-                                            fontSize='small'
-                                            style={{ color: '#4267B2' }}
-                                        />
-                                    </Link>
-                                    <Link href='#' style={{paddingRight:'4%'}}>
-                                        <TwitterIcon
-                                            fontSize='small'
-                                            style={{ color: '#1DA1F2' }}
-                                        />
-                                    </Link>
-                                    <Link href='#' style={{paddingRight:'4%'}}>
-                                        <InstagramIcon
-                                            fontSize='small'
-                                            style={{ color: '#DD2A7B' }}
-                                         />
-                                    </Link>
-                                </Box>
-
-                            
-                            
-                        </Card>
-
-
-                    </Grid>
-
-
-
-                    {/* sunil */}
-                    <Grid item md={2}  sm={5} xs={12} style={{paddingBottom:'2%'}}>
-
-                    
-                        <Card>
-                            <CardMedia
-                            image={sunilImg}
-                            style={{ height: '10rem', width: '100%' }}
-                            />
-
-                            
-                            <CardContent>
-                                <Box align='Center'>
-                                    <Typography  variant='h9' color='Primary'>
-                                        Frontend Developer
-                                    </Typography>
-                                </Box>
-                                <Box align='Center' fontWeight='500'>
-                                    <Typography variant='h8'  >
-                                        Sunil Tamang
-                                    </Typography>
-                                </Box>
-                                <Box align='Center' fontWeight='Light'>
-                                    <Typography  variant='h9'>
-                                    Lorem Ipsum has been the industry's standard dummy
-                                    text ever since the 1500s, scrambled it to make a
-                                    type specimen book.
-                                    </Typography>
-                                </Box>
-
-                            </CardContent>
-                            
-                                <Box align='Center' pb={1}>
-                                    <Link href='#' style={{paddingRight:'4%'}}>
-                                        <FacebookIcon
-                                            fontSize='small'
-                                            style={{ color: '#4267B2' }}
-                                        />
-                                    </Link>
-                                    <Link href='#' style={{paddingRight:'4%'}}>
-                                        <TwitterIcon
-                                            fontSize='small'
-                                            style={{ color: '#1DA1F2' }}
-                                        />
-                                    </Link>
-                                    <Link href='#' style={{paddingRight:'4%'}}>
-                                        <InstagramIcon
-                                            fontSize='small'
-                                            style={{ color: '#DD2A7B' }}
-                                         />
-                                    </Link>
-                                </Box>
-
-                            
-                            
-                        </Card>
-
-
-                    </Grid>
-
-
-                    {/* sanjib */}
-                    <Grid item md={2}  sm={5} xs={12} style={{paddingBottom:'2%'}}>
-
-                    
-                        <Card>
-                            <CardMedia
-                            image={sanjibImg}
-                            style={{ height: '10rem', width: '100%' }}
-                            />
-
-                            
-                            <CardContent>
-                                <Box align='Center'>
-                                    <Typography  variant='h9' color='Primary'>
-                                        Frontend Developer
-                                    </Typography>
-                                </Box>
-                                <Box align='Center' fontWeight='500'>
-                                    <Typography variant='h8'  >
-                                        Sanjib Limbu
-                                    </Typography>
-                                </Box>
-                                <Box align='Center' fontWeight='Light'>
-                                    <Typography  variant='h9'>
-                                    Lorem Ipsum has been the industry's standard dummy
-                                    text ever since the 1500s, scrambled it to make a
-                                    type specimen book.
-                                    </Typography>
-                                </Box>
-
-                            </CardContent>
-                            
-                                <Box align='Center' pb={1}>
-                                    <Link href='#' style={{paddingRight:'4%'}}>
-                                        <FacebookIcon
-                                            fontSize='small'
-                                            style={{ color: '#4267B2' }}
-                                        />
-                                    </Link>
-                                    <Link href='#' style={{paddingRight:'4%'}}>
-                                        <TwitterIcon
-                                            fontSize='small'
-                                            style={{ color: '#1DA1F2' }}
-                                        />
-                                    </Link>
-                                    <Link href='#' style={{paddingRight:'4%'}}>
-                                        <InstagramIcon
-                                            fontSize='small'
-                                            style={{ color: '#DD2A7B' }}
-                                         />
-                                    </Link>
-                                </Box>
-
-                            
-                            
-                        </Card>
-
-
-                    </Grid>
-
-
-
-
+                    {/* creating profile card with DeveloperCard Component in Component */}
+                    {devProfile.map((data)=>{
+                        return <DeveloperCard key={data.id} data={data} />
+                    })}
 
                 </Grid>
 
@@ -930,126 +308,7 @@ export default function ContactUs() {
 
 
                         {/* form */}
-                        <Formik
-                            validateOnChange={false}
-                            validateOnBlur={false}
-                            initialValues={{ 
-                                firstName: '',
-                                lastName:'',
-                                email:'',
-                                phone: '',
-                                messages:'',
-                            }}
-                            validationSchema={validationSchema}
-                            onSubmit={(data, { setSubmitting, resetForm}) => {
-                                // validate(data);
-                                setSubmitting(true)
-                                //make async call
-                                console.log('Submit:', data)
-                                setSubmitting(false)
-                                resetForm()
-                            }}
-                        >
-                            {({
-                            values,
-                            errors,
-                            touched,
-                            isSubmitting,
-                            // handleChange,
-                            // handleBlur,
-                            handleSubmit,
-                        }) => (
-                            <Form className={classes.form}>
-                                
-                                <ValidatingTextField className={classes.textField} 
-                                style={{width:'49%', marginRight:'2%'}} 
-                                name="firstName" 
-                                label="First Name" 
-                                variant="outlined" size='small'/>
-
-                                <ValidatingTextField className={classes.textField} 
-                                style={{width:'49%'}} 
-                                name="lastName" 
-                                label="Last Name" 
-                                variant="outlined" 
-                                size='small'/>
-
-                                <ValidatingTextField 
-                                className={classes.textField} 
-                                name="email" 
-                                label="Email" 
-                                variant="outlined" 
-                                size='small'/>
-
-                                <ValidatingTextField 
-                                className={classes.textField} 
-                                name="phone" 
-                                label="Phone" 
-                                variant="outlined" 
-                                size='small'/>
-
-                                <ValidatingTextField 
-                                className={classes.textField} 
-                                name="messages" 
-                                id="outlined-basic" 
-                                label="Messages"  
-                                multiline rows={5} variant="outlined" size='small'/>
-                                 <Button
-                                    variant='outlined'
-                                    size='large'
-                                    className={classes.askButton}
-                                    disabled={isSubmitting}
-                                    type='submit'
-                                >
-                                    {' '}
-                                    CATAPULT YOUR MESSAGE TO BEYUL VENTURE{' '}
-                                </Button>
-                                <Typography variant='body2' color='textSecondary'>
-                                    <LockIcon
-                                        fontSize='small'
-                                        style={{ marginRight: 5, marginTop: 20 }}
-                                    />{' '}
-                                    We never share your private data.{' '}
-                                    <span style={{ color: 'blue' }}>
-                                        Privacy Policy
-                                    </span>
-                                </Typography>
-                            </Form>
-                        )}
-                        </Formik>
-
-                        {/* <form
-                            noValidate
-                            autoComplete='off'
-                            className={classes.form}
-                        >
-                            <TextField className={classes.textField} style={{width:'49%', marginRight:'2%'}} id="firstName" label="First Name" variant="outlined" size='small'/>
-                            <TextField className={classes.textField} style={{width:'49%'}} id="lastName" label="Last Name" variant="outlined" size='small'/>
-                            <TextField className={classes.textField} id="email" label="Email" variant="outlined" size='small'/>
-                            <TextField className={classes.textField} id="phone" label="Phone" variant="outlined" size='small'/>
-                            <TextField className={classes.textField} id="outlined-basic" label="Messages"  multiline
-                                rows={5} variant="outlined" size='small'/>
-                            
-                           
-                            <Button
-                                variant='outlined'
-                                size='large'
-                                className={classes.askButton}
-                            >
-                                {' '}
-                                CATAPULT YOUR MESSAGE TO BEYUL VENTURE{' '}
-                            </Button>
-                            <Typography variant='body2' color='textSecondary'>
-                                <LockIcon
-                                    fontSize='small'
-                                    style={{ marginRight: 5, marginTop: 20 }}
-                                />{' '}
-                                We never share your private data.{' '}
-                                <span style={{ color: 'blue' }}>
-                                    Privacy Policy
-                                </span>
-                            </Typography>
-                        </form> */}
+                        <ContactUsForm />
                     </Grid>
                 </Grid>
 
