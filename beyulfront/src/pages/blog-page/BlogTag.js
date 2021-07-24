@@ -3,6 +3,8 @@ import { Typography, Grid, Conatainer, Box, Container, makeStyles } from '@mater
 import { useParams } from 'react-router'
 import { TagCard } from './TagCard';
 
+
+
 const blogStyles = makeStyles((theme) => ({
     blogContainer: {
         maxWidth: '750px',
@@ -180,10 +182,10 @@ export const BlogTag = () => {
                 backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("/static/images/adventure.jpg")`,
                 height: '100vh',
                 padding: '0',
-
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundAttachment: 'fixed',
+                offset:'1',
             }}
           >
               <Container maxWidth='lg' mt={10} mb={10}>

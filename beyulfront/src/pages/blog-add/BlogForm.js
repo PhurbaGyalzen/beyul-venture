@@ -3,10 +3,18 @@ import {
     TextField,
     makeStyles,
     Button,
-    Checkbox
+    Checkbox,
+    FormControlLabel
 } from '@material-ui/core'
 
 import React from 'react'
+
+
+const MyRadio = ({label,...props}) =>{
+    return (
+        <FormControlLabel value="other" control={<Radio/>} label ={label} />
+    )
+}
 
 export const BlogForm = () => {
     return (

@@ -15,7 +15,7 @@ export const Footer = () => {
     return (
         <div>
             <footer>
-                <Box color='white'>
+                <Box color='white' mt={10}>
                     <Grid
                         container
                         justifyContent='space-around'

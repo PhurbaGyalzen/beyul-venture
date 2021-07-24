@@ -31,6 +31,10 @@ import phurbaImg from 'img/phurba.jpg'
 import sanjibImg from 'img/sanjib.jpg'
 import sunilImg from 'img/sunil.png'
 
+//validation import
+import { Formik, Field, Form, useField } from 'formik'
+import * as yup from 'yup';
+
 //Defining CustomStyles for ContactUs Page
 const useStyles = makeStyles((theme) => ({
     // firstRow
@@ -138,6 +142,23 @@ const useStyles = makeStyles((theme) => ({
         height: '100%',
     },
 }))
+
+
+const ValidatingTextField = ({...props}) => {
+    const[field,meta] = useField(props);
+    const errorText = meta.error && meta.touched ? meta.error: '';
+    return(
+        <TextField {...field} {...props} helperText={errorText} error={!!errorText}  />
+    ) 
+}
+
+const validationSchema = yup.object({
+    firstName: yup.string().max(50).required(),
+    lastName: yup.string().max(50).required(),
+    email: yup.string().email().required(),
+    phone: yup.number().required(),
+    messages: yup.string().required(),
+    });
 
 // ContactUs component
 export default function ContactUs() {
@@ -909,9 +930,95 @@ export default function ContactUs() {
 
 
                         {/* form */}
-                        
+                        <Formik
+                            validateOnChange={false}
+                            validateOnBlur={false}
+                            initialValues={{ 
+                                firstName: '',
+                                lastName:'',
+                                email:'',
+                                phone: '',
+                                messages:'',
+                            }}
+                            validationSchema={validationSchema}
+                            onSubmit={(data, { setSubmitting, resetForm}) => {
+                                // validate(data);
+                                setSubmitting(true)
+                                //make async call
+                                console.log('Submit:', data)
+                                setSubmitting(false)
+                                resetForm()
+                            }}
+                        >
+                            {({
+                            values,
+                            errors,
+                            touched,
+                            isSubmitting,
+                            // handleChange,
+                            // handleBlur,
+                            handleSubmit,
+                        }) => (
+                            <Form className={classes.form}>
+                                
+                                <ValidatingTextField className={classes.textField} 
+                                style={{width:'49%', marginRight:'2%'}} 
+                                name="firstName" 
+                                label="First Name" 
+                                variant="outlined" size='small'/>
 
-                        <form
+                                <ValidatingTextField className={classes.textField} 
+                                style={{width:'49%'}} 
+                                name="lastName" 
+                                label="Last Name" 
+                                variant="outlined" 
+                                size='small'/>
+
+                                <ValidatingTextField 
+                                className={classes.textField} 
+                                name="email" 
+                                label="Email" 
+                                variant="outlined" 
+                                size='small'/>
+
+                                <ValidatingTextField 
+                                className={classes.textField} 
+                                name="phone" 
+                                label="Phone" 
+                                variant="outlined" 
+                                size='small'/>
+
+                                <ValidatingTextField 
+                                className={classes.textField} 
+                                name="messages" 
+                                id="outlined-basic" 
+                                label="Messages"  
+                                multiline rows={5} variant="outlined" size='small'/>
+                                 <Button
+                                    variant='outlined'
+                                    size='large'
+                                    className={classes.askButton}
+                                    disabled={isSubmitting}
+                                    type='submit'
+                                >
+                                    {' '}
+                                    CATAPULT YOUR MESSAGE TO BEYUL VENTURE{' '}
+                                </Button>
+                                <Typography variant='body2' color='textSecondary'>
+                                    <LockIcon
+                                        fontSize='small'
+                                        style={{ marginRight: 5, marginTop: 20 }}
+                                    />{' '}
+                                    We never share your private data.{' '}
+                                    <span style={{ color: 'blue' }}>
+                                        Privacy Policy
+                                    </span>
+                                </Typography>
+                            </Form>
+                        )}
+                        </Formik>
+
+                        {/* <form
                             noValidate
                             autoComplete='off'
                             className={classes.form}
@@ -942,7 +1049,7 @@ export default function ContactUs() {
                                     Privacy Policy
                                 </span>
                             </Typography>
-                        </form>
+                        </form> */}
                     </Grid>
                 </Grid>
 

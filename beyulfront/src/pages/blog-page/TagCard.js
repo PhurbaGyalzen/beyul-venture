@@ -74,7 +74,7 @@ export const TagCard = (props) => {
                     align='left' 
                     className={classes.blogTitle} 
                     gutterBottom>
-                        <Link>
+                        <Link to={'/blog/'+props.data.slug}>
                             {props.data.title}
                         </Link>
                     </Typography>
