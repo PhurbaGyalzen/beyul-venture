@@ -18,7 +18,7 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
 
 class IsStaffOrAdminOrReadOnly(permissions.BasePermission):
     """
-    Allows http unsave methods like PUT, POST, PATCH and DELETE to 
+    Allows http unsafe methods like PUT, POST, PATCH and DELETE to 
     Staff Or Admin users only.
     """
 
