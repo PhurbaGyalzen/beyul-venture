@@ -25,6 +25,12 @@ class Tag(models.Model):
         'Enter your tag name here.'), max_length=200, unique=True)
     slug = models.SlugField(_('slug'), help_text=_(
         'Tag name will be default slug if you leave it blank.'), blank=True, unique=True)
+    background_img = models.ImageField(_('background image'),
+                                       default='tags/default_tag.jpg',
+                                       upload_to="tags",
+                                       help_text=_(
+        'Insert a background image for this tag.'),
+    )
 
     def get_absolute_url(self):
         return reverse('cateogry_detail', kwargs={'slug': self.slug})

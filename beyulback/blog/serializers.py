@@ -99,7 +99,7 @@ class TagSerializer(ReadOnlyModelSerializer):
 
     class Meta:
         model = Tag
-        fields = ['url', 'name', 'posts']
+        fields = ['url', 'name', 'background_img', 'posts']
         extra_kwargs = {
             'url': {'view_name': 'tag-detail', 'lookup_field': 'slug'}
         }
