@@ -1,4 +1,5 @@
 from .customvalidators import validate_clap
+from .ImageCompressor import compress
 
 from datetime import datetime, timezone
 
@@ -39,20 +40,7 @@ class Tag(models.Model):
         super(Tag, self).save(*args, **kwargs)
         if not self.slug:
             self.slug = slugify(self.name)
-        image_type = self.background_img.path.split(".")[1]
-        img = Image.open(self.background_img.path)
-
-        # compressing the background image for better latency and page reload
-        if img.height > 1080 or img.width > 1920:
-            output_size = (1920, 1080)
-            img.thumbnail(output_size)  # preserves the image aspect ratio
-
-        # changes the jpg as progressive and compress the quality upto 70%
-        if image_type in ('jpg', 'jpeg'):
-            img.save(self.background_img.path, optimize=True,
-                     quality=30, progressive=True)
-        elif image_type == 'png':
-            img.save(self.background_img.path, optimize=True)
+        compress(self.background_img.path, 30)
 
     def __str__(self):
         return self.name
@@ -97,12 +85,7 @@ class Blog(models.Model):
         super(Blog, self).save(*args, **kwargs)
         if not self.slug:
             self.slug = slugify(self.title)
-        img = Image.open(self.thumbnail.path)
-        # compressing the thumbnail image for better latency and page reload
-        if img.height > 1080 or img.width > 1920:
-            output_size = (1920, 1080)
-            img.thumbnail(output_size)  # preserves the image aspect ratio
-        img.save(self.thumbnail.path, optimize=True, progressive=True)
+        compress(self.thumbnail.path, 30)
 
     def __str__(self):
         return self.title
