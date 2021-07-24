@@ -36,9 +36,16 @@ class Tag(models.Model):
         return reverse('cateogry_detail', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
+        super(Tag, self).save(*args, **kwargs)
         if not self.slug:
             self.slug = slugify(self.name)
-        return super().save(*args, **kwargs)
+            
+        img = Image.open(self.background_img.path)
+        # compressing the background image for better latency and page reload
+        if img.height > 1080 or img.width > 1920:
+            output_size = (1920, 1080)
+            img.thumbnail(output_size)  # preserves the image aspect ratio
+        img.save(self.background_img.path, optimize=True, progressive=True)
 
     def __str__(self):
         return self.name
