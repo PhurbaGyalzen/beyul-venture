@@ -1,6 +1,7 @@
+import { useEffect } from 'react'
 import {
   BrowserRouter as Router,
-  Route,
+  Route as PathTo,
   Switch,
   useParams,
 } from 'react-router-dom'
@@ -22,9 +23,18 @@ import OurTeam from './pages/our-team/OurTeam'
 import { BlogTag } from 'pages/blog-page/BlogTag'
 import FourZeroFour from 'pages/404'
 // import { default as SignUp } from 'components/SignUpDialog'
+import ScrollToTop from 'components/ScrollToTop'
 import ajax from './api'
-
 window.ajax = ajax
+
+const Route = ({ ...args }) => {
+  return (
+    <>
+      <ScrollToTop />
+      <PathTo {...args} />
+    </>
+  )
+}
 
 const Routes = () => {
   const params = useParams()
@@ -32,7 +42,7 @@ const Routes = () => {
     <Switch>
       <Route exact path='/about' component={AboutUsPage} />
       <Route exact path='/package/:packageId'>
-        <PackageDetail packageId={params} />
+        <PackageDetail packageId={params} />}
       </Route>
       <Route exact path='/sign-up' component={SignUp} />
       <Route exact path='/sign-in' component={SignIn} />
