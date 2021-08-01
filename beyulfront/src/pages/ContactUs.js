@@ -1,5 +1,12 @@
 // All dependences import
-import { Container, makeStyles, Card,CardContent,CardMedia, CardActions } from '@material-ui/core'
+import {
+    Container,
+    makeStyles,
+    Card,
+    CardContent,
+    CardMedia,
+    CardActions,
+} from '@material-ui/core'
 import { Box } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import { Grid } from '@material-ui/core'
@@ -33,7 +40,7 @@ import sunilImg from 'img/sunil.png'
 
 //validation import
 import { Formik, Field, Form, useField } from 'formik'
-import * as yup from 'yup';
+import * as yup from 'yup'
 import { ContactUsForm } from '../components/ContactUsForm'
 import { DeveloperCard } from '../components/DeveloperCard'
 
@@ -112,9 +119,7 @@ const useStyles = makeStyles((theme) => ({
 
     textField: {
         width: '100%',
-       
-        
-       
+
         marginBottom: 20,
     },
     askButton: {
@@ -145,79 +150,72 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-
-
-
 // ContactUs component
 export default function ContactUs() {
     const classes = useStyles()
 
-    const [devProfile,setDevProfile] =  useState([
+    const [devProfile, setDevProfile] = useState([
         {
             id: 1,
-            name:"Nischal Khatri",
-            post: "FrontEnd Developer",
+            name: 'Nischal Khatri',
+            post: 'FrontEnd Developer',
             bio: `Lorem Ipsum has been the industry's standard dummy
             text ever since the 1500s, scrambled it to make a
             type specimen book.`,
-            image:nischalImg,
-            fb:"https://www.facebook.com/nischal.khatri.1",
-            instagram:"#",
-            twitter:"#"
+            image: nischalImg,
+            fb: 'https://www.facebook.com/nischal.khatri.1',
+            instagram: '#',
+            twitter: '#',
         },
         {
             id: 2,
-            name:"Nishan Thapa",
-            post: "Backend Developer",
+            name: 'Nishan Thapa',
+            post: 'Backend Developer',
             bio: `Lorem Ipsum has been the industry's standard dummy
             text ever since the 1500s, scrambled it to make a
             type specimen book.`,
-            image:nishanImg,
-            fb:"#",
-            instagram:"https://www.instagram.com/n._.tc/",
-            twitter:"#"
+            image: nishanImg,
+            fb: '#',
+            instagram: 'https://www.instagram.com/n._.tc/',
+            twitter: '#',
         },
         {
             id: 3,
-            name:"Phurba Gyalzen Sherpa",
-            post: "Backend Developer",
+            name: 'Phurba Gyalzen Sherpa',
+            post: 'Backend Developer',
             bio: `Lorem Ipsum has been the industry's standard dummy
             text ever since the 1500s, scrambled it to make a
             type specimen book.`,
-            image:phurbaImg,
-            fb:"https://www.facebook.com/Gyalzen.sherpa.360",
-            instagram:"#",
-            twitter:"#"
+            image: phurbaImg,
+            fb: 'https://www.facebook.com/Gyalzen.sherpa.360',
+            instagram: '#',
+            twitter: '#',
         },
         {
-            id: 1,
-            name:"Sunil Tamang",
-            post: "FrontEnd Developer",
+            id: 4,
+            name: 'Sunil Tamang',
+            post: 'FrontEnd Developer',
             bio: `Lorem Ipsum has been the industry's standard dummy
             text ever since the 1500s, scrambled it to make a
             type specimen book.`,
-            image:sunilImg,
-            fb:"https://www.facebook.com/suniltamangvlog/",
-            instagram:"#",
-            twitter:"#"
+            image: sunilImg,
+            fb: 'https://www.facebook.com/suniltamangvlog/',
+            instagram: '#',
+            twitter: '#',
         },
         {
-            id: 1,
-            name:"Sanjib Limbu",
-            post: "Project Manager",
+            id: 5,
+            name: 'Sanjib Limbu',
+            post: 'Project Manager',
             bio: `Lorem Ipsum has been the industry's standard dummy
             text ever since the 1500s, scrambled it to make a
             type specimen book.`,
-            image:sanjibImg,
-            fb:"https://www.facebook.com/sanjiv.limbu.92",
-            instagram:"#",
-            twitter:"#"
-        }
-
-    ]);
-
-
-
+            image: sanjibImg,
+            fb: 'https://www.facebook.com/sanjiv.limbu.92',
+            instagram: '#',
+            twitter: '#',
+        },
+    ])
 
     return (
         <>
@@ -251,25 +249,29 @@ export default function ContactUs() {
 
                 {/* Second Row */}
 
-
                 {/* second row  our team*/}
-                <Grid container justifyContent='space-evenly' style={{backgroundColor:'#FFE8DF'}} >
-
-
-                    <Grid item xs={12} sm={12} md={12} style={{paddingTop:'1%',paddingBottom:'1%'}} align='center'>
-
-                        <Typography variant='h5' style={{color:'Black'}}>
+                <Grid
+                    container
+                    justifyContent='space-evenly'
+                    style={{ backgroundColor: '#FFE8DF' }}
+                >
+                    <Grid
+                        item
+                        xs={12}
+                        sm={12}
+                        md={12}
+                        style={{ paddingTop: '1%', paddingBottom: '1%' }}
+                        align='center'
+                    >
+                        <Typography variant='h5' style={{ color: 'Black' }}>
                             Meet Our Team
-
                         </Typography>
-                        
                     </Grid>
-                    
+
                     {/* creating profile card with DeveloperCard Component in Component */}
-                    {devProfile.map((data)=>{
+                    {devProfile.map((data) => {
                         return <DeveloperCard key={data.id} data={data} />
                     })}
-
                 </Grid>
 
                 {/* Third Row */}
@@ -277,7 +279,7 @@ export default function ContactUs() {
                     container
                     justifyContent='center'
                     className={classes.thirdRow}
-                    style={{ backgroundColor: '#FFE8DF'}}
+                    style={{ backgroundColor: '#FFE8DF' }}
                 >
                     <Grid item className={classes.faq} xs={12} md={5} sm={5}>
                         <Typography variant='h4' className={classes.faqText}>
@@ -305,7 +307,6 @@ export default function ContactUs() {
                             contact us by telephone or email and we will be
                             sure to get back to you as soon as possible.
                         </Typography>
-
 
                         {/* form */}
                         <ContactUsForm />
@@ -351,8 +352,6 @@ export default function ContactUs() {
                             className={classes.worldmap}
                         />
                     </Grid>
-
-                    
                 </Grid>
             </Box>
         </>
