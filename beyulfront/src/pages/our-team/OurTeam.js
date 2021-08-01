@@ -14,9 +14,6 @@ import './index.css'
 
 
 // All images import
-import curve1 from 'img/wave1.svg'
-// import curve2 from 'img/curve4.svg'
-// import curve3 from 'img/curve3.svg'
 
 
 // ContactUs component
@@ -24,10 +21,7 @@ export default function OurTeam() {
     return (
         <>  
             <div className="topdiv"></div>
-            <img src={curve1} alt="curve svg image" className='curve1'/>
-            {/* <img src={curve2} alt="curve svg image" className='curve2'/>
-            <img src={curve3} alt="curve svg image" className='curve3'/> */}
-           
+            
         </>
     )
 }
