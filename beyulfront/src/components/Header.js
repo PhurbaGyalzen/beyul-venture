@@ -82,6 +82,7 @@ const Header = () => {
             <NavBtn to='/about'>About</NavBtn>
             <NavBtn to='/blog'>Blog</NavBtn>
             <NavBtn to='/contact-us'>Contact Us</NavBtn>
+            <NavBtn to='/our-team'>Team</NavBtn>
             <Button
               component={NavLink}
               to='/sign-up'
@@ -90,6 +91,16 @@ const Header = () => {
               size='medium'
             >
               Sign Up
+            </Button>
+
+            <Button
+              component={NavLink}
+              to='/sign-up'
+              variant='contained'
+              color='primary'
+              size='medium'
+            >
+              Log In
             </Button>
           </div>
         </Toolbar>

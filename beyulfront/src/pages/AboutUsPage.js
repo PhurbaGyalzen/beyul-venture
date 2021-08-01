@@ -326,7 +326,7 @@ export default function AboutUsPage() {
                 </Grid>
             </Box>
 
-            {/* footer */}
+        
         </>
     )
 }

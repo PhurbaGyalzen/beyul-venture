@@ -14,8 +14,10 @@ import Header from 'components/Header'
 import SignIn from 'components/SignIn'
 import SignUp from 'components/SignUp'
 import { AddBlog } from 'pages/blog-add/AddBlog'
-import { Footer } from 'components/Footer'
+// import { Footer } from 'components/Footer'
+import {Footer} from 'pages/footer/Footer'
 import ContactUs from 'pages/ContactUs.js'
+import OurTeam from './pages/our-team/OurTeam'
 import { BlogTag } from 'pages/blog-page/BlogTag'
 import FourZeroFour from 'pages/404'
 // import { default as SignUp } from 'components/SignUpDialog'
@@ -38,6 +40,7 @@ const Routes = () => {
       <Route exact path='/blog/tag/:tagname' component={BlogTag} />
       <Route exact path='/blog/:blogid' component={BlogDetail} />
       <Route exact path='/contact-us' component={ContactUs} />
+      <Route exact path='/our-team' component={OurTeam}/>
       <Route exact path='/'>
         <HomePage />
       </Route>
