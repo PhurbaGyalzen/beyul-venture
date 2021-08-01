@@ -1,5 +1,6 @@
 const origin = 'https://uat.esewa.com.np'
 const merchantCode = 'EPAYTEST'
+const KEY = 'paymentResp'
 
 const getEsewaLink = (
     price,
@@ -9,7 +10,11 @@ const getEsewaLink = (
     deliveryCharge = 0,
 ) => {
     const currLocation = window.location.href
-    const redirectURL = currLocation + '?paymentResp='
+    // dont optimise
+    const succRedirectURL = new URL(currLocation)
+    const failRedirectURL = new URL(currLocation)
+    succRedirectURL.searchParams.set(KEY, 'success')
+    failRedirectURL.searchParams.set(KEY, 'fail')
     const esewaURL = new URL(origin + '/epay/main')
     esewaURL.search = new URLSearchParams([
         ['amt', price],
@@ -19,8 +24,13 @@ const getEsewaLink = (
         ['tAmt', price + taxCharge + serviceCharge + deliveryCharge],
         ['pid', itemId],
         ['scd', merchantCode],
-        ['su', redirectURL + 'success'],
-        ['fu', redirectURL + 'fail'],
+        ['su', succRedirectURL],
+        ['fu', failRedirectURL],
     ])
+    // test username and password
+    // 9806800002
+    // Nepal@123
     return esewaURL
 }
+
+export { getEsewaLink }

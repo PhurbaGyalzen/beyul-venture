@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import toast from 'react-hot-toast'
+import { getEsewaLink } from 'utils/payment'
 import pck from 'img/pck_1.webp'
 
 const TwoColGrid = styled.div`
@@ -17,7 +18,7 @@ const Enquiry = styled.div`
   flex-wrap: wrap;
 `
 
-const BlueBtn = styled(Link)`
+const BlueBtn = styled('a')`
   background-color: #36c9f8;
   color: white;
   font-size: 1.2rem;
@@ -100,8 +101,8 @@ const PackageDetail = ({ packageId }) => {
           </ul>
         </div>
         <Enquiry>
-          <BlueBtn to='/package/1?paymentResp=fail'>Ask a question</BlueBtn>
-          <GreenBtn to='/package/1?paymentResp=success'>
+          <BlueBtn href='/package/1?paymentResp=fail'>Ask a question</BlueBtn>
+          <GreenBtn href={getEsewaLink(100, Math.random().toString())}>
             Book this tour
           </GreenBtn>
         </Enquiry>
