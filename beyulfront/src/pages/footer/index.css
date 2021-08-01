@@ -1,34 +1,30 @@
-
-.mainContainer{
+.mainContainer {
     /* background-color: #0C4C6E; */
-    background-color: #13181e;
+    /*background-color: #13181e;*/
     padding: 2.2rem 2.2rem 1rem 2.2rem;
-    height:auto;
+    height: auto;
 }
 
-.beyulLogo{
+.beyulLogo {
     /* color:#FFFC33; */
-    color:#c47d1e;
+    color: #c47d1e;
 }
 
-.box{
+.box {
     margin-bottom: 1rem;
     font-size: 1rem;
 }
 
-.links{
-    font-size:1rem;
-    line-height:2rem;
+.links {
+    font-size: 1rem;
+    line-height: 2rem;
 }
 
-.textHover{
-    color:#ffffff;
+.textHover {
+    color: #ffffff;
 }
 
-.textHover:hover{
-    color:#c47d1e;
-    cursor:pointer;
-    
+.textHover:hover {
+    color: #c47d1e;
+    cursor: pointer;
 }
-
-

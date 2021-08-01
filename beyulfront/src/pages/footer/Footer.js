@@ -12,16 +12,29 @@ import Copyright from 'components/Copyright'
 import Divider from '@material-ui/core/Divider'
 import TextField from '@material-ui/core/TextField'
 import { Button } from '@material-ui/core'
+import styled from 'styled-components'
 import './index.css'
 
 //All images import
 import visa from 'img/visa.png'
 import affilated from 'img/affilated.png'
+import footMount from 'img/footer_mountain.jpg'
+
+const FooterWithBg = styled.footer`
+    background-image: url(${footMount});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+`
+
+const DarkerBox = styled(Box)`
+    background-color: rgba(0, 0, 0, 0.38);
+`
 
 export const Footer = () => {
     return (
-        <footer>
-            <Box color='white' mt={10}>
+        <FooterWithBg>
+            <DarkerBox color='white' mt={10}>
                 <Grid
                     container
                     justifyContent='space-around'
@@ -394,7 +407,7 @@ export const Footer = () => {
                         </Box>
                     </Grid>
                 </Grid>
-            </Box>
-        </footer>
+            </DarkerBox>
+        </FooterWithBg>
     )
 }
