@@ -95,7 +95,7 @@ const Header = () => {
 
             <Button
               component={NavLink}
-              to='/sign-up'
+              to='/sign-in'
               variant='contained'
               color='primary'
               size='medium'

@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Copyright from 'components/Copyright'
+import { SignUpForm } from './SignUpForm'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -21,6 +22,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    paddingLeft:'1rem',
+    
+    [theme.breakpoints.down('lg')]: {
+      maxWidth: '400px'
+    },
+
   },
   avatar: {
     margin: theme.spacing(1),
@@ -33,94 +40,56 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  imgContainer:{
+    backgroundImage:'linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("/static/images/swayambhu.jpg")',
+    padding: '0',
+    width:'100%',
+    height:'100%',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100%',
+    [theme.breakpoints.down('md')]: {
+      height: '100%'
+    },
+  }
 }))
 
 export default function SignUp() {
   const classes = useStyles()
 
   return (
-    <Container component='main' maxWidth='xs'>
+    <Container component='main' maxWidth='md' style={{marginTop:'10vh'}}>
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component='h1' variant='h5'>
-          Sign up
-        </Typography>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete='fname'
-                name='firstName'
-                variant='outlined'
-                required
-                fullWidth
-                id='firstName'
-                label='First Name'
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant='outlined'
-                required
-                fullWidth
-                id='lastName'
-                label='Last Name'
-                name='lastName'
-                autoComplete='lname'
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant='outlined'
-                required
-                fullWidth
-                id='email'
-                label='Email Address'
-                name='email'
-                autoComplete='email'
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant='outlined'
-                required
-                fullWidth
-                name='password'
-                label='Password'
-                type='password'
-                id='password'
-                autoComplete='current-password'
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value='allowExtraEmails' color='primary' />}
-                label='I want to receive inspiration, marketing promotions and updates via email.'
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type='submit'
-            fullWidth
-            variant='contained'
-            color='primary'
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
-          <Grid container justifyContent='flex-end'>
-            <Grid item>
-              <Link href='/sign-in' variant='body2'>
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
+      <Grid container>
+        <Grid item xs={12} md={6}>
+          <div className={classes.imgContainer}>
+            <div style={{paddingTop:'70%',width:'100%',height:'100%'}}>
+              
+              <div style={{marginLeft:'1.5rem'}}>
+                <Typography align="left" style={{color:'#CEF0FF',fontSize:'2rem',fontWeight:'600'}}>
+                  <span style={{fontSize:"4rem", color:'white',fontWeight:'700'}}>Join Us</span> <br/>
+                  To an unforgettable Journey
+                </Typography>
+              </div>
+            </div>
+            
+          </div>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <div style={{display: 'flex',justifyContent:'center'}}>
+              <div className={classes.paper}>
+                <Avatar className={classes.avatar}>
+                  <LockOutlinedIcon />
+                </Avatar>
+                <Typography component='h1' variant='h5'>
+                  Sign up
+                </Typography>
+                <SignUpForm />
+            </div>
+          </div>
+        
+        </Grid>
+      </Grid>
+      
       {/* <Box mt={5}>
         <Copyright />
       </Box> */}
