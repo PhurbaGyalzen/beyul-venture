@@ -24,17 +24,7 @@
     color: #ffffff;
 }
 
-<<<<<<< HEAD
-.textHover:hover{
-    color:#c47d1e;
-    cursor:pointer;
-    border-bottom: 1px solid #c47d1e;
-    
-}
-
-=======
 .textHover:hover {
     color: #c47d1e;
     cursor: pointer;
 }
->>>>>>> e381b5aac063f565b197db1e6099a8a5408dbaf8
