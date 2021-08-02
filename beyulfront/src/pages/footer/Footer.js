@@ -28,7 +28,7 @@ const FooterWithBg = styled.footer`
 `
 
 const DarkerBox = styled(Box)`
-    background-color: rgba(0, 0, 0, 0.38);
+    background-color: rgba(19, 24, 30, 0.85);
 `
 
 export const Footer = () => {
