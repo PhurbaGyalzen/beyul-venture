@@ -137,7 +137,7 @@ export const Footer = () => {
                         <Grid item md={4} xs={11} sm={7} lg={4}>
                             <Box mb={{xs:5, sm:5, md:5}}>
                                 <Typography variant='h6' style={{fontSize:"1rem", fontWeight:"bold", lineHeight:"2rem"}}>
-                                    <EmailIcon fontSize='small' style={{marginRight:10, paddingTop:5}}/>
+                                    <EmailIcon fontSize='small' style={{marginRight:10, paddingTop:0}}/>
                                     Stay up to date on the latest from Beyul Venture
                                 </Typography>
 

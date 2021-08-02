@@ -28,7 +28,7 @@
 .textHover:hover{
     color:#c47d1e;
     cursor:pointer;
+    border-bottom: 1px solid #c47d1e;
     
 }
-
 
