@@ -1,4 +1,8 @@
+import { useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
+import toast from 'react-hot-toast'
+import { getEsewaLink } from 'utils/payment'
 import pck from 'img/pck_1.webp'
 
 const TwoColGrid = styled.div`
@@ -14,7 +18,7 @@ const Enquiry = styled.div`
   flex-wrap: wrap;
 `
 
-const BlueBtn = styled.button`
+const BlueBtn = styled('a')`
   background-color: #36c9f8;
   color: white;
   font-size: 1.2rem;
@@ -65,6 +69,17 @@ const getPackageInfo = (packageId) => {
 }
 
 const PackageDetail = ({ packageId }) => {
+  const loc = useLocation()
+  useEffect(() => {
+    if (loc.search) {
+      const paymentQuery = new URLSearchParams(loc.search).get('paymentResp')
+      if (paymentQuery === 'success') {
+        toast.success('Payment Successful!')
+      } else if (paymentQuery === 'fail') {
+        toast.error('Payment Failed. Please try again.')
+      }
+    }
+  })
   const packageInfo = getPackageInfo(packageId)
 
   return (
@@ -86,8 +101,10 @@ const PackageDetail = ({ packageId }) => {
           </ul>
         </div>
         <Enquiry>
-          <BlueBtn>Ask a question</BlueBtn>
-          <GreenBtn>Book this tour</GreenBtn>
+          <BlueBtn href='/package/1?paymentResp=fail'>Ask a question</BlueBtn>
+          <GreenBtn href={getEsewaLink(100, Math.random().toString())}>
+            Book this tour
+          </GreenBtn>
         </Enquiry>
       </div>
     </TwoColGrid>
