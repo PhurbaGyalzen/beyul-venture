@@ -33,18 +33,15 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     color:"#c47d1e",
-    fontSize:"1.5rem",
+    fontSize:"1.8rem",
     fontWeight:"bold",
-    letterSpacing:"0.125rem",
     marginLeft:"1.25rem"
   },
   
   links:{
     color:"#ffffff",
-    marginRight:"1.25rem",
-    fontWeight:"bold",
+    marginRight:"3.25rem",
     fontSize:"1rem",
-    width:"6rem",
     letterSpacing:"0.1rem",
     paddingTop:"0.625rem",
     '&:hover': {
@@ -59,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
     color:"#ffffff",
     boxShadow:0,
     marginRight:"1.25rem",
-    fontWeight:"bold",
     '&:hover': {
       color: "#ffffff",
       cursor:"pointer",
@@ -72,7 +68,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor:"#c47d1e",
     color:"#ffffff",
     marginRight:"1.25rem",
-    fontWeight:"bold",
+    borderRadius:"2rem",
+    width:"6.2rem",
     '&:hover': {
       color: "#ffffff",
       cursor:"pointer",
@@ -210,7 +207,7 @@ export default function ButtonAppBar() {
     <div className={classes.root} disableGutters>
       <AppBar position="fixed" className={classes[navRef.current]}>
         <Toolbar disableGutters>
-          <Typography variant="h6" className={classes.title} component="h1">
+          <Typography variant="h6" className={classes.title} component="h1" onClick="/">
             BEYUL VENTURE
           </Typography>
           <div className={classes.sectionDesktop}>
