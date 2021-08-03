@@ -242,7 +242,7 @@ export default function ButtonAppBar() {
           </div>
 
           <IconButton onClick={toggleDrawer} className={classes.menuIcon} edge="start" aria-label="menu">
-            <SortIcon />
+            <SortIcon fontSize="large"/>
           </IconButton>
 
           <Drawer anchor="left" variant="temporary" onClose={toggleDrawer} open={drawerOpen}>
