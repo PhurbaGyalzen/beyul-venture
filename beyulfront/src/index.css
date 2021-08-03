@@ -87,13 +87,13 @@ html::-webkit-scrollbar-track {
   background: linear-gradient(0deg, #77b6dd59, #f2af9775);
   /*border: 2px solid #7685a429;*/
 }
-
+/* 
 .transparentBg {
   background-color: rgba(10, 10, 10, 0) !important;
   transition: background-color 1s ease-in-out !important;
-}
+} */
 
-.nonTransparentBg {
+/* .nonTransparentBg {
   background-color: rgba(10, 10, 10, 0) !important;
   transition: background-color 2s ease-in-out !important;
-}
+}  */
