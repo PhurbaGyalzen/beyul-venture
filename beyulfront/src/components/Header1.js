@@ -105,7 +105,8 @@ const useStyles = makeStyles((theme) => ({
 
   appBarTransparent: {
     backgroundColor: 'rgba(10, 10, 10,0)',
-    transition: 'backgroundColor 1s easeInOut'
+    transition: 'backgroundColor 1s easeInOut',
+    boxShadow:'none'
   },
 
   appBarSolid: {

@@ -23,14 +23,14 @@ import OurTeam from './pages/our-team/OurTeam'
 import { BlogTag } from 'pages/blog-page/BlogTag'
 import FourZeroFour from 'pages/404'
 // import { default as SignUp } from 'components/SignUpDialog'
-// import ScrollToTop from 'components/ScrollToTop'
+import ScrollToTop from 'components/ScrollToTop'
 import ajax from './api'
 window.ajax = ajax
 
 const Route = ({ ...args }) => {
   return (
     <>
-      {/* <ScrollToTop /> */}
+      <ScrollToTop />
       <PathTo {...args} />
     </>
   )
