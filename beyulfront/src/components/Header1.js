@@ -33,15 +33,15 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     color:"#c47d1e",
-    fontSize:"1.8rem",
+    // fontSize:"1.rem",
     fontWeight:"bold",
     marginLeft:"1.25rem"
   },
   
   links:{
     color:"#ffffff",
-    marginRight:"2.5rem",
-    fontSize:"1rem",
+    marginRight:"2.3rem",
+    fontSize:"0.8rem",
     letterSpacing:"0.1rem",
     paddingTop:"0.625rem",
     '&:hover': {
@@ -67,9 +67,11 @@ const useStyles = makeStyles((theme) => ({
   signUp:{
     backgroundColor:"#c47d1e",
     color:"#ffffff",
+    marginTop:"0.1rem",
     marginRight:"1.25rem",
     borderRadius:"2rem",
-    width:"6.2rem",
+    width:"5.8rem",
+    fontSize:"0.8rem",
     '&:hover': {
       color: "#ffffff",
       cursor:"pointer",
@@ -235,6 +237,7 @@ export default function ButtonAppBar() {
               color='primary'
               size='medium'
               className={classes.signUp}
+              style={{fontSize:"0.7rem"}}
             >
               Sign Up
             </Button>
