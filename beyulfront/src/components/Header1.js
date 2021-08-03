@@ -48,8 +48,9 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing:"0.1rem",
     paddingTop:"0.625rem",
     '&:hover': {
-      color: "#ffffff",
-      cursor:"pointer"
+      color: "#c47d1e",
+      cursor:"pointer",
+      
       }
   },
 
@@ -62,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       color: "#ffffff",
       cursor:"pointer",
+      backgroundColor:"#13181e"
     }
 
   },
@@ -209,16 +211,16 @@ export default function ButtonAppBar() {
       <AppBar position="fixed" className={classes[navRef.current]}>
         <Toolbar disableGutters>
           <Typography variant="h6" className={classes.title} component="h1">
-            Beyul Venture
+            BEYUL VENTURE
           </Typography>
           <div className={classes.sectionDesktop}>
             <NavBtn
-              to='/' className={classes.links} component={NavLink}>Home</NavBtn>
-            <NavBtn disableElevation to='/about' className={classes.links} component={NavLink}>About</NavBtn>
-            <NavBtn to='/blog' className={classes.links} component={NavLink}>Blog</NavBtn>
-            <NavBtn to='/contact-us' className={classes.links} component={NavLink}>Contact</NavBtn>
-            <NavBtn to='/our-team' className={classes.links} component={NavLink}>Team</NavBtn>
-            <NavBtn to='/sign-in' className={classes.links} component={NavLink}>Log In</NavBtn>
+              to='/' className={classes.links} component={NavLink}>HOME</NavBtn>
+            <NavBtn disableElevation to='/about' className={classes.links} component={NavLink}>ABOUT</NavBtn>
+            <NavBtn to='/blog' className={classes.links} component={NavLink}>BLOG</NavBtn>
+            <NavBtn to='/contact-us' className={classes.links} component={NavLink}>CONTACT</NavBtn>
+            <NavBtn to='/our-team' className={classes.links} component={NavLink}>TEAM</NavBtn>
+            <NavBtn to='/sign-in' className={classes.links} component={NavLink}>LOG IN</NavBtn>
 
             {/* <NavBtn disableElevation to='/about' className={classes.button} component={NavLink}>About</NavBtn>
             <NavBtn to='/blog' className={classes.button} component={NavLink}>Blog</NavBtn>
