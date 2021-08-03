@@ -50,8 +50,7 @@ REPLACE_WITH = 'src=\"%s/media/uploads/' % SITE_DOMAIN
 
 class FixAbsolutePathSerializer(serializers.Field):
     def to_representation(self, value):
-        text = value.replace(SEARCH_PATTERNN, REPLACE_WITH)
-        return text
+        return value.replace(SEARCH_PATTERNN, REPLACE_WITH)
 
 
 class BlogSerializer(serializers.HyperlinkedModelSerializer):
