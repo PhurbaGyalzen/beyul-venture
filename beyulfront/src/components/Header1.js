@@ -16,7 +16,8 @@ import {
   ListItemText
 } 
 from '@material-ui/core'
-import { Link, NavLink } from 'react-router-dom'
+import {NavLink } from 'react-router-dom'
+import Link from '@material-ui/core/Link';
 import { List as ListIcon, Label as LabelIcon} from '@material-ui/icons';
 
 
@@ -37,18 +38,19 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing:"0.125rem",
     marginLeft:"1.25rem"
   },
-
-  button:{
+  
+  links:{
     color:"#ffffff",
-    backgroundColor:"#13181e",
     marginRight:"1.25rem",
     fontWeight:"bold",
+    fontSize:"1rem",
     width:"6rem",
+    letterSpacing:"0.1rem",
+    paddingTop:"0.625rem",
     '&:hover': {
       color: "#ffffff",
-      cursor:"pointer",
-      backgroundColor:"#c47d1e"
-    }
+      cursor:"pointer"
+      }
   },
 
   login:{
@@ -60,7 +62,6 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       color: "#ffffff",
       cursor:"pointer",
-      backgroundColor:"#c47d1e",
     }
 
   },
@@ -118,15 +119,15 @@ const useStyles = makeStyles((theme) => ({
 
 const NavBtn = (props) => {
   return (
-    <Button
+    <Link
       variant='outlined'
       component={NavLink}
-      activeStyle={{ border: '2px solid #c47d1e' }}
+      activeStyle={{ color: '#c47d1e' }}
       exact
       {...props}
     >
       {props.children}
-    </Button>
+    </Link>
   )
 }
 
@@ -212,22 +213,19 @@ export default function ButtonAppBar() {
           </Typography>
           <div className={classes.sectionDesktop}>
             <NavBtn
-              to='/' className={classes.button} component={NavLink}>Home</NavBtn>
-            <NavBtn disableElevation to='/about' className={classes.button} component={NavLink}>About</NavBtn>
+              to='/' className={classes.links} component={NavLink}>Home</NavBtn>
+            <NavBtn disableElevation to='/about' className={classes.links} component={NavLink}>About</NavBtn>
+            <NavBtn to='/blog' className={classes.links} component={NavLink}>Blog</NavBtn>
+            <NavBtn to='/contact-us' className={classes.links} component={NavLink}>Contact</NavBtn>
+            <NavBtn to='/our-team' className={classes.links} component={NavLink}>Team</NavBtn>
+            <NavBtn to='/sign-in' className={classes.links} component={NavLink}>Log In</NavBtn>
+
+            {/* <NavBtn disableElevation to='/about' className={classes.button} component={NavLink}>About</NavBtn>
             <NavBtn to='/blog' className={classes.button} component={NavLink}>Blog</NavBtn>
             <NavBtn to='/contact-us' className={classes.button} component={NavLink}>Contact</NavBtn>
-            <NavBtn to='/our-team' className={classes.button} component={NavLink}>Team</NavBtn>
+            <NavBtn to='/our-team' className={classes.button} component={NavLink}>Team</NavBtn> */}
 
-            <Button
-              component={NavLink}
-              to='/sign-in'
-              variant='contained'
-              color='#13181e'
-              size='medium'
-              className={classes.login}
-            >
-              Log In
-            </Button>
+
 
             <Button
               component={NavLink}
