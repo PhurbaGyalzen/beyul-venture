@@ -89,7 +89,7 @@ class Blog(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
 
-        if self.compress:
+        if self.compress_thumbnail:
             compress(self.thumbnail.path, 30)
 
     def __str__(self):
