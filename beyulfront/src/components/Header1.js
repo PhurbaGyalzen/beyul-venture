@@ -90,6 +90,7 @@ const useStyles = makeStyles((theme) => ({
   menuIcon:{
     marginRight: theme.spacing(2),
     display:'none',
+    color:"#c47d1e",
     [theme.breakpoints.down('md')]:{
       display:"flex"
     }},
@@ -240,7 +241,7 @@ export default function ButtonAppBar() {
             </Button>
           </div>
 
-          <IconButton onClick={toggleDrawer} className={classes.menuIcon} edge="start" color="inherit" aria-label="menu">
+          <IconButton onClick={toggleDrawer} className={classes.menuIcon} edge="start" aria-label="menu">
             <SortIcon />
           </IconButton>
 
@@ -249,7 +250,7 @@ export default function ButtonAppBar() {
                 {drawerItems.map(prop => (
                     <Link className={classes.link} to={prop.link} key={prop.text}>
                         <ListItem onClick={toggleDrawer} button>
-                            <ListItemIcon style={{color:"#13181e"}}>{prop.icon}</ListItemIcon>
+                            <ListItemIcon style={{color:"#c47d1e"}}>{prop.icon}</ListItemIcon>
                             <ListItemText style={{color:"#000000"}}>{prop.text}</ListItemText>
                         </ListItem>
                     </Link>
