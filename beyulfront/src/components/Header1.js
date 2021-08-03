@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   
   links:{
     color:"#ffffff",
-    marginRight:"3.25rem",
+    marginRight:"2.5rem",
     fontSize:"1rem",
     letterSpacing:"0.1rem",
     paddingTop:"0.625rem",
