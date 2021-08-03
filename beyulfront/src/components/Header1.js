@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
 
   sectionDesktop:{
     display:'none',
-    [theme.breakpoints.up("md")]:{
+    [theme.breakpoints.up("lg")]:{
       display:"flex"
     }
   },
@@ -208,7 +208,9 @@ export default function ButtonAppBar() {
       <AppBar position="fixed" className={classes[navRef.current]}>
         <Toolbar disableGutters>
           <Typography variant="h6" className={classes.title} component="h1" onClick="/">
-            BEYUL VENTURE
+            <Link component={NavLink} to="/" style={{color:"#c47d1e"}}>
+              BEYUL VENTURE
+            </Link>
           </Typography>
           <div className={classes.sectionDesktop}>
             <NavBtn
