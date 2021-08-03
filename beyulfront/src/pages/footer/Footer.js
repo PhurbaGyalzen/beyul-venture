@@ -141,11 +141,14 @@ export const Footer = () => {
                                 variant='h6'
                                 style={{
                                     fontSize: '1rem',
-                                    fontWeight: 'bold',
                                     lineHeight: '2rem',
+                                    fontWeight: 'bold',
+                                    wordSpacing: '0.1rem',
+                                    letterSpacing: '0.1rem',
+                                    color: '#c47d1e',
                                 }}
                             >
-                                Useful Links
+                                USEFUL LINKS
                             </Typography>
                         </Box>
 
@@ -215,8 +218,7 @@ export const Footer = () => {
                                     fontSize='small'
                                     style={{ marginRight: 10, paddingTop: 5 }}
                                 />
-                                Stay up to date on the latest from Beyul
-                                Venture
+                                Subscribe to get the best package updates.
                             </Typography>
 
                             <TextField
@@ -254,11 +256,13 @@ export const Footer = () => {
                                 variant='h6'
                                 style={{
                                     fontSize: '1rem',
-                                    fontWeight: 'bold',
                                     lineHeight: '2rem',
+                                    fontWeight: 'bold',
+                                    letterSpacing: '0.1rem',
+                                    color: '#c47d1e',
                                 }}
                             >
-                                We accept
+                                WE ACCEPT
                             </Typography>
                         </Box>
 
@@ -289,11 +293,14 @@ export const Footer = () => {
                                 variant='h6'
                                 style={{
                                     fontSize: '1rem',
-                                    fontWeight: 'bold',
                                     lineHeight: '2rem',
+                                    fontWeight: 'bold',
+                                    letterSpacing: '0.1rem',
+                                    wordSpacing: '0.1rem',
+                                    color: '#c47d1e',
                                 }}
                             >
-                                We are affilated with
+                                WE ARE AFFILIATED WITH
                             </Typography>
                         </Box>
 
