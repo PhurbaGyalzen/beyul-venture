@@ -71,7 +71,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight:"1.25rem",
     borderRadius:"2rem",
     width:"5.8rem",
-    fontSize:"0.8rem",
     '&:hover': {
       color: "#ffffff",
       cursor:"pointer",
