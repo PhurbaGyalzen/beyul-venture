@@ -10,10 +10,6 @@ import toast from 'react-hot-toast'
 import { useHistory } from 'react-router';
 const useStyles = makeStyles((theme) => ({
     
-    avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
-    },
     form: {
       width: '100%', // Fix IE 11 issue.
       marginTop: theme.spacing(3),
@@ -21,6 +17,13 @@ const useStyles = makeStyles((theme) => ({
     submit: {
       margin: theme.spacing(3, 0, 2),
     },
+    formContainer:{
+        padding:'2rem',
+
+    },
+    textfield:{
+        height:'4rem'
+    }
 
 }))
 
@@ -107,72 +110,79 @@ export const SignUpForm = (props) => {
                 handleSubmit,
             }) => (
                 <Form className={classes.form} >
-                    <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                        <ValidatingTextField
-                        autoComplete='fname'
-                        name='firstName'
-                        variant='outlined'
-                        required
-                        fullWidth
-                        id='firstName'
-                        label='First Name'
-                        autoFocus
-                        />
+                    <div className={classes.formContainer}>
+                        <Grid container spacing={2}>
+                            <Grid item xs={12}>
+                                <ValidatingTextField
+                                autoComplete='fname'
+                                name='firstName'
+                                variant='outlined'
+                                required
+                                fullWidth
+                                id='firstName'
+                                label='First Name'
+                                className={classes.textfield}
+                                autoFocus
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <ValidatingTextField
+                                variant='outlined'
+                                required
+                                fullWidth
+                                id='lastName'
+                                label='Last Name'
+                                name='lastName'
+                                autoComplete='lname'
+                                className={classes.textfield}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <ValidatingTextField
+                                variant='outlined'
+                                required
+                                fullWidth
+                                id='email'
+                                label='Email Address'
+                                name='email'
+                                className={classes.textfield}
+                                autoComplete='email'
+                                
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <ValidatingTextField
+                                variant='outlined'
+                                required
+                                fullWidth
+                                name='password'
+                                label='Password'
+                                type='password'
+                                className={classes.textfield}
+                                id='password'
+                                />
+                            </Grid>
+                            
+                            </Grid>
+                            <Button
+                            type='submit'
+                            fullWidth
+                            variant='contained'
+                            color='primary'
+                            className={classes.submit}
+                            disabled={isSubmitting}
+                            >
+                            Sign Up
+                            </Button>
+                            <Grid container justifyContent='flex-end'>
+                            <Grid item>
+                                <Link href='/sign-in' variant='body2'>
+                                Already have an account? Sign in
+                                </Link>
+                            </Grid>
                     </Grid>
-                    <Grid item xs={12}>
-                        <ValidatingTextField
-                        variant='outlined'
-                        required
-                        fullWidth
-                        id='lastName'
-                        label='Last Name'
-                        name='lastName'
-                        autoComplete='lname'
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <ValidatingTextField
-                        variant='outlined'
-                        required
-                        fullWidth
-                        id='email'
-                        label='Email Address'
-                        name='email'
-                        autoComplete='email'
-                        
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <ValidatingTextField
-                        variant='outlined'
-                        required
-                        fullWidth
-                        name='password'
-                        label='Password'
-                        type='password'
-                        id='password'
-                        />
-                    </Grid>
+                    </div>
                     
-                    </Grid>
-                    <Button
-                    type='submit'
-                    fullWidth
-                    variant='contained'
-                    color='primary'
-                    className={classes.submit}
-                    disabled={isSubmitting}
-                    >
-                    Sign Up
-                    </Button>
-                    <Grid container justifyContent='flex-end'>
-                    <Grid item>
-                        <Link href='/sign-in' variant='body2'>
-                        Already have an account? Sign in
-                        </Link>
-                    </Grid>
-                </Grid>
             </Form>  
             )}
             </Formik>
