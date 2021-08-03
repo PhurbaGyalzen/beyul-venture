@@ -217,7 +217,7 @@ export default function ButtonAppBar() {
             <NavBtn to='/blog' className={classes.links} component={NavLink}>BLOG</NavBtn>
             <NavBtn to='/contact-us' className={classes.links} component={NavLink}>CONTACT</NavBtn>
             <NavBtn to='/our-team' className={classes.links} component={NavLink}>TEAM</NavBtn>
-            <NavBtn to='/sign-in' className={classes.links} component={NavLink}>LOG IN</NavBtn>
+            <NavBtn to='/sign-in' className={classes.links} component={NavLink}>LOGIN</NavBtn>
 
             {/* <NavBtn disableElevation to='/about' className={classes.button} component={NavLink}>About</NavBtn>
             <NavBtn to='/blog' className={classes.button} component={NavLink}>Blog</NavBtn>
