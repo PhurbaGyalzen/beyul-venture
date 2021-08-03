@@ -17,15 +17,16 @@ import { SignUpForm } from './SignUpForm'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
-    paddingBottom: '3rem',
+    // marginTop: theme.spacing(3),
+    paddingBottom: '1.3rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     paddingLeft:'1rem',
-    
+    paddingTop:'1.5rem',
+    backgroundColor: '#E0DEE6',
     [theme.breakpoints.down('lg')]: {
-      maxWidth: '400px'
+      // maxWidth: '400px'
     },
 
   },
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(0.5),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -77,13 +78,15 @@ export default function SignUp() {
         <Grid item xs={12} md={6}>
           <div style={{display: 'flex',justifyContent:'center'}}>
               <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
+                {/* <Avatar className={classes.avatar}>
                   <LockOutlinedIcon />
-                </Avatar>
+                </Avatar> */}
                 <Typography component='h1' variant='h5'>
                   Sign up
                 </Typography>
+                
                 <SignUpForm />
+               
             </div>
           </div>
         

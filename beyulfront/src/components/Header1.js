@@ -208,7 +208,7 @@ export default function ButtonAppBar() {
     <div className={classes.root} disableGutters>
       <AppBar position="fixed" className={classes[navRef.current]}>
         <Toolbar disableGutters>
-          <Typography variant="h6" className={classes.title} component="h1" onClick="/">
+          <Typography variant="h6" className={classes.title} component="h1">
             <Link component={NavLink} to="/" style={{color:"#c47d1e"}}>
               BEYUL VENTURE
             </Link>

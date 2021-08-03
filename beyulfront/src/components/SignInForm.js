@@ -15,6 +15,10 @@ const useStyles = makeStyles((theme) => ({
     submit: {
       margin: theme.spacing(3, 0, 2),
     },
+    textfield:{
+        backgroundColor:'white',
+        height:'4rem'
+    }
   }))
 
 
@@ -109,6 +113,7 @@ export const SignInForm = () => {
                     name='email'
                     autoComplete='email'
                     autoFocus
+                    className={classes.textfield}
                 />
                 <ValidatingTextField
                     variant='outlined'
@@ -120,6 +125,7 @@ export const SignInForm = () => {
                     type='password'
                     id='password'
                     autoComplete='current-password'
+                    className={classes.textfield}
                 />
                 <FormControlLabel
                     control={<Checkbox value='remember' color='primary' />}
