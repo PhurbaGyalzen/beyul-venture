@@ -1,11 +1,13 @@
 import { Formik, Field, Form, useField } from 'formik'
+import { useEffect } from 'react';
 import * as yup from 'yup';
 import { makeStyles, TextField, Button, Typography,Grid } from '@material-ui/core';
 import LockIcon from '@material-ui/icons/Lock'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import Link from '@material-ui/core/Link'
-
+import toast from 'react-hot-toast'
+import { useHistory } from 'react-router';
 const useStyles = makeStyles((theme) => ({
     
     avatar: {
@@ -45,14 +47,15 @@ const validationSchema = yup.object({
       ),
     });
 
+const successToast = (msg) => toast.success(msg)
+
+const errort = (msg) => toast.error(msg)
 
 export const SignUpForm = (props) => {
     const classes = useStyles();
     return (
         <>
         <Formik
-                validateOnChange={false}
-                validateOnBlur={false}
                 initialValues={{ 
                     firstName: '',
                     lastName:'',
@@ -63,8 +66,33 @@ export const SignUpForm = (props) => {
                 onSubmit={(data, { setSubmitting, resetForm}) => {
                     // validate(data);
                     setSubmitting(true)
-                    //make async call
                     console.log('Submit:', data)
+                    const requestOptions = {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ 
+                            first_name: data.firstName,
+                            last_name: data.lastName,
+                            email: data.email,
+                            password: data.password
+                         })
+                    }
+                    
+                    
+
+                    fetch('http://localhost:8000/api/register/',requestOptions)
+                    .then( (response) => {
+                        const responseData = response.json();
+                        console.log(responseData);
+                        successToast();
+                    })
+                    .catch(error => {
+                        // console.error(error);
+                        errort(error);
+                    });
                     setSubmitting(false)
                     resetForm()
                 }}
