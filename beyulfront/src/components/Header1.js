@@ -16,7 +16,7 @@ import {
   ListItemText
 } 
 from '@material-ui/core'
-import {NavLink } from 'react-router-dom'
+import {Link as RouterLink, NavLink } from 'react-router-dom'
 import Link from '@material-ui/core/Link';
 import { List as ListIcon, Label as LabelIcon} from '@material-ui/icons';
 
@@ -245,7 +245,7 @@ export default function ButtonAppBar() {
           <Drawer anchor="left" variant="temporary" onClose={toggleDrawer} open={drawerOpen}>
             <List className={classes.list}>
                 {drawerItems.map(prop => (
-                    <Link className={classes.link} to={prop.link} key={prop.text}>
+                    <Link className={classes.link} to={prop.link} key={prop.text} component={RouterLink}>
                         <ListItem onClick={toggleDrawer} button>
                             <ListItemIcon style={{color:"#c47d1e"}}>{prop.icon}</ListItemIcon>
                             <ListItemText style={{color:"#000000"}}>{prop.text}</ListItemText>
