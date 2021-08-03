@@ -200,7 +200,7 @@ export const Footer = () => {
                         </Box>
                     </Grid>
 
-                    {/* sign up for updates */}
+                    {/* subscribe for updates */}
                     <Grid item md={4} xs={11} sm={7} lg={4}>
                         <Box mb={{ xs: 5, sm: 5, md: 5 }}>
                             <Typography
@@ -242,7 +242,7 @@ export const Footer = () => {
                                 }}
                             >
                                 {' '}
-                                Sign Up
+                                SUBSCRIBE
                             </Button>
                         </Box>
                     </Grid>
