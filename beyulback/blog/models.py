@@ -70,7 +70,9 @@ class Blog(models.Model):
                                       'Insert a thumbnail for your blog.'),
                                   null=True
                                   )
-    compress = models.BooleanField(default=False)
+    compress = models.BooleanField(_('compress thumbnail'),
+                                   help_text=_(
+        'checking this field will enable compression in thumbnail image.'), default=False)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, related_name="post", on_delete=models.CASCADE)
     status = models.IntegerField(choices=STATUS, help_text=_(
