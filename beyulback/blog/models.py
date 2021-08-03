@@ -70,6 +70,9 @@ class Blog(models.Model):
                                       'Insert a thumbnail for your blog.'),
                                   null=True
                                   )
+    compress_thumbnail = models.BooleanField(_('compress thumbnail'),
+                                             help_text=_(
+        'checking this field will enable compression in thumbnail image.'), default=False)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, related_name="post", on_delete=models.CASCADE)
     status = models.IntegerField(choices=STATUS, help_text=_(
@@ -85,7 +88,9 @@ class Blog(models.Model):
         super(Blog, self).save(*args, **kwargs)
         if not self.slug:
             self.slug = slugify(self.title)
-        compress(self.thumbnail.path, 30)
+
+        if self.compress_thumbnail:
+            compress(self.thumbnail.path, 30)
 
     def __str__(self):
         return self.title

@@ -12,7 +12,7 @@ import HomePage from 'pages/landing/HomePage'
 import AboutUsPage from 'pages/AboutUsPage'
 import BlogDetail from 'pages/blog-page/BlogDetail'
 import PackageDetail from 'pages/package-detail/PackageDetail'
-import Header from 'components/Header'
+import Navigation from 'components/Header1'
 import SignIn from 'components/SignIn'
 import SignUp from 'components/SignUp'
 import { AddBlog } from 'pages/blog-add/AddBlog'
@@ -42,7 +42,7 @@ const Routes = () => {
     <Switch>
       <Route exact path='/about' component={AboutUsPage} />
       <Route exact path='/package/:packageId'>
-        <PackageDetail packageId={params} />}
+        <PackageDetail packageId={params} />
       </Route>
       <Route exact path='/sign-up' component={SignUp} />
       <Route exact path='/sign-in' component={SignIn} />
@@ -65,7 +65,7 @@ const App = () => {
     <Router>
       <div className='App'>
         <Toaster />
-        <Header />
+        <Navigation />
         <Routes />
         <Footer />
       </div>
