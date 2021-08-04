@@ -64,11 +64,18 @@ const ajax = async (path, ...rest) => {
         const allHeaders = new Headers(headers)
         allHeaders.set('Authorization', 'Bearer ' + access)
         const resp = await fetch(path, { ...{ headers: allHeaders }, ...opts })
-        const data = await resp.json()
+        let data
+        if (!resp.ok)
+            return { error: 'client: received ' + resp.status, type: '' }
+        try {
+            data = await resp.json()
+        } catch {
+            data = { error: 'client: json decode error', type: '' }
+        }
         return data
     } catch (err) {
-        console.log('Network/JSON Decode error:', err)
-        return null
+        console.log('Network error:', err)
+        return { error: 'client: Network error:', type: '' }
     }
 }
 

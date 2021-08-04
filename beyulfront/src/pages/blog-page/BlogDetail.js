@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom'
 import ImageDiv from './ImageDiv'
 import { CommentSec } from './CommentSec'
 import AllComments from 'components/CommentViewer'
+import FourZeroFour from 'pages/404'
 
 const blogStyles = makeStyles((theme) => ({
     blogContainer: {
@@ -94,20 +95,19 @@ const BlogDetail = (props) => {
     const { blogid } = useParams()
     const classes = blogStyles()
     const [blog, setBlog] = useState([])
-    const [author, setAuthor] = useState([])
+    const [author, setAuthor] = useState({})
     // const resp = await ajax('/api/blog/' + blog_id + '/')
-    
+
     useEffect(async () => {
-        const apiData = await ajax(
-            '/api/blog/'+blogid+'/',
-        )
+        const apiData = await ajax('/api/blog/' + blogid + '/')
         setBlog(apiData)
+        if (apiData.error) return
         const authorData = await ajax(apiData.author)
         setAuthor(authorData)
-        console.log(blogid);
     }, [])
-
-    if (blog) {
+    if (blog.error) {
+        return <FourZeroFour />
+    } else if (blog.status) {
         return (
             <>
                 <Container
@@ -181,9 +181,8 @@ const BlogDetail = (props) => {
                 </Container>
             </>
         )
-    } else {
-        return null
     }
+    return null
 }
 
 BlogDetail.propTypes = {}

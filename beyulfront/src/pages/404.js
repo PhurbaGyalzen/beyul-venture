@@ -5,13 +5,15 @@ import Compass from 'components/Compass'
 import FancyLink from 'components/FancyLink'
 import bg404 from 'img/404 (4).jpg'
 
-const Wrapper = styled(Container)`
+const Wrapper = styled.div`
     background-image: url('${bg404}');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh;
+    min-height: 100vh;
     padding-top: 20vh;
+    padding-bottom: 5rem;
+    margin-bottom: -80px;
 `
 
 const Helptext = styled(Typography)`

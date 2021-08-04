@@ -13,46 +13,70 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Copyright from 'components/Copyright'
-
+import Lottie from 'react-lottie';
+import animationData from 'img/lotties/42070-travel-is-fun.json'
 
 import { SignInForm } from './SignInForm'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    paddingBottom:'3rem',
+    
+    marginLeft: theme.spacing(1),
+    padding:'2rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor: '#E0DEE6',
   },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
+  
+  imgContainer:{
+    
+    marginTop: theme.spacing(8),
+    padding: '10%',
+    width:'100%',
+    height:'100%',
+    backgroundSize: '100%',
+  }
 }))
 
 export default function SignIn() {
   const classes = useStyles()
+  const defaultOptions = {
+    loop: true,
+    autoplay: true, 
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
 
   return (
-    <Container component='main' maxWidth='xs'>
+    <Container component='main' maxWidth='md'>
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component='h1' variant='h5'>
-          Sign in
-        </Typography>
-        <SignInForm />
-      </div>
+      <Grid container>
+        <Grid item xs={12} md={6}>
+          <div className={classes.imgContainer}>
+              <Lottie options={defaultOptions}
+              height={400}
+              width={400}
+              />
+          </div>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <div style={{display: 'flex',justifyContent:'center'}}>
+            <div className={classes.paper}>
+          
+              <Typography component='h1' variant='h5'>
+                Sign in
+              </Typography>
+              <SignInForm />
+            </div>
+          </div>
+        
+        </Grid>
+      </Grid>
+      
       {/* <Box mt={8}>
         <Copyright /
       </Box> */}

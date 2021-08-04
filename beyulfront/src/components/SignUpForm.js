@@ -87,11 +87,21 @@ export const SignUpForm = (props) => {
                     
 
                     fetch('http://localhost:8000/api/register/',requestOptions)
-                    .then( (response) => {
-                        const responseData = response.json();
-                        console.log(responseData);
-                        successToast();
-                    })
+                    .then( response => response.json().then(res => ({
+                        data: res, 
+                        status : response.status
+                        })
+                    ))
+                    .then(
+                        (jsonData) => {
+                            console.log('main sign up jsonData:',jsonData.data);
+                            console.log(jsonData.status)
+                            
+                            (jsonData.status > 400) ? errort(jsonData.data.detail) : successToast(jsonData.data.detail);
+
+                            // successToast(jsonData.data.detail);
+                        }
+                    )
                     .catch(error => {
                         // console.error(error);
                         errort(error);
