@@ -13,6 +13,7 @@ const Wrapper = styled.div`
     min-height: 100vh;
     padding-top: 20vh;
     padding-bottom: 5rem;
+    margin-bottom: -80px;
 `
 
 const Helptext = styled(Typography)`
