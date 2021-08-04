@@ -71,260 +71,263 @@ export default function AboutUsPage() {
     const classes = useStyles()
     return (
         <>
-            {/* First row */}
-            <Box maxWidth='100%' ml={5} mt={10} mb={3}>
-                <Grid
-                    container
-                    spacing={3}
-                    item
-                    style={{ padding: ' 0 1.6rem 0 1.6rem ' }}
-                >
-                    <Grid item xs={12} md={6} sm={6} ml={5}>
-                        <Typography
-                            variant='h5'
-                            color='primary'
-                            className={classes.aboutUs}
-                        >
-                            About Us
-                        </Typography>
-                        <Typography component='p' align='justify'>
-                            Lorem Ipsum has been the industry's standard dummy
-                            text ever since the 1500s, scrambled it to make a
-                            type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic
-                            typesetting, remaining essentially unchanged. It
-                            was popularised in the 1960s with the release of
-                            Letraset sheets containing Lorem Ipsum passages,
-                            and more recently with desktop publishing software
-                            like Aldus PageMaker including versions of Lorem
-                            Ipsum. Lorem Ipsum has been the industry's standard
-                            dummy text ever since the 1500s, scrambled it to
-                            make a type specimen book. It has survived not only
-                            five centuries, but also the leap into electronic
-                            typesetting, remaining essentially unchanged. It
-                            was popularised in the 1960s with the release of
-                            Letraset sheets containing Lorem Ipsum passages,
-                            and more recently with desktop publishing software
-                            like Aldus PageMaker including versions of Lorem
-                            Ipsum. It was popularised in the 1960s with the
-                            release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing
-                            software like Aldus PageMaker including versions.
-                        </Typography>
-                        <Button
-                            variant='contained'
-                            color='primary'
-                            className={classes.button}
-                        >
-                            Readmore
-                        </Button>
+            <div  style={{backgroundColor:"#D8DFE8"}}>
+                    {/* First row */}
+                <Box maxWidth='100%' ml={5} pt={10} mb={3}>
+                    <Grid
+                        container
+                        spacing={3}
+                        item
+                        style={{ padding: ' 0 1.6rem 0 1.6rem ' }}
+                    >
+                        <Grid item xs={12} md={6} sm={6} ml={5}>
+                            <Typography
+                                variant='h5'
+                                color='primary'
+                                className={classes.aboutUs}
+                            >
+                                About Us
+                            </Typography>
+                            <Typography component='p' align='justify'>
+                                Lorem Ipsum has been the industry's standard dummy
+                                text ever since the 1500s, scrambled it to make a
+                                type specimen book. It has survived not only five
+                                centuries, but also the leap into electronic
+                                typesetting, remaining essentially unchanged. It
+                                was popularised in the 1960s with the release of
+                                Letraset sheets containing Lorem Ipsum passages,
+                                and more recently with desktop publishing software
+                                like Aldus PageMaker including versions of Lorem
+                                Ipsum. Lorem Ipsum has been the industry's standard
+                                dummy text ever since the 1500s, scrambled it to
+                                make a type specimen book. It has survived not only
+                                five centuries, but also the leap into electronic
+                                typesetting, remaining essentially unchanged. It
+                                was popularised in the 1960s with the release of
+                                Letraset sheets containing Lorem Ipsum passages,
+                                and more recently with desktop publishing software
+                                like Aldus PageMaker including versions of Lorem
+                                Ipsum. It was popularised in the 1960s with the
+                                release of Letraset sheets containing Lorem Ipsum
+                                passages, and more recently with desktop publishing
+                                software like Aldus PageMaker including versions.
+                            </Typography>
+                            <Button
+                                variant='contained'
+                                color='primary'
+                                className={classes.button}
+                            >
+                                Readmore
+                            </Button>
+                        </Grid>
+
+                        <Grid item xs={12} md={6} sm={6}>
+                            <img src={aboutUs} className={classes.aboutUsImg} />
+                        </Grid>
+
+                        <Grid item xs={12} md={6} sm={6} ml={5}>
+                            <img src={history} className={classes.aboutUsImg} />
+                        </Grid>
+
+                        <Grid item xs={12} md={6} sm={6}>
+                            <Typography
+                                variant='h5'
+                                color='primary'
+                                className={classes.aboutUs}
+                            >
+                                Our History
+                            </Typography>
+                            <Typography component='p' align='justify'>
+                                Lorem Ipsum has been the industry's standard dummy
+                                text ever since the 1500s, scrambled it to make a
+                                type specimen book. It has survived not only five
+                                centuries, but also the leap into electronic
+                                typesetting, remaining essentially unchanged. It
+                                was popularised in the 1960s with the release of
+                                Letraset sheets containing Lorem Ipsum passages,
+                                and more recently with desktop publishing software
+                                like Aldus PageMaker including versions of Lorem
+                                Ipsum. Lorem Ipsum has been the industry's standard
+                                dummy text ever since the 1500s, scrambled it to
+                                make a type specimen book. It has survived not only
+                                five centuries, but also the leap into electronic
+                                typesetting, remaining essentially unchanged. It
+                                was popularised in the 1960s with the release of
+                                Letraset sheets containing Lorem Ipsum passages,
+                                and more recently with desktop publishing software
+                                like Aldus PageMaker including versions of Lorem
+                                Ipsum. It was popularised in the 1960s with the
+                                release of Letraset sheets containing Lorem Ipsum
+                                passages, and more recently with desktop publishing
+                                software like Aldus PageMaker including versions.
+                            </Typography>
+                            <Button
+                                variant='contained'
+                                color='primary'
+                                className={classes.button}
+                            >
+                                Readmore
+                            </Button>
+                        </Grid>
                     </Grid>
+                </Box>
 
-                    <Grid item xs={12} md={6} sm={6}>
-                        <img src={aboutUs} className={classes.aboutUsImg} />
+                {/* Second row */}
+
+                <Box>
+                    <Grid
+                        container
+                        style={{
+                            backgroundColor: '#d1e2f0',
+                            padding: '0 2rem 3rem 2rem',
+                        }}
+                        className={classes.whyWithUs}
+                    >
+                        <Grid item xs={12} md={12} sm={12}>
+                            <Typography
+                                variant='h5'
+                                color='primary'
+                                align='center'
+                                className={classes.whyWithUsTitle}
+                                gutterBottom
+                            >
+                                Why book with us?
+                            </Typography>
+                        </Grid>
+
+                        {/* First Card */}
+                        <Grid item xs={12} md={3} sm={6}>
+                            <Card className={classes.card} align='center' sm={12}>
+                                <CardMedia
+                                    image={globe_1}
+                                    style={{ height: '6rem', width: '6rem' }}
+                                />
+
+                                <CardContent style={{ paddingTop: '0' }}>
+                                    <Typography
+                                        variant='h6'
+                                        color='primary'
+                                        gutterBottom
+                                    >
+                                        Global Reach
+                                    </Typography>
+                                    <Typography
+                                        style={{ fontSize: '14px' }}
+                                        gutterBottom
+                                    >
+                                        No matter where in the world you want to
+                                        go, Beyul.com has everything you need. From
+                                        flights and hotels to car rental and
+                                        tickets to local attractions, our extensive
+                                        network connects all corners of the globe
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+
+                        {/* Second Card */}
+                        <Grid item xs={12} sm={6} md={3}>
+                            <Card className={classes.card} align='center'>
+                                <CardMedia
+                                    image={price_1}
+                                    style={{
+                                        margin: '1.1rem 0 1.3rem',
+                                        height: '3.5rem',
+                                        width: '4.3rem',
+                                    }}
+                                />
+                                <CardContent style={{ paddingTop: '0' }}>
+                                    <Typography
+                                        variant='h6'
+                                        color='primary'
+                                        gutterBottom
+                                    >
+                                        Compitative prices
+                                    </Typography>
+                                    <Typography
+                                        style={{ fontSize: '14px' }}
+                                        gutterBottom
+                                    >
+                                        Beyul.com has over 400 hundreds members,
+                                        which allows it to offer competitive prices
+                                        - so you can save more on your travels
+                                        every day. Sign up for even bigger
+                                        discounts!
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+
+                        {/* Third Card */}
+
+                        <Grid item xs={12} sm={6} md={3}>
+                            <Card className={classes.card} align='center'>
+                                <CardMedia
+                                    image={service}
+                                    style={{
+                                        margin: '0.6rem 0 0.7rem',
+                                        height: '4.5rem',
+                                        width: '6rem',
+                                    }}
+                                />
+
+                                <CardContent style={{ paddingTop: '0' }}>
+                                    <Typography
+                                        variant='h6'
+                                        color='primary'
+                                        gutterBottom
+                                    >
+                                        Excellent service
+                                    </Typography>
+                                    <Typography
+                                        style={{ fontSize: '14px' }}
+                                        gutterBottom
+                                    >
+                                        With Beyul.com, you always travel
+                                        worry-free, knowing you can count on us
+                                        when needed. Our customer service team
+                                        speaks multiple languages. Customer service
+                                        in English is available 24/7 by phone,
+                                        e-mail and directly via our mobile app.
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+
+                        {/* Fourth Card */}
+
+                        <Grid item xs={12} sm={6} md={3}>
+                            <Card className={classes.card} align='center'>
+                                <CardMedia
+                                    image={save_1}
+                                    style={{
+                                        margin: '0.8rem 0 0.9rem',
+                                        height: '4rem',
+                                        width: '4rem',
+                                    }}
+                                />
+
+                                <CardContent style={{ paddingTop: '0' }}>
+                                    <Typography variant='h6' color='primary'>
+                                        Save Payment
+                                    </Typography>
+                                    <Typography
+                                        style={{ fontSize: '14px' }}
+                                        gutterBottom
+                                    >
+                                        No matter where in the world you want to
+                                        go, Beyul.com has everything you need. From
+                                        flights and hotels to car rental and
+                                        tickets to local attractions, our extensive
+                                        network connects all corners of the globe
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
                     </Grid>
-
-                    <Grid item xs={12} md={6} sm={6} ml={5}>
-                        <img src={history} className={classes.aboutUsImg} />
-                    </Grid>
-
-                    <Grid item xs={12} md={6} sm={6}>
-                        <Typography
-                            variant='h5'
-                            color='primary'
-                            className={classes.aboutUs}
-                        >
-                            Our History
-                        </Typography>
-                        <Typography component='p' align='justify'>
-                            Lorem Ipsum has been the industry's standard dummy
-                            text ever since the 1500s, scrambled it to make a
-                            type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic
-                            typesetting, remaining essentially unchanged. It
-                            was popularised in the 1960s with the release of
-                            Letraset sheets containing Lorem Ipsum passages,
-                            and more recently with desktop publishing software
-                            like Aldus PageMaker including versions of Lorem
-                            Ipsum. Lorem Ipsum has been the industry's standard
-                            dummy text ever since the 1500s, scrambled it to
-                            make a type specimen book. It has survived not only
-                            five centuries, but also the leap into electronic
-                            typesetting, remaining essentially unchanged. It
-                            was popularised in the 1960s with the release of
-                            Letraset sheets containing Lorem Ipsum passages,
-                            and more recently with desktop publishing software
-                            like Aldus PageMaker including versions of Lorem
-                            Ipsum. It was popularised in the 1960s with the
-                            release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing
-                            software like Aldus PageMaker including versions.
-                        </Typography>
-                        <Button
-                            variant='contained'
-                            color='primary'
-                            className={classes.button}
-                        >
-                            Readmore
-                        </Button>
-                    </Grid>
-                </Grid>
-            </Box>
-
-            {/* Second row */}
-
-            <Box>
-                <Grid
-                    container
-                    style={{
-                        backgroundColor: '#d1e2f0',
-                        padding: '0 2rem 3rem 2rem',
-                    }}
-                    className={classes.whyWithUs}
-                >
-                    <Grid item xs={12} md={12} sm={12}>
-                        <Typography
-                            variant='h5'
-                            color='primary'
-                            align='center'
-                            className={classes.whyWithUsTitle}
-                            gutterBottom
-                        >
-                            Why book with us?
-                        </Typography>
-                    </Grid>
-
-                    {/* First Card */}
-                    <Grid item xs={12} md={3} sm={6}>
-                        <Card className={classes.card} align='center' sm={12}>
-                            <CardMedia
-                                image={globe_1}
-                                style={{ height: '6rem', width: '6rem' }}
-                            />
-
-                            <CardContent style={{ paddingTop: '0' }}>
-                                <Typography
-                                    variant='h6'
-                                    color='primary'
-                                    gutterBottom
-                                >
-                                    Global Reach
-                                </Typography>
-                                <Typography
-                                    style={{ fontSize: '14px' }}
-                                    gutterBottom
-                                >
-                                    No matter where in the world you want to
-                                    go, Beyul.com has everything you need. From
-                                    flights and hotels to car rental and
-                                    tickets to local attractions, our extensive
-                                    network connects all corners of the globe
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-
-                    {/* Second Card */}
-                    <Grid item xs={12} sm={6} md={3}>
-                        <Card className={classes.card} align='center'>
-                            <CardMedia
-                                image={price_1}
-                                style={{
-                                    margin: '1.1rem 0 1.3rem',
-                                    height: '3.5rem',
-                                    width: '4.3rem',
-                                }}
-                            />
-                            <CardContent style={{ paddingTop: '0' }}>
-                                <Typography
-                                    variant='h6'
-                                    color='primary'
-                                    gutterBottom
-                                >
-                                    Compitative prices
-                                </Typography>
-                                <Typography
-                                    style={{ fontSize: '14px' }}
-                                    gutterBottom
-                                >
-                                    Beyul.com has over 400 hundreds members,
-                                    which allows it to offer competitive prices
-                                    - so you can save more on your travels
-                                    every day. Sign up for even bigger
-                                    discounts!
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-
-                    {/* Third Card */}
-
-                    <Grid item xs={12} sm={6} md={3}>
-                        <Card className={classes.card} align='center'>
-                            <CardMedia
-                                image={service}
-                                style={{
-                                    margin: '0.6rem 0 0.7rem',
-                                    height: '4.5rem',
-                                    width: '6rem',
-                                }}
-                            />
-
-                            <CardContent style={{ paddingTop: '0' }}>
-                                <Typography
-                                    variant='h6'
-                                    color='primary'
-                                    gutterBottom
-                                >
-                                    Excellent service
-                                </Typography>
-                                <Typography
-                                    style={{ fontSize: '14px' }}
-                                    gutterBottom
-                                >
-                                    With Beyul.com, you always travel
-                                    worry-free, knowing you can count on us
-                                    when needed. Our customer service team
-                                    speaks multiple languages. Customer service
-                                    in English is available 24/7 by phone,
-                                    e-mail and directly via our mobile app.
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-
-                    {/* Fourth Card */}
-
-                    <Grid item xs={12} sm={6} md={3}>
-                        <Card className={classes.card} align='center'>
-                            <CardMedia
-                                image={save_1}
-                                style={{
-                                    margin: '0.8rem 0 0.9rem',
-                                    height: '4rem',
-                                    width: '4rem',
-                                }}
-                            />
-
-                            <CardContent style={{ paddingTop: '0' }}>
-                                <Typography variant='h6' color='primary'>
-                                    Save Payment
-                                </Typography>
-                                <Typography
-                                    style={{ fontSize: '14px' }}
-                                    gutterBottom
-                                >
-                                    No matter where in the world you want to
-                                    go, Beyul.com has everything you need. From
-                                    flights and hotels to car rental and
-                                    tickets to local attractions, our extensive
-                                    network connects all corners of the globe
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                </Grid>
-            </Box>
+                </Box>
+            </div>
+            
 
         
         </>

@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   
   links:{
-    color:"#ffffff",
+    color:"#13181e",
     marginRight:"2.3rem",
     fontSize:"0.8rem",
     letterSpacing:"0.1rem",
@@ -66,10 +66,11 @@ const useStyles = makeStyles((theme) => ({
 
   signUp:{
     backgroundColor:"#c47d1e",
-    color:"#ffffff",
+    color:"#13181e",
     marginTop:"0.1rem",
     marginRight:"1.25rem",
     borderRadius:"2rem",
+    fontSize:"1rem",
     width:"5.8rem",
     '&:hover': {
       color: "#ffffff",
@@ -108,11 +109,13 @@ const useStyles = makeStyles((theme) => ({
   appBarTransparent: {
     backgroundColor: 'rgba(10, 10, 10,0)',
     transition: 'backgroundColor 1s easeInOut',
-    boxShadow:'none'
+    boxShadow:'none',
+    color:"#13181e"
   },
 
   appBarSolid: {
-    backgroundColor:'#13181e'
+    backgroundColor:'#13181e',
+    textColor:"#ffffff"
   }
 
 }));

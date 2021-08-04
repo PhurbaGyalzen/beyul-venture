@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundPosition: 'center center',
         backgroundSize: 'cover',
         backgroundAttachment: 'fixed',
-        backgroundColor: '#F9F9F9',
+        // backgroundColor: '#F9F9F9',
         opacity: 1,
     },
     firstRowItem1: {
@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     // secondRow
     secondRow: {
         height: 'auto',
-        backgroundColor: '#F0F0F0',
+        // backgroundColor: '#F0F0F0',
     },
 
     contactCard: {
@@ -136,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
         height: 'auto',
         padding: '3rem 2px',
         margin: '0 auto',
-        backgroundColor: '#888888',
+        // backgroundColor: '#888888',
     },
 
     map: {
@@ -253,7 +253,7 @@ export default function ContactUs() {
                 <Grid
                     container
                     justifyContent='space-evenly'
-                    style={{ backgroundColor: '#FFE8DF' }}
+                    // style={{ backgroundColor: '#FFE8DF' }}
                 >
                     <Grid
                         item
@@ -279,7 +279,7 @@ export default function ContactUs() {
                     container
                     justifyContent='center'
                     className={classes.thirdRow}
-                    style={{ backgroundColor: '#FFE8DF' }}
+                    // style={{ backgroundColor: '#FFE8DF' }}
                 >
                     <Grid item className={classes.faq} xs={12} md={5} sm={5}>
                         <Typography variant='h4' className={classes.faqText}>
