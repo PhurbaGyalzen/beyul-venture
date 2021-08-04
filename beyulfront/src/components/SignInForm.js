@@ -7,8 +7,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import Link from '@material-ui/core/Link'
 import toast from 'react-hot-toast';
-import { Redirect } from 'react-router';
+
 import { useHistory } from 'react-router';
+
+
+
 const useStyles = makeStyles((theme) => ({
     form: {
       width: '100%', // Fix IE 11 issue.

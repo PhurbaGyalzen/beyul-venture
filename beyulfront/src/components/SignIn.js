@@ -13,15 +13,17 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Copyright from 'components/Copyright'
-
+import Lottie from 'react-lottie';
+import animationData from 'img/lotties/42070-travel-is-fun.json'
 
 import { SignInForm } from './SignInForm'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    // paddingBottom:'3rem',
-    padding:'3rem',
+    
+    marginLeft: theme.spacing(1),
+    padding:'2rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -29,20 +31,25 @@ const useStyles = makeStyles((theme) => ({
   },
   
   imgContainer:{
-    // backgroundImage:'linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("/static/images/swayambhu.jpg")',
-    padding: '0',
+    
+    marginTop: theme.spacing(8),
+    padding: '10%',
     width:'100%',
     height:'100%',
-    // backgroundRepeat: 'no-repeat',
     backgroundSize: '100%',
-    // [theme.breakpoints.down('md')]: {
-    //   height: '100%'
-    // },
   }
 }))
 
 export default function SignIn() {
   const classes = useStyles()
+  const defaultOptions = {
+    loop: true,
+    autoplay: true, 
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
 
   return (
     <Container component='main' maxWidth='md'>
@@ -50,11 +57,10 @@ export default function SignIn() {
       <Grid container>
         <Grid item xs={12} md={6}>
           <div className={classes.imgContainer}>
-            <div style={{paddingTop:'70%',width:'100%',height:'100%'}}>
-              
-            
-            </div>
-            
+              <Lottie options={defaultOptions}
+              height={400}
+              width={400}
+              />
           </div>
         </Grid>
         <Grid item xs={12} md={6}>
