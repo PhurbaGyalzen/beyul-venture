@@ -95,7 +95,7 @@ const BlogDetail = (props) => {
     const { blogid } = useParams()
     const classes = blogStyles()
     const [blog, setBlog] = useState([])
-    const [author, setAuthor] = useState([])
+    const [author, setAuthor] = useState({})
     // const resp = await ajax('/api/blog/' + blog_id + '/')
 
     useEffect(async () => {
@@ -107,7 +107,7 @@ const BlogDetail = (props) => {
     }, [])
     if (blog.error) {
         return <FourZeroFour />
-    } else if (blog) {
+    } else if (blog.status) {
         return (
             <>
                 <Container
