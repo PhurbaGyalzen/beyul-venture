@@ -11,6 +11,10 @@ from users.views import(
     RegistrationAPIView,
 )
 
+from package.views import (
+    PackageView,
+)
+
 from django.urls import path, include
 from django.contrib import admin
 from django.conf import settings
@@ -25,6 +29,7 @@ router.register(r'user', UserViewSet)
 router.register(r'tag', TagViewSet)
 router.register(r'comment', CommentViewSet)
 router.register(r'clap', ClapViewSet)
+router.register(r'package', PackageView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
