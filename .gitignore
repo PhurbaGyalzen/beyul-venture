@@ -5,4 +5,6 @@
 *.tmPreferences.cache 
 *.stTheme.cache 
 *.sublime-workspace 
-*.sublime-project 
+*.sublime-project
+
+dump.rdb
