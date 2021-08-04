@@ -30,6 +30,7 @@ class PackageSerializer(serializers.HyperlinkedModelSerializer):
             'created_on',
             'updated_on',
             'thumbnail',
+            'price'
         )
         extra_kwargs = {
             'url': {'view_name': 'package-detail', 'lookup_field': 'slug'},
