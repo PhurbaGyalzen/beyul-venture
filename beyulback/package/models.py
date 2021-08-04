@@ -1,13 +1,15 @@
 from blog.ImageCompressor import compress
 
 from django.db import models
+from django.template.defaultfilters import slugify
 from django.utils.translation import gettext_lazy as _
 
 from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Package(models.Model):
-    name = models.CharField(_('name'), max_length=200)
+    name = models.CharField(_('name'), help_text=_(
+        'Enter your package name here.'), max_length=200, unique=True)
     slug = models.SlugField(_('slug'), help_text=_(
         'package name will be default slug if you leave it blank'), blank=True, unique=True)
     description = models.CharField(
@@ -32,16 +34,15 @@ class Package(models.Model):
     price = models.IntegerField(
         _('price'), help_text=_('enter the package price'))
 
-    class Meta:
-        ordering = ['-created_on']
-
     def save(self, *args, **kwargs):
-        super(Package, self).save(*args, **kwargs)
         if not self.slug:
-            self.slug = Package(self.name)
-
+            self.slug = slugify(self.name)
+        super(Package, self).save(*args, **kwargs)
         if self.compress_thumbnail:
             compress(self.thumbnail.path, 30)
+
+    class Meta:
+        ordering = ['-created_on']
 
     def __str__(self):
         return self.name
