@@ -67,15 +67,11 @@ const ajax = async (path, ...rest) => {
         let data
         if (!resp.ok)
             return { error: 'client: received ' + resp.status, type: '' }
-        try {
-            data = await resp.json()
-        } catch {
-            data = { error: 'client: json decode error', type: '' }
-        }
+        data = await resp.json()
         return data
     } catch (err) {
-        console.log('Network error:', err)
-        return { error: 'client: Network error:', type: '' }
+        console.log('JSON/Network error:', err)
+        return { error: 'client: JSON/Network error:', type: '' }
     }
 }
 
