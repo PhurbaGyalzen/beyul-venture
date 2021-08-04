@@ -7,16 +7,18 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import Link from '@material-ui/core/Link'
 import toast from 'react-hot-toast';
+import { Redirect } from 'react-router';
+import { useHistory } from 'react-router';
 const useStyles = makeStyles((theme) => ({
     form: {
       width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(1),
+      marginTop: theme.spacing(3),
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
     },
     textfield:{
-        backgroundColor:'white',
+        // backgroundColor:'white',
         height:'4rem'
     }
   }))
@@ -33,7 +35,7 @@ const ValidatingTextField = ({...props}) => {
 
 
 const validationSchema = yup.object({
-    email: yup.string().email().required(),
+    email: yup.string().email().required('Email is necessary to sign you in'),
     password: yup.string().required(),
     });
 
@@ -43,6 +45,7 @@ const errort = (msg) => toast.error(msg)
 
 export const SignInForm = () => {
     const classes = useStyles();
+    const history = useHistory();
     return (
         <>
             <Formik
@@ -70,17 +73,23 @@ export const SignInForm = () => {
                          })
                     }
                     
-                    
-
                     fetch('http://localhost:8000/api/login/',requestOptions)
-                    .then( response => response.json())
+                    .then( response => response.json().then(res => ({
+                            data: res, 
+                            status : response.status
+                        })
+                    ))
                     .then(
-                        (data) => {
-                            console.log('main ch data:',data); 
-                            console.log(data);
-                            // (data.status > 400) ? errort(data.detail) : successToast(data.detail);
-                            successToast(data.detail);
-
+                        (jsonData) => {
+                            console.log('main ch jsonData:',jsonData.data);
+                            console.log(jsonData.status)
+                            if (jsonData.data.hasOwnProperty("access")){
+                                successToast("Sucessfully logged in")
+                                history.push("/")
+                            }else{
+                                (jsonData.status > 400) ? errort(jsonData.data.detail) : successToast(jsonData.data.detail);
+                            }
+                            // successToast(jsonData.data.detail);
                         }
 
                     )

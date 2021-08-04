@@ -20,39 +20,57 @@ import { SignInForm } from './SignInForm'
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    paddingBottom:'3rem',
+    // paddingBottom:'3rem',
+    padding:'3rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor: '#E0DEE6',
   },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
+  
+  imgContainer:{
+    // backgroundImage:'linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("/static/images/swayambhu.jpg")',
+    padding: '0',
+    width:'100%',
+    height:'100%',
+    // backgroundRepeat: 'no-repeat',
+    backgroundSize: '100%',
+    // [theme.breakpoints.down('md')]: {
+    //   height: '100%'
+    // },
+  }
 }))
 
 export default function SignIn() {
   const classes = useStyles()
 
   return (
-    <Container component='main' maxWidth='xs'>
+    <Container component='main' maxWidth='md'>
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component='h1' variant='h5'>
-          Sign in
-        </Typography>
-        <SignInForm />
-      </div>
+      <Grid container>
+        <Grid item xs={12} md={6}>
+          <div className={classes.imgContainer}>
+            <div style={{paddingTop:'70%',width:'100%',height:'100%'}}>
+              
+            
+            </div>
+            
+          </div>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <div style={{display: 'flex',justifyContent:'center'}}>
+            <div className={classes.paper}>
+          
+              <Typography component='h1' variant='h5'>
+                Sign in
+              </Typography>
+              <SignInForm />
+            </div>
+          </div>
+        
+        </Grid>
+      </Grid>
+      
       {/* <Box mt={8}>
         <Copyright /
       </Box> */}
