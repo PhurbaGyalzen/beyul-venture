@@ -22,15 +22,25 @@ STATUS = (
 
 
 class Tag(models.Model):
-    name = models.CharField(_('name'), help_text=_(
-        'Enter your tag name here.'), max_length=200, unique=True)
-    slug = models.SlugField(_('slug'), help_text=_(
-        'Tag name will be default slug if you leave it blank.'), blank=True, unique=True)
-    background_img = models.ImageField(_('background image'),
-                                       default='tags/default_tag.jpg',
-                                       upload_to="tags",
-                                       help_text=_(
-        'Insert a background image for this tag.'),
+    name = models.CharField(
+        _('name'),
+        help_text=_('Enter your tag name here.'),
+        max_length=200,
+        unique=True
+    )
+    slug = models.SlugField(
+        _('slug'),
+        help_text=_(
+            'Tag name will be default slug if you leave it blank.'
+        ),
+        blank=True,
+        unique=True
+    )
+    background_img = models.ImageField(
+        _('background image'),
+        default='tags/default_tag.jpg',
+        upload_to="tags",
+        help_text=_('Insert a background image for this tag.'),
     )
 
     def get_absolute_url(self):
@@ -50,33 +60,71 @@ class Tag(models.Model):
 
 
 class Blog(models.Model):
-    title = models.CharField(_('title'), max_length=200)
-    slug = models.SlugField(_('slug'), help_text=_(
-        'Your title will be default slug if you leave it blank'), blank=True, unique=True)
+    title = models.CharField(
+        _('title'),
+        max_length=200
+    )
+    slug = models.SlugField(
+        _('slug'),
+        help_text=_(
+            'Your title will be default slug if you leave it blank'
+        ),
+        blank=True,
+        unique=True
+    )
     description = models.CharField(
-        _('Descripiton'), max_length=500, help_text=_('Write a short description about your post'), blank=True)
-    tags = models.ManyToManyField(Tag, help_text=_(
-        'choose suitable tags for your blog'), related_name='post')
+        _('Descripiton'),
+        max_length=500,
+        help_text=_('Write a short description about your post'),
+        blank=True
+    )
+    tags = models.ManyToManyField(
+        Tag,
+        help_text=_('choose suitable tags for your blog'),
+        related_name='post'
+    )
 
-    content = RichTextUploadingField(_('content'), help_text=_(
-        'Put your actual content here.'), blank=True, null=True)
+    content = RichTextUploadingField(
+        _('content'),
+        help_text=_('Put your actual content here.'),
+        blank=True, null=True
+    )
 
-    created_on = models.DateTimeField(_('create on'), auto_now_add=True)
-    updated_on = models.DateTimeField(_('update_on'), auto_now=True)
-    thumbnail = models.ImageField(_('thumbnail'),
-                                  upload_to="blog",
-                                  blank=True,
-                                  help_text=_(
-                                      'Insert a thumbnail for your blog.'),
-                                  null=True
-                                  )
-    compress_thumbnail = models.BooleanField(_('compress thumbnail'),
-                                             help_text=_(
-        'checking this field will enable compression in thumbnail image.'), default=False)
+    created_on = models.DateTimeField(
+        _('create on'),
+        auto_now_add=True
+    )
+
+    updated_on = models.DateTimeField(
+        _('update_on'),
+        auto_now=True
+    )
+    thumbnail = models.ImageField(
+        _('thumbnail'),
+        upload_to="blog",
+        blank=True,
+        help_text=_('Insert a thumbnail for your blog.'),
+        null=True
+    )
+    compress_thumbnail = models.BooleanField(
+        _('compress thumbnail'),
+        help_text=_(
+            'checking this field will enable compression in thumbnail image.'
+        ),
+        default=False
+    )
     author = models.ForeignKey(
-        settings.AUTH_USER_MODEL, related_name="post", on_delete=models.CASCADE)
-    status = models.IntegerField(choices=STATUS, help_text=_(
-        'publish or draft your blog (default=publish)'), default=1)
+        settings.AUTH_USER_MODEL,
+        related_name="post",
+        on_delete=models.CASCADE
+    )
+    status = models.IntegerField(
+        choices=STATUS,
+        help_text=_(
+            'publish or draft your blog (default=publish)'
+        ),
+        default=1
+    )
 
     class Meta:
         ordering = ['-created_on']
@@ -98,14 +146,31 @@ class Blog(models.Model):
 
 class Comment(MPTTModel):
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='comments')
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='comments'
+    )
     blog = models.ForeignKey(
-        Blog, on_delete=models.CASCADE, related_name='comments')
+        Blog,
+        on_delete=models.CASCADE,
+        related_name='comments'
+    )
     body = models.TextField()
-    created_on = models.DateTimeField(_('create on'), auto_now_add=True)
-    updated_on = models.DateTimeField(_('update on'), auto_now=True)
-    parent = TreeForeignKey('self', on_delete=models.CASCADE,
-                            null=True, blank=True, related_name='children')
+    created_on = models.DateTimeField(
+        _('create on'),
+        auto_now_add=True
+    )
+    updated_on = models.DateTimeField(
+        _('update on'),
+        auto_now=True
+    )
+    parent = TreeForeignKey(
+        'self',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='children'
+    )
 
     class MPTTMeta:
         order_insertion_by = ['created_on']
@@ -116,15 +181,27 @@ class Comment(MPTTModel):
 
 class Clap(models.Model):
     count = models.PositiveSmallIntegerField(
-        _('count'), validators=[validate_clap]
+        _('count'),
+        validators=[validate_clap]
     )
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="claps")
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="claps"
+    )
     blog = models.ForeignKey(
-        Blog, on_delete=models.CASCADE, related_name="claps")
+        Blog, on_delete=models.CASCADE,
+        related_name="claps"
+    )
 
-    created_on = models.DateTimeField(_('create on'), auto_now_add=True)
-    updated_on = models.DateTimeField(_('update on'), auto_now=True)
+    created_on = models.DateTimeField(
+        _('create on'),
+        auto_now_add=True
+    )
+    updated_on = models.DateTimeField(
+        _('update on'),
+        auto_now=True
+    )
 
     def __str__(self):
         return f"{self.user.first_name} clapped {self.count} times in {self.blog.title} blog."
