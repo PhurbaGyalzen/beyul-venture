@@ -190,7 +190,8 @@ class Clap(models.Model):
         related_name="claps"
     )
     blog = models.ForeignKey(
-        Blog, on_delete=models.CASCADE,
+        Blog,
+        on_delete=models.CASCADE,
         related_name="claps"
     )
 
