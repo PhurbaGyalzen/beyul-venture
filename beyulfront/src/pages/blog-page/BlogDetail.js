@@ -91,12 +91,11 @@ const formatDate = (datetime) => {
     })} ${toConvert.getDate()}, ${toConvert.getFullYear()}`
 }
 
-const BlogDetail = (props) => {
+const BlogDetail = ({ details }) => {
     const { blogid } = useParams()
     const classes = blogStyles()
     const [blog, setBlog] = useState([])
     const [author, setAuthor] = useState({})
-    // const resp = await ajax('/api/blog/' + blog_id + '/')
 
     useEffect(async () => {
         const apiData = await ajax('/api/blog/' + blogid + '/')
