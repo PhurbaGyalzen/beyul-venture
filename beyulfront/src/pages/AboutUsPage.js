@@ -94,16 +94,16 @@ export default function AboutUsPage() {
     const classes = useStyles()
     return (
         <>
-            <div  style={{ color:"#13181e", paddingTop:"2rem"}}>
+            <div  style={{ color:"#13181e", paddingTop:"2rem"}} style={{width:"100%"}}>
                     {/* First row */}
-                <Box maxWidth='100%' ml={5} pt={10} mb={3}>
+                <Box style={{maxWidth:"100%", overflow:"hidden"}} pt={10} mb={3}>
                     <Grid
                         container
                         spacing={3}
                         item
-                        style={{ padding: ' 0 1.6rem 0 1.6rem ' }}
+                        style={{ padding: ' 0 2rem 0 2rem ' }}
                     >
-                        <Grid item xs={12} md={6} sm={6} ml={5}>
+                        <Grid item xs={12} md={6} sm={6}>
                             <Typography
                                 variant='h5'
                                 className={classes.aboutUs}
@@ -136,7 +136,7 @@ export default function AboutUsPage() {
                             </Button>
                         </Grid>
 
-                        <Grid item xs={12} md={6} sm={6}>
+                        <Grid item xs={12} md={6} sm={6} mt={{xs:"3rem"}}>
                             <img src={aboutUs} className={classes.aboutUsImg} />
                         </Grid>
                         <Hidden only="xs">
