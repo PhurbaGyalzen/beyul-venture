@@ -1,0 +1,40 @@
+.appBarTransparent.appBarSolid{
+    background-color:#13181e;
+    color:"#ffffff";
+  }
+  
+.appBarTransparent{
+    box-shadow:none;
+    color:"#13181e";
+    
+  }
+  
+.textDark{
+    color:#ffffff;
+    margin-right: 2.3rem;
+
+}
+
+.textDark.textWhite{
+      color:#ffffff;
+      margin-right: 2.3rem;
+      padding-top: 0.625rem;
+      font-size: 0.8rem;
+}
+
+.textDark.textWhite:hover{
+    color:#df9534;
+    cursor: pointer;
+}
+      /* marginRight:"2.3rem",
+    fontSize:"0.8rem",
+    letterSpacing:"0.1rem",
+    paddingTop:"0.625rem",
+    '&:hover': {
+      color: "#c47d1e",
+      cursor:"pointer", */
+      
+      /* } */
+  /* } */
+
+  

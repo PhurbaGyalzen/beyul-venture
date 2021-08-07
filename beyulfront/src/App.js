@@ -1,6 +1,6 @@
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
-import Navigation from 'components/Header1'
+import Navigation from 'components/header/Header'
 // import { Footer } from 'components/Footer'
 import { Footer } from 'pages/footer/Footer'
 
