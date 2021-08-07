@@ -35,9 +35,12 @@ const useStyles = makeStyles((theme) => ({
     button: {
         marginTop: '2rem',
         marginBottom: '1rem',
+        backgroundColor:"#694311",
+        color:"#ffffff",
         '&:hover': {
             cursor: 'pointer',
-            backgroundColor: blue[1000],
+            backgroundColor:"#DF9534",
+            color:"#13181e"
         },
     },
 
@@ -48,22 +51,40 @@ const useStyles = makeStyles((theme) => ({
 
     whyWithUsTitle: {
         padding: '2.5rem 0 0rem',
-        marginBottom: '1rem',
+        marginBottom: '3rem',
+        marginTop:"2rem",
+        fontSize:"2rem",
+        fontWeight:"bold",
+        color:"#694311"
     },
 
     aboutUs: {
         marginBottom: '1rem',
+        color:"#694311",
+        fontSize:"1rem",
+        fontWeight:"bold"
     },
 
     card: {
         height: '18.9rem',
         margin: '3%',
         '&:hover': {
-            backgroundColor: blue[500],
+            backgroundColor: "#EDEEF0",
             cursor: 'pointer',
-            color: grey[50],
+            color: "#13181e",
         },
     },
+
+    paragraph:{
+        fontSize:"1rem",
+        lineHeight:"2rem"
+    },
+
+    cardHeading:{
+        color:"#694311",
+        fontWeight:"bold",
+        paddingTop:"1.5rem"
+    }
 }))
 
 // Card Information
@@ -71,7 +92,7 @@ export default function AboutUsPage() {
     const classes = useStyles()
     return (
         <>
-            <div  style={{backgroundColor:"#D8DFE8"}}>
+            <div  style={{ color:"#13181e", paddingTop:"2rem"}}>
                     {/* First row */}
                 <Box maxWidth='100%' ml={5} pt={10} mb={3}>
                     <Grid
@@ -83,12 +104,11 @@ export default function AboutUsPage() {
                         <Grid item xs={12} md={6} sm={6} ml={5}>
                             <Typography
                                 variant='h5'
-                                color='primary'
                                 className={classes.aboutUs}
                             >
                                 About Us
                             </Typography>
-                            <Typography component='p' align='justify'>
+                            <Typography component='p' align='justify' className={classes.paragraph}>
                                 Lorem Ipsum has been the industry's standard dummy
                                 text ever since the 1500s, scrambled it to make a
                                 type specimen book. It has survived not only five
@@ -104,17 +124,10 @@ export default function AboutUsPage() {
                                 five centuries, but also the leap into electronic
                                 typesetting, remaining essentially unchanged. It
                                 was popularised in the 1960s with the release of
-                                Letraset sheets containing Lorem Ipsum passages,
-                                and more recently with desktop publishing software
-                                like Aldus PageMaker including versions of Lorem
-                                Ipsum. It was popularised in the 1960s with the
-                                release of Letraset sheets containing Lorem Ipsum
-                                passages, and more recently with desktop publishing
-                                software like Aldus PageMaker including versions.
+                                Letraset sheets containing Lorem Ipsum passages.
                             </Typography>
                             <Button
                                 variant='contained'
-                                color='primary'
                                 className={classes.button}
                             >
                                 Readmore
@@ -137,7 +150,7 @@ export default function AboutUsPage() {
                             >
                                 Our History
                             </Typography>
-                            <Typography component='p' align='justify'>
+                            <Typography component='p' align='justify' className={classes.paragraph}>
                                 Lorem Ipsum has been the industry's standard dummy
                                 text ever since the 1500s, scrambled it to make a
                                 type specimen book. It has survived not only five
@@ -151,19 +164,10 @@ export default function AboutUsPage() {
                                 dummy text ever since the 1500s, scrambled it to
                                 make a type specimen book. It has survived not only
                                 five centuries, but also the leap into electronic
-                                typesetting, remaining essentially unchanged. It
-                                was popularised in the 1960s with the release of
-                                Letraset sheets containing Lorem Ipsum passages,
-                                and more recently with desktop publishing software
-                                like Aldus PageMaker including versions of Lorem
-                                Ipsum. It was popularised in the 1960s with the
-                                release of Letraset sheets containing Lorem Ipsum
-                                passages, and more recently with desktop publishing
-                                software like Aldus PageMaker including versions.
+                                typesetting, remaining essentially unchanged. 
                             </Typography>
                             <Button
                                 variant='contained'
-                                color='primary'
                                 className={classes.button}
                             >
                                 Readmore
@@ -178,7 +182,7 @@ export default function AboutUsPage() {
                     <Grid
                         container
                         style={{
-                            backgroundColor: '#d1e2f0',
+                            backgroundColor: '#FCFCFC',
                             padding: '0 2rem 3rem 2rem',
                         }}
                         className={classes.whyWithUs}
@@ -186,7 +190,7 @@ export default function AboutUsPage() {
                         <Grid item xs={12} md={12} sm={12}>
                             <Typography
                                 variant='h5'
-                                color='primary'
+                                color='#694311'
                                 align='center'
                                 className={classes.whyWithUsTitle}
                                 gutterBottom
@@ -206,8 +210,9 @@ export default function AboutUsPage() {
                                 <CardContent style={{ paddingTop: '0' }}>
                                     <Typography
                                         variant='h6'
-                                        color='primary'
+                                        color='#694311'
                                         gutterBottom
+                                        className={classes.cardHeading}
                                     >
                                         Global Reach
                                     </Typography>
@@ -239,8 +244,9 @@ export default function AboutUsPage() {
                                 <CardContent style={{ paddingTop: '0' }}>
                                     <Typography
                                         variant='h6'
-                                        color='primary'
+                                        color='#694311'
                                         gutterBottom
+                                        className={classes.cardHeading}
                                     >
                                         Compitative prices
                                     </Typography>
@@ -274,8 +280,10 @@ export default function AboutUsPage() {
                                 <CardContent style={{ paddingTop: '0' }}>
                                     <Typography
                                         variant='h6'
-                                        color='primary'
+                                        color='#694311'
+                                        className={classes.cardHeading}
                                         gutterBottom
+
                                     >
                                         Excellent service
                                     </Typography>
@@ -308,7 +316,7 @@ export default function AboutUsPage() {
                                 />
 
                                 <CardContent style={{ paddingTop: '0' }}>
-                                    <Typography variant='h6' color='primary'>
+                                    <Typography variant='h6' color="#694311" className={classes.cardHeading}>
                                         Save Payment
                                     </Typography>
                                     <Typography
