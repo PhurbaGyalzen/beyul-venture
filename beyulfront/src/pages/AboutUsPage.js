@@ -8,6 +8,8 @@ import { CardContent } from '@material-ui/core'
 import { CardMedia } from '@material-ui/core'
 import { blue, grey } from '@material-ui/core/colors'
 import { Button } from '@material-ui/core'
+import Hidden from '@material-ui/core/Hidden';
+
 
 // All image import
 import aboutUs from 'img/another.svg'
@@ -51,9 +53,9 @@ const useStyles = makeStyles((theme) => ({
 
     whyWithUsTitle: {
         padding: '2.5rem 0 0rem',
-        marginBottom: '3rem',
         marginTop:"2rem",
         fontSize:"2rem",
+        lineHeight:"4rem",
         fontWeight:"bold",
         color:"#694311"
     },
@@ -137,10 +139,12 @@ export default function AboutUsPage() {
                         <Grid item xs={12} md={6} sm={6}>
                             <img src={aboutUs} className={classes.aboutUsImg} />
                         </Grid>
-
-                        <Grid item xs={12} md={6} sm={6} ml={5}>
-                            <img src={history} className={classes.aboutUsImg} />
-                        </Grid>
+                        <Hidden only="xs">
+                            <Grid item xs={12} md={6} sm={6} ml={5}>
+                                <img src={history} className={classes.aboutUsImg} />
+                            </Grid>
+                        </Hidden>
+                        
 
                         <Grid item xs={12} md={6} sm={6}>
                             <Typography
