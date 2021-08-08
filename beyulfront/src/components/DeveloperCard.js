@@ -13,8 +13,25 @@ import {
 import FacebookIcon from '@material-ui/icons/Facebook'
 import InstagramIcon from '@material-ui/icons/Instagram'
 import TwitterIcon from '@material-ui/icons/Twitter'
+import { makeStyles} from '@material-ui/core'
+
+
+const useStyles = makeStyles((theme) => ({
+    button:{
+        fontSize:'1.3rem',
+        color:"#000000",
+        '&:hover': {
+            cursor: 'pointer',
+            color:"#694311",
+        },
+    }
+
+    
+}))
+
 
 export const DeveloperCard = (props) => {
+    const classes = useStyles()
     return (
         <>
             <Grid item md={2} sm={5} xs={12} style={{ paddingBottom: '2%' }}>
@@ -26,7 +43,7 @@ export const DeveloperCard = (props) => {
 
                     <CardContent>
                         <Box align='Center'>
-                            <Typography variant='body1' color='primary'>
+                            <Typography variant='body1' color='primary' style={{color:"#ffffff",fontSize:"1rem", lineHeight:"2rem", fontWeight:"bold"}}>
                                 {props.data.post}
                             </Typography>
                         </Box>
@@ -36,7 +53,7 @@ export const DeveloperCard = (props) => {
                             </Typography>
                         </Box>
                         <Box align='Center' fontWeight='Light'>
-                            <Typography variant='body1'>
+                            <Typography variant='body1' style={{fontSize:"1rem", lineHeight:"1.658rem", color:"#13181e" }}>
                                 {props.data.bio}
                             </Typography>
                         </Box>
@@ -48,8 +65,7 @@ export const DeveloperCard = (props) => {
                             style={{ paddingRight: '4%' }}
                         >
                             <FacebookIcon
-                                fontSize='small'
-                                style={{ color: '#4267B2' }}
+                                className={classes.button}
                             />
                         </Link>
                         <Link
@@ -57,8 +73,7 @@ export const DeveloperCard = (props) => {
                             style={{ paddingRight: '4%' }}
                         >
                             <TwitterIcon
-                                fontSize='small'
-                                style={{ color: '#1DA1F2' }}
+                                className={classes.button}
                             />
                         </Link>
                         <Link
@@ -66,8 +81,7 @@ export const DeveloperCard = (props) => {
                             style={{ paddingRight: '4%' }}
                         >
                             <InstagramIcon
-                                fontSize='small'
-                                style={{ color: '#DD2A7B' }}
+                                className={classes.button}
                             />
                         </Link>
                     </Box>

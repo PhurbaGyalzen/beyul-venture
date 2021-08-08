@@ -15,10 +15,13 @@ const useStyles = makeStyles((theme) => ({
     },
     askButton: {
         width: '100%',
-        border: '2px solid black',
+        border: '2px solid #DF9534',
         marginTop: 20,
+        color:"#13181e",
         fontWeight: 'bold',
-        '&:hover': {},
+        '&:hover': {
+            color:"#ffffff"
+        },
     },
 
     
@@ -110,11 +113,12 @@ export const ContactUsForm = () => {
                     label="Messages"  
                     multiline rows={5} variant="outlined" size='small'/>
                         <Button
-                        variant='outlined'
+                        variant='contained'
                         size='large'
                         className={classes.askButton}
                         disabled={isSubmitting}
                         type='submit'
+                        style={{backgroundColor:"#DF9534"}}
                     >
                         {' '}
                         CATAPULT YOUR MESSAGE TO BEYUL VENTURE{' '}

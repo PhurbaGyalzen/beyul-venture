@@ -37,6 +37,7 @@ html {
   box-sizing: border-box;
   margin:0;
   padding:0;
+  background-color:#303030;
 }
 
 *,
@@ -69,6 +70,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size:16px;
+  background-color: #EDEEF0;
 }
 
 html::-webkit-scrollbar {
@@ -87,13 +89,3 @@ html::-webkit-scrollbar-track {
   background: linear-gradient(0deg, #77b6dd59, #f2af9775);
   /*border: 2px solid #7685a429;*/
 }
-/* 
-.transparentBg {
-  background-color: rgba(10, 10, 10, 0) !important;
-  transition: background-color 1s ease-in-out !important;
-} */
-
-/* .nonTransparentBg {
-  background-color: rgba(10, 10, 10, 0) !important;
-  transition: background-color 2s ease-in-out !important;
-}  */

@@ -1,32 +1,15 @@
 // All dependences import
 import {
-    Container,
-    makeStyles,
-    Card,
-    CardContent,
-    CardMedia,
-    CardActions,
+    makeStyles
+ 
 } from '@material-ui/core'
 import { Box } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import { Grid } from '@material-ui/core'
 import { useState, useEffect } from 'react'
-import { blue, grey } from '@material-ui/core/colors'
-import { Button } from '@material-ui/core'
 import Faq from '../pages/faq/Faq'
-import TextField from '@material-ui/core/TextField'
-import { Divider } from '@material-ui/core'
-import RoomIcon from '@material-ui/icons/Room'
-import LocalPhoneIcon from '@material-ui/icons/LocalPhone'
-import EmailIcon from '@material-ui/icons/Email'
-import FacebookIcon from '@material-ui/icons/Facebook'
-import InstagramIcon from '@material-ui/icons/Instagram'
-import TwitterIcon from '@material-ui/icons/Twitter'
-import WhatsAppIcon from '@material-ui/icons/WhatsApp'
-import YouTubeIcon from '@material-ui/icons/YouTube'
 
-import Avatar from '@material-ui/core/Avatar'
-import Link from '@material-ui/core/Link'
+
 
 // All image import
 import contactUsImg from 'img/contactUs.jpg'
@@ -39,8 +22,6 @@ import sanjibImg from 'img/sanjib.jpg'
 import sunilImg from 'img/sunil.png'
 
 //validation import
-import { Formik, Field, Form, useField } from 'formik'
-import * as yup from 'yup'
 import { ContactUsForm } from '../components/ContactUsForm'
 import { DeveloperCard } from '../components/DeveloperCard'
 
@@ -57,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundPosition: 'center center',
         backgroundSize: 'cover',
         backgroundAttachment: 'fixed',
-        // backgroundColor: '#F9F9F9',
+        backgroundColor: '#EDEEF0',
         opacity: 1,
     },
     firstRowItem1: {
@@ -67,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
 
     contactUsTitle: {
         fontWeight: 'bold',
+        color:"#694311",
     },
 
     // secondRow
@@ -95,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
     thirdRow: {
         height: 'auto',
         padding: 20,
+        backgroundColor:"#ffffff"
     },
 
     faq: {
@@ -102,9 +85,6 @@ const useStyles = makeStyles((theme) => ({
         marginTop: 50,
     },
 
-    faqText: {
-        marginBottom: 30,
-    },
 
     questionImg: {
         height: 100,
@@ -148,6 +128,14 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         height: '100%',
     },
+
+    heading:{
+        color:"#694311",
+        fontSize:"2rem",
+        fontWeight:'bold',
+        lineHeight:"4rem",
+        paddingBotttom:"3rem"
+    }
 }))
 
 // ContactUs component
@@ -219,7 +207,7 @@ export default function ContactUs() {
 
     return (
         <>
-            <Box component='div' style={{ backgroundColor: '#F0F0F0' }}>
+            <Box component='div' style={{ backgroundColor: '#EDEEF0', color:"#ffffff" }}>
                 {/* First Row */}
                 <Grid
                     container
@@ -242,8 +230,8 @@ export default function ContactUs() {
                             {' '}
                             Beyul Venture
                         </Typography>
-                        <Typography>Need a help? Or a high five?</Typography>
-                        <Typography>Here's how to reach us</Typography>
+                        <Typography style={{color:"#13181e"}}>Need a help? Or a high five?</Typography>
+                        <Typography style={{color:"#13181e"}}>Here's how to reach us</Typography>
                     </Grid>
                 </Grid>
 
@@ -263,7 +251,7 @@ export default function ContactUs() {
                         style={{ paddingTop: '1%', paddingBottom: '1%' }}
                         align='center'
                     >
-                        <Typography variant='h5' style={{ color: 'Black' }}>
+                        <Typography variant='h5' component={Box} pb={5} pt={5} className={classes.heading}>
                             Meet Our Team
                         </Typography>
                     </Grid>
@@ -281,20 +269,20 @@ export default function ContactUs() {
                     className={classes.thirdRow}
                     // style={{ backgroundColor: '#FFE8DF' }}
                 >
-                    <Grid item className={classes.faq} xs={12} md={5} sm={5}>
-                        <Typography variant='h4' className={classes.faqText}>
+                    <Grid item className={classes.faq} xs={12} md={4} sm={5} mr={{md:4, xs:0}}>
+                        <Typography variant='h4' className={classes.heading}>
                             Popular Questions
                         </Typography>
                         <Faq />
                     </Grid>
 
-                    <Grid item xs={12} md={6} sm={6}>
+                    <Grid item xs={12} md={6} sm={6} style={{paddingLeft:"1rem"}}>
                         <img
                             src={question}
                             alt='have any question'
                             className={classes.questionImg}
                         />
-                        <Typography variant='h4' align='center'>
+                        <Typography variant='h4' align='center' className={classes.heading}>
                             Have a question we didn't answer ?
                         </Typography>
                         <Typography
@@ -335,7 +323,7 @@ export default function ContactUs() {
                             variant='h6'
                             mt={10}
                             style={{
-                                color: '#ffffff',
+                                color: '#13181e',
                                 position: 'absolute',
                                 bottom: '-0.8rem',
                                 left: '1rem',

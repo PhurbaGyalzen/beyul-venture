@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
 
     paragraph:{
         fontSize:"1rem",
-        lineHeight:"2rem"
+        lineHeight:"1.685rem"
     },
 
     cardHeading:{
@@ -96,7 +96,7 @@ export default function AboutUsPage() {
         <>
             <div  style={{ color:"#13181e", paddingTop:"2rem"}} style={{width:"100%"}}>
                     {/* First row */}
-                <Box style={{maxWidth:"100%", overflow:"hidden"}} pt={10} mb={3}>
+                <Box style={{maxWidth:"100%", overflow:"hidden"}} pt={15} mb={3}>
                     <Grid
                         container
                         spacing={3}
@@ -221,7 +221,7 @@ export default function AboutUsPage() {
                                         Global Reach
                                     </Typography>
                                     <Typography
-                                        style={{ fontSize: '14px' }}
+                                        style={{ fontSize: '0.8rem', lineHeight:"1.35rem" }}
                                         gutterBottom
                                     >
                                         No matter where in the world you want to
@@ -255,7 +255,7 @@ export default function AboutUsPage() {
                                         Compitative prices
                                     </Typography>
                                     <Typography
-                                        style={{ fontSize: '14px' }}
+                                        style={{ fontSize: '0.8rem', lineHeight:'1.35rem'}}
                                         gutterBottom
                                     >
                                         Beyul.com has over 400 hundreds members,
@@ -292,7 +292,7 @@ export default function AboutUsPage() {
                                         Excellent service
                                     </Typography>
                                     <Typography
-                                        style={{ fontSize: '14px' }}
+                                        style={{ fontSize: '0.8rem', lineHeight:"1.35rem"}}
                                         gutterBottom
                                     >
                                         With Beyul.com, you always travel
@@ -324,7 +324,7 @@ export default function AboutUsPage() {
                                         Save Payment
                                     </Typography>
                                     <Typography
-                                        style={{ fontSize: '14px' }}
+                                        style={{ fontSize: '0.8rem', lineHeight:'1.35rem'}}
                                         gutterBottom
                                     >
                                         No matter where in the world you want to

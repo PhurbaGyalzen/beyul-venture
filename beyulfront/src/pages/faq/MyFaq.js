@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
     faqAccordion:{
         '&:hover':{
-            backgroundColor:"#EA6547"
+            backgroundColor:"#DF9534"
          
         }
     }
@@ -31,7 +31,7 @@ export default function MyFaq ({question,answer}){
     return(
         <>
             <div className={classes.root}>
-                <Accordion style={{backgroundColor:"#ffccbc"}}>
+                <Accordion style={{backgroundColor:"#EDEEF0"}}>
                     <AccordionSummary className={classes.faqAccordion}
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
@@ -41,7 +41,7 @@ export default function MyFaq ({question,answer}){
                     </AccordionSummary>
                     <Divider/>
 
-                    <AccordionDetails style={{backgroundColor:"#EA6547"}}>
+                    <AccordionDetails style={{backgroundColor:"#ffffff"}}>
                     <Typography align="justify">
                        {answer}
                     </Typography>
