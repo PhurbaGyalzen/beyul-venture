@@ -123,9 +123,9 @@ const Blog = (props) => {
 
     return (
         <>
-            <Box mt={6}>
-                <Container>
-                    <Typography align='center' gutterBottom variant='h4'>
+            <Box pt={7} style={{backgroundColor:"#EDEEF0", color:"#13181e"}}>
+                <Container style={{paddingTop:"4rem"}}>
+                    <Typography align='center' gutterBottom variant='h4' style={{color:"#694311", fontSize:"2rem", fontWeight:"bold", paddingBottom:"2rem"}}>
                         All Articles
                     </Typography>
 

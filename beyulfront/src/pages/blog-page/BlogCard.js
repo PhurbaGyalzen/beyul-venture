@@ -100,7 +100,8 @@ export const BlogCard = ({
                         return (
                             <li key={tag}>
                                 
-                                <Chip 
+                                <Chip
+                                style={{backgroundColor:"#13181e", color:"#ffffff"}}
                                 label = {splitted[splitted.length - 2]}
                                 variant = "outlined"
                                 onClick = {()=>{history.push(`/blog/tag/${splitted[splitted.length - 2]}`)}}
