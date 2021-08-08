@@ -19,12 +19,21 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
-      backgroundColor:"#DF9534"
+      backgroundColor:"#DF9534",
+      border: '2px solid #DF9534',
+      '&:hover': {
+        cursor: 'pointer',
+        color: "#fff",
+        backgroundColor:"#DF9534",
+
+
+        },
     },
     textfield:{
         // backgroundColor:'white',
         height:'4rem',
         color:"#13181e"
+        
     }
   }))
 
