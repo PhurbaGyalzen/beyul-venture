@@ -34,7 +34,7 @@ export const DeveloperCard = (props) => {
     const classes = useStyles()
     return (
         <>
-            <Grid item md={2} sm={5} xs={12} style={{ paddingBottom: '2%' }}>
+            <Grid item md={2} sm={5} xs={12} style={{ paddingBottom: '5%' }}>
                 <Card>
                     <CardMedia
                         image={props.data.image}

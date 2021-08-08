@@ -10,7 +10,8 @@ import { Divider } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      width: '100%'
+      width: '100%',
+      color:"#13181e"
     },
     heading: {
       fontSize: theme.typography.pxToRem(15),
