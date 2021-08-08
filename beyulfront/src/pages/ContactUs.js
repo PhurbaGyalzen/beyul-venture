@@ -9,10 +9,8 @@ import { Grid } from '@material-ui/core'
 import { useState, useEffect } from 'react'
 import Faq from '../pages/faq/Faq'
 
-
-
 // All image import
-import contactUsImg from 'img/contactUs.jpg'
+import contactUsImg from 'img/contactUs1.jpg'
 import mapImg from 'img/map.png'
 import question from 'img/question1.png'
 import nischalImg from 'img/nischal.jpg'
@@ -31,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     firstRow: {
         flexGrow: 1,
         padding: theme.spacing(3),
-        height: '100vh',
+        height: 'auto',
         textAlign: 'center',
         backgroundImage: `url(${contactUsImg})`,
         backgroundRepeat: 'no-repeat',
@@ -76,7 +74,8 @@ const useStyles = makeStyles((theme) => ({
     //thirdRow
     thirdRow: {
         height: 'auto',
-        padding: 20,
+        padding:20,
+        paddingBottom:50,
         backgroundColor:"#ffffff"
     },
 
@@ -114,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
     fourthRow: {
         width: '100%',
         height: 'auto',
-        padding: '3rem 2px',
+        padding: '3rem 1rem 0  1rem',
         margin: '0 auto',
         // backgroundColor: '#888888',
     },
@@ -223,7 +222,7 @@ export default function ContactUs() {
                         sm={12}
                         className={classes.firstRowItem1}
                     >
-                        <Typography
+                        {/* <Typography
                             variant='h3'
                             className={classes.contactUsTitle}
                         >
@@ -231,7 +230,7 @@ export default function ContactUs() {
                             Beyul Venture
                         </Typography>
                         <Typography style={{color:"#13181e"}}>Need a help? Or a high five?</Typography>
-                        <Typography style={{color:"#13181e"}}>Here's how to reach us</Typography>
+                        <Typography style={{color:"#13181e"}}>Here's how to reach us</Typography> */}
                     </Grid>
                 </Grid>
 
@@ -251,7 +250,7 @@ export default function ContactUs() {
                         style={{ paddingTop: '1%', paddingBottom: '1%' }}
                         align='center'
                     >
-                        <Typography variant='h5' component={Box} pb={5} pt={5} className={classes.heading}>
+                        <Typography variant='h5' component={Box} pb={5} pt={3} className={classes.heading}>
                             Meet Our Team
                         </Typography>
                     </Grid>
@@ -276,28 +275,31 @@ export default function ContactUs() {
                         <Faq />
                     </Grid>
 
-                    <Grid item xs={12} md={6} sm={6} style={{paddingLeft:"1rem"}}>
-                        <img
-                            src={question}
-                            alt='have any question'
-                            className={classes.questionImg}
-                        />
-                        <Typography variant='h4' align='center' className={classes.heading}>
-                            Have a question we didn't answer ?
-                        </Typography>
-                        <Typography
-                            variant='body2'
-                            align='left'
-                            color='textSecondary'
-                        >
-                            If you have any questions or queries a member of
-                            staff will always be happy to help. Feel free to
-                            contact us by telephone or email and we will be
-                            sure to get back to you as soon as possible.
-                        </Typography>
+                    <Grid item xs={12} md={6} sm={6}>
+                        <Box pl={{xs:0, sm:5, md:5, lg:5}}>
+                            <img
+                                src={question}
+                                alt='have any question'
+                                className={classes.questionImg}
+                            />
+                            <Typography variant='h4' align='center' className={classes.heading}>
+                                Have a question we didn't answer ?
+                            </Typography>
+                            <Typography
+                                variant='body2'
+                                align='left'
+                                color='textSecondary'
+                            >
+                                If you have any questions or queries a member of
+                                staff will always be happy to help. Feel free to
+                                contact us by telephone or email and we will be
+                                sure to get back to you as soon as possible.
+                            </Typography>
 
-                        {/* form */}
-                        <ContactUsForm />
+                            {/* form */}
+                            <ContactUsForm />
+                        </Box>
+                        
                     </Grid>
                 </Grid>
 
@@ -332,13 +334,16 @@ export default function ContactUs() {
                             Find Us In Google Map
                         </Typography>
                     </Grid>
-
                     <Grid item xs={12} md={6} sm={6}>
-                        <img
-                            src={mapImg}
-                            alt='Beyul Venture in World Map'
-                            className={classes.worldmap}
-                        />
+                        <Box pt={{xs:5, md:0, sm:0, lg:0}}>
+                            <img
+                                src={mapImg}
+                                alt='Beyul Venture in World Map'
+                                className={classes.worldmap}
+                            />
+                        </Box>
+
+                        
                     </Grid>
                 </Grid>
             </Box>
