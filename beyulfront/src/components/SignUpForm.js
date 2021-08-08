@@ -16,6 +16,16 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
+      backgroundColor:"#DF9534",
+      border: '2px solid #DF9534',
+      color:"#13181e",
+      '&:hover': {
+        cursor: 'pointer',
+        color: "#fff",
+        backgroundColor:"#DF9534",
+
+
+        },
     },
     formContainer:{
         padding:'2rem',
@@ -178,7 +188,6 @@ export const SignUpForm = (props) => {
                             type='submit'
                             fullWidth
                             variant='contained'
-                            color='primary'
                             className={classes.submit}
                             disabled={isSubmitting}
                             >

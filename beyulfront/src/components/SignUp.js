@@ -58,44 +58,47 @@ export default function SignUp() {
   const classes = useStyles()
 
   return (
-    <Container component='main' maxWidth='md' style={{marginTop:'10vh'}}>
-      <CssBaseline />
-      <Grid container>
-        <Grid item xs={12} md={6}>
-          <div className={classes.imgContainer}>
-            <div style={{paddingTop:'70%',width:'100%',height:'100%'}}>
+    <div style={{backgroundColor:"#EDEEF0"}} style={{paddingBottom:"0rem"}}>
+      <Container component='main' maxWidth='md' style={{paddingTop:'15vh'}} pb={5}>
+        <CssBaseline />
+        <Grid container pt={5}>
+          <Grid item xs={12} md={6}>
+            <div className={classes.imgContainer}>
+              <div style={{paddingTop:'70%',width:'100%',height:'100%'}}>
+                
+                <div style={{marginLeft:'1.5rem'}}>
+                  <Typography align="left" style={{color:'#CEF0FF',fontSize:'2rem',fontWeight:'600'}}>
+                    <span style={{fontSize:"4rem", color:'#fff',fontWeight:'700'}}>Join Us</span> <br/>
+                    To an unforgettable Journey
+                  </Typography>
+                </div>
+              </div>
               
-              <div style={{marginLeft:'1.5rem'}}>
-                <Typography align="left" style={{color:'#CEF0FF',fontSize:'2rem',fontWeight:'600'}}>
-                  <span style={{fontSize:"4rem", color:'white',fontWeight:'700'}}>Join Us</span> <br/>
-                  To an unforgettable Journey
-                </Typography>
+            </div>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <div style={{display: 'flex',justifyContent:'center'}}>
+                <div className={classes.paper}>
+                  {/* <Avatar className={classes.avatar}>
+                    <LockOutlinedIcon />
+                  </Avatar> */}
+                  <Typography component='h1' variant='h5' style={{color:"#694311", fontSize:"2rem", fontWeight:"bold", lineHeight:"2rem"}}>
+                    Sign up
+                  </Typography>
+                  
+                  <SignUpForm />
+                
               </div>
             </div>
-            
-          </div>
+          
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <div style={{display: 'flex',justifyContent:'center'}}>
-              <div className={classes.paper}>
-                {/* <Avatar className={classes.avatar}>
-                  <LockOutlinedIcon />
-                </Avatar> */}
-                <Typography component='h1' variant='h5'>
-                  Sign up
-                </Typography>
-                
-                <SignUpForm />
-               
-            </div>
-          </div>
         
-        </Grid>
-      </Grid>
-      
-      {/* <Box mt={5}>
-        <Copyright />
-      </Box> */}
-    </Container>
+        {/* <Box mt={5}>
+          <Copyright />
+        </Box> */}
+      </Container>
+    </div>
+    
   )
 }
