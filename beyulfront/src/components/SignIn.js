@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: '#E0DEE6',
+    backgroundColor: '#fff',
   },
   
   imgContainer:{
@@ -52,34 +52,37 @@ export default function SignIn() {
   };
 
   return (
-    <Container component='main' maxWidth='md'>
-      <CssBaseline />
-      <Grid container>
-        <Grid item xs={12} md={6}>
-          <div className={classes.imgContainer}>
-              <Lottie options={defaultOptions}
-              height={400}
-              width={400}
-              />
-          </div>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <div style={{display: 'flex',justifyContent:'center'}}>
-            <div className={classes.paper}>
+    <Box pt={8}>
+        <Container component='main' maxWidth='md'>
+          <CssBaseline />
+          <Grid container>
+            <Grid item xs={12} md={6}>
+              <div className={classes.imgContainer}>
+                  <Lottie options={defaultOptions}
+                  height={400}
+                  width={400}
+                  />
+              </div>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <div style={{display: 'flex',justifyContent:'center'}}>
+                <div className={classes.paper}>
+              
+                  <Typography component='h1' variant='h5' style={{color:"#694311", fontSize:"2rem", fontWeight:"bold", lineHeight:"2rem"}}>
+                    Sign in
+                  </Typography>
+                  <SignInForm />
+                </div>
+              </div>
+            
+            </Grid>
+          </Grid>
           
-              <Typography component='h1' variant='h5'>
-                Sign in
-              </Typography>
-              <SignInForm />
-            </div>
-          </div>
-        
-        </Grid>
-      </Grid>
-      
-      {/* <Box mt={8}>
-        <Copyright /
-      </Box> */}
-    </Container>
+          {/* <Box mt={8}>
+            <Copyright /
+          </Box> */}
+      </Container>
+    </Box>
+    
   )
 }
