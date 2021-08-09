@@ -26,7 +26,7 @@ const Owl = ({ imgSrc, text }) => {
 // </MediumOwl>
 
 // A group of owl is called a Parliament
-const Parliament = ({ cars }) => {
+const Parliament = ({ cars, itemNo }) => {
     return (
         <OwlCarousel className='owl-theme' 
         loop ={true}
@@ -34,6 +34,7 @@ const Parliament = ({ cars }) => {
         nav={true}
         autoplay={true}
         autoplayTimeout={2000}
+        items={itemNo}
         >
             {cars.map((car) => {
                 return <Owl key={car.id} imgSrc={car.image} text={car.title} />

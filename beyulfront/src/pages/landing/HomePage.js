@@ -201,7 +201,7 @@ const HomePage = () => {
             </Container>
             <Container>
                 <Typography variant='h4'>Recommended Trekking</Typography>
-                <Parliament cars={packageData} />
+                <Parliament cars={packageData} itemNo={3}/>
             </Container>
 
             {/*for insta widget*/}

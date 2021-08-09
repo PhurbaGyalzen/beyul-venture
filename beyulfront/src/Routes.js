@@ -9,7 +9,7 @@ import AboutUsPage from 'pages/AboutUsPage'
 import PackageDetail from 'pages/package-detail/PackageDetail'
 import BlogRoutes from 'pages/blog-page/Routes'
 import ScrollToTop from 'components/ScrollToTop'
-
+import { PackDetail } from './pages/package-detail/PackDetail'
 const CustomRoute = ({ ...args }) => {
     return (
         <>
@@ -25,7 +25,7 @@ const Routes = () => {
         <Switch>
             <CustomRoute exact path='/about' component={AboutUsPage} />
             <CustomRoute exact path='/package/:packageId'>
-                <PackageDetail packageId={params} />
+                <PackDetail packageId={params} />
             </CustomRoute>
             <CustomRoute exact path='/sign-up' component={SignUp} />
             <CustomRoute exact path='/sign-in' component={SignIn} />
