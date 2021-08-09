@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Compass from 'components/Compass'
 import FancyLink from 'components/FancyLink'
-import bg404 from 'img/404(1).jpg'
+import bg404 from 'img/404Img.jpg'
 
 const Wrapper = styled.div`
     background-image: url('${bg404}');
