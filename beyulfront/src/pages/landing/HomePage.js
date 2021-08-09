@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'Bold',
         fontFamily: 'sans-serif',
         fontSize: '2rem',
+        lineHeight:"4rem",
+        paddingTop:"2rem",
+        paddingBottom:"1rem",
+        color:"#694311"
     },
     spacious: {
         margin: '2rem auto',
@@ -162,7 +166,6 @@ const HomePage = () => {
                 <Container>
                     <Typography
                         variant='h4'
-                        color='textPrimary'
                         className={classes.subHeading}
                     >
                         Popular Packages
@@ -178,7 +181,6 @@ const HomePage = () => {
                 <div>
                     <Typography
                         variant='h4'
-                        color='textPrimary'
                         className={classes.subHeading}
                         gutterBottom={true}
                     >
@@ -209,7 +211,7 @@ const HomePage = () => {
 
             {instaPosts ? (
                 <Container>
-                    <Typography variant='h4'>
+                    <Typography variant='h4' className={classes.subHeading}>
                         Our adventures on Instagram.
                     </Typography>
                     <InstagramWidget posts={instaPosts} />

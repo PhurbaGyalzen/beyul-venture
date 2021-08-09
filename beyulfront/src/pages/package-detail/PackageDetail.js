@@ -105,6 +105,9 @@ const PackageDetail = ({ packageId }) => {
           <GreenBtn href={getEsewaLink(100, Math.random().toString())}>
             Book this tour
           </GreenBtn>
+          <Link to='/stripe-payment/1'>
+            Pay with stripe
+          </Link>
         </Enquiry>
       </div>
     </TwoColGrid>

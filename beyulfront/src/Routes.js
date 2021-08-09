@@ -10,6 +10,7 @@ import PackageDetail from 'pages/package-detail/PackageDetail'
 import BlogRoutes from 'pages/blog-page/Routes'
 import ScrollToTop from 'components/ScrollToTop'
 import { PackDetail } from './pages/package-detail/PackDetail'
+import StripePaymentPage from 'pages/stripe/StripePay'
 const CustomRoute = ({ ...args }) => {
     return (
         <>
@@ -32,6 +33,7 @@ const Routes = () => {
             <CustomRoute path='/blog' component={BlogRoutes} />
             <CustomRoute exact path='/contact-us' component={ContactUs} />
             <CustomRoute exact path='/our-team' component={OurTeam} />
+            <CustomRoute exact path='/stripe-payment/:id' component={StripePaymentPage} />
             <CustomRoute exact path='/'>
                 <HomePage />
             </CustomRoute>
