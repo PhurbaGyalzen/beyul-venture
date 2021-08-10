@@ -14,6 +14,10 @@ import TextField from '@material-ui/core/TextField'
 import { Button } from '@material-ui/core'
 import styled from 'styled-components'
 import './index.css'
+import Tooltip from '@material-ui/core/Tooltip';
+import Fade from '@material-ui/core/Fade';
+
+
 
 //All images import
 import visa from 'img/visa.png'
@@ -100,37 +104,51 @@ export const Footer = () => {
                         </Box>
 
                         <Box mb={{ xs: 5, sm: 5, md: 5, lg: 5 }} mt={1}>
-                            <Link href='#' style={{ marginRight: 10 }}>
-                                <FacebookIcon
-                                    fontSize='small'
-                                    className='textHover'
-                                />
-                            </Link>
-                            <Link href='#' style={{ marginRight: 10 }}>
-                                <TwitterIcon
-                                    fontSize='small'
-                                    className='textHover'
-                                />
-                            </Link>
-                            <Link href='#' style={{ marginRight: 10 }}>
-                                <InstagramIcon
-                                    fontSize='small'
-                                    className='textHover'
-                                />
-                            </Link>
-                            <Link href='#' style={{ marginRight: 10 }}>
-                                <YouTubeIcon
-                                    fontSize='small'
-                                    className='textHover'
-                                />
-                            </Link>
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Facebook" arrow>
+                                <Link href='#' style={{ marginRight: 10 }}>
+                                    <FacebookIcon
+                                        fontSize='small'
+                                        className='textHover'
+                                    />
+                                </Link>
+                            </Tooltip>
 
-                            <Link href='#' style={{ marginRight: 10 }}>
-                                <LinkedInIcon
-                                    fontSize='small'
-                                    className='textHover'
-                                />
-                            </Link>
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Twitter" arrow>
+                                <Link href='#' style={{ marginRight: 10 }}>
+                                    <TwitterIcon
+                                        fontSize='small'
+                                        className='textHover'
+                                    />
+                                </Link>
+                            </Tooltip>
+
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Instagram" arrow>
+                                <Link href='#' style={{ marginRight: 10 }}>
+                                    <InstagramIcon
+                                        fontSize='small'
+                                        className='textHover'
+                                    />
+                                </Link>
+                            </Tooltip>
+
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Youtube" arrow>
+                                <Link href='#' style={{ marginRight: 10 }}>
+                                    <YouTubeIcon
+                                        fontSize='small'
+                                        className='textHover'
+                                    />
+                                </Link>
+                            </Tooltip>
+
+
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Linkedln" arrow>
+                                <Link href='#' style={{ marginRight: 10 }}>
+                                    <LinkedInIcon
+                                        fontSize='small'
+                                        className='textHover'
+                                    />
+                                </Link>
+                            </Tooltip>
                         </Box>
                     </Grid>
 
@@ -267,15 +285,17 @@ export const Footer = () => {
                         </Box>
 
                         <Box mb={{ xs: 5, sm: 5, md: 10, lg: 10 }}>
-                            <img
-                                src={visa}
-                                alt='visa'
-                                style={{
-                                    marginRight: '0.625rem',
-                                    width: '70%',
-                                    height: 'auto',
-                                }}
-                            />
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Payment method" arrow>
+                                <img
+                                    src={visa}
+                                    alt='visa'
+                                    style={{
+                                        marginRight: '0.625rem',
+                                        width: '70%',
+                                        height: 'auto',
+                                    }}
+                                />
+                            </Tooltip>
                         </Box>
                     </Grid>
 
@@ -305,6 +325,7 @@ export const Footer = () => {
                         </Box>
 
                         <Box mb={{ xs: 5, sm: 5, md: 10, lg: 10 }}>
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Associated Company" arrow>
                             <img
                                 src={affilated}
                                 alt='companies we are affilated with'
@@ -314,6 +335,7 @@ export const Footer = () => {
                                     height: 'auto',
                                 }}
                             />
+                            </Tooltip>
                         </Box>
                     </Grid>
 

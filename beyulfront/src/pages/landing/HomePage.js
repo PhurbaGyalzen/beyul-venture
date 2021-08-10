@@ -202,7 +202,7 @@ const HomePage = () => {
                 </div>
             </Container>
             <Container>
-                <Typography variant='h4'>Recommended Trekking</Typography>
+                <Typography variant='h4' className={classes.subHeading}>Recommended Trekking</Typography>
                 <Parliament cars={packageData} itemNo={3}/>
             </Container>
 

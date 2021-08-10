@@ -16,6 +16,8 @@ import FacebookIcon from '@material-ui/icons/Facebook'
 import InstagramIcon from '@material-ui/icons/Instagram'
 import TwitterIcon from '@material-ui/icons/Twitter'
 import { makeStyles} from '@material-ui/core'
+import Tooltip from '@material-ui/core/Tooltip';
+import Fade from '@material-ui/core/Fade';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -69,14 +71,19 @@ export const DeveloperCard = (props) => {
                             {props.data.bio}
                         </Typography>
                         </CardContent>
-                        <Link
-                                href={props.data.fb}
-                                style={{ paddingLeft: '5%', paddingBottom:'5%'}}
-                            >
-                                <FacebookIcon
-                                    className={classes.button}
-                                />
+                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Facebook" arrow>
+                            <Link
+                                    href={props.data.fb}
+                                    style={{ paddingLeft: '5%', paddingBottom:'5%'}}
+                                >
+                                    <FacebookIcon
+                                        className={classes.button}
+                                    />
                             </Link>
+                        </Tooltip>
+
+                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Instagram" arrow>
+
                             <Link
                                 href={props.data.instagram}
                                 style={{ paddingLeft: '5%',  paddingBottom:'5%' }}
@@ -86,6 +93,9 @@ export const DeveloperCard = (props) => {
                                 />
                             </Link>
 
+                        </Tooltip>
+
+                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Twitter" arrow>
                             <Link
                                 href={props.data.twitter}
                                 style={{ paddingLeft: '5%',  paddingBottom:'5%' }}
@@ -94,6 +104,7 @@ export const DeveloperCard = (props) => {
                                     className={classes.button}
                                 />
                             </Link>
+                        </Tooltip>
                     </CardActionArea>
                 </Card>
                 
