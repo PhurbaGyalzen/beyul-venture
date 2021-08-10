@@ -10,6 +10,8 @@ import OwlCarousel from 'react-owl-carousel'
 import 'owl.carousel/dist/assets/owl.carousel.css'
 import 'owl.carousel/dist/assets/owl.theme.default.css'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import PackageTabs from './PackageTabs'
+
 
 
 const packageStyles = makeStyles((theme) => ({
@@ -65,7 +67,7 @@ export const PackDetail = () => {
 
     return (
         <>
-           <Box mt={"3rem"}>
+           <Box pt={"3rem"}>
                 <Container className={classes.packageCont}>
                     <Grid container 
                     // justifyContent='space-evenly'
@@ -103,6 +105,10 @@ export const PackDetail = () => {
                                 <Typography gutterBottom><CheckCircleIcon /> Visit Ghandruk</Typography>
                                 <Typography>Price <span style={{fontWeight:'700',fontSize:'1.8rem'}}>12,000</span> </Typography>
                             </div>
+                        </Grid>
+
+                        <Grid item xs={12} md={8} sm={8}>
+                            <PackageTabs/>
                         </Grid>
 
                     </Grid>
