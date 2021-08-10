@@ -1,7 +1,7 @@
 
 const getPaymentIntent = async (items) => {
     const resp = await fetch(
-        'http://127.0.0.1:8000/create-payment-intent/',
+        'http://127.0.0.1:8000/payment/create-payment-intent/',
         {
             method: 'POST',
             headers: {
