@@ -35,7 +35,6 @@ import PaymentIcon from '@material-ui/icons/Payment'
 //Defining CustomStyles for AboutUs Page
 const useStyles = makeStyles((theme) => ({
     button: {
-        marginTop: '1rem',
         marginBottom: '1rem',
         color:"#694311",
         textDecoration:"underline",

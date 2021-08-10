@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react'
 import Faq from '../pages/faq/Faq'
 
 // All image import
-import contactUsImg from 'img/contactUs1.jpg'
+import contactUsImg from 'img/contactUs2.jpg'
 import mapImg from 'img/map.png'
 import question from 'img/question1.png'
 import nischalImg from 'img/nischal.jpg'
