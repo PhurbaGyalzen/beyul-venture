@@ -28,6 +28,9 @@ const Routes = () => {
             <CustomRoute exact path='/package/:packageId'>
                 <PackDetail packageId={params} />
             </CustomRoute>
+            <CustomRoute exact path='/pack/:packageId'>
+                <PackageDetail packageId={params} />
+            </CustomRoute>
             <CustomRoute exact path='/sign-up' component={SignUp} />
             <CustomRoute exact path='/sign-in' component={SignIn} />
             <CustomRoute path='/blog' component={BlogRoutes} />
