@@ -14,6 +14,10 @@ import TextField from '@material-ui/core/TextField'
 import { Button } from '@material-ui/core'
 import styled from 'styled-components'
 import './index.css'
+import Tooltip from '@material-ui/core/Tooltip';
+import Fade from '@material-ui/core/Fade';
+
+
 
 //All images import
 import visa from 'img/visa.png'
@@ -100,37 +104,51 @@ export const Footer = () => {
                         </Box>
 
                         <Box mb={{ xs: 5, sm: 5, md: 5, lg: 5 }} mt={1}>
-                            <Link href='#' style={{ marginRight: 10 }}>
-                                <FacebookIcon
-                                    fontSize='small'
-                                    className='textHover'
-                                />
-                            </Link>
-                            <Link href='#' style={{ marginRight: 10 }}>
-                                <TwitterIcon
-                                    fontSize='small'
-                                    className='textHover'
-                                />
-                            </Link>
-                            <Link href='#' style={{ marginRight: 10 }}>
-                                <InstagramIcon
-                                    fontSize='small'
-                                    className='textHover'
-                                />
-                            </Link>
-                            <Link href='#' style={{ marginRight: 10 }}>
-                                <YouTubeIcon
-                                    fontSize='small'
-                                    className='textHover'
-                                />
-                            </Link>
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Facebook">
+                                <Link href='#' style={{ marginRight: 10 }}>
+                                    <FacebookIcon
+                                        fontSize='small'
+                                        className='textHover'
+                                    />
+                                </Link>
+                            </Tooltip>
 
-                            <Link href='#' style={{ marginRight: 10 }}>
-                                <LinkedInIcon
-                                    fontSize='small'
-                                    className='textHover'
-                                />
-                            </Link>
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Twitter">
+                                <Link href='#' style={{ marginRight: 10 }}>
+                                    <TwitterIcon
+                                        fontSize='small'
+                                        className='textHover'
+                                    />
+                                </Link>
+                            </Tooltip>
+
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Instagram">
+                                <Link href='#' style={{ marginRight: 10 }}>
+                                    <InstagramIcon
+                                        fontSize='small'
+                                        className='textHover'
+                                    />
+                                </Link>
+                            </Tooltip>
+
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Youtube">
+                                <Link href='#' style={{ marginRight: 10 }}>
+                                    <YouTubeIcon
+                                        fontSize='small'
+                                        className='textHover'
+                                    />
+                                </Link>
+                            </Tooltip>
+
+
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Linkedln">
+                                <Link href='#' style={{ marginRight: 10 }}>
+                                    <LinkedInIcon
+                                        fontSize='small'
+                                        className='textHover'
+                                    />
+                                </Link>
+                            </Tooltip>
                         </Box>
                     </Grid>
 
