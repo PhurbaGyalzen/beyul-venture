@@ -104,7 +104,7 @@ export const Footer = () => {
                         </Box>
 
                         <Box mb={{ xs: 5, sm: 5, md: 5, lg: 5 }} mt={1}>
-                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Facebook">
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Facebook" arrow>
                                 <Link href='#' style={{ marginRight: 10 }}>
                                     <FacebookIcon
                                         fontSize='small'
@@ -113,7 +113,7 @@ export const Footer = () => {
                                 </Link>
                             </Tooltip>
 
-                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Twitter">
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Twitter" arrow>
                                 <Link href='#' style={{ marginRight: 10 }}>
                                     <TwitterIcon
                                         fontSize='small'
@@ -122,7 +122,7 @@ export const Footer = () => {
                                 </Link>
                             </Tooltip>
 
-                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Instagram">
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Instagram" arrow>
                                 <Link href='#' style={{ marginRight: 10 }}>
                                     <InstagramIcon
                                         fontSize='small'
@@ -131,7 +131,7 @@ export const Footer = () => {
                                 </Link>
                             </Tooltip>
 
-                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Youtube">
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Youtube" arrow>
                                 <Link href='#' style={{ marginRight: 10 }}>
                                     <YouTubeIcon
                                         fontSize='small'
@@ -141,7 +141,7 @@ export const Footer = () => {
                             </Tooltip>
 
 
-                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Linkedln">
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Linkedln" arrow>
                                 <Link href='#' style={{ marginRight: 10 }}>
                                     <LinkedInIcon
                                         fontSize='small'
@@ -285,15 +285,17 @@ export const Footer = () => {
                         </Box>
 
                         <Box mb={{ xs: 5, sm: 5, md: 10, lg: 10 }}>
-                            <img
-                                src={visa}
-                                alt='visa'
-                                style={{
-                                    marginRight: '0.625rem',
-                                    width: '70%',
-                                    height: 'auto',
-                                }}
-                            />
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Payment method" arrow>
+                                <img
+                                    src={visa}
+                                    alt='visa'
+                                    style={{
+                                        marginRight: '0.625rem',
+                                        width: '70%',
+                                        height: 'auto',
+                                    }}
+                                />
+                            </Tooltip>
                         </Box>
                     </Grid>
 
@@ -323,6 +325,7 @@ export const Footer = () => {
                         </Box>
 
                         <Box mb={{ xs: 5, sm: 5, md: 10, lg: 10 }}>
+                            <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Associated Company" arrow>
                             <img
                                 src={affilated}
                                 alt='companies we are affilated with'
@@ -332,6 +335,7 @@ export const Footer = () => {
                                     height: 'auto',
                                 }}
                             />
+                            </Tooltip>
                         </Box>
                     </Grid>
 

@@ -69,7 +69,7 @@ export default function SignIn() {
                 <div className={classes.paper}>
               
                   <Typography component='h1' variant='h5' style={{color:"#694311", fontSize:"2rem", fontWeight:"bold", lineHeight:"2rem"}}>
-                    Sign in
+                    SIGN IN
                   </Typography>
                   <SignInForm />
                 </div>

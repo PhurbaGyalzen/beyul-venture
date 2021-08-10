@@ -83,7 +83,7 @@ export default function SignUp() {
                     <LockOutlinedIcon />
                   </Avatar> */}
                   <Typography component='h1' variant='h5' style={{color:"#694311", fontSize:"2rem", fontWeight:"bold", lineHeight:"2rem"}}>
-                    Sign up
+                    REGISTER NOW
                   </Typography>
                   
                   <SignUpForm />
