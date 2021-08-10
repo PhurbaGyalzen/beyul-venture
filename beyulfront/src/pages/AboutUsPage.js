@@ -35,14 +35,15 @@ import PaymentIcon from '@material-ui/icons/Payment'
 //Defining CustomStyles for AboutUs Page
 const useStyles = makeStyles((theme) => ({
     button: {
-        marginTop: '2rem',
+        marginTop: '1rem',
         marginBottom: '1rem',
-        backgroundColor:"#694311",
-        color:"#ffffff",
+        color:"#694311",
+        textDecoration:"underline",
+        letterSpacing:"0.1rem",
         '&:hover': {
             cursor: 'pointer',
             backgroundColor:"#DF9534",
-            color:"#13181e"
+            color:"#694311"
         },
     },
 
@@ -129,7 +130,6 @@ export default function AboutUsPage() {
                                 Letraset sheets containing Lorem Ipsum passages.
                             </Typography>
                             <Button
-                                variant='contained'
                                 className={classes.button}
                             >
                                 Readmore
@@ -171,7 +171,6 @@ export default function AboutUsPage() {
                                 typesetting, remaining essentially unchanged. 
                             </Typography>
                             <Button
-                                variant='contained'
                                 className={classes.button}
                             >
                                 Readmore
