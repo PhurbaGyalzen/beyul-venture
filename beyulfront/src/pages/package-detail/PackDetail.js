@@ -11,6 +11,7 @@ import 'owl.carousel/dist/assets/owl.carousel.css'
 import 'owl.carousel/dist/assets/owl.theme.default.css'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import PackageTabs from './PackageTabs'
+import TripFacts from './TripFacts'
 
 
 
@@ -106,10 +107,16 @@ export const PackDetail = () => {
                                 <Typography>Price <span style={{fontWeight:'700',fontSize:'1.8rem'}}>12,000</span> </Typography>
                             </div>
                         </Grid>
-
+                        
+                        <Grid item xs={12} md={8} sm={8}>
+                            <TripFacts/>
+                        </Grid>
+                        
                         <Grid item xs={12} md={8} sm={8}>
                             <PackageTabs/>
                         </Grid>
+
+                        
 
                     </Grid>
                 </Container>

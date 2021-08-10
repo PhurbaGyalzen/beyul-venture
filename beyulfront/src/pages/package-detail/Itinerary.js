@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 //Defining Itineary component
-export default function Itineary() {
+export default function Itinerary() {
     const classes = useStyles()
     return (
         <>

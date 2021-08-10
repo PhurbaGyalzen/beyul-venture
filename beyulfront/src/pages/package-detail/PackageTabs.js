@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Accommodation from './Accommodation'
-import Itineary from './Itineary'
+import Itinerary from './Itinerary'
 import Overview from './Overview'
 import Photos from './Photos'
 
@@ -48,7 +48,7 @@ export default function PackageTabs() {
                 <Tab label="Photos" />
             </Tabs>
             {selectedTab === 0 && <Overview/>}
-            {selectedTab === 1 && <Itineary/>}
+            {selectedTab === 1 && <Itinerary/>}
             {selectedTab === 2 && <Accommodation/>}
             {selectedTab === 3 && <Photos/>}
         </div>
