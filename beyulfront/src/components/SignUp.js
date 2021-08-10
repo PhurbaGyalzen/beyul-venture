@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     paddingLeft:'1rem',
     paddingTop:'1.5rem',
-    backgroundColor: '#E0DEE6',
+    backgroundColor: '#ffffff',
     [theme.breakpoints.down('lg')]: {
       // maxWidth: '400px'
     },

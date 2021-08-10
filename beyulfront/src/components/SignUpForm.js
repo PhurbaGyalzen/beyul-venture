@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     },
     formContainer:{
         padding:'2rem',
+        backgroundColor:"#ffffff"
 
     },
     textfield:{
