@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {FaArrowCircleUp} from 'react-icons/fa';
 import { Button } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core'
 import DoubleArrowOutlinedIcon from '@material-ui/icons/DoubleArrowOutlined';
