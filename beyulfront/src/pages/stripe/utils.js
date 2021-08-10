@@ -1,16 +1,9 @@
-
 const getPaymentIntent = async (items) => {
-    const resp = await fetch(
-        'http://127.0.0.1:8000/payment/create-payment-intent/',
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=UTF-8',
-            },
-            body: JSON.stringify(items),
-        },
-    )
-    const data = await resp.json()
+    const data = await ajax('/payment/create-payment-intent/', {
+        method: 'POST',
+        body: JSON.stringify(items),
+    })
+    console.log(data)
     return data['clientSecret']
 }
 
@@ -27,4 +20,4 @@ const payWithCard = async (stripe, element, secret) => {
     return null
 }
 
-export {getPaymentIntent, payWithCard}
+export { getPaymentIntent, payWithCard }

@@ -93,7 +93,7 @@ const rotateAnimation = keyframes`
 `
 
 const SpinnerSvg = styled.svg`
-    ${props => props.show ? '' : 'display: none;'}
+    ${(props) => (props.show ? '' : 'display: none;')}
     width: 1rem;
     animation: 1s linear 0s infinite ${rotateAnimation};
 `
@@ -158,6 +158,7 @@ const CheckoutForm = ({}) => {
 
         // receive secret from our server.
         const secret = await getPaymentIntent(purchase)
+        console.log(secret)
         setClientSecret(secret)
     }, [stripe])
 
@@ -200,30 +201,32 @@ const CheckoutForm = ({}) => {
     return (
         <PaymentContainer>
             <CardDetails>
-            <CreditCardCon>
-                <CreditCard />
-            </CreditCardCon>
-            <StripeContainer>
-                <StripePaymentForm onSubmit={handleSubmit}>
-                    {/*element is mounted now.*/}
-                    <CardElement
-                        options={CARD_ELEMENT_OPTIONS}
-                        onChange={handleInput}
-                    />
-                    <SubmitButton disabled={!canSubmit}>
-                        <SpinnerSvg show={isLoading}>
-                            <path
-                                d='M90 50 A40 40 0 1 1 50 10'
-                                fill='none'
-                                stroke='#fff'
-                                strokeWidth='10'
+                <CreditCardCon>
+                    <CreditCard />
+                </CreditCardCon>
+                <StripeContainer>
+                    <StripePaymentForm onSubmit={handleSubmit}>
+                        <StripeCardElement>
+                            {/*element is mounted now.*/}
+                            <CardElement
+                                options={CARD_ELEMENT_OPTIONS}
+                                onChange={handleInput}
                             />
-                        </SpinnerSvg>
-                        <span id='button-text'>Pay now</span>
-                    </SubmitButton>
-                    <ErrorContainer role='alert'>{errors}</ErrorContainer>
-                </StripePaymentForm>
-            </StripeContainer>
+                        </StripeCardElement>
+                        <SubmitButton disabled={!canSubmit}>
+                            <SpinnerSvg show={isLoading}>
+                                <path
+                                    d='M90 50 A40 40 0 1 1 50 10'
+                                    fill='none'
+                                    stroke='#fff'
+                                    strokeWidth='10'
+                                />
+                            </SpinnerSvg>
+                            <span id='button-text'>Pay now</span>
+                        </SubmitButton>
+                        <ErrorContainer role='alert'>{errors}</ErrorContainer>
+                    </StripePaymentForm>
+                </StripeContainer>
             </CardDetails>
 
             <Disclosure>
