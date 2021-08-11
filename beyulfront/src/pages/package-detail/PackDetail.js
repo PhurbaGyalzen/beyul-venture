@@ -71,7 +71,7 @@ export const PackDetail = () => {
 
     return (
         <>
-           <Box pt={"3rem"}>
+           <Box pt={"3rem"} style={{backgroundColor:"#edeef0"}}>
                 <Container className={classes.packageCont}>
                     <Grid container 
                     // justifyContent='space-evenly'
