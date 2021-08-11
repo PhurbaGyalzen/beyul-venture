@@ -59,8 +59,7 @@ export default function SignIn() {
             <Grid item xs={12} md={6}>
               <div className={classes.imgContainer}>
                   <Lottie options={defaultOptions}
-                  height={400}
-                  width={400}
+                  style={{maxHeight:'400',maxWidth:'400'}}
                   />
               </div>
             </Grid>
