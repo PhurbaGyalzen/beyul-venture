@@ -29,6 +29,13 @@ const packageStyles = makeStyles((theme) => ({
     packageCont: {
         // marginTop:'10rem',
         paddingTop: '3rem',
+    },
+    ratingDesc:{
+        
+        color:'#545454',
+        verticalAlign: 'middle',
+        display: 'inline-flex'
+        
     }
 }))
 
@@ -144,7 +151,7 @@ export const PackDetail = () => {
                                     Annapurna trek
                                 </Typography>
 
-                                <Typography>
+                                <Typography className={classes.ratingDesc}>
                                     {' '}
                                     <Rating
                                         name='read-only'
@@ -201,7 +208,7 @@ export const PackDetail = () => {
                         </Grid>                            
 
                         <Grid item xs={11} md={8} sm={11}>
-                            <PackageTabs />
+                            <PackageTabs imageList={detail.images}/>
                         </Grid>
 
                     </Grid>
