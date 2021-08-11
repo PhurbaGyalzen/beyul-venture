@@ -27,12 +27,6 @@ const packageStyles = makeStyles((theme) => ({
     packageCont: {
         // marginTop:'10rem',
         paddingTop: '3rem',
-    },
-
-    packageForm:{
-        position:'absolute',
-        top:"550px",
-        right:"50px",
     }
 }))
 
@@ -111,10 +105,7 @@ export const PackDetail = () => {
 
     return (
         <>  
-            <Box className={classes.packageForm}>
-                <PackageForm />
-            </Box>
-
+            
             <Box pt={'3rem'} style={{ backgroundColor: '#edeef0' }}>
                 <Container className={classes.packageCont}>
                     <Grid
@@ -198,13 +189,18 @@ export const PackDetail = () => {
                             </div>
                         </Grid>
 
-                        <Grid item xs={12} md={8} sm={8}>
+                        <Grid item xs={11} md={8} sm={11} lg={8}>
                             <TripFacts />
                         </Grid>
 
-                        <Grid item xs={12} md={8} sm={8}>
+                        <Grid item xs={11} md={4} sm={4} lg={4}>
+                            <PackageForm />
+                        </Grid>                            
+
+                        <Grid item xs={11} md={8} sm={11}>
                             <PackageTabs />
                         </Grid>
+
                     </Grid>
                 </Container>
                 <Container>
