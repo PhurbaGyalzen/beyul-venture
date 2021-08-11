@@ -21,6 +21,7 @@ import { SRLWrapper } from 'simple-react-lightbox'
 import { DetailPortion } from './DetailPortion'
 import PackageTabs from './PackageTabs'
 import TripFacts from './TripFacts'
+import PackageForm from './PackageForm'
 
 const packageStyles = makeStyles((theme) => ({
     packageCont: {
@@ -103,7 +104,9 @@ export const PackDetail = () => {
     })
 
     return (
-        <>
+        <>  
+
+            <PackageForm/>
             <Box pt={'3rem'} style={{ backgroundColor: '#edeef0' }}>
                 <Container className={classes.packageCont}>
                     <Grid
