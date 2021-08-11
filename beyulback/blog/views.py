@@ -13,6 +13,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.filters import SearchFilter
 
 User = get_user_model()  # User is now the CustomUser
 
@@ -35,6 +36,8 @@ class BlogView(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
     lookup_field = 'slug'
     # pagination_class = RemovePageNumberPagination
+    filter_backends = [SearchFilter]
+    search_fields = ['title', 'description']
 
 
 class TagViewSet(viewsets.ReadOnlyModelViewSet):

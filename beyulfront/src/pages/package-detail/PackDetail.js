@@ -10,7 +10,12 @@ import OwlCarousel from 'react-owl-carousel'
 import 'owl.carousel/dist/assets/owl.carousel.css'
 import 'owl.carousel/dist/assets/owl.theme.default.css'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import { SRLWrapper } from "simple-react-lightbox";
+
+
+import { DetailPortion } from './DetailPortion'
 import PackageTabs from './PackageTabs'
+import TripFacts from './TripFacts'
 
 
 
@@ -24,8 +29,7 @@ const packageStyles = makeStyles((theme) => ({
 const FullWidthImage = styled.img`
     width: 100%;
     height: 24rem;
-    max-height: auto;
-    object-fit: contain;
+    
 `
 const Owl = ({ imgSrc, text }) => {
     return <FullWidthImage src={imgSrc} />
@@ -44,11 +48,11 @@ export const PackDetail = () => {
         type: 'Family',
         durationDays: 6.3,
         images:[
-            {id:1,image:'/static/images/annapurna.jpg'},
-            {id:2,image:'/static/images/annapurna5.jpg'},
-            {id:3,image:'/static/images/annapurna6.jpg'},
-            {id:4,image:'/static/images/annapurna7.jpg'},
-            {id:5,image:'/static/images/gokyo.jpg'}
+            {id:1,src:'/static/images/annapurna.jpg'},
+            {id:2,src:'/static/images/annapurna5.jpg'},
+            {id:3,src:'/static/images/annapurna6.jpg'},
+            {id:4,src:'/static/images/annapurna7.jpg'},
+            {id:5,src:'/static/images/gokyo.jpg'}
         ],
         route: [
         'kathmandu',
@@ -71,7 +75,7 @@ export const PackDetail = () => {
                 <Container className={classes.packageCont}>
                     <Grid container 
                     // justifyContent='space-evenly'
-                    spacing={1}
+                    spacing={4}
                     alignItems='center'>
 
                         <Grid item xs={12} md={8} sm={6}>
@@ -86,7 +90,7 @@ export const PackDetail = () => {
                             dots={false}
                             >
                                 {detail.images.map((car) => {
-                                    return <Owl key={car.id} imgSrc={car.image} />
+                                    return <Owl key={car.id} imgSrc={car.src} />
                                 })}
 
                             </OwlCarousel>
@@ -106,14 +110,26 @@ export const PackDetail = () => {
                                 <Typography>Price <span style={{fontWeight:'700',fontSize:'1.8rem'}}>12,000</span> </Typography>
                             </div>
                         </Grid>
-
+                        
+                        <Grid item xs={12} md={8} sm={8}>
+                            <TripFacts/>
+                        </Grid>
+                        
                         <Grid item xs={12} md={8} sm={8}>
                             <PackageTabs/>
                         </Grid>
 
+                        
+
                     </Grid>
                 </Container>
+                <Container>
+                    <SRLWrapper elements={detail.images} />
+                </Container>
+                <DetailPortion />
+
             </Box> 
+
         </>
     )
 }

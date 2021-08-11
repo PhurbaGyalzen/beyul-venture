@@ -128,6 +128,10 @@ class Blog(models.Model):
 
     class Meta:
         ordering = ['-created_on']
+        indexes = [
+            models.Index(fields=['title']),
+            models.Index(fields=['description']),
+        ]
 
     def get_absolute_url(self):
         return reverse('blog_detail', kwargs={'slug': self.slug})
