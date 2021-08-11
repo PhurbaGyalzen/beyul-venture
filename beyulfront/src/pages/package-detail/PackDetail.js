@@ -29,7 +29,7 @@ const packageStyles = makeStyles((theme) => ({
     packageCont: {
         // marginTop:'10rem',
         paddingTop: '3rem',
-    },
+    }
 }))
 
 const FullWidthImage = styled.img`
@@ -64,6 +64,7 @@ const Owl = ({ imgSrc, text }) => {
 
 export const PackDetail = () => {
     const loc = useLocation()
+    const classes = packageStyles()
     useEffect(() => {
         if (loc.search) {
             const paymentQuery = new URLSearchParams(loc.search).get(
@@ -76,7 +77,6 @@ export const PackDetail = () => {
             }
         }
     })
-    const classes = packageStyles()
 
     const [detail, setDetail] = useState({
         id: 1,
@@ -107,7 +107,6 @@ export const PackDetail = () => {
 
     return (
         <>  
-
             
             <Box pt={'3rem'} style={{ backgroundColor: '#edeef0' }}>
                 <Container className={classes.packageCont}>
@@ -192,14 +191,19 @@ export const PackDetail = () => {
                             </div>
                         </Grid>
 
-                        <Grid item xs={12} md={8} sm={8}>
+                        <Grid item xs={11} md={8} sm={11} lg={8}>
                             <TripFacts />
                         </Grid>
                         
 
-                        <Grid item xs={12} md={8} sm={8}>
-                            <PackageTabs imageList={detail.images}/>
+                        <Grid item xs={11} md={4} sm={4} lg={4}>
+                            <PackageForm />
+                        </Grid>                            
+
+                        <Grid item xs={11} md={8} sm={11}>
+                            <PackageTabs />
                         </Grid>
+
                     </Grid>
                 </Container>
                 
