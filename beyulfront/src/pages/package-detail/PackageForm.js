@@ -24,8 +24,8 @@ import Select from '@material-ui/core/Select';
 const useStyles = makeStyles((theme) => ({
     root:{
         flexGrow:1,
-        width:"500px",
-        height:"600px",
+        width:"350px",
+        height:"500px",
         backgroundColor:"#ffffff"
     },
 
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
         color:"#ffffff",
         width:"100%",
         textAlign:"center",
-        paddingTop:"0.5rem",
+        paddingTop:"1rem",
         paddingBottom:"0.5rem",
     },
 
