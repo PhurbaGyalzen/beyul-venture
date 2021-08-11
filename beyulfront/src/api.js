@@ -44,7 +44,7 @@ const refreshJWT = async () => {
 }
 
 /*Pass either abs or relative url. If relative, uses origin variable defined above.*/
-const ajax = async (path, ...rest) => {
+const ajax = async (path, rest) => {
     if (path.indexOf('/') === 0) {
         path = origin + path
     }
@@ -63,6 +63,9 @@ const ajax = async (path, ...rest) => {
         }
         const allHeaders = new Headers(headers)
         allHeaders.set('Authorization', 'Bearer ' + access)
+        if (opts.method === 'POST') {
+            allHeaders.set('Content-Type', 'application/json;charset=UTF-8')
+        }
         const resp = await fetch(path, { ...{ headers: allHeaders }, ...opts })
         let data
         if (!resp.ok)

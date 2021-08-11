@@ -14,6 +14,9 @@ import { SRLWrapper } from "simple-react-lightbox";
 
 
 import { DetailPortion } from './DetailPortion'
+import PackageTabs from './PackageTabs'
+import TripFacts from './TripFacts'
+
 
 
 const packageStyles = makeStyles((theme) => ({
@@ -107,6 +110,16 @@ export const PackDetail = () => {
                                 <Typography>Price <span style={{fontWeight:'700',fontSize:'1.8rem'}}>12,000</span> </Typography>
                             </div>
                         </Grid>
+                        
+                        <Grid item xs={12} md={8} sm={8}>
+                            <TripFacts/>
+                        </Grid>
+                        
+                        <Grid item xs={12} md={8} sm={8}>
+                            <PackageTabs/>
+                        </Grid>
+
+                        
 
                     </Grid>
                 </Container>
