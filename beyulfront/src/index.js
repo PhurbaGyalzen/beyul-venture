@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import PopupPackage from './pages/PopupPackage'
+import SimpleReactLightbox from 'simple-react-lightbox'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <SimpleReactLightbox>
+      <App />
+    </SimpleReactLightbox>
     {/*<PopupPackage/>*/}
   </React.StrictMode>,
   document.getElementById('root'),
