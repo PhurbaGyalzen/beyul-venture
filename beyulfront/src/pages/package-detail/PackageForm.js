@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     root:{
         flexGrow:1,
         width:"350px",
-        height:"500px",
+        height:"600px",
         backgroundColor:"#ffffff"
     },
 

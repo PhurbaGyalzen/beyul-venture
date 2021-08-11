@@ -20,7 +20,7 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-
+//Total no.of people
 const peoples = [
     {
       value: '1',
@@ -55,6 +55,20 @@ const peoples = [
         value: '8',
         label: '8',
       },
+  ];
+
+  //payment Method
+  const payments =[
+      {
+          value:'esewa',
+          label:'esewa',
+      },
+
+      {
+          value:'stripe',
+          label:'stripe',
+           
+      }
   ];
 
 //Defining custom styles
@@ -92,11 +106,16 @@ const initialValues={
 export default function BookingForm() {
     const classes = useStyles()
 
-    //hooks and functions for Total no. of people
-    const [currency, setCurrency] = React.useState('EUR');
+    //hooks and functions for payment method
+    const[payment, setPayment] = React.useState('esewa');
+    const handlePaymentChange = (event) => {
+        setPayment(event.target.value);
+    };    
 
+    //hooks and functions for Total no. of people
+    const[people, setPeople] = React.useState('1');
     const handleChange = (event) => {
-        setCurrency(event.target.value);
+        setPeople(event.target.value);
     };    
 
     //hooks and functions for date
@@ -130,10 +149,10 @@ export default function BookingForm() {
                         <Box style={{marginTop:"2rem"}}>
                             <Grid item xs={12}>
                                 <TextField
-                                id="standard-select-currency"
+                                id="total-no-of-people"
                                 select
                                 label="Select"
-                                value={currency}
+                                value={people}
                                 onChange={handleChange}
                                 helperText="Total no. of People"
                                 className={classes.noTextField}
@@ -145,7 +164,26 @@ export default function BookingForm() {
                                     ))}
                                 </TextField>
                             </Grid>
+                        </Box>
 
+                        <Box style={{marginTop:"2rem"}}>
+                            <Grid item xs={12}>
+                                <TextField
+                                id="payment-method"
+                                select
+                                label="Select"
+                                value={payment}
+                                onChange={handlePaymentChange}
+                                helperText="Payment Method"
+                                className={classes.noTextField}
+                                >
+                                    {payments.map((option) => (
+                                        <MenuItem key={option.value} value={option.value}>
+                                        {option.label}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </Grid>
                         </Box>
 
                         <Box style={{marginTop:"2rem"}}>
