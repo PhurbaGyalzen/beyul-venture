@@ -172,7 +172,7 @@ export const Footer = () => {
 
                         <Box>
                             <Link
-                                href='#'
+                                href='/'
                                 color='inherit'
                                 className='links textHover'
                             >
@@ -182,7 +182,7 @@ export const Footer = () => {
 
                         <Box>
                             <Link
-                                href='#'
+                                href='/about'
                                 color='inherit'
                                 className='links textHover '
                             >
@@ -192,7 +192,7 @@ export const Footer = () => {
 
                         <Box>
                             <Link
-                                href='#'
+                                href='/blog'
                                 color='inherit'
                                 className='links textHover'
                             >
@@ -202,7 +202,7 @@ export const Footer = () => {
 
                         <Box>
                             <Link
-                                href='#'
+                                href='contact-us'
                                 color='inherit'
                                 className='links textHover'
                             >
@@ -212,7 +212,7 @@ export const Footer = () => {
 
                         <Box mb={{ xs: 5, sm: 5, md: 5, lg: 5 }}>
                             <Link
-                                href='#'
+                                href='/our-team'
                                 color='inherit'
                                 className='links textHover'
                             >
