@@ -48,6 +48,7 @@ const ajax = async (path, rest) => {
     if (path.indexOf('/') === 0) {
         path = origin + path
     }
+    if (!rest) rest = {}
     const { headers, ...opts } = rest
     if (!access || !refresh) {
         console.log('no token present. authenticating using creds.')
@@ -61,7 +62,7 @@ const ajax = async (path, rest) => {
             )
             await refreshJWT()
         }
-        const allHeaders = new Headers(headers)
+        const allHeaders = new Headers(headers || {})
         allHeaders.set('Authorization', 'Bearer ' + access)
         if (opts.method === 'POST') {
             allHeaders.set('Content-Type', 'application/json;charset=UTF-8')
