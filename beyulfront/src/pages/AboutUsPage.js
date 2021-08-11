@@ -94,9 +94,9 @@ export default function AboutUsPage() {
     const classes = useStyles()
     return (
         <>
-            <div  style={{ color:"#13181e", paddingTop:"2rem"}} style={{width:"100%"}}>
+            <div  style={{ color:"#13181e", paddingTop:"2rem", backgroundColor:"#edeef0"}} style={{width:"100%"}}>
                     {/* First row */}
-                <Box style={{maxWidth:"100%", overflow:"hidden"}} pt={15} mb={3}>
+                <Box style={{maxWidth:"100%", overflow:"hidden", backgroundColor:"#edeef0"}} pt={15} mb={3}>
                     <Grid
                         container
                         spacing={3}
