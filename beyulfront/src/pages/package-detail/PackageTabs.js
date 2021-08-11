@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 //Defining PackageTabs component
-export default function PackageTabs() {
+export default function PackageTabs({imageList}) {
     const[selectedTab,setSelectedTab]=useState(0);
     const classes = useStyles()
 
@@ -50,7 +50,7 @@ export default function PackageTabs() {
             {selectedTab === 0 && <Overview/>}
             {selectedTab === 1 && <Itinerary/>}
             {selectedTab === 2 && <Accommodation/>}
-            {selectedTab === 3 && <Photos/>}
+            {selectedTab === 3 && <Photos imageList={imageList} />}
         </div>
     );
 };

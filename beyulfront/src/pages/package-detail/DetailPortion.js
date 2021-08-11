@@ -4,8 +4,8 @@ import { StorySection } from './StorySection'
 
 const packageStyles = makeStyles((theme) => ({
     reviewContainer:{
-        margin: '2rem',
-        padding:'2rem',
+        margin: '1rem',
+        padding:'1rem',
         maxWidth:'800px'
     }
 }))

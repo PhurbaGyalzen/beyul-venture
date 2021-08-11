@@ -16,8 +16,10 @@ import OwlCarousel from 'react-owl-carousel'
 import 'owl.carousel/dist/assets/owl.carousel.css'
 import 'owl.carousel/dist/assets/owl.theme.default.css'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle'
-import { SRLWrapper } from 'simple-react-lightbox'
 
+import Lightbox from "react-awesome-lightbox";
+// You need to import the CSS only once
+import "react-awesome-lightbox/build/style.css";
 import { DetailPortion } from './DetailPortion'
 import PackageTabs from './PackageTabs'
 import TripFacts from './TripFacts'
@@ -85,11 +87,11 @@ export const PackDetail = () => {
         type: 'Family',
         durationDays: 6.3,
         images: [
-            { id: 1, src: '/static/images/annapurna.jpg' },
-            { id: 2, src: '/static/images/annapurna5.jpg' },
-            { id: 3, src: '/static/images/annapurna6.jpg' },
-            { id: 4, src: '/static/images/annapurna7.jpg' },
-            { id: 5, src: '/static/images/gokyo.jpg' },
+            { id: 1, url: '/static/images/annapurna.jpg' },
+            { id: 2, url: '/static/images/annapurna5.jpg' },
+            { id: 3, url: '/static/images/annapurna6.jpg' },
+            { id: 4, url: '/static/images/annapurna7.jpg' },
+            { id: 5, url: '/static/images/gokyo.jpg' },
         ],
         route: [
             'kathmandu',
@@ -106,7 +108,7 @@ export const PackDetail = () => {
     return (
         <>  
 
-            <PackageForm/>
+            
             <Box pt={'3rem'} style={{ backgroundColor: '#edeef0' }}>
                 <Container className={classes.packageCont}>
                     <Grid
@@ -128,7 +130,7 @@ export const PackDetail = () => {
                             >
                                 {detail.images.map((car) => {
                                     return (
-                                        <Owl key={car.id} imgSrc={car.src} />
+                                        <Owl key={car.id} imgSrc={car.url} />
                                     )
                                 })}
                             </OwlCarousel>
@@ -193,16 +195,18 @@ export const PackDetail = () => {
                         <Grid item xs={12} md={8} sm={8}>
                             <TripFacts />
                         </Grid>
+                        
 
                         <Grid item xs={12} md={8} sm={8}>
-                            <PackageTabs />
+                            <PackageTabs imageList={detail.images}/>
                         </Grid>
                     </Grid>
                 </Container>
-                <Container>
-                    <SRLWrapper elements={detail.images} />
-                </Container>
+                
                 <DetailPortion />
+                <Container>
+                    {/* <Lightbox images={detail.images} /> */}
+                </Container>
             </Box>
         </>
     )
