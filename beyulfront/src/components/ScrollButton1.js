@@ -36,13 +36,12 @@ const ScrollButton = () =>{
   return (
     <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Scroll To Top">
       <Button style={{position:"fixed",
-      width:"100%",
-      left:"47%",
-      bottom:"2.5rem",
-      height:"1.25rem",
+      right:"0",
+      bottom:"0.8rem",
       fontSize:"3rem",
-      zIndex:1,
       cursor:"pointer",
+      zIndex: 1,
+      padding: '0',
       color:"#DF9534"}}>
       <DoubleArrowOutlinedIcon fontSize="large" onClick={scrollToTop} 
       style={{display: visible ? 'inline' : 'none', transform:"rotate(-90deg)", color:"#DF9534"}} />
