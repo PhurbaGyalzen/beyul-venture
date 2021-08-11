@@ -4,13 +4,49 @@ import styled from 'styled-components'
 import { BlogCard } from './BlogCard'
 import './index.css'
 
+const BigTitle = styled(Typography)`
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 auto;
+`
+
+const TopPart = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: #694311;
+    padding-bottom: 1rem;
+`
+
+const SearchBox = styled.input`
+    padding: 0.6rem;
+    border: none;
+    border-radius: 1rem;
+    &:focus-visible {
+        outline: none;
+    }
+`
+
+const SubmitButton = styled.button`
+    border: none;
+    cursor: pointer;
+    padding: 0.6rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #cfcfed, #0330ffcc);
+    box-shadow: -3px 0px 6px 0px #d1cfcfb5;
+    margin-left: 0.6rem;
+`
+
 const Section = (props) => {
     return <section>{props.children}</section>
 }
 
 const Blogs = (props) => {
     /*
-    const [blogData, setBlogData] = useState([
+    const [blogs, setBlogs] = useState([
         {
             id: 1,
             title: 'Memories on the trails of Annapurna',
@@ -93,7 +129,7 @@ const Blogs = (props) => {
         },
     ])
     */
-    const [blogData, setBlogData] = useState([])
+    const [blogs, setBlogs] = useState([])
     useEffect(async () => {
         const blogs = []
         let url = '/api/blog/'
@@ -105,27 +141,55 @@ const Blogs = (props) => {
             if (!nextPageURL) break
             url = data.next_page_link
         }
-        setBlogData(blogs)
+        setBlogs(blogs)
     }, [])
     // one problem is every other article will move to bottom in mobile.
     // soln is prob useEffect hook on viewport size
     const oddIndexBlog = []
     const evenIndexBlog = []
-    for (let i = 0; i < blogData.length; i++) {
-        const blog = blogData[i]
+    for (let i = 0; i < blogs.length; i++) {
+        const blog = blogs[i]
         blog.id = blog.slug
         blog.author = 'Jaikant Shikre'
         if (i % 2 === 0) evenIndexBlog.push(blog)
         else oddIndexBlog.push(blog)
     }
 
+    const handleInput = (event) => {
+        // a timeout hook
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+    }
+
     return (
         <>
-            <Box pt={7} style={{backgroundColor:"#EDEEF0", color:"#13181e"}}>
-                <Container style={{paddingTop:"4rem"}}>
-                    <Typography align='center' gutterBottom variant='h4' style={{color:"#694311", fontSize:"2rem", fontWeight:"bold", paddingBottom:"2rem"}}>
-                        All Articles
-                    </Typography>
+            <Box
+                pt={7}
+                style={{ backgroundColor: '#EDEEF0', color: '#13181e' }}
+            >
+                <Container style={{ paddingTop: '4rem' }}>
+                    <TopPart>
+                        <BigTitle variant='h4'>All Articles</BigTitle>
+                        <form role='search'>
+                            <SearchBox
+                                type='search'
+                                id='search-blog'
+                                name='q'
+                                placeholder='Search Blogs...'
+                                aria-label='Search all the blogs.'
+                                required
+                                onInput={handleInput}
+                            />
+                            <SubmitButton
+                                type='submit'
+                                onSubmit={handleSubmit}
+                            >
+                                {'>'}
+                            </SubmitButton>
+                        </form>
+                    </TopPart>
 
                     <div id='col-container'>
                         <section id='col1'>
