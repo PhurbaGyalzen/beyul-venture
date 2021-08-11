@@ -60,6 +60,19 @@ const Owl = ({ imgSrc, text }) => {
 }
 
 export const PackDetail = () => {
+    const loc = useLocation()
+    useEffect(() => {
+        if (loc.search) {
+            const paymentQuery = new URLSearchParams(loc.search).get(
+                'paymentResp',
+            )
+            if (paymentQuery === 'success') {
+                toast.success('Payment Successful!')
+            } else if (paymentQuery === 'fail') {
+                toast.error('Payment Failed. Please try again.')
+            }
+        }
+    })
     const classes = packageStyles()
 
     const [detail, setDetail] = useState({
