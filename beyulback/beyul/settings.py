@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'package.apps.PackageConfig',
     'cacheops',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -148,6 +149,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_PAGINATION_CLASS': 'blog.custompaginations.CustomPageNumberPagination',
+    'SEARCH_PARAM': 'search',
 }
 
 CORS_ALLOWED_ORIGINS = [
