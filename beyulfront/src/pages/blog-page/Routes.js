@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Route, Switch, useParams, useRouteMatch } from 'react-router-dom'
-import Blog from 'pages/blog-page/Blog'
+import Blogs from 'pages/blog-page/Blogs'
 import { AddBlog } from 'pages/blog-add/AddBlog'
 import BlogDetail from 'pages/blog-page/BlogDetail'
 import { BlogTag } from 'pages/blog-page/BlogTag'
@@ -15,7 +15,7 @@ const BlogRoutes = () => {
             <Route path={relPath + '/:blogid'}>
                 <BlogDetail />
             </Route>
-            <Route path={relPath + ''} component={Blog} />
+            <Route path={relPath + ''} component={Blogs} />
         </Switch>
     )
 }

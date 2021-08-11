@@ -8,7 +8,7 @@ const Section = (props) => {
     return <section>{props.children}</section>
 }
 
-const Blog = (props) => {
+const Blogs = (props) => {
     /*
     const [blogData, setBlogData] = useState([
         {
@@ -169,4 +169,4 @@ const Blog = (props) => {
     )
 }
 
-export default Blog
+export default Blogs
