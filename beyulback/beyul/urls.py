@@ -13,7 +13,6 @@ from users.views import(
 
 from package.views import (
     PackageView,
-    AvgRatingView,
     ReviewView,
 )
 from django.urls import path, include
@@ -43,7 +42,6 @@ urlpatterns = [
     # register new users using .../api/register/ endpoint
     path('api/register/', RegistrationAPIView.as_view(), name='register'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('api/average/rating/<str:slug>', AvgRatingView),
     path('payment/', include('payment.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -1,6 +1,7 @@
 from .models import Package, Review
 
 from django.conf import settings
+from django.db.models import Avg
 
 from rest_framework import serializers
 
@@ -37,6 +38,8 @@ class PackageSerializer(serializers.HyperlinkedModelSerializer):
 
     content = FixAbsolutePathSerializer()
     reviews = ReviewSerializer(many=True, read_only=True)
+    total_reviews = serializers.SerializerMethodField()
+    average_rating = serializers.SerializerMethodField()
 
     class Meta:
         model = Package
@@ -52,8 +55,16 @@ class PackageSerializer(serializers.HyperlinkedModelSerializer):
             'price',
             'duration',
             'difficulty_level',
+            'total_reviews',
+            'average_rating',
             'reviews'
         )
         extra_kwargs = {
             'url': {'view_name': 'package-detail', 'lookup_field': 'slug'},
         }
+
+    def get_total_reviews(self, obj):
+        return obj.reviews.count()
+
+    def get_average_rating(self, obj):
+        return obj.reviews.aggregate(Avg('rating'))['rating__avg']
