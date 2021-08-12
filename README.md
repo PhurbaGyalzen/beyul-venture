@@ -1,4 +1,4 @@
-# beyul-venture
+# Beyul venture
 
 ## Steps to run Beyulback
 
