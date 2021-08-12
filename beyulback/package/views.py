@@ -1,4 +1,4 @@
-from .serializers import PackageSerializer
+from .serializers import PackageSerializer, ReviewSerializer
 from .models import Package, Review
 
 from django.db.models import Avg
@@ -20,8 +20,21 @@ class PackageView(viewsets.ModelViewSet):
     # pagination_class = RemovePageNumberPagination
 
 
-def AvgRatingView(request, pk):
-    average_rating = Review.objects.filter(
-        reviewed_package__id=pk
-    ).aggregate(Avg('rating'))
+class ReviewView(viewsets.ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+    # access the view functions,if a valid token is provided
+    authentication_classes = [JWTAuthentication]
+    # anyone can read the post but user must be logged in to post or delete
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    # pagination_class = RemovePageNumberPagination
+
+
+def AvgRatingView(request, slug):
+    reviews = Review.objects.filter(reviewed_package__slug=slug)
+    average_rating = {"status": "package doesn't exists."}
+    if reviews:
+        average_rating = reviews.aggregate(Avg('rating'))
+        average_rating['status'] = True
+        average_rating['total_reviewers'] = reviews.count()
     return JsonResponse(average_rating, safe=True)

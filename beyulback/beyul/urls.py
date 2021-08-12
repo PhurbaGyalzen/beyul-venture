@@ -14,6 +14,7 @@ from users.views import(
 from package.views import (
     PackageView,
     AvgRatingView,
+    ReviewView,
 )
 from django.urls import path, include
 from django.contrib import admin
@@ -30,6 +31,7 @@ router.register(r'tag', TagViewSet)
 router.register(r'comment', CommentViewSet)
 router.register(r'clap', ClapViewSet)
 router.register(r'package', PackageView)
+router.register(r'review', ReviewView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -41,7 +43,7 @@ urlpatterns = [
     # register new users using .../api/register/ endpoint
     path('api/register/', RegistrationAPIView.as_view(), name='register'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('api/average/rating/<int:pk>', AvgRatingView),
+    path('api/average/rating/<str:slug>', AvgRatingView),
     path('payment/', include('payment.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
