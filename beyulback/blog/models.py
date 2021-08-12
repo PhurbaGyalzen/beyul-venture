@@ -47,9 +47,9 @@ class Tag(models.Model):
         return reverse('cateogry_detail', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
-        super(Tag, self).save(*args, **kwargs)
         if not self.slug:
             self.slug = slugify(self.name)
+        super(Tag, self).save(*args, **kwargs)
         compress(self.background_img.path, 30)
 
     def __str__(self):
@@ -137,9 +137,9 @@ class Blog(models.Model):
         return reverse('blog_detail', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
-        super(Blog, self).save(*args, **kwargs)
         if not self.slug:
             self.slug = slugify(self.title)
+        super(Blog, self).save(*args, **kwargs)
 
         if self.compress_thumbnail:
             compress(self.thumbnail.path, 30)

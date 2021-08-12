@@ -57,6 +57,7 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
     comment = CommentSerializer(many=True, read_only=True, source="comments")
     clap = ClapSerializer(many=True, read_only=True, source="claps")
     content = FixAbsolutePathSerializer()
+    author_name = serializers.SerializerMethodField()
 
     class Meta:
         model = Blog
@@ -71,6 +72,7 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
             'updated_on',
             'thumbnail',
             'author',
+            'author_name',
             'status',
             'comment',
             'clap'
@@ -79,6 +81,9 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
             'url': {'view_name': 'blog-detail', 'lookup_field': 'slug'},
             'tags': {'view_name': 'tag-detail', 'lookup_field': 'slug'},
         }
+
+    def get_author_name(self, obj):
+        return obj.author.first_name
 
 
 class ReadOnlyModelSerializer(serializers.HyperlinkedModelSerializer):
