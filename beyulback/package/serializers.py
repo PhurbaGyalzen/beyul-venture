@@ -15,18 +15,22 @@ class FixAbsolutePathSerializer(serializers.Field):
         return value.replace(SEARCH_PATTERNN, REPLACE_WITH)
 
 
-class ReviewSerializer(serializers.ModelSerializer):
+class ReviewSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Review
         fields = (
-            'id',
+            'url',
             'writer',
             'reviewed_package',
             'title',
             'body',
             'rating'
         )
+
+        extra_kwargs = {
+            'reviewed_package': {'view_name': 'package-detail', 'lookup_field': 'slug'}
+        }
 
 
 class PackageSerializer(serializers.HyperlinkedModelSerializer):
