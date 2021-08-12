@@ -43,6 +43,12 @@ const itineraries = [
         title:'Day 05: Acclimatization Day – Hike to Everest View Hotel (3,962m/12995ft) Walking Distance - 3 to 4 km, Duration: 3 to 4 hours',
         description:'No activities are planned for today. You can take a rest and restore your energy for your upcoming adventure. Overnight at Hotel.'
     },
+
+    {
+        id:5,
+        title:'Day 06: Acclimatization Day – Hike to Everest View Hotel (3,962m/12995ft) Walking Distance - 3 to 4 km, Duration: 3 to 4 hours',
+        description:'No activities are planned for today. You can take a rest and restore your energy for your upcoming adventure. Overnight at Hotel.'
+    },
 ];
     
     
