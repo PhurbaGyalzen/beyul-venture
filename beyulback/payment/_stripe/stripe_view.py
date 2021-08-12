@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 import stripe
 from payment.views import get_actual_amount
 
-stripe.api_key = 'sk_test_51JJrwRDyVuOwHMJSzH1MQF5sxkv3SgmZK1DYcyaC6NMC8lkoBkazeZwJnDbjVXLwi3FVVzoCNxo6aCjHOiXZtjau000bk0DcMY'
+stripe.api_key = 'sk_test_51JKJMUKE0qqhCtCaNwXKVLAe59mugHLRm5YyV7t2CmuHGT8e4uShx0VtXZSDO3Bn8prr4Ji1OsihzynmZmdtLomB00JUDrB8sJ'
 
 @csrf_exempt
 @require_http_methods(['POST'])
