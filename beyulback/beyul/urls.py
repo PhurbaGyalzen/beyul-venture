@@ -14,6 +14,7 @@ from users.views import(
 from package.views import (
     PackageView,
     AvgRatingView,
+    ReviewView,
 )
 from django.urls import path, include
 from django.contrib import admin
@@ -30,6 +31,7 @@ router.register(r'tag', TagViewSet)
 router.register(r'comment', CommentViewSet)
 router.register(r'clap', ClapViewSet)
 router.register(r'package', PackageView)
+router.register(r'review', ReviewView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

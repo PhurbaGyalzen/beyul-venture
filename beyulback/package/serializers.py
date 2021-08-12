@@ -1,4 +1,4 @@
-from .models import Package
+from .models import Package, Review
 
 from django.conf import settings
 
@@ -15,9 +15,24 @@ class FixAbsolutePathSerializer(serializers.Field):
         return value.replace(SEARCH_PATTERNN, REPLACE_WITH)
 
 
+class ReviewSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Review
+        fields = (
+            'id',
+            'writer',
+            'reviewed_package',
+            'title',
+            'body',
+            'rating'
+        )
+
+
 class PackageSerializer(serializers.HyperlinkedModelSerializer):
 
     content = FixAbsolutePathSerializer()
+    reviews = ReviewSerializer(many=True, read_only=True)
 
     class Meta:
         model = Package
@@ -33,7 +48,8 @@ class PackageSerializer(serializers.HyperlinkedModelSerializer):
             'thumbnail',
             'price',
             'duration',
-            'difficulty_level'
+            'difficulty_level',
+            'reviews'
         )
         extra_kwargs = {
             'url': {'view_name': 'package-detail', 'lookup_field': 'slug'},
