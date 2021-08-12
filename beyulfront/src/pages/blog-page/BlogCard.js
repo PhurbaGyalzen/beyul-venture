@@ -50,24 +50,6 @@ const Title = styled.h2`
     font-size: 2rem;
 `
 
-const Banner = styled.div`
-    display: inline;
-    background-color: black;
-    color: white;
-
-    &::before {
-        content: '\\2003'; /* Em-space which is a square */
-        display: inline-block;
-        clip-path: polygon(-1px -1px, 102% -1px, 0 50%, 102% 102%, -1px 102%);
-        background-color: white;
-    }
-    &::after {
-        content: '\\2003';
-        display: inline-block;
-        clip-path: polygon(102% -1px, 0 -1px, 102% 50%, 0 102%, 102% 102%);
-        background-color: white;
-    }
-`
 
 const UnorderList = styled.ul`
     margin: 0.7rem 0;
@@ -76,6 +58,10 @@ const UnorderList = styled.ul`
     flex-wrap: wrap;
     list-style-type: none;
     gap: 0.5rem;
+`
+
+const Article = styled.article`
+    margin: 0.5rem auto;
 `
 
 export const BlogCard = ({
@@ -91,7 +77,7 @@ export const BlogCard = ({
 
     const history = useHistory();
     return (
-        <article>
+        <Article>
             <img src={thumbnail} />
             <div>
                 <UnorderList>
@@ -124,6 +110,6 @@ export const BlogCard = ({
                 </div>
                 <summary>{description}</summary>
             </div>
-        </article>
+        </Article>
     )
 }

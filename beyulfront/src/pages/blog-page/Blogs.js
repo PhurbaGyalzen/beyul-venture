@@ -1,8 +1,33 @@
 import { useState, useEffect } from 'react'
 import { Box, Container, Card, Grid, Typography } from '@material-ui/core'
 import styled from 'styled-components'
+import Masonry from 'react-masonry-css'
 import { BlogCard } from './BlogCard'
 import './index.css'
+
+const MasonryFlex = styled(Masonry)`
+    display: flex;
+    gap: 0.5rem;
+    padding: 0rem 0.5rem;
+    border: 1px solid #00000054;
+    & > :nth-child(odd) {
+        flex: 1 1 480px;
+    }
+
+    & > :nth-child(even) {
+        flex: 1 1 205px;
+    }
+
+    & article:nth-child(odd) img {
+        max-height: 20rem;
+    }
+
+    & article img {
+        width: 100%;
+        max-height: 15rem;
+        object-fit: cover;
+    }
+`
 
 const BigTitle = styled(Typography)`
     font-size: 2rem;
@@ -151,8 +176,9 @@ const Blogs = (props) => {
         const blog = blogs[i]
         blog.id = blog.slug
         blog.author = 'Jaikant Shikre'
-        if (i % 2 === 0) evenIndexBlog.push(blog)
-        else oddIndexBlog.push(blog)
+        evenIndexBlog.push(blog)
+        // if (i % 2 === 0) evenIndexBlog.push(blog)
+        // else oddIndexBlog.push(blog)
     }
 
     const handleInput = (event) => {
@@ -161,6 +187,10 @@ const Blogs = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
+    }
+    const breakpointColumnsObj = {
+        default: 2,
+        800: 1,
     }
 
     return (
@@ -191,42 +221,24 @@ const Blogs = (props) => {
                         </form>
                     </TopPart>
 
-                    <div id='col-container'>
-                        <section id='col1'>
-                            {evenIndexBlog.map((blog) => {
-                                return (
-                                    <BlogCard
-                                        key={blog.id}
-                                        slug={blog.id}
-                                        thumbnail={blog.thumbnail}
-                                        title={blog.title}
-                                        authorId={blog.author_id}
-                                        authorName={blog.author}
-                                        likes={blog.likes}
-                                        tags={blog.tags}
-                                        description={blog.description}
-                                    />
-                                )
-                            })}
-                        </section>
-                        <section id='col2'>
-                            {oddIndexBlog.map((blog) => {
-                                return (
-                                    <BlogCard
-                                        key={blog.id}
-                                        slug={blog.id}
-                                        thumbnail={blog.thumbnail}
-                                        title={blog.title}
-                                        authorId={blog.author_id}
-                                        authorName={blog.author}
-                                        likes={blog.likes}
-                                        tags={blog.tags}
-                                        description={blog.description}
-                                    />
-                                )
-                            })}
-                        </section>
-                    </div>
+                    {/*<Masonry className="col-container" breakpointCols={breakpointColumnsObj}>*/}
+                    <MasonryFlex breakpointCols={breakpointColumnsObj}>
+                        {evenIndexBlog.map((blog) => {
+                            return (
+                                <BlogCard
+                                    key={blog.id}
+                                    slug={blog.id}
+                                    thumbnail={blog.thumbnail}
+                                    title={blog.title}
+                                    authorId={blog.author_id}
+                                    authorName={blog.author}
+                                    likes={blog.likes}
+                                    tags={blog.tags}
+                                    description={blog.description}
+                                />
+                            )
+                        })}
+                    </MasonryFlex>
                 </Container>
             </Box>
         </>
