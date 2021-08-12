@@ -32,10 +32,9 @@ class ReviewView(viewsets.ModelViewSet):
 
 def AvgRatingView(request, slug):
     reviews = Review.objects.filter(reviewed_package__slug=slug)
+    average_rating = {"status": "package doesn't exists."}
     if reviews:
         average_rating = reviews.aggregate(Avg('rating'))
         average_rating['status'] = True
         average_rating['total_reviewers'] = reviews.count()
-    else:
-        average_rating = {"status": "package doesn't exists."}
     return JsonResponse(average_rating, safe=True)
