@@ -1,6 +1,8 @@
 from blog.ImageCompressor import compress
 
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
+from django.conf import settings
 from django.template.defaultfilters import slugify
 from django.utils.translation import gettext_lazy as _
 
@@ -92,3 +94,28 @@ class Package(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Review(models.Model):
+    writer = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    reviewed_package = models.ForeignKey(
+        Package,
+        related_name="reviews",
+        on_delete=models.CASCADE
+    )
+    title = models.CharField(
+        _('title'),
+        help_text=_('insert yourt title here'),
+        max_length=255
+    )
+    body = models.TextField()
+    rating = models.IntegerField(
+        default=1,
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
+
+    def __str__(self):
+        return str(self.writer) + " review"
