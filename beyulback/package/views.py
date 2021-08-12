@@ -34,4 +34,7 @@ def AvgRatingView(request, pk):
     average_rating = Review.objects.filter(
         reviewed_package__id=pk
     ).aggregate(Avg('rating'))
+    average_rating['total_reviewers'] = Review.objects.filter(
+        reviewed_package__id=pk
+    ).count()
     return JsonResponse(average_rating, safe=True)
