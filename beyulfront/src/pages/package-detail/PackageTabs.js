@@ -7,12 +7,10 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Accommodation from './Accommodation'
 import Itinerary from './Itinerary'
 import Overview from './Overview'
 import Photos from './Photos'
-
-//All images import
+import UsefulInfoContent from './UsefulInfoContent';
 
 //Defining custom styles
 const useStyles = makeStyles((theme) => ({
@@ -42,14 +40,14 @@ export default function PackageTabs({imageList}) {
                 aria-label="Package details"
                 wrapped
             >
-                <Tab label="Overview" />
-                <Tab label="Itineary" />
-                <Tab label="Accomodation" />
-                <Tab label="Photos" />
+                <Tab label="Overview" style={{fontWeight:"bold"}}/>
+                <Tab label="Itineary" style={{fontWeight:"bold"}}/>
+                <Tab label="Useful info" style={{fontWeight:"bold"}}/>
+                <Tab label="Photos" style={{fontWeight:"bold"}}/>
             </Tabs>
             {selectedTab === 0 && <Overview/>}
             {selectedTab === 1 && <Itinerary/>}
-            {selectedTab === 2 && <Accommodation/>}
+            {selectedTab === 2 && <UsefulInfoContent/>}
             {selectedTab === 3 && <Photos imageList={imageList} />}
         </div>
     );
