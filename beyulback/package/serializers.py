@@ -26,7 +26,9 @@ class ReviewSerializer(serializers.HyperlinkedModelSerializer):
             'reviewed_package',
             'title',
             'body',
-            'rating'
+            'rating',
+            'created_on',
+            'updated_on',
         )
 
         extra_kwargs = {
