@@ -69,6 +69,16 @@ const Section = (props) => {
     return <section>{props.children}</section>
 }
 
+const filterArray = (s, arr) => {
+    return (arr.filter((item) => {
+        if (item.includes(s)) {
+            return item
+        }
+    })
+    )
+}
+
+
 const Blogs = (props) => {
     /*
     const [blogs, setBlogs] = useState([
@@ -155,33 +165,29 @@ const Blogs = (props) => {
     ])
     */
     const [blogs, setBlogs] = useState([])
+    const [fetchedBlogs, setFetchedBlogs] = useState([])
     useEffect(async () => {
-        const blogs = []
+        const tempBlogs = []
         let url = '/api/blog/'
         for (let _ = 0; _ < 10; _++) {
             const data = await ajax(url)
             if (!data) break
-            blogs.push(...data.results)
+            tempBlogs.push(...data.results)
             const nextPageURL = data.next_page_link
             if (!nextPageURL) break
             url = data.next_page_link
         }
-        setBlogs(blogs)
+        setBlogs(tempBlogs)
+        setFetchedBlogs(tempBlogs)
     }, [])
-    // one problem is every other article will move to bottom in mobile.
-    // soln is prob useEffect hook on viewport size
-    const oddIndexBlog = []
-    const evenIndexBlog = []
-    for (let i = 0; i < blogs.length; i++) {
-        const blog = blogs[i]
-        blog.id = blog.slug
-        blog.author = 'Jaikant Shikre'
-        evenIndexBlog.push(blog)
-        // if (i % 2 === 0) evenIndexBlog.push(blog)
-        // else oddIndexBlog.push(blog)
-    }
 
     const handleInput = (event) => {
+        const currInput = event.target.value
+        setBlogs(fetchedBlogs.filter((blog) => {
+            const filtered = filterArray(currInput, [blog.title, blog.description])
+            console.log(filtered)
+            return filtered.length > 0 ? blog : false
+        }))
         // a timeout hook
     }
 
@@ -223,15 +229,15 @@ const Blogs = (props) => {
 
                     {/*<Masonry className="col-container" breakpointCols={breakpointColumnsObj}>*/}
                     <MasonryFlex breakpointCols={breakpointColumnsObj}>
-                        {evenIndexBlog.map((blog) => {
+                        {blogs.map((blog) => {
                             return (
                                 <BlogCard
-                                    key={blog.id}
-                                    slug={blog.id}
+                                    key={blog.slug}
+                                    slug={blog.slug}
                                     thumbnail={blog.thumbnail}
                                     title={blog.title}
                                     authorId={blog.author_id}
-                                    authorName={blog.author}
+                                    authorName={'Jaikant Shikre'}
                                     likes={blog.likes}
                                     tags={blog.tags}
                                     description={blog.description}
