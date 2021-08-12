@@ -62,11 +62,69 @@ class Package(models.Model):
         ),
         default=False
     )
+    best_season = models.CharField(
+        _('Best Season'),
+        help_text=_(
+            'what is the best season for this package?'
+        ),
+        max_length=50
+    )
+    transportation = models.CharField(
+        _('Transportation'),
+        help_text=_(
+            'what are the means of transportation?'
+        ),
+        max_length=100
+    )
+    starts_at = models.CharField(
+        _('Starts at'),
+        help_text=_(
+            'From where does the journey starts?'
+        ),
+        max_length=50
+    )
+    ends_at = models.CharField(
+        _('Ends at'),
+        help_text=_(
+            'Where does the journey ends?'
+        ),
+        max_length=50
+    )
+    age_requirement = models.CharField(
+        _('Age Requirement'),
+        help_text=_('Enter the required age'),
+        max_length=50
+    )
+    min_people = models.PositiveSmallIntegerField(
+        _('Minimum People'),
+        default=1,
+        help_text=_(
+            'Enter the minimum number of people who can join the package'
+        ),
+        validators=[MinValueValidator(1)]
+    )
+    max_people = models.PositiveSmallIntegerField(
+        _('Maximum People'),
+        help_text=_(
+            'Enter the maximum number of people who can join the package'
+        )
+    )
+
+    meals = models.CharField(
+        _('Meals'), help_text=_('Meal option'), max_length=255)
 
     price = models.IntegerField(
         _('price'),
         help_text=_('enter the package price')
     )
+
+    altitude = models.DecimalField(
+        _('Altitude'),
+        help_text=_('Enter the altitude of the location.'),
+        max_digits=6,
+        decimal_places=2
+    )
+
     difficulty_level = models.CharField(
         _('difficulty level'),
         help_text=_('choose the difficulty level'),
@@ -108,11 +166,13 @@ class Review(models.Model):
     )
     title = models.CharField(
         _('title'),
-        help_text=_('insert yourt title here'),
+        help_text=_('insert your title here'),
         max_length=255
     )
     body = models.TextField()
-    rating = models.IntegerField(
+    created_on = models.DateTimeField(_('create on'), auto_now_add=True)
+    updated_on = models.DateTimeField(_('update_on'), auto_now=True)
+    rating = models.PositiveBigIntegerField(
         default=1,
         validators=[MinValueValidator(1), MaxValueValidator(5)]
     )
