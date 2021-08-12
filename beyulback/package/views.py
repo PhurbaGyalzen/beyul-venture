@@ -1,5 +1,8 @@
 from .serializers import PackageSerializer
-from .models import Package
+from .models import Package, Review
+
+from django.db.models import Avg
+from django.http import JsonResponse
 
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework_simplejwt.authentication import JWTAuthentication
@@ -15,3 +18,10 @@ class PackageView(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
     lookup_field = 'slug'
     # pagination_class = RemovePageNumberPagination
+
+
+def AvgRatingView(request, pk):
+    average_rating = Review.objects.filter(
+        reviewed_package__id=pk
+    ).aggregate(Avg('rating'))
+    return JsonResponse(average_rating, safe=True)
