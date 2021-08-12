@@ -38,7 +38,6 @@ class PackageSerializer(serializers.HyperlinkedModelSerializer):
         model = Package
         fields = (
             'url',
-            'id',
             'name',
             'slug',
             'description',

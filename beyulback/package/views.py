@@ -30,11 +30,11 @@ class ReviewView(viewsets.ModelViewSet):
     # pagination_class = RemovePageNumberPagination
 
 
-def AvgRatingView(request, pk):
+def AvgRatingView(request, slug):
     average_rating = Review.objects.filter(
-        reviewed_package__id=pk
+        reviewed_package__slug=slug
     ).aggregate(Avg('rating'))
     average_rating['total_reviewers'] = Review.objects.filter(
-        reviewed_package__id=pk
+        reviewed_package__slug=slug
     ).count()
     return JsonResponse(average_rating, safe=True)
