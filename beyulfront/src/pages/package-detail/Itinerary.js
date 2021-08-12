@@ -4,8 +4,12 @@ import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import { Button } from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
+import Button from '@material-ui/core/Button';
+import ItineraryContent from './ItineraryContent';
+
 
 
 //our Itinerary Information
@@ -46,8 +50,10 @@ const itineraries = [
 //Defining custom styles
 const useStyles = makeStyles((theme) => ({
     root:{
-        flexGrow:1
-    }
+        flexGrow:1,
+        padding:"0.5rem",
+        backgroundColor:"#fff"
+    },
     
 }))
 
@@ -55,13 +61,19 @@ const useStyles = makeStyles((theme) => ({
 //Defining Itineary component
 export default function Itinerary() {
     const classes = useStyles()
-
-    const[data,setData]=useState(itineraries);
+    const[itinerary,setItinerary]=useState(itineraries);
     return (
-        <>
+        <> 
             <div className={classes.root}>
-                <h1>Itineary section</h1>
-            </div>
+                {
+                    itinerary.map((curElem)=>{
+                        const{id}=curElem;
+                        return <ItineraryContent key={id} {...curElem} />
+                    })
+                }
+            </div>                    
+            
+
         </>
         
     );
