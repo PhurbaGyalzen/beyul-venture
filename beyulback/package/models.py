@@ -179,3 +179,49 @@ class Review(models.Model):
 
     def __str__(self):
         return str(self.writer) + " review"
+
+
+def upload_gallery_image(instance, filename):
+    return f"gallery/{instance.package.slug}/{filename}"
+
+
+class Photo(models.Model):
+    image1 = models.ImageField(
+        upload_to=upload_gallery_image,
+        null=True,
+        blank=True
+    )
+    image2 = models.ImageField(
+        upload_to=upload_gallery_image,
+        null=True,
+        blank=True
+    )
+    image3 = models.ImageField(
+        upload_to=upload_gallery_image,
+        null=True,
+        blank=True
+    )
+    image4 = models.ImageField(
+        upload_to=upload_gallery_image,
+        null=True,
+        blank=True
+    )
+    image5 = models.ImageField(
+        upload_to=upload_gallery_image,
+        null=True,
+        blank=True
+    )
+    image6 = models.ImageField(
+        upload_to=upload_gallery_image,
+        null=True,
+        blank=True
+    )
+    package = models.OneToOneField(
+        Package,
+        on_delete=models.CASCADE,
+        related_name="images",
+        unique=True
+    )
+
+    def __str__(self):
+        return self.package.name + " Gallery"

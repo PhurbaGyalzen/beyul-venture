@@ -1,5 +1,5 @@
-from .serializers import PackageSerializer, ReviewSerializer
-from .models import Package, Review
+from .serializers import PackageSerializer, ReviewSerializer, PhotoSerializer
+from .models import Package, Review, Photo
 
 from django.db.models import Avg
 from django.http import JsonResponse
@@ -30,3 +30,10 @@ class ReviewView(viewsets.ModelViewSet):
     # pagination_class = RemovePageNumberPagination
 
 
+class PhotoView(viewsets.ModelViewSet):
+    queryset = Photo.objects.all()
+    serializer_class = PhotoSerializer
+    # access the view functions,if a valid token is provided
+    authentication_classes = [JWTAuthentication]
+    # will change the permission later
+    permission_classes = [IsAuthenticatedOrReadOnly]
