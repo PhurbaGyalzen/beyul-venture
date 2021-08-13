@@ -17,18 +17,28 @@ class FixAbsolutePathSerializer(serializers.Field):
 
 
 class ReviewSerializer(serializers.HyperlinkedModelSerializer):
+    writer_name = serializers.SerializerMethodField()
+    writer_profile = serializers.SerializerMethodField()
 
     class Meta:
         model = Review
         fields = (
             'url',
             'writer',
+            'writer_name',
+            'writer_profile',
             'title',
             'body',
             'rating',
             'created_on',
             'updated_on',
         )
+
+    def get_writer_name(self, obj):
+        return obj.writer.first_name
+
+    def get_writer_profile(self, obj):
+        return f"http://127.0.0.1:8000/media/{obj.writer.profile_pic}"
 
 
 class PhotoSerializer(serializers.HyperlinkedModelSerializer):

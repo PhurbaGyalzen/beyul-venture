@@ -202,6 +202,12 @@ export default function ButtonAppBar() {
             icon: <LabelIcon />,
             link: '/sign-in',
         },
+
+        {
+            text: 'Terms & Conditions',
+            icon: <LabelIcon />,
+            link: '/terms-and-conditions',
+        },
     ]
     const drawerItems = navItems.concat({
           text: 'Sign Up',
@@ -210,7 +216,7 @@ export default function ButtonAppBar() {
       })
 
     return (
-        <div className={classes.root} disableGutters>
+        <div className={classes.root}>
             <AppBar position='fixed' className={classes[navRef.current]}>
                 <Toolbar disableGutters>
                     <Typography
