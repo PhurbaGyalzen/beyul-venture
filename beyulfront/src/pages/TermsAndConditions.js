@@ -132,13 +132,16 @@ export default function TermsAndConditions() {
     return (
         <>
             <div className={classes.root}>
-                <Grid container>
-                    <Grid item  xs={12}>
-                        <div className={classes.photoDiv}>
-                            <img src={photo} alt="terms and conditions images" className={classes.photo}/>
-                        </div>
+                <Box pb={5}>
+                    <Grid container>
+                        <Grid item  xs={12}>
+                            <div className={classes.photoDiv}>
+                                <img src={photo} alt="terms and conditions images" className={classes.photo}/>
+                            </div>
+                        </Grid>
                     </Grid>
-                </Grid>
+                </Box>
+                
 
                 {termsAndConditions.map((data)=>(
                     <Grid container>
