@@ -1,4 +1,4 @@
-from .models import Package, Review, Photo
+from .models import Package, Review, Photo, Itinerary
 
 from django.conf import settings
 from django.db.models import Avg
@@ -23,7 +23,6 @@ class ReviewSerializer(serializers.HyperlinkedModelSerializer):
         fields = (
             'url',
             'writer',
-            'reviewed_package',
             'title',
             'body',
             'rating',
@@ -31,16 +30,11 @@ class ReviewSerializer(serializers.HyperlinkedModelSerializer):
             'updated_on',
         )
 
-        extra_kwargs = {
-            'reviewed_package': {'view_name': 'package-detail', 'lookup_field': 'slug'}
-        }
-
 
 class PhotoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Photo
         fields = (
-            'package',
             'image1',
             'image2',
             'image3',
@@ -49,9 +43,15 @@ class PhotoSerializer(serializers.HyperlinkedModelSerializer):
             'image6',
         )
 
-        extra_kwargs = {
-            'package': {'view_name': 'package-detail', 'lookup_field': 'slug'}
-        }
+
+class ItinerarySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Itinerary
+        fields = (
+            'day',
+            'title',
+            'description'
+        )
 
 
 class PackageSerializer(serializers.HyperlinkedModelSerializer):
@@ -61,6 +61,8 @@ class PackageSerializer(serializers.HyperlinkedModelSerializer):
     total_reviews = serializers.SerializerMethodField()
     average_rating = serializers.SerializerMethodField()
     photos = PhotoSerializer(read_only=True, source='images')
+    itinerary = ItinerarySerializer(
+        many=True, read_only=True, source='itinerarys')
 
     class Meta:
         model = Package
@@ -78,6 +80,7 @@ class PackageSerializer(serializers.HyperlinkedModelSerializer):
             'difficulty_level',
             'total_reviews',
             'average_rating',
+            'itinerary',
             'reviews',
             'photos',
         )
