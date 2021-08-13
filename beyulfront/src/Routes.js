@@ -12,6 +12,7 @@ import ScrollToTop from 'components/ScrollToTop'
 import { PackDetail } from './pages/package-detail/PackDetail'
 import StripePaymentPage from 'pages/stripe/StripePay'
 import TermsAndConditions from 'pages/TermsAndConditions'
+import PrivacyPolicy from 'pages/PrivacyPolicy'
 const CustomRoute = ({ ...args }) => {
     return (
         <>
@@ -38,6 +39,7 @@ const Routes = () => {
             <CustomRoute exact path='/contact-us' component={ContactUs} />
             <CustomRoute exact path='/our-team' component={OurTeam} />
             <CustomRoute exact path='/terms-and-conditions' component={TermsAndConditions} />
+            <CustomRoute exact path='/privacy-policy' component={PrivacyPolicy} />
             <CustomRoute exact path='/stripe-payment/:id' component={StripePaymentPage} />
             <CustomRoute exact path='/'>
                 <HomePage />

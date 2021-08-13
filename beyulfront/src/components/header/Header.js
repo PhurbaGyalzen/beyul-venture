@@ -208,6 +208,14 @@ export default function ButtonAppBar() {
             icon: <LabelIcon />,
             link: '/terms-and-conditions',
         },
+
+        {
+            text: 'Privacy Policy',
+            icon: <LabelIcon />,
+            link: '/privacy-policy',
+        },
+
+
     ]
     const drawerItems = navItems.concat({
           text: 'Sign Up',
