@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+import photo from 'img/termsAndConditions.png';
 
 
 //TermsAndConditions component information
@@ -33,6 +34,32 @@ const useStyles = makeStyles((theme) => ({
     root:{
         flexGrow:1
     },
+    
+    photoDiv:{
+        width:"100%",
+        height:"50%",
+        position:"relative",
+        boxSizing:"borderBox"
+    },
+
+    photo:{
+        width:"100%",
+        height:"100%",
+        backgroundRepeat:"noRepeat",
+        backgroundSize:"cover",
+        backgroundPosition:"center"
+    },
+
+    photoText:{
+        fontSize:"2rem",
+        fontWeight:"bold",
+        color:"#ffffff",
+        letterSpacing:"0.1rem",
+        position:"absolute",
+        top:"50%",
+        left:"50%",
+        transform:"translate(-50%,-50%)"
+    },
 
     title:{
         fontWeight:"bold",
@@ -58,6 +85,15 @@ export default function TermsAndConditions() {
     return (
         <>
             <div className={classes.root}>
+                <Grid container>
+                    <Grid item>
+                        <div className={classes.photoDiv}>
+                            <img src={photo} alt="terms and conditions images" className={classes.photo}/>
+                            <Typography className={classes.photoText}>TERMS AND CONDITIONS</Typography>
+                        </div>
+                    </Grid>
+                </Grid>
+
                 {termsAndConditions.map((data)=>(
                     <Grid container>
                         <Box pt={3}>
