@@ -1,13 +1,25 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js'
+import {
+    useStripe,
+    useElements,
+    CardElement,
+    CardNumberElement,
+    CardExpiryElement,
+    CardCvcElement,
+} from '@stripe/react-stripe-js'
 import CreditCard from './CreditCard'
 import { getPaymentIntent, payWithCard } from './utils'
 
-const conWidth = '32rem'
+const CONWIDTH = '32rem'
+const CARD_FONT_COLOR = '#303238'
+const CARD_PLACEHOLDER_COLOR = '#303238'
+const CARD_INVALID_COLOR = '#e5424d'
+const CARD_FONT_SIZE = '16px'
+const CARD_FONT_FAMILY = '"Open Sans", sans-serif'
 
 const PaymentContainer = styled.div`
-    max-width: ${(props) => props.maxWidth || conWidth};
+    max-width: ${(props) => props.maxWidth || CONWIDTH};
     margin: 0 auto;
     min-height: 100vh;
     display: flex;
@@ -21,7 +33,7 @@ const CardDetails = styled.div`
 `
 
 const CreditCardCon = styled.div`
-    max-width: calc(${conWidth} - 12rem);
+    max-width: calc(${CONWIDTH} - 12rem);
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -65,6 +77,36 @@ const StripeCardElement = styled.div`
     border-radius: 0.6rem 0.6rem 0 0;
     padding: 0.5rem;
     border: 1px solid #dcdfe6;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+`
+
+const NotNumber = styled.div`
+    display: grid; /*stripe elements width is 1px on flex*/
+    grid-template-columns: 2fr 1fr 3fr;
+`
+
+const PostalCode = styled.input`
+    color: ${CARD_FONT_COLOR};
+    border: none;
+    font-size: calc(${CARD_FONT_SIZE} - 4px);
+    font-family: ${CARD_FONT_FAMILY};
+    font-weight: 500;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 16px;
+    background-color: transparent;
+    &:placeholder {
+        color: ${CARD_PLACEHOLDER_COLOR};
+    }
+    &:focus-visible {
+        outline: none;
+    }
+    &:invalid {
+        color: ${CARD_INVALID_COLOR};
+    }
 `
 
 const SubmitButton = styled.button`
@@ -81,6 +123,11 @@ const SubmitButton = styled.button`
     &:hover {
         cursor: pointer;
     }
+`
+
+const SubmitButtonText = styled.span`
+    ${(props) => (props.show ? '' : 'display: none;')}
+    font-size: 1.2rem;
 `
 
 const rotateAnimation = keyframes`
@@ -105,26 +152,6 @@ const ErrorContainer = styled.div`
     color: #5b5b5b;
 `
 
-const CARD_ELEMENT_OPTIONS = {
-    style: {
-        base: {
-            color: '#303238',
-            fontSize: '16px',
-            fontFamily: '"Open Sans", sans-serif',
-            fontSmoothing: 'antialiased',
-            '::placeholder': {
-                color: '#676767',
-            },
-        },
-        invalid: {
-            color: '#e5424d',
-            ':focus': {
-                color: '#303238',
-            },
-        },
-    },
-}
-
 const Disclosure = styled.div`
     text-align: center;
     padding: 0.5rem;
@@ -135,6 +162,27 @@ const Disclosure = styled.div`
         margin: 0;
     }
 `
+
+const CARD_ELEMENT_OPTIONS = {
+    style: {
+        base: {
+            color: CARD_FONT_COLOR,
+            fontSize: CARD_FONT_SIZE,
+            fontFamily: CARD_FONT_FAMILY,
+            fontSmoothing: 'antialiased',
+            '::placeholder': {
+                color: CARD_PLACEHOLDER_COLOR,
+            },
+        },
+        invalid: {
+            color: CARD_INVALID_COLOR,
+            ':focus': {
+                color: '#303238',
+            },
+        },
+    },
+}
+
 const pStripeKey =
     'pk_test_51JJrwRDyVuOwHMJSvlLXTL9TKehrzSuUbyxPBBvy7823YH0OxmoOtqOaBvMLozLZe3VBshKXK6zJ95De1LOG8eq500h4TVHTrk'
 const purchase = {
@@ -198,6 +246,42 @@ const CheckoutForm = ({}) => {
         }
     }
 
+    const outlinedElem = useRef()
+
+    const removeOutline = (elem) => {
+        if (elem) {
+            elem.style.outline = 'none'
+            elem.style.outlineOffset = 'unset'
+        }
+    }
+
+    const drawOutline = (elem) => {
+        elem.style.outline = '2px solid white'
+        elem.style.outlineOffset = '0.3rem'
+    }
+
+    const handleFocus = (type) => {
+        let elem
+        switch (type) {
+            case 'num':
+                removeOutline(outlinedElem.current)
+                outlinedElem.current = document.getElementById('num')
+                drawOutline(outlinedElem.current)
+                break
+            case 'expiry':
+                removeOutline(outlinedElem.current)
+                outlinedElem.current = document.getElementById('expiry')
+                drawOutline(outlinedElem.current)
+                break
+            case 'cvc':
+                console.log('cvc clicked')
+                break
+            default:
+                console.log('nothing clicked')
+                removeOutline(outlinedElem.current)
+        }
+    }
+
     return (
         <PaymentContainer>
             <CardDetails>
@@ -208,10 +292,33 @@ const CheckoutForm = ({}) => {
                     <StripePaymentForm onSubmit={handleSubmit}>
                         <StripeCardElement>
                             {/*element is mounted now.*/}
-                            <CardElement
+                            {/*<CardElement
                                 options={CARD_ELEMENT_OPTIONS}
                                 onChange={handleInput}
+                            />*/}
+                            <CardNumberElement
+                                onFocus={() => handleFocus('num')}
+                                onBlur={() => handleFocus(null)}
                             />
+                            <NotNumber>
+                                <CardExpiryElement
+                                    onFocus={() => handleFocus('expiry')}
+                                    onBlur={() => handleFocus(null)}
+                                />
+                                <CardCvcElement
+                                    onFocus={() => handleFocus('cvc')}
+                                    onBlur={() => handleFocus(null)}
+                                />
+                                <div style={{ position: 'relative' }}>
+                                    <PostalCode
+                                        name='postalcode'
+                                        placeholder='Postal code'
+                                        maxlength='15'
+                                        pattern='[0-9A-Za-z]+'
+                                        required
+                                    />
+                                </div>
+                            </NotNumber>
                         </StripeCardElement>
                         <SubmitButton disabled={!canSubmit}>
                             <SpinnerSvg show={isLoading}>
@@ -222,7 +329,9 @@ const CheckoutForm = ({}) => {
                                     strokeWidth='10'
                                 />
                             </SpinnerSvg>
-                            <span id='button-text'>Pay now</span>
+                            <SubmitButtonText show={!isLoading}>
+                                Pay now
+                            </SubmitButtonText>
                         </SubmitButton>
                         <ErrorContainer role='alert'>{errors}</ErrorContainer>
                     </StripePaymentForm>

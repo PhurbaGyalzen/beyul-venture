@@ -36,6 +36,7 @@ const CardNumber = styled.div`
     display: flex;
     justify-content: flex-start;
     gap: 1.2rem;
+    position: relative;
 `
 
 const HolderName = styled.div`
@@ -45,6 +46,7 @@ const HolderName = styled.div`
 const Expiry = styled.div`
     justify-self: end;
     grid-area: expiry;
+    position: relative;
 `
 
 const CreditCard = (props) => {
@@ -52,16 +54,16 @@ const CreditCard = (props) => {
         <Front>
             <Chip>==</Chip>
             <Logo>VISA</Logo>
-            <CardNumber>
-                {[0, 1, 2, 3].map((_) => (
-                    <span>####</span>
+            <CardNumber id="num">
+                {[0, 1, 2, 3].map((_, i) => (
+                    <span key={i}>####</span>
                 ))}
             </CardNumber>
             <HolderName>
                 <label>Card Holder</label>
                 <p>FULL NAME</p>
             </HolderName>
-            <Expiry>
+            <Expiry id="expiry">
                 <label>Expires</label>
                 <p>MM/YY</p>
             </Expiry>
