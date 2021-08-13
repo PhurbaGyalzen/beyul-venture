@@ -9,9 +9,9 @@ from django.utils.translation import gettext_lazy as _
 from ckeditor_uploader.fields import RichTextUploadingField
 
 DIFFICULTY_LEVELS = [
-    ('Easy', 'Easy'),
-    ('Medium', 'Medium'),
-    ('Hard', 'Hard'),
+    ('😄 Easy', '😄 Easy'),
+    ('😐 Medium', '😐 Medium'),
+    ('⚒️ Hard', '⚒️ Hard'),
 ]
 
 
