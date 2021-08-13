@@ -37,7 +37,7 @@ export const StorySection = () => {
     const [value, setValue] = React.useState(0);
     return (
         <>
-            <Typography variant="h5" className={classes.storyHead} gutterBottom>Write a Story</Typography>
+            <Typography variant="h5" className={classes.storyHead} gutterBottom>Write a Review</Typography>
             
             <Formik
                 validateOnChange={false}

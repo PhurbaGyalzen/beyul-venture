@@ -51,6 +51,7 @@ export default function Photos({imageList}) {
             </div>
             
             <Container>
+                <Typography gutterBottom> Our Photos</Typography>
                 <Grid container spacing={1} alignItems='center'>
                     {imageList.map((data,index)=>{
                         return (

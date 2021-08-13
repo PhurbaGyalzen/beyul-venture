@@ -20,10 +20,11 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle'
 import Lightbox from "react-awesome-lightbox";
 // You need to import the CSS only once
 import "react-awesome-lightbox/build/style.css";
-import { DetailPortion } from './DetailPortion'
 import PackageTabs from './PackageTabs'
 import TripFacts from './TripFacts'
 import PackageForm from './PackageForm'
+import { Review } from './Review'
+import { StorySection } from './StorySection'
 
 const packageStyles = makeStyles((theme) => ({
     packageCont: {
@@ -36,6 +37,13 @@ const packageStyles = makeStyles((theme) => ({
         verticalAlign: 'middle',
         display: 'inline-flex'
         
+    },
+    checkList:{
+        verticalAlign: 'middle',
+        display: 'inline-flex'
+    },
+    checkIc:{
+        fill:'#6bb53f'
     }
 }))
 
@@ -109,6 +117,26 @@ export const PackDetail = () => {
             'pokhara',
             'kathmandu',
         ],
+        reviews:[
+            {
+                userId:1,
+                user:'Sunil Tamang',
+                rating:5 ,
+                review:"Very exciting and wonderful journey  It was exhilarating. We are so glad we did it and want to thank Ganga and Team for their excellent service and care. We enthusiastically recommend Nepal Hiking Team!"
+            },
+            {
+                userId:2,
+                user:'Phurba Gyalzen Sherpa',
+                rating:4 ,
+                review:"I am missing it already i wish i was born in such a beautiful place  It was exhilarating. We are so glad we did it and want to thank Ganga and Team for their excellent service and care. We enthusiastically recommend Nepal Hiking Team!"
+            },
+            {
+                userId:3,
+                user:'Nishan Thapa',
+                rating:5 ,
+                review:"Je gara jaso gara jata sukai laijau malai tara nepal chodna sakdina ma  It was exhilarating. We are so glad we did it and want to thank Ganga and Team for their excellent service and care. We enthusiastically recommend Nepal Hiking Team!"
+            }
+        ]
         // routeIds: [66, 32, 34, 40, 129, 32, 66],
     })
 
@@ -160,14 +188,14 @@ export const PackDetail = () => {
                                     />{' '}
                                     78 ratings
                                 </Typography>
-                                <Typography>
-                                    <CheckCircleIcon /> Experience the mountain
+                                <Typography className={classes.checkList}>
+                                    <CheckCircleIcon className={classes.checkIc} /> Experience the mountain
                                 </Typography>
-                                <Typography>
-                                    <CheckCircleIcon /> Enjoy the trails
+                                <Typography className={classes.checkList}>
+                                    <CheckCircleIcon className={classes.checkIc} /> Enjoy the trails
                                 </Typography>
-                                <Typography gutterBottom>
-                                    <CheckCircleIcon /> Visit Ghandruk
+                                <Typography className={classes.checkList} gutterBottom>
+                                    <CheckCircleIcon className={classes.checkIc} /> Visit Ghandruk
                                 </Typography>
                                 <Typography>
                                     Price{' '}
@@ -210,14 +238,16 @@ export const PackDetail = () => {
                         <Grid item xs={11} md={8} sm={11}>
                             <PackageTabs imageList={detail.images}/>
                         </Grid>
-
+                        
+                        <Grid item xs={11} md={8} sm={11}>
+                            <Review reviewList={detail.reviews} />
+                        </Grid>
+                        <Grid item xs={11} md={8} sm={11}>
+                            <StorySection />
+                        </Grid>
                     </Grid>
                 </Container>
                 
-                <DetailPortion />
-                <Container>
-                    {/* <Lightbox images={detail.images} /> */}
-                </Container>
             </Box>
         </>
     )
