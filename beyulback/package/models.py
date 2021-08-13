@@ -225,3 +225,27 @@ class Photo(models.Model):
 
     def __str__(self):
         return self.package.name + " Gallery"
+
+
+class Itinerary(models.Model):
+    day = models.PositiveSmallIntegerField(
+        _('Day'),
+        help_text=_('Enter the day'),
+        validators=[MinValueValidator(1)]
+    )
+    title = models.CharField(
+        _('Title'),
+        help_text=_('Enter the title'),
+        max_length=255
+    )
+    description = models.TextField(
+        _('Description'), help_text=_('Write a short description'))
+    package = models.ForeignKey(
+        Package, on_delete=models.CASCADE, related_name="itinerarys",)
+
+    def __str__(self):
+        return f"{self.package.slug} (Day:{self.day})"
+
+    class Meta:
+        ordering = ['package', 'day']
+        unique_together = ('package', 'day',)
