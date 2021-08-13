@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import toast from 'react-hot-toast'
 import { getEsewaLink } from 'utils/payment'
 import pck from 'img/pck_1.webp'
+import WhyBeyulVenture from './WhyBeyulVenture'
 import {
     Container,
     Grid,
@@ -238,6 +239,10 @@ export const PackDetail = () => {
                         <Grid item xs={11} md={8} sm={11}>
                             <PackageTabs imageList={detail.images}/>
                         </Grid>
+
+                        <Grid item xs={11} md={4} sm={4}>
+                            <WhyBeyulVenture />
+                        </Grid>
                         
                         <Grid item xs={11} md={8} sm={11}>
                             <Review reviewList={detail.reviews} />
@@ -245,6 +250,8 @@ export const PackDetail = () => {
                         <Grid item xs={11} md={8} sm={11}>
                             <StorySection />
                         </Grid>
+
+                        
                     </Grid>
                 </Container>
                 
