@@ -1,4 +1,4 @@
-from .models import Package, Review, Photo, Itinerary
+from .models import Package, Review, Photo, Itinerary, UsefulInformation
 
 from django.conf import settings
 from django.db.models import Avg
@@ -64,6 +64,16 @@ class ItinerarySerializer(serializers.HyperlinkedModelSerializer):
         )
 
 
+class UsefulInformationSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = UsefulInformation
+        fields = (
+            'sn',
+            'title',
+            'description'
+        )
+
+
 class PackageSerializer(serializers.HyperlinkedModelSerializer):
 
     content = FixAbsolutePathSerializer()
@@ -72,7 +82,15 @@ class PackageSerializer(serializers.HyperlinkedModelSerializer):
     average_rating = serializers.SerializerMethodField()
     photos = PhotoSerializer(read_only=True, source='images')
     itinerary = ItinerarySerializer(
-        many=True, read_only=True, source='itinerarys')
+        many=True,
+        read_only=True,
+        source='itinerarys'
+    )
+    useful_info = UsefulInformationSerializer(
+        many=True,
+        read_only=True,
+        source='usefulinformations'
+    )
 
     class Meta:
         model = Package
@@ -91,6 +109,7 @@ class PackageSerializer(serializers.HyperlinkedModelSerializer):
             'total_reviews',
             'average_rating',
             'itinerary',
+            'useful_info',
             'reviews',
             'photos',
         )
