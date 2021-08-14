@@ -1,4 +1,4 @@
-from .models import Package, Review, Photo, Itinerary
+from .models import Package, Review, Photo, Itinerary, UsefulInformation
 
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
@@ -13,8 +13,13 @@ class InlineItinerary(admin.StackedInline):
     extra = 0
 
 
+class InlineUsefulInformation(admin.StackedInline):
+    model = UsefulInformation
+    extra = 0
+
+
 class PackageAdmin(admin.ModelAdmin):
-    inlines = [InlinePhoto, InlineItinerary]
+    inlines = [InlinePhoto, InlineItinerary, InlineUsefulInformation]
     list_display = (
         'name',
         'min_people',
@@ -35,4 +40,5 @@ class PackageAdmin(admin.ModelAdmin):
 admin.site.register(Review)
 admin.site.register(Package, PackageAdmin)
 admin.site.register(Itinerary)
+admin.site.register(UsefulInformation)
 admin.site.register(Photo)
