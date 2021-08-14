@@ -3,6 +3,9 @@ from django.contrib.auth.admin import UserAdmin
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import Group
+
+admin.site.unregister(Group)
 
 
 class CustomUserAdmin(UserAdmin):
