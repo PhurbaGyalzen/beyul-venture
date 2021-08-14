@@ -201,4 +201,5 @@ CACHEOPS_DEFAULTS = {
 CACHEOPS = {
     'blog.*': {'ops': 'all'},
     'users.*': {'ops': 'all'},
+    'package.*': {'ops': 'all'},
 }
