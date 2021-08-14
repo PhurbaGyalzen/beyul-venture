@@ -10,7 +10,12 @@ from rest_framework import viewsets
 
 
 class PackageView(viewsets.ModelViewSet):
-    queryset = Package.objects.all()
+    queryset = Package.objects.prefetch_related(
+        'reviews',
+        'images',
+        'itinerarys',
+        'usefulinformations',
+    ).all()
     serializer_class = PackageSerializer
     # access the view functions,if a valid token is provided
     authentication_classes = [JWTAuthentication]
@@ -21,7 +26,10 @@ class PackageView(viewsets.ModelViewSet):
 
 
 class ReviewView(viewsets.ModelViewSet):
-    queryset = Review.objects.all()
+    queryset = Review.objects.select_related(
+        'writer',
+        'reviewed_package'
+    ).all()
     serializer_class = ReviewSerializer
     # access the view functions,if a valid token is provided
     authentication_classes = [JWTAuthentication]
@@ -31,7 +39,7 @@ class ReviewView(viewsets.ModelViewSet):
 
 
 class PhotoView(viewsets.ModelViewSet):
-    queryset = Photo.objects.all()
+    queryset = Photo.objects.select_related('package').all()
     serializer_class = PhotoSerializer
     # access the view functions,if a valid token is provided
     authentication_classes = [JWTAuthentication]

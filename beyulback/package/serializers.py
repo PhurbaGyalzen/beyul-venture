@@ -24,6 +24,7 @@ class ReviewSerializer(serializers.HyperlinkedModelSerializer):
         model = Review
         fields = (
             'url',
+            'reviewed_package',
             'writer',
             'writer_name',
             'writer_profile',
@@ -33,6 +34,10 @@ class ReviewSerializer(serializers.HyperlinkedModelSerializer):
             'created_on',
             'updated_on',
         )
+
+        extra_kwargs = {
+            'reviewed_package': {'view_name': 'package-detail', 'lookup_field': 'slug'},
+        }
 
     def get_writer_name(self, obj):
         return obj.writer.first_name
@@ -45,6 +50,7 @@ class PhotoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Photo
         fields = (
+            'package',
             'image1',
             'image2',
             'image3',
@@ -53,6 +59,10 @@ class PhotoSerializer(serializers.HyperlinkedModelSerializer):
             'image6',
         )
 
+        extra_kwargs = {
+            'package': {'view_name': 'package-detail', 'lookup_field': 'slug'},
+        }
+
 
 class ItinerarySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -60,8 +70,13 @@ class ItinerarySerializer(serializers.HyperlinkedModelSerializer):
         fields = (
             'day',
             'title',
-            'description'
+            'description',
+            'package',
         )
+
+        extra_kwargs = {
+            'package': {'view_name': 'package-detail', 'lookup_field': 'slug'},
+        }
 
 
 class UsefulInformationSerializer(serializers.HyperlinkedModelSerializer):
@@ -70,8 +85,13 @@ class UsefulInformationSerializer(serializers.HyperlinkedModelSerializer):
         fields = (
             'sn',
             'title',
-            'description'
+            'description',
+            'package',
         )
+
+        extra_kwargs = {
+            'package': {'view_name': 'package-detail', 'lookup_field': 'slug'},
+        }
 
 
 class PackageSerializer(serializers.HyperlinkedModelSerializer):
