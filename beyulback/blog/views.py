@@ -28,7 +28,7 @@ class BlogView(viewsets.ModelViewSet):
         'tags',
         'comments',
         'claps',
-    ).all()
+    ).filter(status=1)
     serializer_class = BlogSerializer
     # access the view functions,if a valid token is provided
     authentication_classes = [JWTAuthentication]
