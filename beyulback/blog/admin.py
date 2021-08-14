@@ -6,6 +6,10 @@ from django.contrib import admin
 
 
 class BlogAdmin(admin.ModelAdmin):
+    list_display = ('title', 'status', 'updated_on')
+    list_editable = ('status',)
+    list_filter = ('status', 'tags')
+    search_fields = ('title', 'description')
     exclude = ('slug',)
 
 
