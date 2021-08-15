@@ -27,6 +27,13 @@ import PackageForm from './PackageForm'
 import { Review } from './Review'
 import { StorySection } from './StorySection'
 
+
+import sunil from 'img/sunil.png';
+import nishan from 'img/nishan.jpg';
+import phurba from 'img/phurba.jpg';
+
+
+
 const packageStyles = makeStyles((theme) => ({
     packageCont: {
         // marginTop:'10rem',
@@ -123,18 +130,21 @@ export const PackDetail = () => {
                 userId:1,
                 user:'Sunil Tamang',
                 rating:5 ,
-                review:"Very exciting and wonderful journey  It was exhilarating. We are so glad we did it and want to thank Ganga and Team for their excellent service and care. We enthusiastically recommend Nepal Hiking Team!"
+                review:"Very exciting and wonderful journey  It was exhilarating. We are so glad we did it and want to thank Ganga and Team for their excellent service and care. We enthusiastically recommend Nepal Hiking Team!",
+                userImage: sunil,
             },
             {
                 userId:2,
                 user:'Phurba Gyalzen Sherpa',
                 rating:4 ,
+                userImage: phurba,
                 review:"I am missing it already i wish i was born in such a beautiful place  It was exhilarating. We are so glad we did it and want to thank Ganga and Team for their excellent service and care. We enthusiastically recommend Nepal Hiking Team!"
             },
             {
                 userId:3,
                 user:'Nishan Thapa',
                 rating:5 ,
+                userImage: nishan,
                 review:"Je gara jaso gara jata sukai laijau malai tara nepal chodna sakdina ma  It was exhilarating. We are so glad we did it and want to thank Ganga and Team for their excellent service and care. We enthusiastically recommend Nepal Hiking Team!"
             }
         ]

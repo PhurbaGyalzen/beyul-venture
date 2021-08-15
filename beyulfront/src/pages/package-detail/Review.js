@@ -4,15 +4,30 @@ import { Container,Grid,Box,makeStyles,Typography,TextField, Button,Link} from '
 
 
 const reviewStyles = makeStyles((theme) => ({
+    commentContainer:{
+        display:'flex',
+        flexDirection:'row',
+        postion:'relative'
+    },
+    authorImg:{
+        width:'3rem',
+        height:'3rem',
+        borderRadius:'50%'
+    },
     userSection:{
-        borderBottom: '1px dashed #bfbebe',
-        marginBottom:'.5rem'
+        marginBottom:'.5rem',
+        paddingLeft: '1rem'
     },
     userDesc:{
         color:'#545454',
         verticalAlign: 'middle',
-        display: 'inline-flex'    
+        display: 'inline-flex',
+        fontWeight:'700'    
     },
+    reviewData:{
+        borderTop: '1px dashed #bfbebe',
+        paddingTop:'.8rem'
+    }
     
 }))
 
@@ -28,19 +43,26 @@ export const Review = ({reviewList}) => {
                     {reviewList.map((review)=>{
                         return (
                             <Grid item xs={12} md={12} sm={12}>
-                                <div className={classes.userSection}> 
-                                    <Typography variant="p" className={classes.userDesc}>
-                                        <Link href="#" color="inherit">
-                                            {review.user}
-                                        </Link>
-                                    </Typography>
-                                    <div>
-                                        <Rating name='read-only' value={review.rating}readOnly></Rating>
-                                    </div>    
+                                <div className={classes.commentContainer}>
+                                    <div className={classes.imgSection}>
+                                        <img src={review.userImage} className={classes.authorImg} />
+                                    </div>
+                                    <div className={classes.userSection}> 
+                                        <Typography variant="p" className={classes.userDesc}>
+                                            <Link href="#" color="inherit">
+                                                {review.user}
+                                            </Link>
+                                        </Typography>
+                                        <div>
+                                            <Rating name='read-only' value={review.rating} readOnly height={10}></Rating>
+                                        </div>    
+                                    </div>
                                 </div>
-                                <Typography>
-                                    {review.review}
-                                </Typography>
+                                <div className={classes.reviewData}>
+                                    <Typography>
+                                        {review.review}
+                                    </Typography>
+                                </div>
                             </Grid>
                         )
                     })}
