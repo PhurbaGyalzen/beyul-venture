@@ -3,7 +3,6 @@ const getPaymentIntent = async (items) => {
         method: 'POST',
         body: JSON.stringify(items),
     })
-    console.log(data)
     return data['clientSecret']
 }
 

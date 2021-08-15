@@ -123,7 +123,7 @@ const SubmitButton = styled.button`
     border-radius: 0 0 0.6rem 0.6rem;
     display: flex;
     justify-content: center;
-
+    align-items: center;
     &:hover {
         cursor: pointer;
     }
@@ -131,7 +131,8 @@ const SubmitButton = styled.button`
 
 const SubmitButtonText = styled.span`
     ${(props) => (props.show ? '' : 'display: none;')}
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 100;
 `
 
 const rotateAnimation = keyframes`
@@ -205,6 +206,7 @@ const CheckoutForm = ({}) => {
     const [errors, setErrors] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [flippedBack, setFlippedBack] = useState(false)
+    const [zipCode, setZipCode] = useState(null)
     const outlinedElem = useRef()
     const cardRef = useRef()
 
@@ -217,8 +219,13 @@ const CheckoutForm = ({}) => {
         setClientSecret(secret)
     }, [stripe])
 
-    const handleInput = async (event) => {
+    const handleChange = async (event) => {
+        console.log(event)
         setCanSubmit(!event.empty)
+    }
+
+    const handleInput = (event) => {
+        setZipCode(event.target.value)
     }
 
     const handleSubmit = async (event) => {
@@ -228,16 +235,20 @@ const CheckoutForm = ({}) => {
             // Stripe.js has not yet loaded.
             return
         }
-        await rotateTo('front')
+        if (flippedBack) await rotateTo('front')
+        setCanSubmit(false)
+        setIsLoading(true)
         const result = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
-                // Get a reference to a mounted CardElement. Elements knows how
-                // to find a CardElement because there can only ever be one of
-                // each type of element.
-                card: elements.getElement(CardElement),
+                card: elements.getElement(CardNumberElement),
+                billing_details: {
+                    address: {
+                        postal_code: zipCode,
+                    },
+                },
             },
         })
-
+        console.log(result)
         if (result.error) {
             // Show error to your customer (e.g., insufficient funds)
             setErrors(result.error.message)
@@ -251,6 +262,8 @@ const CheckoutForm = ({}) => {
                 setErrors('Payment Completed Successfully.')
             }
         }
+        setCanSubmit(true)
+        setIsLoading(false)
     }
 
     const removeOutline = (elem) => {
@@ -324,21 +337,20 @@ const CheckoutForm = ({}) => {
                     <StripePaymentForm onSubmit={handleSubmit}>
                         <StripeCardElement>
                             {/*element is mounted now.*/}
-                            {/*<CardElement
-                                options={CARD_ELEMENT_OPTIONS}
-                                onChange={handleInput}
-                            />*/}
                             <CardNumberElement
                                 onFocus={() => handleFocus('num')}
+                                onChange={handleChange}
                                 onBlur={() => handleFocus(null)}
                             />
                             <NotNumber>
                                 <CardExpiryElement
                                     onFocus={() => handleFocus('expiry')}
+                                    onChange={handleChange}
                                     onBlur={() => handleFocus(null)}
                                 />
                                 <CardCvcElement
                                     onFocus={() => handleFocus('cvc')}
+                                    onChange={handleChange}
                                     onBlur={() => handleFocus(null)}
                                 />
                                 <div style={{ position: 'relative' }}>
@@ -348,12 +360,13 @@ const CheckoutForm = ({}) => {
                                         maxlength='15'
                                         pattern='[0-9A-Za-z]+'
                                         required
+                                        onInput={handleInput}
                                     />
                                 </div>
                             </NotNumber>
                         </StripeCardElement>
                         <SubmitButton disabled={!canSubmit}>
-                            <SpinnerSvg show={isLoading}>
+                            <SpinnerSvg show={isLoading} viewBox="0 0 100 100">
                                 <path
                                     d='M90 50 A40 40 0 1 1 50 10'
                                     fill='none'
@@ -361,7 +374,7 @@ const CheckoutForm = ({}) => {
                                     strokeWidth='10'
                                 />
                             </SpinnerSvg>
-                            <SubmitButtonText show={!isLoading}>
+                            <SubmitButtonText show={true}>
                                 Pay now
                             </SubmitButtonText>
                         </SubmitButton>
