@@ -1,4 +1,4 @@
-from .models import Package, Review, Photo, Itinerary
+from .models import Package, Review, Photo, Itinerary, UsefulInformation
 
 from django.conf import settings
 from django.db.models import Avg
@@ -24,6 +24,7 @@ class ReviewSerializer(serializers.HyperlinkedModelSerializer):
         model = Review
         fields = (
             'url',
+            'reviewed_package',
             'writer',
             'writer_name',
             'writer_profile',
@@ -33,6 +34,10 @@ class ReviewSerializer(serializers.HyperlinkedModelSerializer):
             'created_on',
             'updated_on',
         )
+
+        extra_kwargs = {
+            'reviewed_package': {'view_name': 'package-detail', 'lookup_field': 'slug'},
+        }
 
     def get_writer_name(self, obj):
         return obj.writer.first_name
@@ -45,6 +50,7 @@ class PhotoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Photo
         fields = (
+            'package',
             'image1',
             'image2',
             'image3',
@@ -53,6 +59,10 @@ class PhotoSerializer(serializers.HyperlinkedModelSerializer):
             'image6',
         )
 
+        extra_kwargs = {
+            'package': {'view_name': 'package-detail', 'lookup_field': 'slug'},
+        }
+
 
 class ItinerarySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -60,8 +70,28 @@ class ItinerarySerializer(serializers.HyperlinkedModelSerializer):
         fields = (
             'day',
             'title',
-            'description'
+            'description',
+            'package',
         )
+
+        extra_kwargs = {
+            'package': {'view_name': 'package-detail', 'lookup_field': 'slug'},
+        }
+
+
+class UsefulInformationSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = UsefulInformation
+        fields = (
+            'sn',
+            'title',
+            'description',
+            'package',
+        )
+
+        extra_kwargs = {
+            'package': {'view_name': 'package-detail', 'lookup_field': 'slug'},
+        }
 
 
 class PackageSerializer(serializers.HyperlinkedModelSerializer):
@@ -72,7 +102,15 @@ class PackageSerializer(serializers.HyperlinkedModelSerializer):
     average_rating = serializers.SerializerMethodField()
     photos = PhotoSerializer(read_only=True, source='images')
     itinerary = ItinerarySerializer(
-        many=True, read_only=True, source='itinerarys')
+        many=True,
+        read_only=True,
+        source='itinerarys'
+    )
+    useful_info = UsefulInformationSerializer(
+        many=True,
+        read_only=True,
+        source='usefulinformations'
+    )
 
     class Meta:
         model = Package
@@ -91,6 +129,7 @@ class PackageSerializer(serializers.HyperlinkedModelSerializer):
             'total_reviews',
             'average_rating',
             'itinerary',
+            'useful_info',
             'reviews',
             'photos',
         )

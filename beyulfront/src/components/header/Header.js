@@ -242,6 +242,7 @@ export default function ButtonAppBar() {
                     </Typography>
                     <div className={classes.sectionDesktop}>
                         {navItems.map((item) => <NavBtn
+                            key={item.link}
                             to={item.link}
                             className={classes[navRef1.current]}
                             component={NavLink}

@@ -3,6 +3,9 @@ from django.contrib.auth.admin import UserAdmin
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import Group
+
+admin.site.unregister(Group)
 
 
 class CustomUserAdmin(UserAdmin):
@@ -40,4 +43,6 @@ class CustomUserAdmin(UserAdmin):
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
-admin.site.site_header = "Beyul Ventures Admin Dashboard"
+admin.site.site_header = "Login to Beyul Ventures Admin Dashboard"
+admin.site.site_title = "Beyul Ventures Admin"
+admin.site.index_title = "Welcome to Beyul Ventures Admin Dashboard"

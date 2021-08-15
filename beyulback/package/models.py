@@ -249,3 +249,31 @@ class Itinerary(models.Model):
     class Meta:
         ordering = ['package', 'day']
         unique_together = ('package', 'day',)
+
+
+class UsefulInformation(models.Model):
+    sn = models.PositiveSmallIntegerField(
+        _('S.N'),
+        help_text=_('Information number'),
+        validators=[MinValueValidator(1)]
+    )
+    title = models.CharField(
+        _('Title'),
+        help_text=_('Enter the title'),
+        max_length=255
+    )
+    description = models.TextField(
+        _('Description'),
+        help_text=_('Write a short description')
+    )
+    package = models.ForeignKey(
+        Package, on_delete=models.CASCADE,
+        related_name="usefulinformations",
+    )
+
+    def __str__(self):
+        return f"{self.package.slug} (info: {self.sn})"
+
+    class Meta:
+        ordering = ['package', 'sn']
+        unique_together = ('package', 'sn',)

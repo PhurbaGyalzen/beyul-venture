@@ -6,7 +6,7 @@ import CheckoutForm from './CheckoutForm'
 // The loadStripe function asynchronously loads the Stripe.js script and initializes a Stripe object.
 // The initialized Stripe object can be retrieved with useStripe() hook if its inside the Elements Provider.
 const stripePromise = loadStripe(
-    'pk_test_51JJrwRDyVuOwHMJSvlLXTL9TKehrzSuUbyxPBBvy7823YH0OxmoOtqOaBvMLozLZe3VBshKXK6zJ95De1LOG8eq500h4TVHTrk',
+    'pk_test_51JKJMUKE0qqhCtCalOccPeprxCNzavUez9WNGLdoLwyVdECRJg1PPRaRmedDpBDduWvmbaFLv8kOSfsWEbewfqsk00jNdCGMSE',
 )
 
 const StripePaymentPage = (props) => {
