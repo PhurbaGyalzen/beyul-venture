@@ -8,14 +8,11 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework import viewsets
 
+from django_auto_prefetching import AutoPrefetchViewSetMixin
 
-class PackageView(viewsets.ModelViewSet):
-    queryset = Package.objects.prefetch_related(
-        'reviews',
-        'images',
-        'itinerarys',
-        'usefulinformations',
-    ).all()
+
+class PackageView(AutoPrefetchViewSetMixin, viewsets.ModelViewSet):
+    queryset = Package.objects.all()
     serializer_class = PackageSerializer
     # access the view functions,if a valid token is provided
     authentication_classes = [JWTAuthentication]
