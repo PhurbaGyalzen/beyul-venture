@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jet.dashboard',
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -162,6 +164,14 @@ MEDIA_URL = '/media/'
 
 # inside media folder to upload images inside the ckeditor textfield
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,  # You can change this based on your requirements.
+        'width': 'auto',
+
+    },
+}
 
 # Swapped out the default Django auth.User to CustomUser
 AUTH_USER_MODEL = 'users.CustomUser'

@@ -35,6 +35,8 @@ router.register(r'review', ReviewView)
 router.register(r'photo', PhotoView)
 
 urlpatterns = [
+    path('jet/', include('jet.urls', 'jet')),
+    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     # use this .../api/login/ to get access tokens
