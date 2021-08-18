@@ -23,7 +23,6 @@ const packageStyles = makeStyles((theme) => ({
     },
     formStyle:{
         padding:'1rem',
-        backgroundColor:'#f8f7f8',
         border:'1px solid #efeeef',
     },
     ratingSec:{

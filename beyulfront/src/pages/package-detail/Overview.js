@@ -38,14 +38,12 @@ const useStyles = makeStyles((theme) => ({
         fontWeight:"bold",
         fontSize:"1rem",
         lineHeight:"rem",
-        color:"#694311",
     },
 
     description:{
         textAlign:"justify",
         fontSize:"1rem",
         lineHeight:"1.685rem",
-        color:"#13181e",
     }
     
 }))
@@ -61,11 +59,11 @@ export default function Overview() {
                 {overview.map((data)=>(
                     <Grid container>
                         <Box pt={3}>
-                            <Typography className={classes.title}>
+                            <Typography className={classes.title} variant="h6">
                                 {data.title}
                             </Typography>
 
-                            <Typography className={classes.description}>
+                            <Typography className={classes.description} variant="body2">
                                 {data.content}
                             </Typography>
 

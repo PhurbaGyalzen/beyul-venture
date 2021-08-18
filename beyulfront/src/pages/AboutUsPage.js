@@ -21,22 +21,12 @@ import price_1 from 'img/last1.png'
 import service from 'img/service.png'
 import save_1 from 'img/savePayment.png'
 
-// icons
-import CallIcon from '@material-ui/icons/Call'
-import EmailIcon from '@material-ui/icons/Email'
-import LocationOnIcon from '@material-ui/icons/LocationOn'
-import FacebookIcon from '@material-ui/icons/Facebook'
-import InstagramIcon from '@material-ui/icons/Instagram'
-import TwitterIcon from '@material-ui/icons/Twitter'
-import YouTubeIcon from '@material-ui/icons/YouTube'
-import LinkedInIcon from '@material-ui/icons/LinkedIn'
-import PaymentIcon from '@material-ui/icons/Payment'
+
 
 //Defining CustomStyles for AboutUs Page
 const useStyles = makeStyles((theme) => ({
     button: {
         marginBottom: '1rem',
-        color:"#694311",
         textDecoration:"underline",
         letterSpacing:"0.1rem",
         '&:hover': {
@@ -57,12 +47,10 @@ const useStyles = makeStyles((theme) => ({
         fontSize:"2rem",
         lineHeight:"4rem",
         fontWeight:"bold",
-        color:"#694311"
     },
 
     aboutUs: {
         marginBottom: '1rem',
-        color:"#694311",
         fontSize:"1rem",
         fontWeight:"bold"
     },
@@ -71,7 +59,6 @@ const useStyles = makeStyles((theme) => ({
         height: '18.9rem',
         margin: '3%',
         '&:hover': {
-            backgroundColor: "#EDEEF0",
             cursor: 'pointer',
             color: "#13181e",
         },
@@ -83,7 +70,6 @@ const useStyles = makeStyles((theme) => ({
     },
 
     cardHeading:{
-        color:"#694311",
         fontWeight:"bold",
         paddingTop:"1.5rem"
     }
@@ -96,7 +82,7 @@ export default function AboutUsPage() {
         <>
             <div  style={{ color:"#13181e", paddingTop:"2rem", backgroundColor:"#edeef0"}} style={{width:"100%"}}>
                     {/* First row */}
-                <Box style={{maxWidth:"100%", overflow:"hidden", backgroundColor:"#edeef0"}} pt={15} mb={3}>
+                <Box style={{maxWidth:"100%", overflow:"hidden"}} pt={15} mb={3}>
                     <Grid
                         container
                         spacing={3}
@@ -129,8 +115,9 @@ export default function AboutUsPage() {
                                 Letraset sheets containing Lorem Ipsum passages.
                             </Typography>
                             <Button
+                                color="primary"
                                 className={classes.button}
-                            >
+                            >   
                                 Readmore
                             </Button>
                         </Grid>
@@ -148,7 +135,6 @@ export default function AboutUsPage() {
                         <Grid item xs={12} md={6} sm={6}>
                             <Typography
                                 variant='h5'
-                                color='primary'
                                 className={classes.aboutUs}
                             >
                                 Our History
@@ -171,6 +157,7 @@ export default function AboutUsPage() {
                             </Typography>
                             <Button
                                 className={classes.button}
+                                color="primary"
                             >
                                 Readmore
                             </Button>
@@ -184,7 +171,6 @@ export default function AboutUsPage() {
                     <Grid
                         container
                         style={{
-                            backgroundColor: '#FCFCFC',
                             padding: '0 2rem 3rem 2rem',
                         }}
                         className={classes.whyWithUs}
@@ -192,7 +178,6 @@ export default function AboutUsPage() {
                         <Grid item xs={12} md={12} sm={12}>
                             <Typography
                                 variant='h5'
-                                color='#694311'
                                 align='center'
                                 className={classes.whyWithUsTitle}
                                 gutterBottom
@@ -212,7 +197,6 @@ export default function AboutUsPage() {
                                 <CardContent style={{ paddingTop: '0' }}>
                                     <Typography
                                         variant='h6'
-                                        color='#694311'
                                         gutterBottom
                                         className={classes.cardHeading}
                                     >
@@ -246,7 +230,6 @@ export default function AboutUsPage() {
                                 <CardContent style={{ paddingTop: '0' }}>
                                     <Typography
                                         variant='h6'
-                                        color='#694311'
                                         gutterBottom
                                         className={classes.cardHeading}
                                     >
@@ -282,7 +265,6 @@ export default function AboutUsPage() {
                                 <CardContent style={{ paddingTop: '0' }}>
                                     <Typography
                                         variant='h6'
-                                        color='#694311'
                                         className={classes.cardHeading}
                                         gutterBottom
 
@@ -318,7 +300,7 @@ export default function AboutUsPage() {
                                 />
 
                                 <CardContent style={{ paddingTop: '0' }}>
-                                    <Typography variant='h6' color="#694311" className={classes.cardHeading}>
+                                    <Typography variant='h6' className={classes.cardHeading}>
                                         Save Payment
                                     </Typography>
                                     <Typography

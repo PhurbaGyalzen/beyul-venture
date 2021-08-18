@@ -70,9 +70,7 @@ const Package = (props) => {
             <Typography
               align='left'
               style={{
-                color: '#9d9fa5',
                 fontSize: '0.8rem',
-                fontWeight: 'bold',
               }}
             >
               Duration: {props.data.duration}
@@ -80,7 +78,7 @@ const Package = (props) => {
             <Typography
               variant='h5'
               align='justify'
-              style={{ fontWeight: 'bold', margin: '0.2rem auto' }}
+              style={{ margin: '0.2rem auto' }}
             >
               {props.data.title}
             </Typography>
@@ -101,11 +99,9 @@ const Package = (props) => {
                 readOnly
                 size='medium'
               />
-              <Typography
+              <Typography variant="body2"
                 style={{
                   fontSize: '1rem',
-                  fontWeight: 'bold',
-                  color: '#505050',
                 }}
               >
                 Price: Rs. {props.data.price}

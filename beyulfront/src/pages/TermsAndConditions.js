@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import photo from 'img/termsAndConditions.png';
+import Paper from '@material-ui/core/Paper';
 
 
 //TermsAndConditions component information
@@ -82,7 +83,8 @@ const useStyles = makeStyles((theme) => ({
     root:{
         flexGrow:1,
         width:"100%",
-        overflow:"hidden"
+        overflow:"hidden",
+        backgroundColor:"primary"
     },
     
     photoDiv:{
@@ -112,14 +114,12 @@ const useStyles = makeStyles((theme) => ({
         fontWeight:"bold",
         fontSize:"1rem",
         lineHeight:"rem",
-        color:"#694311",
     },
 
     content:{
         textAlign:"justify",
         fontSize:"1rem",
         lineHeight:"1.685rem",
-        color:"#13181e",
     }
     
 }))
@@ -147,11 +147,11 @@ export default function TermsAndConditions() {
                     <Grid container>
                         <Grid item xs={12}>
                             <Box p={3} style={{width:"80%", margin:"auto"}}>
-                                <Typography className={classes.title}>
+                                <Typography className={classes.title} variant="h4">
                                     {data.title}
                                 </Typography>
 
-                                <Typography className={classes.content}>
+                                <Typography className={classes.content} variant="body2">
                                     {data.content}
                                 </Typography>
                             </Box>

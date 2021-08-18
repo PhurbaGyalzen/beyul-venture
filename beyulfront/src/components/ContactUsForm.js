@@ -129,7 +129,7 @@ export const ContactUsForm = () => {
                             style={{ marginRight: 5, marginTop: 20 }}
                         />{' '}
                         We never share your private data.{' '}
-                        <span style={{ color: 'blue' }}>
+                        <span style={{ color: '#DF9534' }}>
                             Privacy Policy
                         </span>
                     </Typography>

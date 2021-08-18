@@ -154,7 +154,7 @@ export const PackDetail = () => {
     return (
         <>  
             
-            <Box pt={'3rem'} style={{ backgroundColor: '#edeef0' }}>
+            <Box pt={'3rem'}>
                 <Container className={classes.packageCont}>
                     <Grid
                         container
@@ -190,7 +190,7 @@ export const PackDetail = () => {
                                     Annapurna trek
                                 </Typography>
 
-                                <Typography className={classes.ratingDesc}>
+                                <Typography className={classes.ratingDesc} variant="body2"> 
                                     {' '}
                                     <Rating
                                         name='read-only'
@@ -199,13 +199,13 @@ export const PackDetail = () => {
                                     />{' '}
                                     78 ratings
                                 </Typography>
-                                <Typography className={classes.checkList}>
-                                    <CheckCircleIcon className={classes.checkIc} /> Experience the mountain
+                                <Typography className={classes.checkList} variant="body2">
+                                    <CheckCircleIcon className={classes.checkIc}/> Experience the mountain
                                 </Typography>
-                                <Typography className={classes.checkList}>
+                                <Typography className={classes.checkList} variant="body2">
                                     <CheckCircleIcon className={classes.checkIc} /> Enjoy the trails
                                 </Typography>
-                                <Typography className={classes.checkList} gutterBottom>
+                                <Typography className={classes.checkList} gutterBottom variant="body2"> 
                                     <CheckCircleIcon className={classes.checkIc} /> Visit Ghandruk
                                 </Typography>
                                 <Typography>

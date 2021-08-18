@@ -32,18 +32,18 @@ export default function MyFaq ({question,answer}){
     return(
         <>
             <div className={classes.root}>
-                <Accordion style={{backgroundColor:"#EDEEF0"}}>
+                <Accordion style={{backgroundColor:"lightTheme.primary.light"}}>
                     <AccordionSummary className={classes.faqAccordion}
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                     >
-                    <Typography className={classes.heading}>{question}</Typography>
+                    <Typography variant="h6" className={classes.heading}>{question}</Typography>
                     </AccordionSummary>
                     <Divider/>
 
-                    <AccordionDetails style={{backgroundColor:"#ffffff"}}>
-                    <Typography align="justify">
+                    <AccordionDetails>
+                    <Typography align="justify" variant="body2">
                        {answer}
                     </Typography>
                     </AccordionDetails>

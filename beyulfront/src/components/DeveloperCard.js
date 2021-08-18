@@ -59,7 +59,7 @@ export const DeveloperCard = (props) => {
                         className={classes.cardImg}
                         />
                         <CardContent>
-                        <Typography gutterBottom variant="body1" component="h2" style={{color:"#694311",fontSize:"1rem", lineHeight:"1.658rem", fontWeight:"bold"}}>
+                        <Typography gutterBottom variant="h6" component="h2" style={{fontSize:"1rem", lineHeight:"1.658rem"}}>
                             {props.data.post}
                         </Typography>
 
@@ -67,7 +67,7 @@ export const DeveloperCard = (props) => {
                             {props.data.name}
                         </Typography>
 
-                        <Typography variant="body2" component="p" style={{color:"#13181e",fontSize:"1rem", lineHeight:"1.658rem"}}>
+                        <Typography variant="body2" component="p" style={{fontSize:"1rem", lineHeight:"1.658rem"}}>
                             {props.data.bio}
                         </Typography>
                         </CardContent>

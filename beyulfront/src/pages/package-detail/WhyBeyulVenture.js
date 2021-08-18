@@ -39,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
         flexGrow:1,
         width:"350px",
         height:"450px",
-        backgroundColor:"#ffffff"
     },
 
     title:{
@@ -69,13 +68,13 @@ export default function WhyBeyulVenture() {
         <>
             <div className={classes.root}>
                 <Box className={classes.title}>
-                    <Typography variant="h6">Why Beyul Venture</Typography>
+                    <Typography variant="h6" style={{color:'#FFFFFF'}}>Why Beyul Venture</Typography>
                 </Box>
                 {whyBeyulVenture.map((data)=>(
                     <Box pt={4} pl={4}>
                         <Grid container>
                             <Grid item md={2}>
-                                <CheckIcon style={{color:"#694311"}}/>
+                                <CheckIcon style={{color:"#DF9534"}}/>
                             </Grid>
 
                             <Grid item md={8}>
