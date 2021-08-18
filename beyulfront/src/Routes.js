@@ -12,6 +12,7 @@ import ScrollToTop from 'components/ScrollToTop'
 import { PackDetail } from './pages/package-detail/PackDetail'
 import StripePaymentPage from 'pages/stripe/StripePay'
 import TermsAndConditions from 'pages/TermsAndConditions'
+import { PackagesMain } from './pages/packages-page/PackagesMain'
 const CustomRoute = ({ ...args }) => {
     return (
         <>
@@ -26,6 +27,7 @@ const Routes = () => {
     return (
         <Switch>
             <CustomRoute exact path='/about' component={AboutUsPage} />
+            <CustomRoute exact path='/package/all' component={PackagesMain} />
             <CustomRoute exact path='/package/:packageId'>
                 <PackDetail packageId={params} />
             </CustomRoute>

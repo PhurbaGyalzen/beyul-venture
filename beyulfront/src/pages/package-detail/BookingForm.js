@@ -20,6 +20,9 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
+import { Formik, Field, Form, useField } from 'formik'
+import * as yup from 'yup';
+
 //Total no.of people
 const peoples = [
     {

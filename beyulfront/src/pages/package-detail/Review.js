@@ -1,6 +1,6 @@
 import Rating from '@material-ui/lab/Rating'
 import { Container,Grid,Box,makeStyles,Typography,TextField, Button,Link} from '@material-ui/core'
-
+import Avatar from '@material-ui/core/Avatar';
 
 
 const reviewStyles = makeStyles((theme) => ({
@@ -45,7 +45,26 @@ export const Review = ({reviewList}) => {
                             <Grid item xs={12} md={12} sm={12}>
                                 <div className={classes.commentContainer}>
                                     <div className={classes.imgSection}>
-                                        <img src={review.userImage} className={classes.authorImg} />
+                                        { (
+                                            () =>{
+                                                if (review.userImage == ''){
+                                                    let name = review.user;
+                                                    let matches = name.match(/\b(\w)/g); 
+                                                    console.log(matches);
+                                                    let firstLast = matches[0]+matches[matches.length-1];
+                                                    console.log(firstLast);
+                                                    return <Avatar >{firstLast}</Avatar>
+                                                
+                                                }
+                                                else{
+                                                    return <Avatar alt={review.user} src={review.userImage} />
+                                                }
+                                            }
+                                        )()
+                                        }
+                                        
+                                        {/* <Avatar alt={review.user} src={review.userImage} /> */}
+                                        {/* <img src={review.userImage} className={classes.authorImg} /> */}
                                     </div>
                                     <div className={classes.userSection}> 
                                         <Typography variant="p" className={classes.userDesc}>

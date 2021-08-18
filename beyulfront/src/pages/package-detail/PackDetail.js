@@ -137,7 +137,7 @@ export const PackDetail = () => {
                 userId:2,
                 user:'Phurba Gyalzen Sherpa',
                 rating:4 ,
-                userImage: phurba,
+                userImage: '',
                 review:"I am missing it already i wish i was born in such a beautiful place  It was exhilarating. We are so glad we did it and want to thank Ganga and Team for their excellent service and care. We enthusiastically recommend Nepal Hiking Team!"
             },
             {
