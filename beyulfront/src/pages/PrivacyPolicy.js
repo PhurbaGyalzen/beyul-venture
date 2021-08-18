@@ -4,41 +4,40 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import photo from 'img/termsAndConditions.png';
-import Paper from '@material-ui/core/Paper';
+import photo from 'img/privacyPolicy1.jpg';
 
 
-//TermsAndConditions component information
+//PrivacyPolicy component information
 
 const datas=[
     {
         id:0,
-        title:'Down Payment',
+        title:'What are the information’s required by us?',
         content:'As per the company policy, you can book your trip paying as little as 20% non-refundable deposits upfront to secure your trip. And you can pay rest of the amount when you arrive to our office in Kathmandu before the trip departure.'
     },
 
     {
         id:1,
-        title:'Payment of the Balance',
-        content:'Your outstanding payment for a trip should be made upon your arrival in Kathmandu. If you would like to pay by credit card, a handling charge of 4% on the outstanding balance is made, while there is no such charge for cash payment. You can also pay by cash such as USD, EURO, SWISS FRANC, and NEPALESE RUPEES. You’re also able to get money from ATM. There is so many ATM machine all around. You just have to mention to your bank, I am going to Nepal before you’re leaving home. So they will make access to your ATM card is working in Nepal. Get money from ATM also very easy.'
+        title:'Security of the information',
+        content:'Your information will be stored in our company’s server. However, no any assess is available to such information until and unless the members of Beyul Venture need it for some valid reasons. We would like to assure that the details of your credit card will not be stored in our server while making payment. The payment system is highly secured.'
     },
 
     {
         id:2,
-        title:'Last Minute Booking',
-        content:" The last-minute bookings are also accepted."
+        title:'We collect some unspecified information ',
+        content:"To promote our business, we need to improve our official site. Therefore, some of your information is assessed by the google analytics to obtain the detail of our web traffic. The information like page viewed, location, date and time can be assessed easily."
     },
 
     {
         id:3,
-        title:'Flight Delay/Cancellation',
-        content:"There might be the possibility of flight delay or cancellation, particularly in Himalayan regions like the Everest region, the Annapurna region, the Kanchenjunga region, and Jumla region that sees bad weather pretty often. Thus, it’s recommended to carry extra cash for food and accommodation in case of delays. Also, if you are traveling to remote areas, it is advised to fit extra days in your itinerary to prepare with some delays and unforeseen conditions. In case of flight delay or cancellation, we will not be responsible for food and accommodation except those in the itinerary."
+        title:'We use cookies',
+        content:"We use cookies which helps us to know that you are our visitor who had visited us previously. When you browse us the second time, the technology popularly known as cookies recognizes your browser and helps us know that your browser had visited our site. The links on our website"
     },
 
     {
         id:4,
-        title:'Refund',
-        content:" The down payment of 20% will not be refunded in case of cancellation of trip for any other else reason. If you have made the full payment, then you are entitled to refund of all amount minus 20% of the total amount. Still, there are certain charges you might have to incur. To cancel any trip, written notification of your cancellation should be made."
+        title:'Renewal of policy',
+        content:" We reserve our right to amend or update our privacy policy if necessary. The privacy policy is subject to change as per the circumstances. If you have any queries regarding our privacy policy, you can mail us your queries at our company’s office mailing address or privacy@beyulventure.com"
     },
 
     {
@@ -83,8 +82,7 @@ const useStyles = makeStyles((theme) => ({
     root:{
         flexGrow:1,
         width:"100%",
-        overflow:"hidden",
-        backgroundColor:"primary"
+        overflow:"hidden"
     },
     
     photoDiv:{
@@ -126,9 +124,9 @@ const useStyles = makeStyles((theme) => ({
 
 
 //Defining Overview component
-export default function TermsAndConditions() {
+export default function PrivacyPolicy() {
     const classes = useStyles()
-    const[termsAndConditions, setTermsAndConditions]=useState(datas);
+    const[privacyPolicy, setPrivacyPolicy]=useState(datas);
     return (
         <>
             <div className={classes.root}>
@@ -136,14 +134,23 @@ export default function TermsAndConditions() {
                     <Grid container>
                         <Grid item  xs={12}>
                             <div className={classes.photoDiv}>
-                                <img src={photo} alt="terms and conditions images" className={classes.photo}/>
+                                <img src={photo} alt="privacy policy images" className={classes.photo}/>
                             </div>
                         </Grid>
                     </Grid>
                 </Box>
                 
+                <Box p={3} style={{width:"80%", margin:"auto"}}>
+                    <Grid container>
+                        <Grid item>
+                            <Typography>Beyul Venture collects information about their customers as per our Know Your Customer Policy. We need your information to arrange a smooth and effective trip for you in Nepal, Tibet or Bhutan. However, we value the privacy of our esteemed customers. Any kind of misuse of information or handing over your information to others is highly discouraged. We appreciate the fact that you hand over your confidential information to us with trust and ensure you to reciprocate the same in future.</Typography>
+                        </Grid>
+                    </Grid>
+                </Box>
 
-                {termsAndConditions.map((data)=>(
+                
+
+                {privacyPolicy.map((data)=>(
                     <Grid container>
                         <Grid item xs={12}>
                             <Box p={3} style={{width:"80%", margin:"auto"}}>

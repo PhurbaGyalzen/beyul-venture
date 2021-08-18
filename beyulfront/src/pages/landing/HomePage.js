@@ -21,13 +21,10 @@ import pck from 'img/pck_1.webp'
 
 const useStyles = makeStyles((theme) => ({
     subHeading: {
-        fontWeight: 'Bold',
-        fontFamily: 'sans-serif',
         fontSize: '2rem',
         lineHeight:"4rem",
         paddingTop:"2rem",
         paddingBottom:"1rem",
-        color:"#694311"
     },
     spacious: {
         margin: '2rem auto',
@@ -165,7 +162,7 @@ const HomePage = () => {
             <Box mt='1rem'>
                 <Container>
                     <Typography
-                        variant='h4'
+                        variant='h4' components="h3"
                         className={classes.subHeading}
                     >
                         Popular Packages

@@ -15,12 +15,10 @@ import { Divider } from '@material-ui/core';
 //Defining custom styles
 const useStyles = makeStyles((theme) => ({
     title:{
-        backgroundColor:"#edeef0",
         padding:"1rem"
     },
 
     description:{
-        color:"#13181e"
     }
 
     
@@ -34,13 +32,13 @@ export default function ItineraryContent({title,description}) {
     return (
         <>                     
             <div className={classes.title}>
-                <h3 style={{display:"inline", color:"#13181e"}}>{title}</h3>
-                <p style={{display:"inline", paddingLeft:"1rem"}} onClick={()=>setShow(!show)}> {show? <RemoveIcon fontSize="large" style={{color:"#694311", paddingTop:"0.5rem"}} />:<AddIcon fontSize="large" style={{color:"694311", paddingTop:"0.5rem"}}/>} </p>
+                <Typography style={{display:"inline", fontSize:"1rem"}} variant="h6">{title}</Typography>
+                <Typography style={{display:"inline", paddingLeft:"1rem"}} variant="body2" onClick={()=>setShow(!show)}> {show? <RemoveIcon fontSize="large" style={{paddingTop:"0.5rem"}} />:<AddIcon fontSize="large" style={{color:"694311", paddingTop:"0.5rem"}}/>} </Typography>
             </div>
             <Divider/>
 
             {
-                show && <p className={classes.description}>{description}</p>
+                show && <Typography variant="body2">{description}</Typography>
 
             }
 

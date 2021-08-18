@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
         flexGrow:1,
         width:"350px",
         height:"600px",
-        backgroundColor:"#ffffff"
     },
 
     priceBox:{

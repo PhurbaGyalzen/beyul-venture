@@ -58,6 +58,7 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
     clap = ClapSerializer(many=True, read_only=True, source="claps")
     content = FixAbsolutePathSerializer()
     author_name = serializers.SerializerMethodField()
+    author_profile = serializers.SerializerMethodField()
 
     class Meta:
         model = Blog
@@ -73,6 +74,7 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
             'thumbnail',
             'author',
             'author_name',
+            'author_profile',
             'status',
             'comment',
             'clap'
@@ -84,6 +86,9 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_author_name(self, obj):
         return obj.author.first_name
+
+    def get_author_profile(self, obj):
+        return f"http://127.0.0.1:8000/media/{obj.author.profile_pic}"
 
 
 class ReadOnlyModelSerializer(serializers.HyperlinkedModelSerializer):

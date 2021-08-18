@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     firstRow: {
         flexGrow: 1,
         padding: theme.spacing(3),
-        height: 'auto',
+        height: '100vh',
         textAlign: 'center',
         backgroundImage: `url(${contactUsImg})`,
         backgroundRepeat: 'no-repeat',
@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
         height: 'auto',
         padding:20,
         paddingBottom:50,
-        backgroundColor:"#ffffff"
+        backgroundColor:"primary"
     },
 
     faq: {
@@ -130,9 +130,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     heading:{
-        color:"#694311",
         fontSize:"2rem",
-        fontWeight:'bold',
         lineHeight:"4rem",
         paddingBotttom:"3rem"
     }
@@ -207,33 +205,35 @@ export default function ContactUs() {
 
     return (
         <>
-            <Box component='div' style={{ backgroundColor: '#EDEEF0', color:"#ffffff" }}>
+            <Box component='div' style={{ backgroundColor: 'primary', color:"#ffffff" }}>
                 {/* First Row */}
-                <Grid
-                    container
-                    direction='row'
-                    justifyContent='flex-end'
-                    alignItems='center'
-                    className={classes.firstRow}
-                >
+                <Box style={{height:"100vh"}}>
                     <Grid
-                        item
-                        xs={12}
-                        md={12}
-                        sm={12}
-                        className={classes.firstRowItem1}
+                        container
+                        direction='row'
+                        justifyContent='flex-end'
+                        alignItems='center'
+                        className={classes.firstRow}
                     >
-                        {/* <Typography
-                            variant='h3'
-                            className={classes.contactUsTitle}
+                        <Grid
+                            item
+                            xs={12}
+                            md={12}
+                            sm={12}
+                            className={classes.firstRowItem1}
                         >
-                            {' '}
-                            Beyul Venture
-                        </Typography>
-                        <Typography style={{color:"#13181e"}}>Need a help? Or a high five?</Typography>
-                        <Typography style={{color:"#13181e"}}>Here's how to reach us</Typography> */}
+                            {/* <Typography
+                                variant='h3'
+                                className={classes.contactUsTitle}
+                            >
+                                {' '}
+                                Beyul Venture
+                            </Typography>
+                            <Typography style={{color:"#13181e"}}>Need a help? Or a high five?</Typography>
+                            <Typography style={{color:"#13181e"}}>Here's how to reach us</Typography> */}
+                        </Grid>
                     </Grid>
-                </Grid>
+                </Box>
 
                 {/* Second Row */}
 
@@ -289,7 +289,6 @@ export default function ContactUs() {
                             <Typography
                                 variant='body2'
                                 align='left'
-                                color='textSecondary'
                             >
                                 If you have any questions or queries a member of
                                 staff will always be happy to help. Feel free to
@@ -326,7 +325,6 @@ export default function ContactUs() {
                             variant='h6'
                             mt={10}
                             style={{
-                                color: '#13181e',
                                 position: 'absolute',
                                 bottom: '-0.8rem',
                                 left: '1rem',

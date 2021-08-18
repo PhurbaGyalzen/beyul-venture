@@ -26,7 +26,6 @@ import Box from '@material-ui/core/Box';
 const useStyles = makeStyles((theme) => ({
     root:{
         flexGrow:1,
-        backgroundColor:"#ffffff"
     },
 
     iconHeading:{
@@ -54,24 +53,24 @@ export default function TripFacts() {
     return (
         <>
             <div className={classes.root}>
-                <Typography variant="h5" style={{fontSize:"2rem", fontWeight:"bold", textAlign:"center", paddingTop:"1rem", paddingBottom:"2rem"}}>Trip Facts</Typography>
+                <Typography variant="h5" style={{fontSize:"2rem", textAlign:"center", paddingTop:"1rem", paddingBottom:"2rem"}}>Trip Facts</Typography>
                 <Box className={classes.box}>
                     <Grid container direction="row" justifyContent="space-around" >
                         <Grid Item xs={11} md={3}>
                             <AccessTimeIcon className={classes.button}/>
-                            <Typography variant="body1" color="textSecondary" className={classes.iconHeading}>Duration</Typography>
+                            <Typography variant="body1" className={classes.iconHeading}>Duration</Typography>
                             <Typography variant="body2">15 Days</Typography>
                         </Grid>
 
                         <Grid Item xs={11} md={3}>
                             <EventNoteOutlinedIcon className={classes.button}/>
-                            <Typography variant="body1" color="textSecondary" className={classes.iconHeading}>Best Season</Typography>
+                            <Typography variant="body1" className={classes.iconHeading}>Best Season</Typography>
                             <Typography variant="body2">Jan - Dec</Typography>
                         </Grid>
 
                         <Grid Item xs={11} md={3}>
                             <Battery60OutlinedIcon className={classes.button}/>
-                            <Typography variant="body1" color="textSecondary" className={classes.iconHeading}>Level</Typography>
+                            <Typography variant="body1" className={classes.iconHeading}>Level</Typography>
                             <Typography variant="body2">Difficult</Typography>
                         </Grid>
                     </Grid>
@@ -81,19 +80,19 @@ export default function TripFacts() {
                     <Grid container direction="row" justifyContent="space-around" >
                         <Grid Item xs={11} md={3}>
                             <CommuteOutlinedIcon className={classes.button}/>
-                            <Typography variant="body1" color="textSecondary" className={classes.iconHeading}>Transportation</Typography>
+                            <Typography variant="body1" className={classes.iconHeading}>Transportation</Typography>
                             <Typography variant="body2">Private Vehicel/Public Bus/Taxi</Typography>
                         </Grid>
 
                         <Grid Item xs={11} md={3}>
                             <FlightTakeoffIcon className={classes.button}/>
-                            <Typography variant="body1" color="textSecondary" className={classes.iconHeading}>Starts at</Typography>
+                            <Typography variant="body1" className={classes.iconHeading}>Starts at</Typography>
                             <Typography variant="body2">Kathmandu</Typography>
                         </Grid>
 
                         <Grid Item xs={11} md={3}>
                             <FlightLandOutlinedIcon className={classes.button}/>
-                            <Typography variant="body1" color="textSecondary" className={classes.iconHeading}>Ends at</Typography>
+                            <Typography variant="body1" className={classes.iconHeading}>Ends at</Typography>
                             <Typography variant="body2">Kathmandu</Typography>
                         </Grid>
                     </Grid>
@@ -103,19 +102,19 @@ export default function TripFacts() {
                     <Grid container direction="row" justifyContent="space-around" >
                         <Grid Item xs={11} md={3}>
                             <PersonIcon className={classes.button}/>
-                            <Typography variant="body1" color="textSecondary" className={classes.iconHeading}>Min Age</Typography>
+                            <Typography variant="body1" className={classes.iconHeading}>Min Age</Typography>
                             <Typography variant="body2">15+</Typography>
                         </Grid>
 
                         <Grid Item xs={11} md={3}>
                             <SupervisorAccountOutlinedIcon className={classes.button}/>
-                            <Typography variant="body1" color="textSecondary" className={classes.iconHeading}>Max People</Typography>
+                            <Typography variant="body1" className={classes.iconHeading}>Max People</Typography>
                             <Typography variant="body2">Group or Private Trek Options</Typography>
                         </Grid>
 
                         <Grid Item xs={11} md={3}>
                             <FastfoodOutlinedIcon className={classes.button}/>
-                            <Typography variant="body1" color="textSecondary" className={classes.iconHeading}>Meals</Typography>
+                            <Typography variant="body1" className={classes.iconHeading}>Meals</Typography>
                             <Typography variant="body2">Full Board During The Trek</Typography>
                         </Grid>
                     </Grid>

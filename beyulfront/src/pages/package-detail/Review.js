@@ -19,7 +19,6 @@ const reviewStyles = makeStyles((theme) => ({
         paddingLeft: '1rem'
     },
     userDesc:{
-        color:'#545454',
         verticalAlign: 'middle',
         display: 'inline-flex',
         fontWeight:'700'    
@@ -36,7 +35,7 @@ const reviewStyles = makeStyles((theme) => ({
 export const Review = ({reviewList}) => {
     const classes = reviewStyles()
     return (
-        <div style={{backgroundColor:'#f8f7f8'}}>
+        <div>
             <Container style={{paddingTop:'2rem'}}>
                 <Typography variant='h5' gutterBottom mt={4}>Reviews</Typography>
                 <Grid container spacing={2}>
@@ -67,7 +66,7 @@ export const Review = ({reviewList}) => {
                                         {/* <img src={review.userImage} className={classes.authorImg} /> */}
                                     </div>
                                     <div className={classes.userSection}> 
-                                        <Typography variant="p" className={classes.userDesc}>
+                                        <Typography variant="body2" className={classes.userDesc}>
                                             <Link href="#" color="inherit">
                                                 {review.user}
                                             </Link>

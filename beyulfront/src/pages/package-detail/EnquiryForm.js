@@ -93,7 +93,7 @@ export default function EnquiryForm() {
                             
 
                             <Grid item xs={10} md={9}>
-                                <Typography variant="body2">* Creating an account means you're okay with our <Link style={{color:"#694311", fontWeight:"bold"}}>Terms of Service</Link> and <Link style={{color:"#694311", fontWeight:"bold"}}>Privacy Statement.</Link></Typography>                
+                                <Typography variant="body2">* Creating an account means you're okay with our <Link style={{color:"#DF9534", fontWeight:"bold"}}>Terms of Service</Link> and <Link style={{color:"#DF9534", fontWeight:"bold"}}>Privacy Statement.</Link></Typography>                
                             </Grid>
                         
                         </Grid>
