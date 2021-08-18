@@ -22,6 +22,7 @@ import { List as ListIcon, Label as LabelIcon } from '@material-ui/icons'
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        
     },
 
     menuButton: {
@@ -80,6 +81,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up('lg')]: {
             display: 'flex',
         },
+
     },
 
     menuIcon: {
@@ -114,7 +116,6 @@ const useStyles = makeStyles((theme) => ({
 const NavBtn = (props) => {
     return (
         <Link
-            variant='outlined'
             component={NavLink}
             activeStyle={{ color: '#c47d1e' }}
             exact
