@@ -43,6 +43,6 @@ class CustomUserAdmin(UserAdmin):
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
-admin.site.site_header = "Login to Beyul Ventures Admin Dashboard"
+admin.site.site_header = "Beyul Ventures Admin Dashboard"
 admin.site.site_title = "Beyul Ventures Admin"
 admin.site.index_title = "Welcome to Beyul Ventures Admin Dashboard"
