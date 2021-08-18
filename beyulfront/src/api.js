@@ -1,7 +1,7 @@
 let access = null
 let refresh
 const tokenTimeout = 5 // in mins
-let lastts = new Date().getTime()
+let lastTms = new Date().getTime()
 const origin = 'http://127.0.0.1:8000'
 
 const post = async (path, body) => {
@@ -54,13 +54,14 @@ const ajax = async (path, rest) => {
         console.log('no token present. authenticating using creds.')
         await storeJWT()
     }
-    const currts = new Date().getTime()
+    const currTms = new Date().getTime()
     try {
-        if (currts - lastts >= tokenTimeout * 60 * 1000) {
+        if (currTms - lastTms >= tokenTimeout * 60 * 1000) {
             console.log(
                 'access token timeout, refreshing using refresh token.',
             )
             await refreshJWT()
+            lastTms = new Date().getTime()
         }
         const allHeaders = new Headers(headers || {})
         allHeaders.set('Authorization', 'Bearer ' + access)
