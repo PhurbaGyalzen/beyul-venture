@@ -23,6 +23,86 @@
   src: url('./fonts/PublicoHeadline-Light-Web.woff') format('woff');
 }
 
+
+/* Railway fonts */
+@font-face {
+  font-family: 'RalewayBlack';
+  src: url('./fonts/Raleway-Black.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'RalewayBold';
+  src: url('./fonts/Raleway-Bold.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'RalewayExtraBold';
+  src: url('./fonts/Raleway-ExtraBold.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'RalewayExtraLight';
+  src: url('./fonts/Raleway-ExtraLight.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'RalewayLight';
+  src: url('./fonts/Raleway-Light.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'RalewayMedium';
+  src: url('./fonts/Raleway-Medium.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'RalewaySemiBold';
+  src: url('./fonts/Raleway-SemiBold.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'RalewayThin';
+  src: url('./fonts/Raleway-Thin.ttf') format('ttf');
+}
+
+
+/* Roboto fonts */
+
+@font-face {
+  font-family: 'RobotoBlack';
+  src: url('./fonts/Roboto-Black.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'RobotoBold';
+  src: url('./fonts/Roboto-Bold.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'RobotoItalic';
+  src: url('./fonts/Roboto-Italic.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'RobotoLight';
+  src: url('./fonts/Roboto-Light.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'RobotoMedium';
+  src: url('./fonts/Roboto-Medium.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'RobotoRegular';
+  src: url('./fonts/Roboto-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'RobotoThin';
+  src: url('./fonts/Roboto-Thin.ttf') format('ttf');
+}
+
 :root {
   --primary-color: 'white';
   --secondary-color: 'blue';

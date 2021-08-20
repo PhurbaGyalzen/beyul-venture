@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     links: {
-        color: '#13181e',
+        color:'#13181e',
         marginRight: '2.3rem',
         fontSize: '0.8rem',
         letterSpacing: '0.1rem',

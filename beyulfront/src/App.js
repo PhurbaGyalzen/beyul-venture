@@ -37,8 +37,17 @@ const App = () => {
                 light:"#ffffff"
             },
 
-            type:'light'
+            type:'light',
+
+            background:{
+                default:"#ebebeb",
+                paper:"#fcfcfc"
+            }
+
+            
           },
+
+
 
         typography:{
             h1:{color:"#694311", fontWeight:"bold", fontFamily: 'sans-serif'},
@@ -52,7 +61,7 @@ const App = () => {
             
         },
 
-        bg: '#ff0000',
+        
 
     })
 
@@ -62,18 +71,27 @@ const App = () => {
             primary:{
                 main:"#DF9534",
             },
-            type:'dark'
+            type:'dark',
+
+            background:{
+                default:"#13181E",
+                paper:"#202A33",
+            },
+
+            action:{
+                hover:"#323232"
+            }
           },
 
         typography:{
-            h1:{color:"#DF9534", fontWeight:"bold", fontFamily: 'sans-serif'},
-            h2:{color:"#DF9534", fontWeight:"bold", fontFamily: 'sans-serif'},
-            h3:{color:"#DF9534", fontWeight:"bold", fontFamily: 'sans-serif'},
-            h4:{color:"#DF9534", fontWeight:"bold", fontFamily: 'sans-serif'},
-            h5:{color:"#DF9534", fontWeight:"bold", fontFamily: 'sans-serif'},
-            h6:{color:"#DF9534", fontWeight:"bold", fontFamily: 'sans-serif'},
-            body1:{color:"#fcfcfc", fontFamily: 'sans-serif'},
-            body2:{color:"#fcfcfc", fontFamily: 'sans-serif'},
+            h1:{color:"#BFBFB2", fontWeight:"bold", fontFamily: 'sans-serif'},
+            h2:{color:"#BFBFB2", fontWeight:"bold", fontFamily: 'sans-serif'},
+            h3:{color:"#BFBFB2", fontWeight:"bold", fontFamily: 'sans-serif'},
+            h4:{color:"#BFBFB2", fontWeight:"bold", fontFamily: 'sans-serif'},
+            h5:{color:"#BFBFB2", fontWeight:"bold", fontFamily: 'sans-serif'},
+            h6:{color:"#BFBFB2", fontWeight:"bold", fontFamily: 'sans-serif'},
+            body1:{color:"#A6A69B", fontFamily: 'sans-serif'},
+            body2:{color:"#A6A69B", fontFamily: 'sans-serif'},
         },
 
         bg:'#ff0000',
@@ -83,7 +101,7 @@ const App = () => {
 
     return (
         <ThemeProvider theme={darkMode ? darkTheme : lightTheme }>
-            <Paper style={{height:"auto"}} elevation={0}>
+            {/* <Paper style={{height:"auto"}} elevation={0}> */}
                 <Router>
                     <div className='App'>
                         <CssBaseline />
@@ -92,12 +110,12 @@ const App = () => {
                         <Routes />
                         <Footer />
                         <ScrollButton />
-                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Toggle dark/light" arrow>
+                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title={darkMode ? "Toggle light mode" :"Toggle dark mode" } arrow>
                             <IconButton onClick={()=>setDarkMode(!darkMode)} style={{position:"fixed", top:"10%",right:"2%",fontSize:"50px"}}>{darkMode ? <Brightness7Icon/> : <Brightness4Icon/> }</IconButton>
                         </Tooltip>
                     </div>
                 </Router>
-            </Paper>
+            {/* </Paper> */}
         </ThemeProvider>
 
     )
