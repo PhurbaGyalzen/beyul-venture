@@ -282,7 +282,7 @@ export default function ContactUs() {
                                 alt='have any question'
                                 className={classes.questionImg}
                             />
-                            <Typography variant='h4' align='center' className={classes.heading}>
+                            <Typography variant='h6' align='center' className={classes.heading}>
                                 Have a question we didn't answer ?
                             </Typography>
                             <Typography
