@@ -26,6 +26,9 @@ from django.conf.urls.static import static
 from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework.routers import DefaultRouter
 
+from django_otp.plugins.otp_totp.models import TOTPDevice
+from django_otp.admin import OTPAdminSite
+
 router = DefaultRouter()
 router.register(r'blog', BlogView)
 router.register(r'user', UserViewSet)
@@ -36,9 +39,15 @@ router.register(r'package', PackageView)
 router.register(r'review', ReviewView)
 router.register(r'photo', PhotoView)
 
+
+admin_site = OTPAdminSite(name="OTP Admin")
+for model_cls, model_admin in admin.site._registry.items():
+    admin_site.register(model_cls, model_admin.__class__)
+
 urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
+    path('django_admin/', admin_site.urls),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     # use this .../api/login/ to get access tokens
