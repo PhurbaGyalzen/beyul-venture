@@ -29,10 +29,6 @@ from rest_framework.routers import DefaultRouter
 from django_otp.plugins.otp_totp.models import TOTPDevice
 from django_otp.admin import OTPAdminSite
 
-from django.contrib.auth import get_user_model
-
-User = get_user_model()
-
 router = DefaultRouter()
 router.register(r'blog', BlogView)
 router.register(r'user', UserViewSet)
@@ -45,8 +41,8 @@ router.register(r'photo', PhotoView)
 
 
 admin_site = OTPAdminSite(name="OTP Admin")
-admin_site.register(User)
-admin_site.register(TOTPDevice)
+for model_cls, model_admin in admin.site._registry.items():
+    admin_site.register(model_cls, model_admin.__class__)
 
 urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),
