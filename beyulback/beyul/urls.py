@@ -44,11 +44,7 @@ router.register(r'review', ReviewView)
 router.register(r'photo', PhotoView)
 
 
-class OTPAdmin(OTPAdminSite):
-    pass
-
-
-admin_site = OTPAdmin(name="OTP Admin")
+admin_site = OTPAdminSite(name="OTP Admin")
 admin_site.register(User)
 admin_site.register(TOTPDevice)
 
