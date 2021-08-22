@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography'
 
 function Copyright() {
   return (
-    <Typography variant='body2'>
+    <Typography style={{color:"#c47d1e"}}>
       {'Copyright ©. All rights reserved to'}{' '}
       {new Date().getFullYear()}
       {'.'}

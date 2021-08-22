@@ -48,11 +48,9 @@ export const Footer = () => {
                     <Grid item xs={11} md={4} sm={7} lg={4}>
                         <Box className='box'>
                             <Typography
+                                variant="h6"
                                 className='beyulLogo textHover'
                                 style={{
-                                    fontSize: '1rem',
-                                    lineHeight: '2rem',
-                                    fontWeight: 'bold',
                                     letterSpacing: '0.2rem',
                                     color: '#c47d1e',
                                 }}
@@ -65,7 +63,7 @@ export const Footer = () => {
                             <Link
                                 href='#'
                                 color='inherit'
-                                className='links textHover'
+                                className='textHover'
                             >
                                 <LocationOnIcon
                                     fontSize='small'
@@ -79,7 +77,7 @@ export const Footer = () => {
                             <Link
                                 href='#'
                                 color='inherit'
-                                className='links textHover'
+                                className='textHover'
                             >
                                 <CallIcon
                                     fontSize='small'
@@ -93,7 +91,7 @@ export const Footer = () => {
                             <Link
                                 href='#'
                                 color='inherit'
-                                className='links textHover'
+                                className='textHover'
                             >
                                 <EmailIcon
                                     fontSize='small'
@@ -158,9 +156,6 @@ export const Footer = () => {
                             <Typography
                                 variant='h6'
                                 style={{
-                                    fontSize: '1rem',
-                                    lineHeight: '2rem',
-                                    fontWeight: 'bold',
                                     wordSpacing: '0.1rem',
                                     letterSpacing: '0.1rem',
                                     color: '#c47d1e',
@@ -173,8 +168,8 @@ export const Footer = () => {
                         <Box>
                             <Link
                                 href='/'
-                                color='inherit'
-                                className='links textHover'
+                                color='#cdcdcd'
+                                className='textHover'
                             >
                                 Home
                             </Link>
@@ -183,8 +178,8 @@ export const Footer = () => {
                         <Box>
                             <Link
                                 href='/about'
-                                color='inherit'
-                                className='links textHover '
+                                color='#cdcdcd'
+                                className='textHover '
                             >
                                 About
                             </Link>
@@ -193,8 +188,8 @@ export const Footer = () => {
                         <Box>
                             <Link
                                 href='/blog'
-                                color='inherit'
-                                className='links textHover'
+                                color='#cdcdcd'
+                                className='textHover'
                             >
                                 Blog
                             </Link>
@@ -203,8 +198,8 @@ export const Footer = () => {
                         <Box>
                             <Link
                                 href='contact-us'
-                                color='inherit'
-                                className='links textHover'
+                                color='#cdcdcd'
+                                className='textHover'
                             >
                                 Contact Us
                             </Link>
@@ -213,8 +208,8 @@ export const Footer = () => {
                         <Box mb={{ xs: 5, sm: 5, md: 5, lg: 5 }}>
                             <Link
                                 href='/our-team'
-                                color='inherit'
-                                className='links textHover'
+                                color='cdcdcd'
+                                className='textHover'
                             >
                                 Our Team
                             </Link>
@@ -227,9 +222,7 @@ export const Footer = () => {
                             <Typography
                                 variant='h6'
                                 style={{
-                                    fontSize: '1rem',
-                                    fontWeight: 'bold',
-                                    lineHeight: '2rem',
+                                    color:"#cdcdcd"
                                 }}
                             >
                                 <EmailIcon
@@ -273,9 +266,6 @@ export const Footer = () => {
                             <Typography
                                 variant='h6'
                                 style={{
-                                    fontSize: '1rem',
-                                    lineHeight: '2rem',
-                                    fontWeight: 'bold',
                                     letterSpacing: '0.1rem',
                                     color: '#c47d1e',
                                 }}
@@ -312,9 +302,6 @@ export const Footer = () => {
                             <Typography
                                 variant='h6'
                                 style={{
-                                    fontSize: '1rem',
-                                    lineHeight: '2rem',
-                                    fontWeight: 'bold',
                                     letterSpacing: '0.1rem',
                                     wordSpacing: '0.1rem',
                                     color: '#c47d1e',
@@ -368,7 +355,7 @@ export const Footer = () => {
                             <Link
                                 href='#'
                                 style={{ color: '#c47d1e' }}
-                                className='links textHover'
+                                className='textHover'
                             >
                                 Terms & Conditions
                             </Link>
@@ -385,7 +372,7 @@ export const Footer = () => {
                             <Link
                                 href='#'
                                 style={{ color: '#c47d1e' }}
-                                className='links textHover'
+                                className='textHover'
                             >
                                 Privacy Policy
                             </Link>
@@ -402,7 +389,7 @@ export const Footer = () => {
                             <Link
                                 href='#'
                                 style={{ color: '#c47d1e' }}
-                                className='links textHover'
+                                className='textHover'
                             >
                                 We are Hiring
                             </Link>
@@ -419,7 +406,7 @@ export const Footer = () => {
                             <Link
                                 href='#'
                                 style={{ color: '#c47d1e' }}
-                                className='links textHover'
+                                className='textHover'
                             >
                                 Share Your Travel Experience
                             </Link>
@@ -428,7 +415,7 @@ export const Footer = () => {
 
                     <Grid item xs={11} xs={11} sm={6} md={5} lg={7} sm={6}>
                         <Box
-                            style={{ color: '#c47d1e', marginTop: '0.625rem' }}
+                            style={{marginTop: '0.625rem' }}
                             pt={{ xs: 0, sm: 6, md: 5 }}
                             pb={{ xs: 0, sm: 0 }}
                         >

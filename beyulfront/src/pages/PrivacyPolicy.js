@@ -108,16 +108,10 @@ const useStyles = makeStyles((theme) => ({
         letterSpacing:"0.1rem",
     },
 
-    title:{
-        fontWeight:"bold",
-        fontSize:"1rem",
-        lineHeight:"rem",
-    },
+   
 
     content:{
         textAlign:"justify",
-        fontSize:"1rem",
-        lineHeight:"1.685rem",
     }
     
 }))
@@ -143,7 +137,7 @@ export default function PrivacyPolicy() {
                 <Box p={3} style={{width:"80%", margin:"auto"}}>
                     <Grid container>
                         <Grid item>
-                            <Typography>Beyul Venture collects information about their customers as per our Know Your Customer Policy. We need your information to arrange a smooth and effective trip for you in Nepal, Tibet or Bhutan. However, we value the privacy of our esteemed customers. Any kind of misuse of information or handing over your information to others is highly discouraged. We appreciate the fact that you hand over your confidential information to us with trust and ensure you to reciprocate the same in future.</Typography>
+                            <Typography variant="body2">Beyul Venture collects information about their customers as per our Know Your Customer Policy. We need your information to arrange a smooth and effective trip for you in Nepal, Tibet or Bhutan. However, we value the privacy of our esteemed customers. Any kind of misuse of information or handing over your information to others is highly discouraged. We appreciate the fact that you hand over your confidential information to us with trust and ensure you to reciprocate the same in future.</Typography>
                         </Grid>
                     </Grid>
                 </Box>
@@ -154,7 +148,7 @@ export default function PrivacyPolicy() {
                     <Grid container>
                         <Grid item xs={12}>
                             <Box p={3} style={{width:"80%", margin:"auto"}}>
-                                <Typography className={classes.title} variant="h4">
+                                <Typography variant="h4">
                                     {data.title}
                                 </Typography>
 

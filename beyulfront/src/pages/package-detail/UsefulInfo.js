@@ -32,7 +32,7 @@ export default function UsefulInfo ({title,description}){
     return(
         <>
             <div className={classes.root}>
-                <Accordion style={{backgroundColor:"#EDEEF0"}}>
+                <Accordion>
                     <AccordionSummary className={classes.usefulInfoAccordion}
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
@@ -42,7 +42,7 @@ export default function UsefulInfo ({title,description}){
                     </AccordionSummary>
                     <Divider/>
 
-                    <AccordionDetails style={{backgroundColor:"#ffffff"}}>
+                    <AccordionDetails>
                     <Typography align="justify" >
                        {description}
                     </Typography>

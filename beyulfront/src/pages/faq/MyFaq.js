@@ -13,10 +13,7 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
       color:"#13181e"
     },
-    heading: {
-      fontSize: theme.typography.pxToRem(15),
-      fontWeight: theme.typography.fontWeightRegular,
-    },
+
 
     faqAccordion:{
         '&:hover':{
@@ -38,7 +35,7 @@ export default function MyFaq ({question,answer}){
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                     >
-                    <Typography variant="h6" className={classes.heading}>{question}</Typography>
+                    <Typography variant="body1">{question}</Typography>
                     </AccordionSummary>
                     <Divider/>
 

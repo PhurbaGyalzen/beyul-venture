@@ -130,7 +130,6 @@ const useStyles = makeStyles((theme) => ({
     },
 
     heading:{
-        fontSize:"2rem",
         lineHeight:"4rem",
         paddingBotttom:"3rem"
     }
@@ -270,7 +269,7 @@ export default function ContactUs() {
                     // style={{ backgroundColor: '#FFE8DF' }}
                 >
                     <Grid item className={classes.faq} xs={12} md={4} sm={5} mr={{md:4, xs:0}}>
-                        <Typography variant='h4' className={classes.heading}>
+                        <Typography variant='h6' className={classes.heading}>
                             Popular Questions
                         </Typography>
                         <Faq />

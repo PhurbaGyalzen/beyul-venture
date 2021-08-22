@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import CheckIcon from '@material-ui/icons/Check';
+import Paper from '@material-ui/core/Paper';
+
 
 //WhyBeyulVenture component information
 
@@ -67,25 +69,27 @@ export default function WhyBeyulVenture() {
     return (
         <>
             <div className={classes.root}>
-                <Box className={classes.title}>
-                    <Typography variant="h6" style={{color:'#FFFFFF'}}>Why Beyul Venture</Typography>
-                </Box>
-                {whyBeyulVenture.map((data)=>(
-                    <Box pt={4} pl={4}>
-                        <Grid container>
-                            <Grid item md={2}>
-                                <CheckIcon style={{color:"#DF9534"}}/>
-                            </Grid>
-
-                            <Grid item md={8}>
-                                <Typography variant="body1" style={{fontWeight:"bold"}}>{data.title}</Typography>
-                                <Typography variant="body2">{data.title}</Typography>
-                            </Grid>
-
-                        </Grid>
+                <Paper>
+                    <Box className={classes.title}>
+                        <Typography variant="h6" style={{color:'#FFFFFF'}}>Why Beyul Venture</Typography>
                     </Box>
-                    
-                ))}
+                    {whyBeyulVenture.map((data)=>(
+                        <Box pt={4} pl={4}>
+                            <Grid container>
+                                <Grid item md={2}>
+                                    <CheckIcon style={{color:"#DF9534"}}/>
+                                </Grid>
+
+                                <Grid item md={8}>
+                                    <Typography variant="body1" style={{fontWeight:"bold"}}>{data.title}</Typography>
+                                    <Typography variant="body2">{data.title}</Typography>
+                                </Grid>
+
+                            </Grid>
+                        </Box>
+                        
+                    ))}
+                </Paper>
             </div>
         </>
         

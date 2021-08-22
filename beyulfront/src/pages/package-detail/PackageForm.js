@@ -1,9 +1,7 @@
 //All dependencies import
 import React, { useState } from 'react';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import { Button } from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -12,8 +10,6 @@ import EnquiryForm from './EnquiryForm';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
-import grey from '@material-ui/core/colors/grey';
-import Select from '@material-ui/core/Select';
 
 
 
@@ -25,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     root:{
         flexGrow:1,
         width:"350px",
-        height:"600px",
+        height:"650px",
     },
 
     priceBox:{
@@ -58,33 +54,35 @@ export default function PackageForm() {
       };
     return (
         <div className={classes.root}>
-            <Grid container>
-                <Box className={classes.priceBox}>
-                    <Grid item xs={12} sm={12} md={12} lg={12}>
-                        <Typography style={{fontSize:"1rem", fontWeight:"bold", lineHeight:"2rem"}}>Price</Typography>
-                    </Grid>
-                </Box>
-                
-                <Box className={classes.priceValue}>
-                    <Grid item xs={12} sm={12} md={12} lg={12}>
-                        <Typography component="h6" style={{fontSize:"1rem", fontWeight:"bold", color:"#ffffff"}}><LocalOfferIcon style={{transform:"rotate(-270deg)", color:"#DF9534", marginTop:"0.54rem"}}/>{'  '}From $500</Typography>
-                    </Grid>
-                </Box>
-                
-            </Grid>
-            <Tabs
-                value={selectedTab}
-                onChange={handleChange}
-                variant="fullWidth"
-                indicatorColor="primary"
-                textColor="#13181e"
-                aria-label="Package form details"
-            >
-                <Tab label="Booking Form" />
-                <Tab label="Enquiry Form" />
-            </Tabs>
-            {selectedTab === 0 && <BookingForm/>}
-            {selectedTab === 1 && <EnquiryForm/>}
+            <Paper>
+                <Grid container>
+                    <Box className={classes.priceBox}>
+                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                            <Typography style={{fontSize:"1rem", fontWeight:"bold", lineHeight:"2rem"}}>Price</Typography>
+                        </Grid>
+                    </Box>
+                    
+                    <Box className={classes.priceValue}>
+                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                            <Typography component="h6" style={{fontSize:"1rem", fontWeight:"bold", color:"#ffffff"}}><LocalOfferIcon style={{transform:"rotate(-270deg)", color:"#DF9534", marginTop:"0.54rem"}}/>{'  '}From $500</Typography>
+                        </Grid>
+                    </Box>
+                    
+                </Grid>
+                <Tabs
+                    value={selectedTab}
+                    onChange={handleChange}
+                    variant="fullWidth"
+                    indicatorColor="primary"
+                    textColor="#13181e"
+                    aria-label="Package form details"
+                >
+                    <Tab label="Booking Form" />
+                    <Tab label="Enquiry Form" />
+                </Tabs>
+                {selectedTab === 0 && <BookingForm/>}
+                {selectedTab === 1 && <EnquiryForm/>}
+            </Paper>
         </div>
     );
 };

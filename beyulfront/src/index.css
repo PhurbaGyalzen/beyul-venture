@@ -103,6 +103,42 @@
   src: url('./fonts/Roboto-Thin.ttf') format('ttf');
 }
 
+
+/* Meriweather fonts */
+@font-face {
+  font-family: 'MeriWeatherBold';
+  src: url('./fonts/MerriweatherSans-VariableFont_wght.ttf') format('ttf');
+}
+
+/* PT sans fonts */
+@font-face {
+  font-family: 'PTSansRegular';
+  src: url('./fonts/PTSans-Regular.ttf') format('ttf');
+}
+
+/* Quicksand fonts */
+@font-face {
+  font-family: 'QuickSandMedium';
+  src: url('./fonts/Quicksand-Medium.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'QuickSandLight';
+  src: url('./fonts/Quicksand-Light.ttf') format('ttf');
+}
+
+/* Montserrat fonts */
+@font-face {
+  font-family: 'MontserratExtraLight';
+  src: url('./fonts/Montserrat-ExtraLight.ttf') format('ttf');
+}
+
+/* Oswald fonts */
+@font-face {
+  font-family: 'OswaldRegular';
+  src: url('./fonts/Oswald-Medium.ttf') format('ttf');
+}
+
 :root {
   --primary-color: 'white';
   --secondary-color: 'blue';

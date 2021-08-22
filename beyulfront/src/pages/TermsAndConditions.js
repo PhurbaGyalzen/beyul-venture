@@ -110,16 +110,8 @@ const useStyles = makeStyles((theme) => ({
         letterSpacing:"0.1rem",
     },
 
-    title:{
-        fontWeight:"bold",
-        fontSize:"1rem",
-        lineHeight:"rem",
-    },
-
     content:{
-        textAlign:"justify",
-        fontSize:"1rem",
-        lineHeight:"1.685rem",
+        textAlign:"justify"
     }
     
 }))
@@ -147,7 +139,7 @@ export default function TermsAndConditions() {
                     <Grid container>
                         <Grid item xs={12}>
                             <Box p={3} style={{width:"80%", margin:"auto"}}>
-                                <Typography className={classes.title} variant="h4">
+                                <Typography variant="h4">
                                     {data.title}
                                 </Typography>
 

@@ -87,6 +87,7 @@ const useStyles = makeStyles((theme) => ({
     bookingButton:{
         width:"33ch",
         backgroundColor:"#694311",
+        marginBottom:'1rem',
         color:"#ffffff",
         '&:hover':{
             backgroundColor:"#694311"

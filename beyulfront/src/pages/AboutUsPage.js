@@ -51,8 +51,6 @@ const useStyles = makeStyles((theme) => ({
 
     aboutUs: {
         marginBottom: '1rem',
-        fontSize:"1rem",
-        fontWeight:"bold"
     },
 
     card: {
@@ -91,7 +89,7 @@ export default function AboutUsPage() {
                     >
                         <Grid item xs={12} md={6} sm={6}>
                             <Typography
-                                variant='h5'
+                                variant='h6'
                                 className={classes.aboutUs}
                             >
                                 About Us

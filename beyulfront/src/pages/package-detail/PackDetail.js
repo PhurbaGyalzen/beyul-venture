@@ -5,6 +5,8 @@ import toast from 'react-hot-toast'
 import { getEsewaLink } from 'utils/payment'
 import pck from 'img/pck_1.webp'
 import WhyBeyulVenture from './WhyBeyulVenture'
+import Paper from '@material-ui/core/Paper';
+
 import {
     Container,
     Grid,

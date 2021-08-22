@@ -50,14 +50,14 @@ const App = () => {
 
 
         typography:{
-            h1:{color:"#694311", fontWeight:"bold", fontFamily: 'sans-serif'},
-            h2:{color:"#694311", fontWeight:"bold", fontFamily: 'sans-serif'},
-            h3:{color:"#694311", fontWeight:"bold", fontFamily: 'sans-serif'},
-            h4:{color:"#694311", fontWeight:"bold", fontFamily: 'sans-serif'},
-            h5:{color:"#694311", fontWeight:"bold", fontFamily: 'sans-serif'},
-            h6:{color:"#694311", fontWeight:"bold", fontFamily: 'sans-serif'},
-            body1:{color:"#13181e", fontFamily: 'sans-serif'},
-            body2:{color:"#13181e", fontFamily: 'sans-serif'},
+            h1:{color:"#694311", fontWeight:"bold", fontFamily: 'sans-serif',fontSize:'24px', lineHeight:'32px'},
+            h2:{color:"#694311", fontWeight:"bold", fontFamily: 'sans-serif',fontSize:'24px', lineHeight:'32px'},
+            h3:{color:"#694311", fontWeight:"bold", fontFamily: 'sans-serif',fontSize:'24px', lineHeight:'32px'},
+            h4:{color:"#694311", fontWeight:"bold", fontFamily: 'sans-serif',fontSize:'24px', lineHeight:'32px'},
+            h5:{color:"#694311", fontWeight:"bold", fontFamily: 'sans-serif',fontSize:'18px', lineHeight:'32px'},
+            h6:{color:"#694311", fontWeight:"bold", fontFamily: 'sans-serif',fontSize:'16px', lineHeight:'24x'},
+            body1:{color:"#13181e", fontFamily: 'arial', fontSize:'14px', lineHeight:'24px',fontWeight:'bold'},
+            body2:{color:"#13181e", fontFamily: 'arial', fontSize:'14px', lineHeight:'24px'},
             
         },
 
@@ -84,17 +84,16 @@ const App = () => {
           },
 
         typography:{
-            h1:{color:"#BFBFB2", fontWeight:"bold", fontFamily: 'sans-serif'},
-            h2:{color:"#BFBFB2", fontWeight:"bold", fontFamily: 'sans-serif'},
-            h3:{color:"#BFBFB2", fontWeight:"bold", fontFamily: 'sans-serif'},
-            h4:{color:"#BFBFB2", fontWeight:"bold", fontFamily: 'sans-serif'},
-            h5:{color:"#BFBFB2", fontWeight:"bold", fontFamily: 'sans-serif'},
-            h6:{color:"#BFBFB2", fontWeight:"bold", fontFamily: 'sans-serif'},
-            body1:{color:"#A6A69B", fontFamily: 'sans-serif'},
-            body2:{color:"#A6A69B", fontFamily: 'sans-serif'},
+            h1:{color:"#BFBFB2", fontFamily: 'sans-serif',fontSize:'24px', lineHeight:'32px',fontWeight:'bold'},
+            h2:{color:"#BFBFB2", fontFamily: 'sans-serif',fontSize:'24px', lineHeight:'32px',fontWeight:'bold'},
+            h3:{color:"#BFBFB2", fontFamily: 'sans-serif',fontSize:'24px', lineHeight:'32px',fontWeight:'bold'},
+            h4:{color:"#BFBFB2", fontFamily: 'sans-serif',fontSize:'24px', lineHeight:'32px',fontWeight:'bold'},
+            h5:{color:"#BFBFB2", fontFamily: 'sans-serif',fontSize:'18px', lineHeight:'32px',fontWeight:'bold'},
+            h6:{color:"#BFBFB2", fontFamily: 'sans-serif',fontSize:'16px', lineHeight:'16px',fontWeight:'bold'},
+            body1:{color:"#A6A69B", fontFamily: 'arial', fontSize:'14px', lineHeight:'24px',fontWeight:'bold'},
+            body2:{color:"#A6A69B", fontFamily: 'arial', fontSize:'14px', lineHeight:'24px'},
         },
 
-        bg:'#ff0000',
 
     })
     
