@@ -10,6 +10,7 @@ const stripePromise = loadStripe(
 )
 
 const StripePaymentPage = (props) => {
+    console.log({props})
     return (
         <Elements stripe={stripePromise}>
             <CheckoutForm />

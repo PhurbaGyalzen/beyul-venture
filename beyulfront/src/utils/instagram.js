@@ -1,7 +1,6 @@
 // Only fetches about a dozen posts. videos are ignored.
 const fetchPosts = async (username, limit = 12) => {
     const CORS_HOST = 'https://softwarica-cors.herokuapp.com/'
-    const MY_CORS_HOST = 'https://softwarica-cors.herokuapp.com/'
     const BIBLIOGRAM_ORIGIN = CORS_HOST + 'https://bibliogram.snopyta.org'
 
     const url = `${BIBLIOGRAM_ORIGIN}/u/${username}/rss.xml`
@@ -28,7 +27,7 @@ const fetchPosts = async (username, limit = 12) => {
         if (img_tag.length) {
             // use proxy for image too
             const image_url =
-                MY_CORS_HOST + new URL(img_tag[0].src).searchParams.get('url')
+                CORS_HOST + new URL(img_tag[0].src).searchParams.get('url')
             feeds.push({
                 id: post_id,
                 caption: post_caption,

@@ -1,4 +1,4 @@
-import { Route, Switch, useParams } from 'react-router-dom'
+import { Route, Switch, useParams, useLocation } from 'react-router-dom'
 import ContactUs from 'pages/ContactUs.js'
 import OurTeam from 'pages/our-team/OurTeam'
 import FourZeroFour from 'pages/404'
@@ -42,7 +42,9 @@ const Routes = () => {
             <CustomRoute exact path='/our-team' component={OurTeam} />
             <CustomRoute exact path='/terms-and-conditions' component={TermsAndConditions} />
             <CustomRoute exact path='/privacy-policy' component={PrivacyPolicy} />
-            <CustomRoute exact path='/stripe-payment/:id' component={StripePaymentPage} />
+            <CustomRoute exact path='/stripe-payment/:id'>
+                <StripePaymentPage />
+            </CustomRoute>
             <CustomRoute exact path='/'>
                 <HomePage />
             </CustomRoute>

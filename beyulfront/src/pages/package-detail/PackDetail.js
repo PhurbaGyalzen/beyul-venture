@@ -87,8 +87,9 @@ const Owl = ({ imgSrc, text }) => {
     return <FullWidthImage src={imgSrc} />
 }
 
-export const PackDetail = () => {
+export const PackDetail = (props) => {
     const loc = useLocation()
+
     const classes = packageStyles()
     useEffect(() => {
         if (loc.search) {
@@ -101,7 +102,7 @@ export const PackDetail = () => {
                 toast.error('Payment Failed. Please try again.')
             }
         }
-    })
+    }, [])
 
     const [detail, setDetail] = useState({
         id: 1,
@@ -231,7 +232,7 @@ export const PackDetail = () => {
                                         Book this tour
                                     </GreenBtn>
                                     <BlueBtn>
-                                        <Link to='/stripe-payment/1'>
+                                        <Link to={'/stripe-payment/1?callbackURL='+window.location.href}>
                                             Pay with stripe
                                         </Link>
                                     </BlueBtn>

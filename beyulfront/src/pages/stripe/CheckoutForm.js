@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import {useLocation, useHistory, Redirect} from 'react-router-dom'
 import styled, { keyframes, css } from 'styled-components'
 import {
     useStripe,
@@ -199,6 +200,7 @@ const CheckoutForm = ({}) => {
     const stripe = useStripe()
     // access a mounted Element. If promise has not resolved, returns null.
     const elements = useElements()
+    const historyObj = useHistory()
     const [cardElement, setCardElement] = useState()
 
     const [clientSecret, setClientSecret] = useState(null)
@@ -211,7 +213,8 @@ const CheckoutForm = ({}) => {
     const cardRef = useRef()
 
     useEffect(async () => {
-        if (!stripe || clientSecret) return
+        if (!stripe || clientSecret)
+            return
 
         // receive secret from our server.
         const secret = await getPaymentIntent(purchase)
@@ -233,6 +236,7 @@ const CheckoutForm = ({}) => {
 
         if (!stripe || !elements || !clientSecret) {
             // Stripe.js has not yet loaded.
+            setErrors('stripe.js has not loaded yet or no secret received.')
             return
         }
         if (flippedBack) await rotateTo('front')
@@ -260,6 +264,7 @@ const CheckoutForm = ({}) => {
                 // payment_intent.succeeded event that handles any business critical
                 // post-payment actions.
                 setErrors('Payment Completed Successfully.')
+                window.location.href = window.location.search.split('=')[1] + '?paymentResp=success'
             }
         }
         setCanSubmit(true)
