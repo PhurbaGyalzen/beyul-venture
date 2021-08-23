@@ -12,11 +12,7 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
       color:"#13181e"
     },
-    heading: {
-      fontSize: theme.typography.pxToRem(15),
-      fontWeight: theme.typography.fontWeightRegular,
-    },
-
+   
     usefulInfoAccordion:{
         color:"#13181e",
         '&:hover':{
@@ -38,12 +34,12 @@ export default function UsefulInfo ({title,description}){
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                     >
-                    <Typography className={classes.heading}>{title}</Typography>
+                    <Typography variant="body1">{title}</Typography>
                     </AccordionSummary>
                     <Divider/>
 
                     <AccordionDetails>
-                    <Typography align="justify" >
+                    <Typography align="justify" variant="body2">
                        {description}
                     </Typography>
                     </AccordionDetails>

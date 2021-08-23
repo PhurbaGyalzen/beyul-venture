@@ -96,8 +96,8 @@ export default function UsefulInfoContent (){
     return(
         <>
             <div className={classes.root}>
-                <Typography variant="h5" component="h1">Useful information related to the trip.</Typography>
-                <Typography variant="body2" color="textSecondary">Please click on  the title to view detail.</Typography>
+                <Typography variant="h6" component="h1">Useful information related to the trip.</Typography>
+                <Typography variant="body1" color="textSecondary">Please click on  the title to view detail.</Typography>
                 
                 {data.map((currElement) =>{
                     return(
