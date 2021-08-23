@@ -37,7 +37,7 @@ export const Review = ({reviewList}) => {
     return (
         <div>
             <Container style={{paddingTop:'2rem'}}>
-                <Typography variant='h5' gutterBottom mt={4}>Reviews</Typography>
+                <Typography variant='h6' gutterBottom mt={4}>Reviews</Typography>
                 <Grid container spacing={2}>
                     {reviewList.map((review)=>{
                         return (
@@ -66,7 +66,7 @@ export const Review = ({reviewList}) => {
                                         {/* <img src={review.userImage} className={classes.authorImg} /> */}
                                     </div>
                                     <div className={classes.userSection}> 
-                                        <Typography variant="body2" className={classes.userDesc}>
+                                        <Typography variant="body1" className={classes.userDesc}>
                                             <Link href="#" color="inherit">
                                                 {review.user}
                                             </Link>
@@ -77,7 +77,7 @@ export const Review = ({reviewList}) => {
                                     </div>
                                 </div>
                                 <div className={classes.reviewData}>
-                                    <Typography>
+                                    <Typography variant="body2">
                                         {review.review}
                                     </Typography>
                                 </div>
