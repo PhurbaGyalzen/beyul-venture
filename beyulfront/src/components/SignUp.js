@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   imgContainer:{
-    backgroundImage:'linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("/static/images/swayambhu.jpg")',
+    backgroundImage:'linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("/static/images/mountain.jpg")',
     padding: '0',
     width:'100%',
     height:'100%',
@@ -65,9 +65,12 @@ export default function SignUp() {
             <div className={classes.imgContainer}>
               <div style={{paddingTop:'70%',width:'100%',height:'100%'}}>
                 
-                <div style={{marginLeft:'1.5rem'}}>
-                  <Typography align="left" style={{color:'#CEF0FF',fontSize:'2rem',fontWeight:'600'}}>
-                    <span style={{fontSize:"4rem", color:'#fff',fontWeight:'700'}}>Join Us</span> <br/>
+                <div style={{marginLeft:'1.5rem', marginTop:"2rem"}}>
+                  <Typography align="left" style={{color:'#ffffff',fontSize:'2rem',fontWeight:'600', paddingBottom:"0.5rem", paddingTop:"1rem"}}>
+                    Join Us 
+                  </Typography>
+
+                  <Typography variant="body1" style={{color:"#13181e"}} >
                     To an unforgettable Journey
                   </Typography>
                 </div>
@@ -81,7 +84,7 @@ export default function SignUp() {
                   {/* <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                   </Avatar> */}
-                  <Typography component='h1' variant='h4' >
+                  <Typography component='h1' variant='h4' style={{paddingBottom:"1rem"}} >
                     REGISTER NOW
                   </Typography>
                   
