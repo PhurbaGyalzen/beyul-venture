@@ -24,9 +24,6 @@ const useStyles = makeStyles((theme) => ({
         flexGrow:1,
     },
 
-    iconHeading:{
-        fontWeight:"bold"
-    },
     
     box:{
         marginBottom:"2rem",
@@ -55,19 +52,19 @@ export default function TripFacts() {
                         <Grid container direction="row" justifyContent="space-around" >
                             <Grid Item xs={11} md={3}>
                                 <AccessTimeIcon className={classes.button}/>
-                                <Typography variant="body1" className={classes.iconHeading}>Duration</Typography>
+                                <Typography variant="body1">Duration</Typography>
                                 <Typography variant="body2">15 Days</Typography>
                             </Grid>
 
                             <Grid Item xs={11} md={3}>
                                 <EventNoteOutlinedIcon className={classes.button}/>
-                                <Typography variant="body1" className={classes.iconHeading}>Best Season</Typography>
+                                <Typography variant="body1">Best Season</Typography>
                                 <Typography variant="body2">Jan - Dec</Typography>
                             </Grid>
 
                             <Grid Item xs={11} md={3}>
                                 <Battery60OutlinedIcon className={classes.button}/>
-                                <Typography variant="body1" className={classes.iconHeading}>Level</Typography>
+                                <Typography variant="body1">Level</Typography>
                                 <Typography variant="body2">Difficult</Typography>
                             </Grid>
                         </Grid>
@@ -77,19 +74,19 @@ export default function TripFacts() {
                         <Grid container direction="row" justifyContent="space-around" >
                             <Grid Item xs={11} md={3}>
                                 <CommuteOutlinedIcon className={classes.button}/>
-                                <Typography variant="body1" className={classes.iconHeading}>Transportation</Typography>
+                                <Typography variant="body1">Transportation</Typography>
                                 <Typography variant="body2">Private Vehicel/Public Bus/Taxi</Typography>
                             </Grid>
 
                             <Grid Item xs={11} md={3}>
                                 <FlightTakeoffIcon className={classes.button}/>
-                                <Typography variant="body1" className={classes.iconHeading}>Starts at</Typography>
+                                <Typography variant="body1">Starts at</Typography>
                                 <Typography variant="body2">Kathmandu</Typography>
                             </Grid>
 
                             <Grid Item xs={11} md={3}>
                                 <FlightLandOutlinedIcon className={classes.button}/>
-                                <Typography variant="body1" className={classes.iconHeading}>Ends at</Typography>
+                                <Typography variant="body1">Ends at</Typography>
                                 <Typography variant="body2">Kathmandu</Typography>
                             </Grid>
                         </Grid>
@@ -99,19 +96,19 @@ export default function TripFacts() {
                         <Grid container direction="row" justifyContent="space-around" >
                             <Grid Item xs={11} md={3}>
                                 <PersonIcon className={classes.button}/>
-                                <Typography variant="body1" className={classes.iconHeading}>Min Age</Typography>
+                                <Typography variant="body1" >Min Age</Typography>
                                 <Typography variant="body2">15+</Typography>
                             </Grid>
 
                             <Grid Item xs={11} md={3}>
                                 <SupervisorAccountOutlinedIcon className={classes.button}/>
-                                <Typography variant="body1" className={classes.iconHeading}>Max People</Typography>
+                                <Typography variant="body1">Max People</Typography>
                                 <Typography variant="body2">Group or Private Trek Options</Typography>
                             </Grid>
 
                             <Grid Item xs={11} md={3}>
                                 <FastfoodOutlinedIcon className={classes.button}/>
-                                <Typography variant="body1" className={classes.iconHeading}>Meals</Typography>
+                                <Typography variant="body1">Meals</Typography>
                                 <Typography variant="body2">Full Board During The Trek</Typography>
                             </Grid>
                         </Grid>
