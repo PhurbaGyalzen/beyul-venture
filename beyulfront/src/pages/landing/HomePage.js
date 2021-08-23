@@ -160,7 +160,7 @@ const HomePage = () => {
             <Box mt='1rem'>
                 <Container>
                     <Typography
-                        variant='h3' components="h4"
+                        variant='h3' components="h3"
                         className={classes.subHeading}
                     >
                         Popular Packages

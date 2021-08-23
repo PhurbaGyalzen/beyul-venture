@@ -1,3 +1,4 @@
+import { Typography } from '@material-ui/core';
 import React from 'react';
 import {Carousel} from  'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -11,6 +12,7 @@ const BrushyText = (props) => {
             bottom: '50%', // cant use top cuz bottom is used by default and never use top and bottom
             backgroundColor: '#ffffff00',
             fontSize: '4rem',
+            lineHeight:"4.5rem",
             transform: 'translateY(+50%)'
         }
     }
@@ -28,7 +30,7 @@ const CarouselWithText = ({imgProps, text}) => {
                 {...imgProps}
                 style={imgStyles}
             />
-            <BrushyText className="legend">{text}</BrushyText>
+            <BrushyText className="legend" >{text}</BrushyText>
         </>
     )
 }
