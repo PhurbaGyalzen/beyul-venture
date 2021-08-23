@@ -34,12 +34,6 @@ const useStyles = makeStyles((theme) => ({
         flexGrow:1
     },
 
-    title:{
-        fontWeight:"bold",
-        fontSize:"1rem",
-        lineHeight:"rem",
-    },
-
     description:{
         textAlign:"justify",
     }
@@ -57,7 +51,7 @@ export default function Overview() {
                 {overview.map((data)=>(
                     <Grid container>
                         <Box pt={3}>
-                            <Typography className={classes.title} variant="body1">
+                            <Typography variant="body1">
                                 {data.title}
                             </Typography>
 

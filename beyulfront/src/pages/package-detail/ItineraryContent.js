@@ -17,10 +17,6 @@ const useStyles = makeStyles((theme) => ({
     title:{
         padding:"1rem"
     },
-
-    description:{
-    }
-
     
 }))
 
@@ -32,7 +28,7 @@ export default function ItineraryContent({title,description}) {
     return (
         <>                     
             <div className={classes.title}>
-                <Typography style={{display:"inline", fontSize:"1rem"}} variant="h6">{title}</Typography>
+                <Typography style={{display:"inline"}} variant="body1">{title}</Typography>
                 <Typography style={{display:"inline", paddingLeft:"1rem"}} variant="body2" onClick={()=>setShow(!show)}> {show? <RemoveIcon fontSize="large" style={{paddingTop:"0.5rem"}} />:<AddIcon fontSize="large" style={{color:"694311", paddingTop:"0.5rem"}}/>} </Typography>
             </div>
             <Divider/>
