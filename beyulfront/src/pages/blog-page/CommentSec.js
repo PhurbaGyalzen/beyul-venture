@@ -62,6 +62,7 @@ export const CommentSec = () => {
                                 variant='outlined'
                                 disabled={isSubmitting}
                                 type='submit'
+                                style={{backgroundColor:"#C47D1E"}}
                             >
                                 Post Comment
                             </Button>

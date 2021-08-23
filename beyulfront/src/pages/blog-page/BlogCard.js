@@ -98,17 +98,17 @@ export const BlogCard = ({
                     })}
                 </UnorderList>
                 <Link to={'/blog/' + slug}>
-                    <Title>{title}</Title>
+                    <Title> <Typography variant="h4">{title}</Typography></Title>
                 </Link>
                 <div>
                     {/*<FancyLink href='#'>{author}</FancyLink>*/}
                     <FancyLink to={'/author/' + authorId}>
-                        <Typography color='textPrimary'>
+                        <Typography variant="body1">
                             {authorName}
                         </Typography>
                     </FancyLink>
                 </div>
-                <summary>{description}</summary>
+                <summary> <Typography variant="body2">{description}</Typography></summary>
             </div>
         </Article>
     )

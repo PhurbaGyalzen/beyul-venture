@@ -203,7 +203,7 @@ const Blogs = (props) => {
         <>
             <Box
                 pt={7}
-                style={{ backgroundColor: '#EDEEF0', color: '#13181e' }}
+                style={{color: '#13181e' }}
             >
                 <Container style={{ paddingTop: '4rem' }}>
                     <TopPart>

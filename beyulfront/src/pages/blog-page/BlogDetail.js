@@ -20,6 +20,8 @@ import FourZeroFour from 'pages/404'
 const blogStyles = makeStyles((theme) => ({
     blogContainer: {
         maxWidth: '750px',
+        fontSize:'14px',
+        lineHeight:"24px",
         marginLeft: 'auto',
         marginRight: 'auto',
     },
@@ -174,7 +176,7 @@ const BlogDetail = ({ details }) => {
                 </Container>
 
                 <Container>
-                    <Typography variant='h5' gutterBottom>
+                    <Typography variant='h6' gutterBottom>
                         Related Articles
                     </Typography>
                 </Container>
