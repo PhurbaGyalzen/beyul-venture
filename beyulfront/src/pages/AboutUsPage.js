@@ -29,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: '1rem',
         textDecoration:"underline",
         letterSpacing:"0.1rem",
+        fontSize:"14px",
+        lineHeight:"24px",
         '&:hover': {
             cursor: 'pointer',
             backgroundColor:"#DF9534",
@@ -89,12 +91,12 @@ export default function AboutUsPage() {
                     >
                         <Grid item xs={12} md={6} sm={6}>
                             <Typography
-                                variant='h6'
+                                variant='body1'
                                 className={classes.aboutUs}
                             >
                                 About Us
                             </Typography>
-                            <Typography component='p' align='justify' className={classes.paragraph}>
+                            <Typography component='p' align='justify' variant="body2">
                                 Lorem Ipsum has been the industry's standard dummy
                                 text ever since the 1500s, scrambled it to make a
                                 type specimen book. It has survived not only five
@@ -132,12 +134,12 @@ export default function AboutUsPage() {
 
                         <Grid item xs={12} md={6} sm={6}>
                             <Typography
-                                variant='h5'
+                                variant='body1'
                                 className={classes.aboutUs}
                             >
                                 Our History
                             </Typography>
-                            <Typography component='p' align='justify' className={classes.paragraph}>
+                            <Typography component='p' variant="body2" align='justify' >
                                 Lorem Ipsum has been the industry's standard dummy
                                 text ever since the 1500s, scrambled it to make a
                                 type specimen book. It has survived not only five
@@ -194,14 +196,14 @@ export default function AboutUsPage() {
 
                                 <CardContent style={{ paddingTop: '0' }}>
                                     <Typography
-                                        variant='h6'
+                                        variant='body1'
                                         gutterBottom
                                         className={classes.cardHeading}
                                     >
                                         Global Reach
                                     </Typography>
                                     <Typography
-                                        style={{ fontSize: '0.8rem', lineHeight:"1.35rem" }}
+                                        variant="body2"
                                         gutterBottom
                                     >
                                         No matter where in the world you want to
@@ -227,14 +229,14 @@ export default function AboutUsPage() {
                                 />
                                 <CardContent style={{ paddingTop: '0' }}>
                                     <Typography
-                                        variant='h6'
+                                        variant='body1'
                                         gutterBottom
                                         className={classes.cardHeading}
                                     >
                                         Compitative prices
                                     </Typography>
                                     <Typography
-                                        style={{ fontSize: '0.8rem', lineHeight:'1.35rem'}}
+                                        variant="body2"
                                         gutterBottom
                                     >
                                         Beyul.com has over 400 hundreds members,
@@ -262,7 +264,7 @@ export default function AboutUsPage() {
 
                                 <CardContent style={{ paddingTop: '0' }}>
                                     <Typography
-                                        variant='h6'
+                                        variant='body1'
                                         className={classes.cardHeading}
                                         gutterBottom
 
@@ -270,12 +272,10 @@ export default function AboutUsPage() {
                                         Excellent service
                                     </Typography>
                                     <Typography
-                                        style={{ fontSize: '0.8rem', lineHeight:"1.35rem"}}
+                                        variant="body2"
                                         gutterBottom
                                     >
-                                        With Beyul.com, you always travel
-                                        worry-free, knowing you can count on us
-                                        when needed. Our customer service team
+                                      Our customer service team
                                         speaks multiple languages. Customer service
                                         in English is available 24/7 by phone,
                                         e-mail and directly via our mobile app.
@@ -298,11 +298,11 @@ export default function AboutUsPage() {
                                 />
 
                                 <CardContent style={{ paddingTop: '0' }}>
-                                    <Typography variant='h6' className={classes.cardHeading}>
+                                    <Typography variant='body1' className={classes.cardHeading}>
                                         Save Payment
                                     </Typography>
                                     <Typography
-                                        style={{ fontSize: '0.8rem', lineHeight:'1.35rem'}}
+                                        variant="body2"
                                         gutterBottom
                                     >
                                         No matter where in the world you want to
