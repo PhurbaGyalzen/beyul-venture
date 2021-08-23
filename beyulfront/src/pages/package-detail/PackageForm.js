@@ -58,13 +58,13 @@ export default function PackageForm() {
                 <Grid container>
                     <Box className={classes.priceBox}>
                         <Grid item xs={12} sm={12} md={12} lg={12}>
-                            <Typography style={{fontSize:"1rem", fontWeight:"bold", lineHeight:"2rem"}}>Price</Typography>
+                            <Typography style={{fontSize:"18px", lineHeight:"32px", color:"#fcfcfc"}}>Price</Typography>
                         </Grid>
                     </Box>
                     
                     <Box className={classes.priceValue}>
                         <Grid item xs={12} sm={12} md={12} lg={12}>
-                            <Typography component="h6" style={{fontSize:"1rem", fontWeight:"bold", color:"#ffffff"}}><LocalOfferIcon style={{transform:"rotate(-270deg)", color:"#DF9534", marginTop:"0.54rem"}}/>{'  '}From $500</Typography>
+                            <Typography component="body2" style={{color:"#fcfcfc"}}><LocalOfferIcon style={{transform:"rotate(-270deg)", color:"#DF9534", marginTop:"0.54rem"}}/>{'  '}From $500</Typography>
                         </Grid>
                     </Box>
                     
@@ -77,8 +77,8 @@ export default function PackageForm() {
                     textColor="#13181e"
                     aria-label="Package form details"
                 >
-                    <Tab label="Booking Form" />
-                    <Tab label="Enquiry Form" />
+                    <Tab style={{fontSize:"14px", lineHeight:"24px"}} label="Booking Form" />
+                    <Tab style={{fontSize:"14px", lineHeight:"24px"}} label="Enquiry Form" />
                 </Tabs>
                 {selectedTab === 0 && <BookingForm/>}
                 {selectedTab === 1 && <EnquiryForm/>}
