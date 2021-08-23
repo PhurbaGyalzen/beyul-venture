@@ -26,11 +26,13 @@ const useStyles = makeStyles((theme) => ({
         width:'33ch'
     },
 
-    bookingButton:{
+    enquiryButton:{
         width:"33ch",
         backgroundColor:"#694311",
         marginBottom:"1rem",
         color:"#ffffff",
+        fontSize:"14px",
+        lineHeight:"24px",
         '&:hover':{
             backgroundColor:"#694311"
         }
@@ -104,7 +106,7 @@ export default function EnquiryForm() {
 
                     <Box style={{marginTop:"2rem"}}>
                             <Grid item xs={12}>
-                                <Button variant="contained" className={classes.bookingButton}>
+                                <Button variant="contained" className={classes.enquiryButton}>
                                     SUBMIT ENQUIRY
                                 </Button>
                             </Grid>
