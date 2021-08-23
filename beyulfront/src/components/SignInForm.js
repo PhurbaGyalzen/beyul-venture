@@ -65,123 +65,123 @@ export const SignInForm = () => {
     return (
         <>
             <Paper>
-            <Formik
-                validateOnChange={false}
-                validateOnBlur={false}
-                initialValues={{ 
-                    email:'',
-                    password: '',
-                }}
-                validationSchema={validationSchema}
-                onSubmit={(data, { setSubmitting, resetForm}) => {
-                    // validate(data);
-                    setSubmitting(true)
-                    //make async call
-                    console.log('Submit:', data)
-                    const requestOptions = {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ 
-                            email: data.email,
-                            password: data.password
-                         })
-                    }
-                    
-                    fetch('http://localhost:8000/api/login/',requestOptions)
-                    .then( response => response.json().then(res => ({
-                            data: res, 
-                            status : response.status
-                        })
-                    ))
-                    .then(
-                        (jsonData) => {
-                            console.log('main ch jsonData:',jsonData.data);
-                            console.log(jsonData.status)
-                            if (jsonData.data.hasOwnProperty("access")){
-                                successToast("Sucessfully logged in")
-                                history.push("/")
-                            }else{
-                                (jsonData.status > 400) ? errort(jsonData.data.detail) : successToast(jsonData.data.detail);
-                            }
-                            // successToast(jsonData.data.detail);
+                <Formik
+                    validateOnChange={false}
+                    validateOnBlur={false}
+                    initialValues={{ 
+                        email:'',
+                        password: '',
+                    }}
+                    validationSchema={validationSchema}
+                    onSubmit={(data, { setSubmitting, resetForm}) => {
+                        // validate(data);
+                        setSubmitting(true)
+                        //make async call
+                        console.log('Submit:', data)
+                        const requestOptions = {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ 
+                                email: data.email,
+                                password: data.password
+                            })
                         }
+                        
+                        fetch('http://localhost:8000/api/login/',requestOptions)
+                        .then( response => response.json().then(res => ({
+                                data: res, 
+                                status : response.status
+                            })
+                        ))
+                        .then(
+                            (jsonData) => {
+                                console.log('main ch jsonData:',jsonData.data);
+                                console.log(jsonData.status)
+                                if (jsonData.data.hasOwnProperty("access")){
+                                    successToast("Sucessfully logged in")
+                                    history.push("/")
+                                }else{
+                                    (jsonData.status > 400) ? errort(jsonData.data.detail) : successToast(jsonData.data.detail);
+                                }
+                                // successToast(jsonData.data.detail);
+                            }
 
-                    )
-                    .catch(error => {
-                        console.error(error);
-                        errort(error);
-                    });
-                    setSubmitting(false)
-                    resetForm()
-                
-                }}
-            >
-                {({
-                values,
-                errors,
-                touched,
-                isSubmitting,
-                // handleChange,
-                // handleBlur,
-                handleSubmit,
-            }) => (
-                <Form className={classes.form}>
-                <ValidatingTextField
-                    variant='outlined'
-                    margin='normal'
-                    required
-                    fullWidth
-                    id='email'
-                    label='Email Address'
-                    name='email'
-                    autoComplete='email'
-                    autoFocus
-                    className={classes.textfield}
-                />
-                <ValidatingTextField
-                    variant='outlined'
-                    margin='normal'
-                    required
-                    fullWidth
-                    name='password'
-                    label='Password'
-                    type='password'
-                    id='password'
-                    autoComplete='current-password'
-                    className={classes.textfield}
-                />
-                <FormControlLabel
-                    control={<Checkbox value='remember' color='primary' />}
-                    label='Remember me'
-                />
-                <Button
-                    type='submit'
-                    fullWidth
-                    variant='contained'
-                    className={classes.submit}
-                    disabled={isSubmitting}
+                        )
+                        .catch(error => {
+                            console.error(error);
+                            errort(error);
+                        });
+                        setSubmitting(false)
+                        resetForm()
+                    
+                    }}
                 >
-                    Sign In
-                </Button>
-                <Grid container>
-                    <Grid item xs>
-                    <Link href='#' variant='body2'>
-                        Forgot password?
-                    </Link>
+                    {({
+                    values,
+                    errors,
+                    touched,
+                    isSubmitting,
+                    // handleChange,
+                    // handleBlur,
+                    handleSubmit,
+                }) => (
+                    <Form className={classes.form}>
+                    <ValidatingTextField
+                        variant='outlined'
+                        margin='normal'
+                        required
+                        fullWidth
+                        id='email'
+                        label='Email Address'
+                        name='email'
+                        autoComplete='email'
+                        autoFocus
+                        className={classes.textfield}
+                    />
+                    <ValidatingTextField
+                        variant='outlined'
+                        margin='normal'
+                        required
+                        fullWidth
+                        name='password'
+                        label='Password'
+                        type='password'
+                        id='password'
+                        autoComplete='current-password'
+                        className={classes.textfield}
+                    />
+                    <FormControlLabel
+                        control={<Checkbox value='remember' color='primary' />}
+                        label='Remember me'
+                    />
+                    <Button
+                        type='submit'
+                        fullWidth
+                        variant='contained'
+                        className={classes.submit}
+                        disabled={isSubmitting}
+                    >
+                        Sign In
+                    </Button>
+                    <Grid container>
+                        <Grid item xs>
+                        <Link href='#' variant='body2'>
+                            Forgot password?
+                        </Link>
+                        </Grid>
+                        <Grid item >
+                        <Link href='/sign-up' variant='body2'>
+                            {"Don't have an account? Sign Up"}
+                        </Link>
+                        </Grid>
                     </Grid>
-                    <Grid item >
-                    <Link href='/sign-up' variant='body2'>
-                        {"Don't have an account? Sign Up"}
-                    </Link>
-                    </Grid>
-                </Grid>
-            </Form>
-             
-            )}
-            </Formik>
+                </Form>
+                
+                )}
+                </Formik>
             </Paper>
         
         </>

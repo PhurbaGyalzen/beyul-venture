@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     paddingLeft:'1rem',
     paddingTop:'1.5rem',
-    backgroundColor: '#ffffff',
     [theme.breakpoints.down('lg')]: {
       // maxWidth: '400px'
     },
@@ -82,7 +81,7 @@ export default function SignUp() {
                   {/* <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                   </Avatar> */}
-                  <Typography component='h1' variant='h5' style={{color:"#694311", fontSize:"2rem", fontWeight:"bold", lineHeight:"2rem"}}>
+                  <Typography component='h1' variant='h4' >
                     REGISTER NOW
                   </Typography>
                   

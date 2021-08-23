@@ -8,6 +8,8 @@ import Checkbox from '@material-ui/core/Checkbox'
 import Link from '@material-ui/core/Link'
 import toast from 'react-hot-toast'
 import { useHistory } from 'react-router';
+import Paper from '@material-ui/core/Paper'
+
 const useStyles = makeStyles((theme) => ({
     
     form: {
@@ -29,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
     },
     formContainer:{
         padding:'2rem',
-        backgroundColor:"#ffffff"
 
     },
     textfield:{
@@ -69,144 +70,146 @@ export const SignUpForm = (props) => {
     const classes = useStyles();
     return (
         <>
-        <Formik
-                initialValues={{ 
-                    firstName: '',
-                    lastName:'',
-                    email:'',
-                    password: '',
-                }}
-                validationSchema={validationSchema}
-                onSubmit={(data, { setSubmitting, resetForm}) => {
-                    // validate(data);
-                    setSubmitting(true)
-                    console.log('Submit:', data)
-                    const requestOptions = {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ 
-                            first_name: data.firstName,
-                            last_name: data.lastName,
-                            email: data.email,
-                            password: data.password
-                         })
-                    }
-                    
-                    
-
-                    fetch('http://localhost:8000/api/register/',requestOptions)
-                    .then( response => response.json().then(res => ({
-                        data: res, 
-                        status : response.status
-                        })
-                    ))
-                    .then(
-                        (jsonData) => {
-                            console.log('main sign up jsonData:',jsonData.data);
-                            console.log(jsonData.status)
+            <Paper>
+                <Formik
+                        initialValues={{ 
+                            firstName: '',
+                            lastName:'',
+                            email:'',
+                            password: '',
+                        }}
+                        validationSchema={validationSchema}
+                        onSubmit={(data, { setSubmitting, resetForm}) => {
+                            // validate(data);
+                            setSubmitting(true)
+                            console.log('Submit:', data)
+                            const requestOptions = {
+                                method: 'POST',
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({ 
+                                    first_name: data.firstName,
+                                    last_name: data.lastName,
+                                    email: data.email,
+                                    password: data.password
+                                })
+                            }
                             
-                            (jsonData.status > 400) ? errort(jsonData.data.detail) : successToast(jsonData.data.detail);
-
-                            // successToast(jsonData.data.detail);
-                        }
-                    )
-                    .catch(error => {
-                        // console.error(error);
-                        errort(error);
-                    });
-                    setSubmitting(false)
-                    resetForm()
-                }}
-            >
-                {({
-                values,
-                errors,
-                touched,
-                isSubmitting,
-                // handleChange,
-                // handleBlur,
-                handleSubmit,
-            }) => (
-                <Form className={classes.form} >
-                    <div className={classes.formContainer}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <ValidatingTextField
-                                autoComplete='fname'
-                                name='firstName'
-                                variant='outlined'
-                                required
-                                fullWidth
-                                id='firstName'
-                                label='First Name'
-                                className={classes.textfield}
-                                autoFocus
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <ValidatingTextField
-                                variant='outlined'
-                                required
-                                fullWidth
-                                id='lastName'
-                                label='Last Name'
-                                name='lastName'
-                                autoComplete='lname'
-                                className={classes.textfield}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <ValidatingTextField
-                                variant='outlined'
-                                required
-                                fullWidth
-                                id='email'
-                                label='Email Address'
-                                name='email'
-                                className={classes.textfield}
-                                autoComplete='email'
-                                
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <ValidatingTextField
-                                variant='outlined'
-                                required
-                                fullWidth
-                                name='password'
-                                label='Password'
-                                type='password'
-                                className={classes.textfield}
-                                id='password'
-                                />
-                            </Grid>
                             
+
+                            fetch('http://localhost:8000/api/register/',requestOptions)
+                            .then( response => response.json().then(res => ({
+                                data: res, 
+                                status : response.status
+                                })
+                            ))
+                            .then(
+                                (jsonData) => {
+                                    console.log('main sign up jsonData:',jsonData.data);
+                                    console.log(jsonData.status)
+                                    
+                                    (jsonData.status > 400) ? errort(jsonData.data.detail) : successToast(jsonData.data.detail);
+
+                                    // successToast(jsonData.data.detail);
+                                }
+                            )
+                            .catch(error => {
+                                // console.error(error);
+                                errort(error);
+                            });
+                            setSubmitting(false)
+                            resetForm()
+                        }}
+                    >
+                        {({
+                        values,
+                        errors,
+                        touched,
+                        isSubmitting,
+                        // handleChange,
+                        // handleBlur,
+                        handleSubmit,
+                    }) => (
+                        <Form className={classes.form} >
+                            <div className={classes.formContainer}>
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12}>
+                                        <ValidatingTextField
+                                        autoComplete='fname'
+                                        name='firstName'
+                                        variant='outlined'
+                                        required
+                                        fullWidth
+                                        id='firstName'
+                                        label='First Name'
+                                        className={classes.textfield}
+                                        autoFocus
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <ValidatingTextField
+                                        variant='outlined'
+                                        required
+                                        fullWidth
+                                        id='lastName'
+                                        label='Last Name'
+                                        name='lastName'
+                                        autoComplete='lname'
+                                        className={classes.textfield}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <ValidatingTextField
+                                        variant='outlined'
+                                        required
+                                        fullWidth
+                                        id='email'
+                                        label='Email Address'
+                                        name='email'
+                                        className={classes.textfield}
+                                        autoComplete='email'
+                                        
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <ValidatingTextField
+                                        variant='outlined'
+                                        required
+                                        fullWidth
+                                        name='password'
+                                        label='Password'
+                                        type='password'
+                                        className={classes.textfield}
+                                        id='password'
+                                        />
+                                    </Grid>
+                                    
+                                    </Grid>
+                                    <Button
+                                    type='submit'
+                                    fullWidth
+                                    variant='contained'
+                                    className={classes.submit}
+                                    disabled={isSubmitting}
+                                    >
+                                    Sign Up
+                                    </Button>
+                                    <Grid container justifyContent='flex-end'>
+                                    <Grid item>
+                                        <Link href='/sign-in' variant='body2'>
+                                        Already have an account? Sign in
+                                        </Link>
+                                    </Grid>
                             </Grid>
-                            <Button
-                            type='submit'
-                            fullWidth
-                            variant='contained'
-                            className={classes.submit}
-                            disabled={isSubmitting}
-                            >
-                            Sign Up
-                            </Button>
-                            <Grid container justifyContent='flex-end'>
-                            <Grid item>
-                                <Link href='/sign-in' variant='body2'>
-                                Already have an account? Sign in
-                                </Link>
-                            </Grid>
-                    </Grid>
-                    </div>
-                    
-            </Form>  
-            )}
-            </Formik>
-        
+                            </div>
+                            
+                    </Form>  
+
+                    )}
+                    </Formik>
+                </Paper>
         </>
     )
 }
