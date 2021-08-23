@@ -6,6 +6,8 @@ import { getEsewaLink } from 'utils/payment'
 import pck from 'img/pck_1.webp'
 import WhyBeyulVenture from './WhyBeyulVenture'
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+
 
 import {
     Container,
@@ -50,10 +52,12 @@ const packageStyles = makeStyles((theme) => ({
     },
     checkList:{
         verticalAlign: 'middle',
-        display: 'inline-flex'
+        display: 'inline-flex',
+        paddingTop:"0.8rem"
     },
     checkIc:{
-        fill:'#6bb53f'
+        fill:'#6F6F6F',
+        paddingRight:"0.2rem"
     }
 }))
 
@@ -186,12 +190,12 @@ export const PackDetail = (props) => {
                         <Grid item xs={12} md={4} sm={6}>
                             <div>
                                 <Typography
-                                    variant='h6'
+                                    variant='h4'
                                     align='left'
                                     gutterBottom
                                 >
                                     Annapurna trek
-                                </Typography>
+                                </Typography> 
 
                                 <Typography className={classes.ratingDesc} variant="body2"> 
                                     {' '}
@@ -201,41 +205,46 @@ export const PackDetail = (props) => {
                                         readOnly
                                     />{' '}
                                     78 ratings
-                                </Typography>
+                                </Typography><br/>
                                 <Typography className={classes.checkList} variant="body2">
                                     <CheckCircleIcon className={classes.checkIc}/> Experience the mountain
-                                </Typography>
+                                </Typography><br/>
                                 <Typography className={classes.checkList} variant="body2">
                                     <CheckCircleIcon className={classes.checkIc} /> Enjoy the trails
-                                </Typography>
+                                </Typography><br/>
                                 <Typography className={classes.checkList} gutterBottom variant="body2"> 
                                     <CheckCircleIcon className={classes.checkIc} /> Visit Ghandruk
                                 </Typography>
-                                <Typography>
+                                <Typography variant="body1" style={{paddingTop:"0.5rem", paddingBottom:"1rem"}}>
                                     Price{' '}
                                     <span
                                         style={{
                                             fontWeight: '700',
-                                            fontSize: '1.8rem',
+                                            fontSize: '1.6rem',
                                         }}
                                     >
                                         12,000
                                     </span>{' '}
                                 </Typography>
                                 <PaymentOptions>
-                                    <GreenBtn
+                                    <Button variant="contained"
                                         href={getEsewaLink(
                                             100,
                                             Math.random().toString(),
                                         )}
+
+                                        style={{fontSize:"14px", color:"#13181e", marginRight:"0.5rem", backgroundColor:"#C47D1E"}}
                                     >
-                                        Book this tour
-                                    </GreenBtn>
-                                    <BlueBtn>
+                                        BOOK THIS TOUR
+                                    </Button>
+                                    <Button variant="outlined" style={{fontSize:"14px", color:"#13181e"}}>
                                         <Link to={'/stripe-payment/1?callbackURL='+window.location.href}>
-                                            Pay with stripe
+                                        <Typography variant="body2">
+                                            PAY WITH STRIPE
+
+                                        </Typography>
                                         </Link>
-                                    </BlueBtn>
+                                    </Button>
                                 </PaymentOptions>
                             </div>
                         </Grid>
