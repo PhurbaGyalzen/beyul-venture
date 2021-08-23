@@ -23,11 +23,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(8),
     
     marginLeft: theme.spacing(1),
-    padding:'2rem',
+    padding:'1rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: '#fff',
   },
   
   imgContainer:{
@@ -67,7 +66,7 @@ export default function SignIn() {
               <div style={{display: 'flex',justifyContent:'center'}}>
                 <div className={classes.paper}>
               
-                  <Typography component='h1' variant='h5' style={{color:"#694311", fontSize:"2rem", fontWeight:"bold", lineHeight:"2rem"}}>
+                  <Typography component='h4' variant='h5'>
                     SIGN IN
                   </Typography>
                   <SignInForm />

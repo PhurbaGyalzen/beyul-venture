@@ -7,6 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import Link from '@material-ui/core/Link'
 import toast from 'react-hot-toast';
+import Paper from '@material-ui/core/Paper'
 
 import { useHistory } from 'react-router';
 
@@ -16,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     form: {
       width: '100%', // Fix IE 11 issue.
       marginTop: theme.spacing(3),
+      padding:"1rem",
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
@@ -62,6 +64,7 @@ export const SignInForm = () => {
     const history = useHistory();
     return (
         <>
+            <Paper>
             <Formik
                 validateOnChange={false}
                 validateOnBlur={false}
@@ -179,6 +182,7 @@ export const SignInForm = () => {
              
             )}
             </Formik>
+            </Paper>
         
         </>
     )
