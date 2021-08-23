@@ -115,7 +115,7 @@ export default function AboutUsPage() {
                                 Letraset sheets containing Lorem Ipsum passages.
                             </Typography>
                             <Button
-                                color="primary"
+                                color="#cdcdcd"
                                 className={classes.button}
                             >   
                                 Readmore
@@ -157,7 +157,7 @@ export default function AboutUsPage() {
                             </Typography>
                             <Button
                                 className={classes.button}
-                                color="primary"
+                                color="#cdcdcd"
                             >
                                 Readmore
                             </Button>

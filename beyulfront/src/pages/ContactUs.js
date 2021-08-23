@@ -234,33 +234,7 @@ export default function ContactUs() {
                     </Grid>
                 </Box>
 
-                {/* Second Row */}
-
-                {/* second row  our team*/}
-                <Grid
-                    container
-                    justifyContent='space-evenly'
-                    // style={{ backgroundColor: '#FFE8DF' }}
-                >
-                    <Grid
-                        item
-                        xs={12}
-                        sm={12}
-                        md={12}
-                        style={{ paddingTop: '1%', paddingBottom: '1%' }}
-                        align='center'
-                    >
-                        <Typography variant='h5' component={Box} pb={5} pt={3} className={classes.heading}>
-                            Meet Our Team
-                        </Typography>
-                    </Grid>
-
-                    {/* creating profile card with DeveloperCard Component in Component */}
-                    {devProfile.map((data) => {
-                        return <DeveloperCard key={data.id} data={data} />
-                    })}
-                </Grid>
-
+                
                 {/* Third Row */}
                 <Grid
                     container
