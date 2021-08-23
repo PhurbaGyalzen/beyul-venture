@@ -52,12 +52,7 @@ const useStyles = makeStyles((theme) => ({
         color:"#fff"
     },
 
-    description:{
-        textAlign:"justify",
-        fontSize:"1rem",
-        lineHeight:"1.685rem",
-        color:"#13181e",
-    }
+
     
 }))
 
@@ -71,7 +66,7 @@ export default function WhyBeyulVenture() {
             <div className={classes.root}>
                 <Paper>
                     <Box className={classes.title}>
-                        <Typography variant="h6" style={{color:'#FFFFFF'}}>Why Beyul Venture</Typography>
+                        <Typography variant="h6" style={{color:'#FFFFFF', paddingTop:"0.2rem", paddingBottom:"0.2rem"}}>Why Beyul Venture</Typography>
                     </Box>
                     {whyBeyulVenture.map((data)=>(
                         <Box pt={4} pl={4}>
@@ -81,7 +76,7 @@ export default function WhyBeyulVenture() {
                                 </Grid>
 
                                 <Grid item md={8}>
-                                    <Typography variant="body1" style={{fontWeight:"bold"}}>{data.title}</Typography>
+                                    <Typography variant="body1">{data.title}</Typography>
                                     <Typography variant="body2">{data.title}</Typography>
                                 </Grid>
 
