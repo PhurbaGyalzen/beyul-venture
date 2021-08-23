@@ -47,7 +47,7 @@ export default function TripFacts() {
         <>  
             <div className={classes.root}>
                 <Paper>
-                    <Typography variant="h5" style={{fontSize:"2rem", textAlign:"center", paddingTop:"1rem", paddingBottom:"2rem"}}>Trip Facts</Typography>
+                    <Typography variant="h4" style={{textAlign:"center", paddingTop:"1rem", paddingBottom:"2rem"}}>Trip Facts</Typography>
                     <Box className={classes.box}>
                         <Grid container direction="row" justifyContent="space-around" >
                             <Grid Item xs={11} md={3}>

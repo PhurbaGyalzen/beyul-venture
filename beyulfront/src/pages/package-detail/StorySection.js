@@ -63,7 +63,7 @@ export const StorySection = () => {
                 }) => (
                     <Form className={classes.formStyle}>
                         
-                        <Typography gutterBottom className={classes.ratingSec}>Your Rating: 
+                        <Typography variant="body1" gutterBottom className={classes.ratingSec}>Your Rating: 
                             <Rating
                             name="simple-controlled"
                             value={value}
@@ -87,7 +87,7 @@ export const StorySection = () => {
                                 variant='outlined'
                                 disabled={isSubmitting}
                                 type='submit'
-                                style={{backgroundColor:'#6bb53f'}}
+                                style={{backgroundColor:'#C47D1E'}}
                             >
                                 Post Review
                             </Button>
