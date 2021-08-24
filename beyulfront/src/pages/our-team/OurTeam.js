@@ -21,6 +21,12 @@ import {datas} from './ourTeamData';
 import {guides} from './ourTeamData';
 import {assistant} from './ourTeamData';
 import Masonry from 'react-masonry-css';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import Tooltip from '@material-ui/core/Tooltip';
+import Fade from '@material-ui/core/Fade';
+
 
 // All images import
 
@@ -115,6 +121,39 @@ export default function OurTeam() {
                                         <Typography variant="body2" style={{fontStyle:"italic"}}>{data.post}</Typography>
                                         <Typography variant="body1">{data.email}</Typography>
                                         <Typography variant="body2">{data.bio}</Typography>
+
+
+                                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Facebook" arrow>
+                                            <Link href='#' style={{ marginRight: 10 }}>
+                                                <FacebookIcon
+                                                    fontSize='small'
+                                                    className='textHover'
+                                                    style={{color:"#694311"}}
+                                                />
+                                            </Link>
+                                        </Tooltip>
+
+                                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Instagram" arrow>
+                                            <Link href='#' style={{ marginRight: 10 }}>
+                                                <InstagramIcon
+                                                    fontSize='small'
+                                                    className='textHover'
+                                                    style={{color:"#694311"}}
+                                                />
+                                            </Link>
+                                        </Tooltip>
+
+                                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Twitter" arrow>
+                                            <Link href='#' style={{ marginRight: 10 }}>
+                                                <TwitterIcon
+                                                    fontSize='small'
+                                                    className='textHover'
+                                                    style={{color:"#694311"}}
+                                                />
+                                            </Link>
+                                        </Tooltip>
+                                        
+                                        
                                     </CardContent>
 
                                 </Card>
@@ -154,6 +193,36 @@ export default function OurTeam() {
                                         <Typography variant="body2" style={{fontStyle:"italic"}}>{data.post}</Typography>
                                         <Typography variant="body1">{data.email}</Typography>
                                         <Typography variant="body2">{data.bio}</Typography>
+
+                                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Facebook" arrow>
+                                            <Link href='#' style={{ marginRight: 10 }}>
+                                                <FacebookIcon
+                                                    fontSize='small'
+                                                    className='textHover'
+                                                    style={{color:"#694311"}}
+                                                />
+                                            </Link>
+                                        </Tooltip>
+
+                                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Instagram" arrow>
+                                            <Link href='#' style={{ marginRight: 10 }}>
+                                                <InstagramIcon
+                                                    fontSize='small'
+                                                    className='textHover'
+                                                    style={{color:"#694311"}}
+                                                />
+                                            </Link>
+                                        </Tooltip>
+
+                                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Twitter" arrow>
+                                            <Link href='#' style={{ marginRight: 10 }}>
+                                                <TwitterIcon
+                                                    fontSize='small'
+                                                    className='textHover'
+                                                    style={{color:"#694311"}}
+                                                />
+                                            </Link>
+                                        </Tooltip>
                                     </CardContent>
 
                                 </Card>
@@ -194,6 +263,36 @@ export default function OurTeam() {
                                         <Typography variant="body2" style={{fontStyle:"italic"}}>{data.post}</Typography>
                                         <Typography variant="body1">{data.email}</Typography>
                                         <Typography variant="body2">{data.bio}</Typography>
+
+                                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Facebook" arrow>
+                                            <Link href='#' style={{ marginRight: 10 }}>
+                                                <FacebookIcon
+                                                    fontSize='small'
+                                                    className='textHover'
+                                                    style={{color:"#694311"}}
+                                                />
+                                            </Link>
+                                        </Tooltip>
+
+                                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Instagram" arrow>
+                                            <Link href='#' style={{ marginRight: 10 }}>
+                                                <InstagramIcon
+                                                    fontSize='small'
+                                                    className='textHover'
+                                                    style={{color:"#694311"}}
+                                                />
+                                            </Link>
+                                        </Tooltip>
+
+                                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Twitter" arrow>
+                                            <Link href='#' style={{ marginRight: 10 }}>
+                                                <TwitterIcon
+                                                    fontSize='small'
+                                                    className='textHover'
+                                                    style={{color:"#694311"}}
+                                                />
+                                            </Link>
+                                        </Tooltip>
                                     </CardContent>
 
                                 </Card>
