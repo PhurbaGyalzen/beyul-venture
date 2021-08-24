@@ -17,8 +17,6 @@ import './index.css'
 import Tooltip from '@material-ui/core/Tooltip';
 import Fade from '@material-ui/core/Fade';
 
-
-
 //All images import
 import visa from 'img/visa.png'
 import affilated from 'img/affilated.png'
@@ -104,6 +102,7 @@ export const Footer = () => {
                         <Box mb={{ xs: 5, sm: 5, md: 5, lg: 5 }} mt={1}>
                             <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Facebook" arrow>
                                 <Link href='#' style={{ marginRight: 10 }}>
+                                    
                                     <FacebookIcon
                                         fontSize='small'
                                         className='textHover'

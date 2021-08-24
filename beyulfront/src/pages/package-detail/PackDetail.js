@@ -32,10 +32,9 @@ import { Review } from './Review'
 import { StorySection } from './StorySection'
 
 
-import sunil from 'img/sunil.png';
+import sunil from 'img/sunil.jpg';
 import nishan from 'img/nishan.jpg';
 import phurba from 'img/phurba.jpg';
-
 
 
 const packageStyles = makeStyles((theme) => ({

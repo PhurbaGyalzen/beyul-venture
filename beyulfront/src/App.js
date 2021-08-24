@@ -14,6 +14,7 @@ import Brightness4Icon from '@material-ui/icons/Brightness4';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import Fade from '@material-ui/core/Fade';
+import Breadcrumb from './components/Breadcrumb'
 
 
 
@@ -42,7 +43,7 @@ const App = () => {
             background:{
                 default:"#ebebeb",
                 paper:"#fcfcfc"
-            }
+            },
 
             
           },
@@ -60,6 +61,10 @@ const App = () => {
             body2:{color:"#13181e", fontFamily: 'arial', fontSize:'14px', lineHeight:'24px'},
             
         },
+
+        shape:{
+            borderRadius:"0.5rem"
+        }
 
         
 

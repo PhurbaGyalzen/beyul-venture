@@ -10,15 +10,9 @@ import { useState, useEffect } from 'react'
 import Faq from '../pages/faq/Faq'
 
 
-// All image import
 import contactUsImg from 'img/contactUs2.jpg'
 import mapImg from 'img/map.png'
 import question from 'img/question1.png'
-import nischalImg from 'img/nischal.jpg'
-import nishanImg from 'img/nishan.jpg'
-import phurbaImg from 'img/phurba.jpg'
-import sanjibImg from 'img/sanjib.jpg'
-import sunilImg from 'img/sunil.png'
 
 //validation import
 import { ContactUsForm } from '../components/ContactUsForm'
@@ -139,68 +133,6 @@ const useStyles = makeStyles((theme) => ({
 export default function ContactUs() {
     const classes = useStyles()
 
-    const [devProfile, setDevProfile] = useState([
-        {
-            id: 1,
-            name: 'Nischal Khatri',
-            post: 'FrontEnd Developer',
-            bio: `Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s, scrambled it to make a
-            type specimen book.`,
-            image: nischalImg,
-            fb: 'https://www.facebook.com/nischal.khatri.1',
-            instagram: '#',
-            twitter: '#',
-        },
-        {
-            id: 2,
-            name: 'Nishan Thapa',
-            post: 'Backend Developer',
-            bio: `Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s, scrambled it to make a
-            type specimen book.`,
-            image: nishanImg,
-            fb: '#',
-            instagram: 'https://www.instagram.com/n._.tc/',
-            twitter: '#',
-        },
-        {
-            id: 3,
-            name: 'Phurba Gyalzen Sherpa',
-            post: 'Backend Developer',
-            bio: `Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s, scrambled it to make a
-            type specimen book.`,
-            image: phurbaImg,
-            fb: 'https://www.facebook.com/Gyalzen.sherpa.360',
-            instagram: '#',
-            twitter: '#',
-        },
-        {
-            id: 4,
-            name: 'Sunil Tamang',
-            post: 'FrontEnd Developer',
-            bio: `Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s, scrambled it to make a
-            type specimen book.`,
-            image: sunilImg,
-            fb: 'https://www.facebook.com/suniltamangvlog/',
-            instagram: '#',
-            twitter: '#',
-        },
-        {
-            id: 5,
-            name: 'Sanjib Limbu',
-            post: 'Project Manager',
-            bio: `Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s, scrambled it to make a
-            type specimen book.`,
-            image: sanjibImg,
-            fb: 'https://www.facebook.com/sanjiv.limbu.92',
-            instagram: '#',
-            twitter: '#',
-        },
-    ])
 
     return (
         <>

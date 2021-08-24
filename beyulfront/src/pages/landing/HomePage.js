@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     subHeading: {
         paddingTop:"2rem",
         paddingBottom:"1rem",
+        textAlign:"center"
     },
     spacious: {
         margin: '2rem auto',
@@ -160,7 +161,7 @@ const HomePage = () => {
             <Box mt='1rem'>
                 <Container>
                     <Typography
-                        variant='h3' components="h3"
+                        variant='h4' components="h3"
                         className={classes.subHeading}
                     >
                         Popular Packages
