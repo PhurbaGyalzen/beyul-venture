@@ -18,6 +18,7 @@ import Link from '@material-ui/core/Link';
 import './index.css';
 import { makeStyles } from '@material-ui/core';
 import {datas} from './ourTeamData';
+import Masonry from 'react-masonry-css'
 
 // All images import
 
@@ -29,18 +30,20 @@ const useStyles = makeStyles((theme) => ({
     },
 
     organizingTeam:{
-        paddingTop:theme.spacing(3),
-        textAlign:'center'
+        paddingTop:theme.spacing(5),
+        textAlign:'center',
+        
     },
 
     organizationTeamTitle:{
-        paddingBottom:theme.spacing(3)
+        paddingBottom:theme.spacing(5),
     },
 
     card: {
         height: 'auto',
         display: 'flex',
         flexDirection: 'column',
+        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
         '&:hover': {
           '& $cardImage': {
             filter: 'none',
@@ -58,7 +61,6 @@ const useStyles = makeStyles((theme) => ({
         transition: 'transform 2.5s ease-in-out, filter 2s',
         boxSizing:"borderBox",
         maxWidth:"100%",
-        borderRadius:"0rem" 
     },
 
     imageContainer:{
@@ -72,6 +74,13 @@ const useStyles = makeStyles((theme) => ({
 export default function OurTeam() {
     const classes = useStyles();
     const [teamData, setTeamData]=useState(datas);
+
+    const breakpoints={
+        default: 4,
+        1100: 3,
+        700: 2,
+        500: 1
+    }
     return (
         <>  
             <div className={classes.root}>
@@ -80,32 +89,37 @@ export default function OurTeam() {
                         Our Organizing Team
                     </Typography>
                     
-                    <Grid container spacing={3}>
+                    <Masonry
+                        breakpointCols={breakpoints}
+                        className="my-masonry-grid"
+                        columnClassName="my-masonry-grid_column"
+                    >
+                    
                         {teamData.map((data)=>(
-                            <Grid item xs={12} sm={4} md={4} >
-                            <Card className={classes.card}>
-                                <div className={classes.imageContainer}>
-                                    <CardMedia
-                                    component='img'
-                                    className={classes.cardImage}
-                                    image={data.photo}
-                                    title={data.name}
-                                    />
-                                </div>
+                            <div key={data.id} style={{borderRadius:"0.5rem"}}>
+                                <Card className={classes.card}>
+                                    <div className={classes.imageContainer}>
+                                        <CardMedia
+                                        component='img'
+                                        className={classes.cardImage}
+                                        image={data.photo}
+                                        title={data.name}
+                                        />
+                                    </div>
 
-                                <CardContent>
-                                    <Typography variant="h4">{data.name}</Typography>
-                                    <Typography variant="body2" style={{fontStyle:"italic"}}>{data.post}</Typography>
-                                    <Typography variant="body1">{data.email}</Typography>
-                                    <Typography variant="body2">{data.bio}</Typography>
-                                </CardContent>
+                                    <CardContent>
+                                        <Typography variant="h4">{data.name}</Typography>
+                                        <Typography variant="body2" style={{fontStyle:"italic"}}>{data.post}</Typography>
+                                        <Typography variant="body1">{data.email}</Typography>
+                                        <Typography variant="body2">{data.bio}</Typography>
+                                    </CardContent>
 
-                            </Card>
-                        </Grid>
+                                </Card>
+                        </div>
                         ))}
                         
 
-                    </Grid>
+                    </Masonry>
                 </Container>
             </div>
             
