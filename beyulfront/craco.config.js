@@ -9,6 +9,7 @@ module.exports = {
       pages: path.join(__dirname, 'src', 'pages'),
       img: path.join(__dirname, 'src/assets/img'),
       utils: path.join(__dirname, 'src/utils'),
+      CustomHooks: path.join(__dirname, 'src/CustomHooks'),
     },
   },
 }
