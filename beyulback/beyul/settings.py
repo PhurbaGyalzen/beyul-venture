@@ -175,6 +175,8 @@ CKEDITOR_CONFIGS = {
 
     },
 }
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 JET_THEMES = [
     {
         'theme': 'default',  # theme folder name
