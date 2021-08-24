@@ -120,7 +120,7 @@ export default function OurTeam() {
                                         <Typography variant="h4">{data.name}</Typography>
                                         <Typography variant="body2" style={{fontStyle:"italic"}}>{data.post}</Typography>
                                         <Typography variant="body1">{data.email}</Typography>
-                                        <Typography variant="body2">{data.bio}</Typography>
+                                        <Typography variant="body2" style={{paddingBottom:"1rem"}}>{data.bio}</Typography>
 
 
                                         <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Facebook" arrow>
@@ -192,7 +192,7 @@ export default function OurTeam() {
                                         <Typography variant="h4">{data.name}</Typography>
                                         <Typography variant="body2" style={{fontStyle:"italic"}}>{data.post}</Typography>
                                         <Typography variant="body1">{data.email}</Typography>
-                                        <Typography variant="body2">{data.bio}</Typography>
+                                        <Typography variant="body2" style={{paddingBottom:"1rem"}}>{data.bio}</Typography>
 
                                         <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Facebook" arrow>
                                             <Link href='#' style={{ marginRight: 10 }}>
@@ -262,7 +262,7 @@ export default function OurTeam() {
                                         <Typography variant="h4">{data.name}</Typography>
                                         <Typography variant="body2" style={{fontStyle:"italic"}}>{data.post}</Typography>
                                         <Typography variant="body1">{data.email}</Typography>
-                                        <Typography variant="body2">{data.bio}</Typography>
+                                        <Typography variant="body2" style={{paddingBottom:"1rem"}}>{data.bio}</Typography>
 
                                         <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Facebook" arrow>
                                             <Link href='#' style={{ marginRight: 10 }}>
