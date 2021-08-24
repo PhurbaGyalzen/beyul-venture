@@ -8,6 +8,7 @@ module.exports = {
       api: path.join(__dirname, 'src', 'api'),
       pages: path.join(__dirname, 'src', 'pages'),
       img: path.join(__dirname, 'src/assets/img'),
+      assets: path.join(__dirname, 'src/assets'),
       utils: path.join(__dirname, 'src/utils'),
       CustomHooks: path.join(__dirname, 'src/CustomHooks'),
     },

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Box, Container, Card, Grid, Typography } from '@material-ui/core'
 import styled from 'styled-components'
 import Masonry from 'react-masonry-css'
-import {useTimeout} from '../../CustomHooks'
+import {useTimeout} from 'CustomHooks'
 import { BlogCard } from './BlogCard'
 import './index.css'
 

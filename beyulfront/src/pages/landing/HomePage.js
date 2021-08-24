@@ -16,6 +16,7 @@ import Parliament from 'components/Owls'
 import PackageDetail from 'pages/package-detail/PackageDetail'
 import InstagramWidget from 'components/InstaWidget'
 import { fetchPosts } from 'utils/instagram'
+import 'assets/animate.min.css'
 import trek from 'img/trek_1.png'
 import pck from 'img/pck_1.webp'
 
