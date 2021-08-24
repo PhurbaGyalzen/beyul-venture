@@ -18,7 +18,9 @@ import Link from '@material-ui/core/Link';
 import './index.css';
 import { makeStyles } from '@material-ui/core';
 import {datas} from './ourTeamData';
-import Masonry from 'react-masonry-css'
+import {guides} from './ourTeamData';
+import {assistant} from './ourTeamData';
+import Masonry from 'react-masonry-css';
 
 // All images import
 
@@ -30,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     organizingTeam:{
-        paddingTop:theme.spacing(5),
+        paddingTop:theme.spacing(10),
         textAlign:'center',
         
     },
@@ -74,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
 export default function OurTeam() {
     const classes = useStyles();
     const [teamData, setTeamData]=useState(datas);
+    const [guide, setGuide]=useState(guides);
 
     const breakpoints={
         default: 4,
@@ -86,7 +89,7 @@ export default function OurTeam() {
             <div className={classes.root}>
                 <Container maxWidth="lg" className={classes.organizingTeam} >
                     <Typography variant="h4" className={classes.organizationTeamTitle}>
-                        Our Organizing Team
+                        OUR ORGANIZING TEAM
                     </Typography>
                     
                     <Masonry
@@ -96,6 +99,85 @@ export default function OurTeam() {
                     >
                     
                         {teamData.map((data)=>(
+                            <div key={data.id} style={{borderRadius:"0.5rem"}}>
+                                <Card className={classes.card}>
+                                    <div className={classes.imageContainer}>
+                                        <CardMedia
+                                        component='img'
+                                        className={classes.cardImage}
+                                        image={data.photo}
+                                        title={data.name}
+                                        />
+                                    </div>
+
+                                    <CardContent>
+                                        <Typography variant="h4">{data.name}</Typography>
+                                        <Typography variant="body2" style={{fontStyle:"italic"}}>{data.post}</Typography>
+                                        <Typography variant="body1">{data.email}</Typography>
+                                        <Typography variant="body2">{data.bio}</Typography>
+                                    </CardContent>
+
+                                </Card>
+                        </div>
+                        ))}
+                        
+
+                    </Masonry>
+                </Container>
+
+
+                <Container maxWidth="lg" className={classes.organizingTeam} colo="#ffffff" >
+                    <Typography variant="h4" className={classes.organizationTeamTitle}>
+                        OUR GUIDES
+                    </Typography>
+                    
+                    <Masonry
+                        breakpointCols={breakpoints}
+                        className="my-masonry-grid"
+                        columnClassName="my-masonry-grid_column"
+                    >
+                    
+                        {guide.map((data)=>(
+                            <div key={data.id} style={{borderRadius:"0.5rem"}}>
+                                <Card className={classes.card}>
+                                    <div className={classes.imageContainer}>
+                                        <CardMedia
+                                        component='img'
+                                        className={classes.cardImage}
+                                        image={data.photo}
+                                        title={data.name}
+                                        />
+                                    </div>
+
+                                    <CardContent>
+                                        <Typography variant="h4">{data.name}</Typography>
+                                        <Typography variant="body2" style={{fontStyle:"italic"}}>{data.post}</Typography>
+                                        <Typography variant="body1">{data.email}</Typography>
+                                        <Typography variant="body2">{data.bio}</Typography>
+                                    </CardContent>
+
+                                </Card>
+                        </div>
+                        ))}
+                        
+
+                    </Masonry>
+                </Container>
+
+
+
+                <Container maxWidth="lg" className={classes.organizingTeam} >
+                    <Typography variant="h4" className={classes.organizationTeamTitle}>
+                        EXPERIENCED ASSISTANT
+                    </Typography>
+                    
+                    <Masonry
+                        breakpointCols={breakpoints}
+                        className="my-masonry-grid"
+                        columnClassName="my-masonry-grid_column"
+                    >
+                    
+                        {assistant.map((data)=>(
                             <div key={data.id} style={{borderRadius:"0.5rem"}}>
                                 <Card className={classes.card}>
                                     <div className={classes.imageContainer}>
