@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import { useEffect } from 'react'
 import SortIcon from '@material-ui/icons/Sort'
+import {motion} from 'framer-motion'
 import {
     Drawer,
     List,
