@@ -1,46 +1,42 @@
-import { 
-    makeStyles, 
-    TextField, 
-    Button, 
+import {
+    makeStyles,
+    TextField,
+    Button,
     Typography,
     Grid,
     Card,
     CardMedia,
     Box,
     Container,
-    Link
-} from '@material-ui/core';
+    Link,
+} from '@material-ui/core'
 
-import { PackageCard } from './PackageCard';
+import { PackageCard } from './PackageCard'
 
 import styled from 'styled-components'
 const TagTitle = styled(Typography)`
-  font-weight: 700;
-  color: #3b3b3b;
-  font-size:1.5rem;
+    font-weight: 700;
+    color: #3b3b3b;
+    font-size: 1.5rem;
 `
 
-export const TagContainer = ({tagContent}) => {
-    const packages = tagContent.packages;
+export const TagContainer = ({ tagContent }) => {
+    const packages = tagContent.packages
     return (
         <>
-            <Container style={{marginTop:'1rem',marginBotton:'1rem'}}>
+            <Container style={{ marginTop: '1rem', marginBotton: '1rem' }}>
                 <div>
-                    <div style={{float:'left'}}>
+                    <div style={{ float: 'left' }}>
                         <TagTitle>{tagContent.tagName}</TagTitle>
                     </div>
-                    <div style={{float:'right',paddingRight:'10px'}}>
+                    <div style={{ float: 'right', paddingRight: '10px' }}>
                         <Link>Explore all</Link>
                     </div>
                 </div>
                 <Grid container spacing={2}>
-                    
-                    {
-                        packages.map((pack)=>{
-                            return <PackageCard key={pack.id} tagPackages={pack} />
-                        })
-                    }
-
+                    {packages.map((pack) => {
+                        return <PackageCard key={pack.id} tagPackages={pack} />
+                    })}
                 </Grid>
             </Container>
         </>

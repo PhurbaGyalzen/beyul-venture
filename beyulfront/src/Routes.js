@@ -40,8 +40,16 @@ const Routes = () => {
             <CustomRoute path='/blog' component={BlogRoutes} />
             <CustomRoute exact path='/contact-us' component={ContactUs} />
             <CustomRoute exact path='/our-team' component={OurTeam} />
-            <CustomRoute exact path='/terms-and-conditions' component={TermsAndConditions} />
-            <CustomRoute exact path='/privacy-policy' component={PrivacyPolicy} />
+            <CustomRoute
+                exact
+                path='/terms-and-conditions'
+                component={TermsAndConditions}
+            />
+            <CustomRoute
+                exact
+                path='/privacy-policy'
+                component={PrivacyPolicy}
+            />
             <CustomRoute exact path='/stripe-payment/:id'>
                 <StripePaymentPage />
             </CustomRoute>

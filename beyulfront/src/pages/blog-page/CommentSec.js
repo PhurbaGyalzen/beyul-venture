@@ -1,6 +1,6 @@
 import { Formik, useField, Form } from 'formik'
 import { TextField, makeStyles, Button } from '@material-ui/core'
-import * as yup from 'yup';
+import * as yup from 'yup'
 const formStyle = makeStyles((theme) => ({
     commentField: {
         width: 'inherit',
@@ -9,14 +9,22 @@ const formStyle = makeStyles((theme) => ({
 }))
 
 const validationSchema = yup.object({
-    comment: yup.string().max(800).required("Comment should not be Empty if you are submitting")
-});
-const ValidatingComment = ({...props}) => {
-    const[field,meta] = useField(props);
-    const errorText = meta.error && meta.touched ? meta.error: '';
-    return(
-        <TextField {...field} {...props} helperText={errorText} error={!!errorText}  />
-    ) 
+    comment: yup
+        .string()
+        .max(800)
+        .required('Comment should not be Empty if you are submitting'),
+})
+const ValidatingComment = ({ ...props }) => {
+    const [field, meta] = useField(props)
+    const errorText = meta.error && meta.touched ? meta.error : ''
+    return (
+        <TextField
+            {...field}
+            {...props}
+            helperText={errorText}
+            error={!!errorText}
+        />
+    )
 }
 
 export const CommentSec = () => {
@@ -62,7 +70,7 @@ export const CommentSec = () => {
                                 variant='outlined'
                                 disabled={isSubmitting}
                                 type='submit'
-                                style={{backgroundColor:"#C47D1E"}}
+                                style={{ backgroundColor: '#C47D1E' }}
                             >
                                 Post Comment
                             </Button>

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import {useLocation, useHistory, Redirect} from 'react-router-dom'
+import { useLocation, useHistory, Redirect } from 'react-router-dom'
 import styled, { keyframes, css } from 'styled-components'
 import {
     useStripe,
@@ -213,8 +213,7 @@ const CheckoutForm = ({}) => {
     const cardRef = useRef()
 
     useEffect(async () => {
-        if (!stripe || clientSecret)
-            return
+        if (!stripe || clientSecret) return
 
         // receive secret from our server.
         const secret = await getPaymentIntent(purchase)
@@ -264,7 +263,9 @@ const CheckoutForm = ({}) => {
                 // payment_intent.succeeded event that handles any business critical
                 // post-payment actions.
                 setErrors('Payment Completed Successfully.')
-                window.location.href = window.location.search.split('=')[1] + '?paymentResp=success'
+                window.location.href =
+                    window.location.search.split('=')[1] +
+                    '?paymentResp=success'
             }
         }
         setCanSubmit(true)
@@ -371,7 +372,7 @@ const CheckoutForm = ({}) => {
                             </NotNumber>
                         </StripeCardElement>
                         <SubmitButton disabled={!canSubmit}>
-                            <SpinnerSvg show={isLoading} viewBox="0 0 100 100">
+                            <SpinnerSvg show={isLoading} viewBox='0 0 100 100'>
                                 <path
                                     d='M90 50 A40 40 0 1 1 50 10'
                                     fill='none'

@@ -10,38 +10,33 @@ import {
     CardActionArea,
     CardActions,
     CardContent,
-    Button
+    Button,
 } from '@material-ui/core'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import InstagramIcon from '@material-ui/icons/Instagram'
 import TwitterIcon from '@material-ui/icons/Twitter'
-import { makeStyles} from '@material-ui/core'
-import Tooltip from '@material-ui/core/Tooltip';
-import Fade from '@material-ui/core/Fade';
-
+import { makeStyles } from '@material-ui/core'
+import Tooltip from '@material-ui/core/Tooltip'
+import Fade from '@material-ui/core/Fade'
 
 const useStyles = makeStyles((theme) => ({
-    button:{
-        fontSize:'1.3rem',
-        color:"#000000",
+    button: {
+        fontSize: '1.3rem',
+        color: '#000000',
         '&:hover': {
             cursor: 'pointer',
-            color:"#694311",
+            color: '#694311',
         },
     },
 
-    mainCard:{
-        height:"100%"
+    mainCard: {
+        height: '100%',
     },
 
-    cardImg:{
-        width:"100%",
-
-    }
-
-    
+    cardImg: {
+        width: '100%',
+    },
 }))
-
 
 export const DeveloperCard = (props) => {
     const classes = useStyles()
@@ -51,63 +46,87 @@ export const DeveloperCard = (props) => {
                 <Card className={classes.mainCard}>
                     <CardActionArea>
                         <CardMedia
-                        component="img"
-                        alt="Contemplative Reptile"
-                        height="100%"
-                        image={props.data.image}
-                        title="Contemplative Reptile"
-                        className={classes.cardImg}
+                            component='img'
+                            alt='Contemplative Reptile'
+                            height='100%'
+                            image={props.data.image}
+                            title='Contemplative Reptile'
+                            className={classes.cardImg}
                         />
                         <CardContent>
-                        <Typography gutterBottom variant="h6" component="h2" >
-                            {props.data.post}
-                        </Typography>
+                            <Typography
+                                gutterBottom
+                                variant='h6'
+                                component='h2'
+                            >
+                                {props.data.post}
+                            </Typography>
 
-                        <Typography gutterBottom component="h3" variant="body2" color="textSecondary" >
-                            {props.data.name}
-                        </Typography>
+                            <Typography
+                                gutterBottom
+                                component='h3'
+                                variant='body2'
+                                color='textSecondary'
+                            >
+                                {props.data.name}
+                            </Typography>
 
-                        <Typography variant="body2" component="p" >
-                            {props.data.bio}
-                        </Typography>
+                            <Typography variant='body2' component='p'>
+                                {props.data.bio}
+                            </Typography>
                         </CardContent>
-                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Facebook" arrow>
+                        <Tooltip
+                            TransitionComponent={Fade}
+                            TransitionProps={{ timeout: 600 }}
+                            title='Facebook'
+                            arrow
+                        >
                             <Link
-                                    href={props.data.fb}
-                                    style={{ paddingLeft: '5%', paddingBottom:'5%'}}
-                                >
-                                    <FacebookIcon
-                                        className={classes.button}
-                                    />
+                                href={props.data.fb}
+                                style={{
+                                    paddingLeft: '5%',
+                                    paddingBottom: '5%',
+                                }}
+                            >
+                                <FacebookIcon className={classes.button} />
                             </Link>
                         </Tooltip>
 
-                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Instagram" arrow>
-
+                        <Tooltip
+                            TransitionComponent={Fade}
+                            TransitionProps={{ timeout: 600 }}
+                            title='Instagram'
+                            arrow
+                        >
                             <Link
                                 href={props.data.instagram}
-                                style={{ paddingLeft: '5%',  paddingBottom:'5%' }}
+                                style={{
+                                    paddingLeft: '5%',
+                                    paddingBottom: '5%',
+                                }}
                             >
-                                <InstagramIcon
-                                    className={classes.button}
-                                />
+                                <InstagramIcon className={classes.button} />
                             </Link>
-
                         </Tooltip>
 
-                        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Twitter" arrow>
+                        <Tooltip
+                            TransitionComponent={Fade}
+                            TransitionProps={{ timeout: 600 }}
+                            title='Twitter'
+                            arrow
+                        >
                             <Link
                                 href={props.data.twitter}
-                                style={{ paddingLeft: '5%',  paddingBottom:'5%' }}
+                                style={{
+                                    paddingLeft: '5%',
+                                    paddingBottom: '5%',
+                                }}
                             >
-                                <TwitterIcon
-                                    className={classes.button}
-                                />
+                                <TwitterIcon className={classes.button} />
                             </Link>
                         </Tooltip>
                     </CardActionArea>
                 </Card>
-                
             </Grid>
         </>
     )

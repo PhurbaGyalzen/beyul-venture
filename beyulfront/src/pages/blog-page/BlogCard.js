@@ -4,14 +4,14 @@ import {
     CardMedia,
     Typography,
     CardContent,
-    Chip
+    Chip,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import FancyLink from 'components/FancyLink'
-import { useHistory } from "react-router-dom";
-import Avatar from '@material-ui/core/Avatar';
+import { useHistory } from 'react-router-dom'
+import Avatar from '@material-ui/core/Avatar'
 
 /*
 const cardStyle = makeStyles((theme) => ({
@@ -51,7 +51,6 @@ const Title = styled.h2`
     font-size: 2rem;
 `
 
-
 const UnorderList = styled.ul`
     margin: 0.7rem 0;
     padding: 0;
@@ -76,8 +75,7 @@ export const BlogCard = ({
     tags,
     description,
 }) => {
-
-    const history = useHistory();
+    const history = useHistory()
     return (
         <Article>
             <img src={thumbnail} />
@@ -87,47 +85,67 @@ export const BlogCard = ({
                         const splitted = tag.split('/')
                         return (
                             <li key={tag}>
-                                
                                 <Chip
-                                style={{backgroundColor:"#13181e", color:"#ffffff"}}
-                                label = {splitted[splitted.length - 2]}
-                                variant = "outlined"
-                                onClick = {()=>{history.push(`/blog/tag/${splitted[splitted.length - 2]}`)}}
+                                    style={{
+                                        backgroundColor: '#13181e',
+                                        color: '#ffffff',
+                                    }}
+                                    label={splitted[splitted.length - 2]}
+                                    variant='outlined'
+                                    onClick={() => {
+                                        history.push(
+                                            `/blog/tag/${
+                                                splitted[splitted.length - 2]
+                                            }`,
+                                        )
+                                    }}
                                 />
-                                
                             </li>
                         )
                     })}
                 </UnorderList>
                 <Link to={'/blog/' + slug}>
-                    <Title> <Typography variant="h4">{title}</Typography></Title>
+                    <Title>
+                        {' '}
+                        <Typography variant='h4'>{title}</Typography>
+                    </Title>
                 </Link>
-                <div style={{display:'flex',flexDirection:'row',flexWrap: 'wrap'}}>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        flexWrap: 'wrap',
+                    }}
+                >
                     {/*<FancyLink href='#'>{author}</FancyLink>*/}
-                    { (
-                        () =>{
-                            if (authorImage == ''){
-                                let name = review.user;
-                                let matches = name.match(/\b(\w)/g); 
-                                console.log(matches);
-                                let firstLast = matches[0]+matches[matches.length-1];
-                                console.log(firstLast);
-                                return <Avatar >{firstLast}</Avatar>
-                            
-                            }
-                            else{
-                                return <Avatar alt={authorName} src={authorImage} />
-                            }
+                    {(() => {
+                        if (authorImage == '') {
+                            let name = review.user
+                            let matches = name.match(/\b(\w)/g)
+                            console.log(matches)
+                            let firstLast =
+                                matches[0] + matches[matches.length - 1]
+                            console.log(firstLast)
+                            return <Avatar>{firstLast}</Avatar>
+                        } else {
+                            return (
+                                <Avatar alt={authorName} src={authorImage} />
+                            )
                         }
-                    )()
-                    }
+                    })()}
                     <FancyLink to={'/author/' + authorId}>
-                        <Typography variant="body1" style={{paddingLeft:'1rem'}}>
+                        <Typography
+                            variant='body1'
+                            style={{ paddingLeft: '1rem' }}
+                        >
                             {authorName}
                         </Typography>
                     </FancyLink>
                 </div>
-                <summary> <Typography variant="body2">{description}</Typography></summary>
+                <summary>
+                    {' '}
+                    <Typography variant='body2'>{description}</Typography>
+                </summary>
             </div>
         </Article>
     )

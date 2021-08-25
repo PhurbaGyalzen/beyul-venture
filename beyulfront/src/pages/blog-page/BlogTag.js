@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react'
-import { Typography, Grid, Conatainer, Box, Container, makeStyles } from '@material-ui/core';
+import {
+    Typography,
+    Grid,
+    Conatainer,
+    Box,
+    Container,
+    makeStyles,
+} from '@material-ui/core'
 import { useParams } from 'react-router'
-import { TagCard } from './TagCard';
-
-
+import { TagCard } from './TagCard'
 
 const blogStyles = makeStyles((theme) => ({
     blogContainer: {
@@ -72,11 +77,9 @@ const blogStyles = makeStyles((theme) => ({
     },
 }))
 
-
 export const BlogTag = () => {
+    const { tagname } = useParams()
 
-    const {tagname} = useParams();
-    
     const [blogData, setBlogData] = useState([
         // {
         //     id: 1,
@@ -160,63 +163,58 @@ export const BlogTag = () => {
         // },
     ])
 
-    const [tagData,setTagData] = useState([]);
+    const [tagData, setTagData] = useState([])
 
     useEffect(async () => {
-        const tagApi = await ajax('/api/tag/'+tagname+'/')
-        setTagData(tagApi);
-        setBlogData(tagApi.posts);
-        console.log(tagApi);
-    }  
-        
-        ,[])
+        const tagApi = await ajax('/api/tag/' + tagname + '/')
+        setTagData(tagApi)
+        setBlogData(tagApi.posts)
+        console.log(tagApi)
+    }, [])
 
-
-    const classes = blogStyles();
+    const classes = blogStyles()
 
     return (
         <>
-          <Container
-            maxWidth='xl'
-            style={{
-                backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("${tagData.background_img}")`,
-                height: '100vh',
-                padding: '0',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-                backgroundAttachment: 'fixed',
-                offset:'1',
-            }}
-          >
-              <Container maxWidth='lg' mt={10} mb={10}>
-                        <div className={classes.articleDetail}>
-                            <div>
-                                <Typography
-                                    variant='h4'
-                                    align='center'
-                                    className={classes.articleTitle}
-                                >
-                                    {tagData.name}
-                                </Typography>
-                            </div>
-                            
+            <Container
+                maxWidth='xl'
+                style={{
+                    backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("${tagData.background_img}")`,
+                    height: '100vh',
+                    padding: '0',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
+                    backgroundAttachment: 'fixed',
+                    offset: '1',
+                }}
+            >
+                <Container maxWidth='lg' mt={10} mb={10}>
+                    <div className={classes.articleDetail}>
+                        <div>
+                            <Typography
+                                variant='h4'
+                                align='center'
+                                className={classes.articleTitle}
+                            >
+                                {tagData.name}
+                            </Typography>
                         </div>
-                    </Container>
-
-          </Container>
-          <Box mt={7}>
-              <Container mt='2rem'>
-                {/* <Typography variant="h6" gutterBottom>
+                    </div>
+                </Container>
+            </Container>
+            <Box mt={7}>
+                <Container mt='2rem'>
+                    {/* <Typography variant="h6" gutterBottom>
                     Blogs:
                 </Typography> */}
 
-                <Grid container spacing={4} align='center'>
-                    {blogData.map((data) => {
-                        return <TagCard key={data.slug} data={data} />
-                    })}
-                </Grid>
-              </Container>
-          </Box>
+                    <Grid container spacing={4} align='center'>
+                        {blogData.map((data) => {
+                            return <TagCard key={data.slug} data={data} />
+                        })}
+                    </Grid>
+                </Container>
+            </Box>
         </>
     )
 }

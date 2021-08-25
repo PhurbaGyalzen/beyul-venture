@@ -28,13 +28,14 @@ const Owl = ({ imgSrc, text }) => {
 // A group of owl is called a Parliament
 const Parliament = ({ cars, itemNo }) => {
     return (
-        <OwlCarousel className='owl-theme' 
-        loop ={true}
-        margin={10} 
-        nav={true}
-        autoplay={true}
-        autoplayTimeout={2000}
-        items={itemNo}
+        <OwlCarousel
+            className='owl-theme'
+            loop={true}
+            margin={10}
+            nav={true}
+            autoplay={true}
+            autoplayTimeout={2000}
+            items={itemNo}
         >
             {cars.map((car) => {
                 return <Owl key={car.id} imgSrc={car.image} text={car.title} />

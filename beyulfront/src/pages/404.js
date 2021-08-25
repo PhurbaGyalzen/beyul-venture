@@ -26,9 +26,13 @@ const FourZeroFour = (props) => {
     return (
         <Wrapper>
             <Compass />
-            <Helptext align='center' variant='h5' style={{paddingTop:"2rem"}}>
+            <Helptext
+                align='center'
+                variant='h5'
+                style={{ paddingTop: '2rem' }}
+            >
                 It looks like you miscalculated. Click{' '}
-                <FancyLink to='/' barColor='#e0781f' >
+                <FancyLink to='/' barColor='#e0781f'>
                     here
                 </FancyLink>{' '}
                 to return home.

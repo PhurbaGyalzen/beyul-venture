@@ -13,74 +13,76 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Copyright from 'components/Copyright'
-import Lottie from 'react-lottie';
+import Lottie from 'react-lottie'
 import animationData from 'img/lotties/42070-travel-is-fun.json'
 
 import { SignInForm } from './SignInForm'
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    
-    marginLeft: theme.spacing(1),
-    padding:'1rem',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  
-  imgContainer:{
-    
-    marginTop: theme.spacing(8),
-    padding: '10%',
-    width:'100%',
-    height:'100%',
-    backgroundSize: '100%',
-  }
+    paper: {
+        marginTop: theme.spacing(8),
+
+        marginLeft: theme.spacing(1),
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+
+    imgContainer: {
+        marginTop: theme.spacing(8),
+        padding: '10%',
+        width: '100%',
+        height: '100%',
+        backgroundSize: '100%',
+    },
 }))
 
 export default function SignIn() {
-  const classes = useStyles()
-  const defaultOptions = {
-    loop: true,
-    autoplay: true, 
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
+    const classes = useStyles()
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice',
+        },
     }
-  };
 
-  return (
-    <Box pt={8}>
-        <Container component='main' maxWidth='md'>
-          <CssBaseline />
-          <Grid container>
-            <Grid item xs={12} md={6}>
-              <div className={classes.imgContainer}>
-                  <Lottie options={defaultOptions}
-                  style={{maxHeight:'400',maxWidth:'400'}}
-                  />
-              </div>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <div style={{display: 'flex',justifyContent:'center'}}>
-                <div className={classes.paper}>
-              
-                  <Typography component='h4' variant='h5'>
-                    SIGN IN
-                  </Typography>
-                  <SignInForm />
-                </div>
-              </div>
-            
-            </Grid>
-          </Grid>
-          
-          {/* <Box mt={8}>
+    return (
+        <Box pt={8}>
+            <Container component='main' maxWidth='md'>
+                <CssBaseline />
+                <Grid container>
+                    <Grid item xs={12} md={6}>
+                        <div className={classes.imgContainer}>
+                            <Lottie
+                                options={defaultOptions}
+                                style={{ maxHeight: '400', maxWidth: '400' }}
+                            />
+                        </div>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        <div
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                            }}
+                        >
+                            <div className={classes.paper}>
+                                <Typography component='h4' variant='h5'>
+                                    SIGN IN
+                                </Typography>
+                                <SignInForm />
+                            </div>
+                        </div>
+                    </Grid>
+                </Grid>
+
+                {/* <Box mt={8}>
             <Copyright /
           </Box> */}
-      </Container>
-    </Box>
-    
-  )
+            </Container>
+        </Box>
+    )
 }

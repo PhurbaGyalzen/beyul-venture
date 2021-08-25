@@ -1,16 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ImageDiv = props => {
+const ImageDiv = (props) => {
     return (
         <div>
-            <img src={"/static/images/annapurna.jpg"}/>
+            <img src={'/static/images/annapurna.jpg'} />
         </div>
     )
 }
 
-ImageDiv.propTypes = {
-
-}
+ImageDiv.propTypes = {}
 
 export default ImageDiv

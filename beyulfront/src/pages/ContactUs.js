@@ -1,14 +1,10 @@
 // All dependences import
-import {
-    makeStyles
- 
-} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core'
 import { Box } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import { Grid } from '@material-ui/core'
 import { useState, useEffect } from 'react'
 import Faq from '../pages/faq/Faq'
-
 
 import contactUsImg from 'img/contactUs2.jpg'
 import mapImg from 'img/map.png'
@@ -41,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
     contactUsTitle: {
         fontWeight: 'bold',
-        color:"#694311",
+        color: '#694311',
     },
 
     // secondRow
@@ -69,16 +65,15 @@ const useStyles = makeStyles((theme) => ({
     //thirdRow
     thirdRow: {
         height: 'auto',
-        padding:20,
-        paddingBottom:50,
-        backgroundColor:"primary"
+        padding: 20,
+        paddingBottom: 50,
+        backgroundColor: 'primary',
     },
 
     faq: {
         padding: 20,
         marginTop: 50,
     },
-
 
     questionImg: {
         height: 100,
@@ -123,22 +118,24 @@ const useStyles = makeStyles((theme) => ({
         height: '100%',
     },
 
-    heading:{
-        lineHeight:"4rem",
-        paddingBotttom:"3rem"
-    }
+    heading: {
+        lineHeight: '4rem',
+        paddingBotttom: '3rem',
+    },
 }))
 
 // ContactUs component
 export default function ContactUs() {
     const classes = useStyles()
 
-
     return (
         <>
-            <Box component='div' style={{ backgroundColor: 'primary', color:"#ffffff" }}>
+            <Box
+                component='div'
+                style={{ backgroundColor: 'primary', color: '#ffffff' }}
+            >
                 {/* First Row */}
-                <Box style={{height:"100vh"}}>
+                <Box style={{ height: '100vh' }}>
                     <Grid
                         container
                         direction='row'
@@ -166,7 +163,6 @@ export default function ContactUs() {
                     </Grid>
                 </Box>
 
-                
                 {/* Third Row */}
                 <Grid
                     container
@@ -174,7 +170,14 @@ export default function ContactUs() {
                     className={classes.thirdRow}
                     // style={{ backgroundColor: '#FFE8DF' }}
                 >
-                    <Grid item className={classes.faq} xs={12} md={4} sm={5} mr={{md:4, xs:0}}>
+                    <Grid
+                        item
+                        className={classes.faq}
+                        xs={12}
+                        md={4}
+                        sm={5}
+                        mr={{ md: 4, xs: 0 }}
+                    >
                         <Typography variant='h6' className={classes.heading}>
                             Popular Questions
                         </Typography>
@@ -182,29 +185,30 @@ export default function ContactUs() {
                     </Grid>
 
                     <Grid item xs={12} md={6} sm={6}>
-                        <Box pl={{xs:0, sm:5, md:5, lg:5}}>
+                        <Box pl={{ xs: 0, sm: 5, md: 5, lg: 5 }}>
                             <img
                                 src={question}
                                 alt='have any question'
                                 className={classes.questionImg}
                             />
-                            <Typography variant='h6' align='center' className={classes.heading}>
+                            <Typography
+                                variant='h6'
+                                align='center'
+                                className={classes.heading}
+                            >
                                 Have a question we didn't answer ?
                             </Typography>
-                            <Typography
-                                variant='body2'
-                                align='left'
-                            >
-                                If you have any questions or queries a member of
-                                staff will always be happy to help. Feel free to
-                                contact us by telephone or email and we will be
-                                sure to get back to you as soon as possible.
+                            <Typography variant='body2' align='left'>
+                                If you have any questions or queries a member
+                                of staff will always be happy to help. Feel
+                                free to contact us by telephone or email and we
+                                will be sure to get back to you as soon as
+                                possible.
                             </Typography>
 
                             {/* form */}
                             <ContactUsForm />
                         </Box>
-                        
                     </Grid>
                 </Grid>
 
@@ -239,15 +243,13 @@ export default function ContactUs() {
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={6} sm={6}>
-                        <Box pt={{xs:5, md:0, sm:0, lg:0}}>
+                        <Box pt={{ xs: 5, md: 0, sm: 0, lg: 0 }}>
                             <img
                                 src={mapImg}
                                 alt='Beyul Venture in World Map'
                                 className={classes.worldmap}
                             />
                         </Box>
-
-                        
                     </Grid>
                 </Grid>
             </Box>

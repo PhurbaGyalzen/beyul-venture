@@ -1,19 +1,18 @@
-import {Popover } from "@material-ui/core"
-import { WithStyles } from "@material-ui/core"
+import { Popover } from '@material-ui/core'
+import { WithStyles } from '@material-ui/core'
 
 const ViewTip = withStyles({
-    tooltip:{
-        width: "",
-    }
+    tooltip: {
+        width: '',
+    },
 })
-
 
 export const ProfileToolTip = (props) => {
     return (
         <>
-           <ViewTip interactive title="Profile">
+            <ViewTip interactive title='Profile'>
                 <div></div>
-           </ViewTip>
+            </ViewTip>
         </>
     )
 }

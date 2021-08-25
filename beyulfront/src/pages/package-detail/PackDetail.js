@@ -5,9 +5,8 @@ import toast from 'react-hot-toast'
 import { getEsewaLink } from 'utils/payment'
 import pck from 'img/pck_1.webp'
 import WhyBeyulVenture from './WhyBeyulVenture'
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-
+import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button'
 
 import {
     Container,
@@ -22,42 +21,38 @@ import 'owl.carousel/dist/assets/owl.carousel.css'
 import 'owl.carousel/dist/assets/owl.theme.default.css'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle'
 
-import Lightbox from "react-awesome-lightbox";
+import Lightbox from 'react-awesome-lightbox'
 // You need to import the CSS only once
-import "react-awesome-lightbox/build/style.css";
+import 'react-awesome-lightbox/build/style.css'
 import PackageTabs from './PackageTabs'
 import TripFacts from './TripFacts'
 import PackageForm from './PackageForm'
 import { Review } from './Review'
 import { StorySection } from './StorySection'
 
-
-import sunil from 'img/sunil.jpg';
-import nishan from 'img/nishan.jpg';
-import phurba from 'img/phurba.jpg';
-
+import sunil from 'img/sunil.jpg'
+import nishan from 'img/nishan.jpg'
+import phurba from 'img/phurba.jpg'
 
 const packageStyles = makeStyles((theme) => ({
     packageCont: {
         // marginTop:'10rem',
         paddingTop: '3rem',
     },
-    ratingDesc:{
-        
-        color:'#545454',
-        verticalAlign: 'middle',
-        display: 'inline-flex'
-        
-    },
-    checkList:{
+    ratingDesc: {
+        color: '#545454',
         verticalAlign: 'middle',
         display: 'inline-flex',
-        paddingTop:"0.8rem"
     },
-    checkIc:{
-        fill:'#6F6F6F',
-        paddingRight:"0.2rem"
-    }
+    checkList: {
+        verticalAlign: 'middle',
+        display: 'inline-flex',
+        paddingTop: '0.8rem',
+    },
+    checkIc: {
+        fill: '#6F6F6F',
+        paddingRight: '0.2rem',
+    },
 }))
 
 const FullWidthImage = styled.img`
@@ -131,35 +126,34 @@ export const PackDetail = (props) => {
             'pokhara',
             'kathmandu',
         ],
-        reviews:[
+        reviews: [
             {
-                userId:1,
-                user:'Sunil Tamang',
-                rating:5 ,
-                review:"Very exciting and wonderful journey  It was exhilarating. We are so glad we did it and want to thank Ganga and Team for their excellent service and care. We enthusiastically recommend Nepal Hiking Team!",
+                userId: 1,
+                user: 'Sunil Tamang',
+                rating: 5,
+                review: 'Very exciting and wonderful journey  It was exhilarating. We are so glad we did it and want to thank Ganga and Team for their excellent service and care. We enthusiastically recommend Nepal Hiking Team!',
                 userImage: sunil,
             },
             {
-                userId:2,
-                user:'Phurba Gyalzen Sherpa',
-                rating:4 ,
+                userId: 2,
+                user: 'Phurba Gyalzen Sherpa',
+                rating: 4,
                 userImage: '',
-                review:"I am missing it already i wish i was born in such a beautiful place  It was exhilarating. We are so glad we did it and want to thank Ganga and Team for their excellent service and care. We enthusiastically recommend Nepal Hiking Team!"
+                review: 'I am missing it already i wish i was born in such a beautiful place  It was exhilarating. We are so glad we did it and want to thank Ganga and Team for their excellent service and care. We enthusiastically recommend Nepal Hiking Team!',
             },
             {
-                userId:3,
-                user:'Nishan Thapa',
-                rating:5 ,
+                userId: 3,
+                user: 'Nishan Thapa',
+                rating: 5,
                 userImage: nishan,
-                review:"Je gara jaso gara jata sukai laijau malai tara nepal chodna sakdina ma  It was exhilarating. We are so glad we did it and want to thank Ganga and Team for their excellent service and care. We enthusiastically recommend Nepal Hiking Team!"
-            }
-        ]
+                review: 'Je gara jaso gara jata sukai laijau malai tara nepal chodna sakdina ma  It was exhilarating. We are so glad we did it and want to thank Ganga and Team for their excellent service and care. We enthusiastically recommend Nepal Hiking Team!',
+            },
+        ],
         // routeIds: [66, 32, 34, 40, 129, 32, 66],
     })
 
     return (
-        <>  
-            
+        <>
             <Box pt={'3rem'}>
                 <Container className={classes.packageCont}>
                     <Grid
@@ -194,9 +188,12 @@ export const PackDetail = (props) => {
                                     gutterBottom
                                 >
                                     Annapurna trek
-                                </Typography> 
+                                </Typography>
 
-                                <Typography className={classes.ratingDesc} variant="body2"> 
+                                <Typography
+                                    className={classes.ratingDesc}
+                                    variant='body2'
+                                >
                                     {' '}
                                     <Rating
                                         name='read-only'
@@ -204,17 +201,45 @@ export const PackDetail = (props) => {
                                         readOnly
                                     />{' '}
                                     78 ratings
-                                </Typography><br/>
-                                <Typography className={classes.checkList} variant="body2">
-                                    <CheckCircleIcon className={classes.checkIc}/> Experience the mountain
-                                </Typography><br/>
-                                <Typography className={classes.checkList} variant="body2">
-                                    <CheckCircleIcon className={classes.checkIc} /> Enjoy the trails
-                                </Typography><br/>
-                                <Typography className={classes.checkList} gutterBottom variant="body2"> 
-                                    <CheckCircleIcon className={classes.checkIc} /> Visit Ghandruk
                                 </Typography>
-                                <Typography variant="body1" style={{paddingTop:"0.5rem", paddingBottom:"1rem"}}>
+                                <br />
+                                <Typography
+                                    className={classes.checkList}
+                                    variant='body2'
+                                >
+                                    <CheckCircleIcon
+                                        className={classes.checkIc}
+                                    />{' '}
+                                    Experience the mountain
+                                </Typography>
+                                <br />
+                                <Typography
+                                    className={classes.checkList}
+                                    variant='body2'
+                                >
+                                    <CheckCircleIcon
+                                        className={classes.checkIc}
+                                    />{' '}
+                                    Enjoy the trails
+                                </Typography>
+                                <br />
+                                <Typography
+                                    className={classes.checkList}
+                                    gutterBottom
+                                    variant='body2'
+                                >
+                                    <CheckCircleIcon
+                                        className={classes.checkIc}
+                                    />{' '}
+                                    Visit Ghandruk
+                                </Typography>
+                                <Typography
+                                    variant='body1'
+                                    style={{
+                                        paddingTop: '0.5rem',
+                                        paddingBottom: '1rem',
+                                    }}
+                                >
                                     Price{' '}
                                     <span
                                         style={{
@@ -226,22 +251,37 @@ export const PackDetail = (props) => {
                                     </span>{' '}
                                 </Typography>
                                 <PaymentOptions>
-                                    <Button variant="contained"
+                                    <Button
+                                        variant='contained'
                                         href={getEsewaLink(
                                             100,
                                             Math.random().toString(),
                                         )}
-
-                                        style={{fontSize:"14px", color:"#13181e", marginRight:"0.5rem", backgroundColor:"#C47D1E"}}
+                                        style={{
+                                            fontSize: '14px',
+                                            color: '#13181e',
+                                            marginRight: '0.5rem',
+                                            backgroundColor: '#C47D1E',
+                                        }}
                                     >
                                         BOOK THIS TOUR
                                     </Button>
-                                    <Button variant="outlined" style={{fontSize:"14px", color:"#13181e"}}>
-                                        <Link to={'/stripe-payment/1?callbackURL='+window.location.href}>
-                                        <Typography variant="body2">
-                                            PAY WITH STRIPE
-
-                                        </Typography>
+                                    <Button
+                                        variant='outlined'
+                                        style={{
+                                            fontSize: '14px',
+                                            color: '#13181e',
+                                        }}
+                                    >
+                                        <Link
+                                            to={
+                                                '/stripe-payment/1?callbackURL=' +
+                                                window.location.href
+                                            }
+                                        >
+                                            <Typography variant='body2'>
+                                                PAY WITH STRIPE
+                                            </Typography>
                                         </Link>
                                     </Button>
                                 </PaymentOptions>
@@ -251,31 +291,27 @@ export const PackDetail = (props) => {
                         <Grid item xs={11} md={8} sm={11} lg={8}>
                             <TripFacts />
                         </Grid>
-                        
 
                         <Grid item xs={11} md={4} sm={4} lg={4}>
                             <PackageForm />
-                        </Grid>                            
+                        </Grid>
 
                         <Grid item xs={11} md={8} sm={11}>
-                            <PackageTabs imageList={detail.images}/>
+                            <PackageTabs imageList={detail.images} />
                         </Grid>
 
                         <Grid item xs={11} md={4} sm={4}>
                             <WhyBeyulVenture />
                         </Grid>
-                        
+
                         <Grid item xs={11} md={8} sm={11}>
                             <Review reviewList={detail.reviews} />
                         </Grid>
                         <Grid item xs={11} md={8} sm={11}>
                             <StorySection />
                         </Grid>
-
-                        
                     </Grid>
                 </Container>
-                
             </Box>
         </>
     )
