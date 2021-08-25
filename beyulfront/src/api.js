@@ -63,6 +63,7 @@ const ajax = async (path, rest) => {
             await refreshJWT()
             lastTms = new Date().getTime()
         }
+        console.log('expires in mins:', tokenTimeout - ((currTms - lastTms) / (60 * 1000)))
         const allHeaders = new Headers(headers || {})
         allHeaders.set('Authorization', 'Bearer ' + access)
         if (opts.method === 'POST') {

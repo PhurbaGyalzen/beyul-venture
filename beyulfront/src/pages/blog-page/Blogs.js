@@ -11,16 +11,17 @@ const MasonryFlex = styled(Masonry)`
     gap: 0.5rem;
     padding: 0rem 0.5rem;
     border: 1px solid #00000054;
+    
     & > :nth-child(odd) {
         flex: 1 1 480px;
+        article img {
+            max-height: 20rem;
+            max-width: 100rem;
+        }
     }
 
     & > :nth-child(even) {
         flex: 1 1 205px;
-    }
-
-    & article:nth-child(odd) img {
-        max-height: 20rem;
     }
 
     & article img {
@@ -222,7 +223,6 @@ const Blogs = (props) => {
                     blog.title.toLowerCase(),
                     blog.description.toLowerCase(),
                 ])
-                console.log({ filtered })
                 return filtered.length > 0 ? blog : false
             }),
         )
@@ -269,8 +269,7 @@ const Blogs = (props) => {
                         </form>
                     </TopPart>
 
-                    {/*<Masonry className="col-container" breakpointCols={breakpointColumnsObj}>*/}
-                    <MasonryFlex breakpointCols={breakpointColumnsObj}>
+                    <MasonryFlex className="col-container" breakpointCols={breakpointColumnsObj} aria-label="Masonry">
                         {blogsToShow.map((blog) => {
                             return (
                                 <BlogCard
