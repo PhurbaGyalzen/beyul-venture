@@ -16,11 +16,26 @@ import styled from 'styled-components'
 import './index.css'
 import Tooltip from '@material-ui/core/Tooltip'
 import Fade from '@material-ui/core/Fade'
+import { motion } from 'framer-motion'
 
 //All images import
 import visa from 'img/visa.png'
 import affilated from 'img/affilated.png'
 import footMount from 'img/footer_mountain.jpg'
+
+const linkVariants = {
+    hover: {
+        scale: 1.1,
+        color: '#c47d1e',
+        cursor: 'pointer',
+        originX: 0,
+    },
+
+    transition:{
+        type:'spring',
+        stiffness:120,
+    }
+}
 
 const FooterWithBg = styled.footer`
     background-image: url(${footMount});
@@ -58,45 +73,73 @@ export const Footer = () => {
                         </Box>
 
                         <Box>
-                            <Link
-                                href='#'
-                                color='inherit'
-                                className='textHover'
+                            <motion.div
+                                variants={linkVariants}
+                                whileHover='hover'
+                                transition="transition"
                             >
-                                <LocationOnIcon
-                                    fontSize='small'
-                                    style={{ marginRight: 10, paddingTop: 5 }}
-                                />
-                                Dillibazar Kathmandu Nepal
-                            </Link>
+                                <Link
+                                    href='#'
+                                    color='inherit'
+                                    variants={linkVariants}
+                                    whileHover='hover'
+                                >
+                                    <LocationOnIcon
+                                        fontSize='small'
+                                        style={{
+                                            marginRight: 10,
+                                            paddingTop: 5,
+                                        }}
+                                    />
+                                    Dillibazar Kathmandu Nepal
+                                </Link>
+                            </motion.div>
                         </Box>
 
                         <Box>
-                            <Link
-                                href='#'
-                                color='inherit'
-                                className='textHover'
+                            <motion.div
+                                variants={linkVariants}
+                                whileHover='hover'
+                                transition="transition"
+
                             >
-                                <CallIcon
-                                    fontSize='small'
-                                    style={{ marginRight: 10, paddingTop: 5 }}
-                                />
-                                +977 9807631204
-                            </Link>
+                                <Link
+                                    href='#'
+                                    color='inherit'
+                                    className='textHover'
+                                >
+                                    <CallIcon
+                                        fontSize='small'
+                                        style={{
+                                            marginRight: 10,
+                                            paddingTop: 5,
+                                        }}
+                                    />
+                                    +977 9807631204
+                                </Link>
+                            </motion.div>
                         </Box>
 
                         <Box>
-                            <Link
-                                href='#'
-                                color='inherit'
-                                className='textHover'
+                            <motion.div variants={linkVariants}
+                                whileHover='hover'
+                                transition="transition"
                             >
-                                <EmailIcon
-                                    fontSize='small'
-                                    style={{ marginRight: 10, paddingTop: 5 }}
-                                />
-                                beyulventure@gmail.com
-                            </Link>
+                                <Link
+                                    href='#'
+                                    color='inherit'
+                                    className='textHover'
+                                >
+                                    <EmailIcon
+                                        fontSize='small'
+                                        style={{
+                                            marginRight: 10,
+                                            paddingTop: 5,
+                                        }}
+                                    />
+                                    beyulventure@gmail.com
+                                </Link>
+                            </motion.div>
                         </Box>
 
                         <Box mb={{ xs: 5, sm: 5, md: 5, lg: 5 }} mt={1}>
@@ -188,53 +231,73 @@ export const Footer = () => {
                         </Box>
 
                         <Box>
-                            <Link
-                                href='/'
-                                color='#cdcdcd'
-                                className='textHover'
+                            <motion.div variants={linkVariants}
+                                whileHover='hover'
+                                transition="transition"
                             >
-                                Home
-                            </Link>
+                                <Link
+                                    href='/'
+                                    color='#cdcdcd'
+                                >
+                                    Home
+                                </Link>
+                            </motion.div>
                         </Box>
 
                         <Box>
-                            <Link
-                                href='/about'
-                                color='#cdcdcd'
-                                className='textHover '
+                            <motion.div variants={linkVariants}
+                                whileHover='hover'
+                                transition="transition"
                             >
-                                About
-                            </Link>
+                                <Link
+                                    href='/about'
+                                    color='#cdcdcd'
+                                >
+                                    About
+                                </Link>
+                            </motion.div>
                         </Box>
 
                         <Box>
-                            <Link
-                                href='/blog'
-                                color='#cdcdcd'
-                                className='textHover'
-                            >
-                                Blog
-                            </Link>
+                            <motion.div variants={linkVariants}
+                                whileHover='hover'
+                                transition="transition"
+                        >
+                                <Link
+                                    href='/blog'
+                                    color='#cdcdcd'
+                                >
+                                    Blog
+                                </Link>
+                            </motion.div>
                         </Box>
 
                         <Box>
-                            <Link
-                                href='contact-us'
-                                color='#cdcdcd'
-                                className='textHover'
+                            <motion.div variants={linkVariants}
+                                whileHover='hover'
+                                transition="transition"
                             >
-                                Contact Us
-                            </Link>
+                                <Link
+                                    href='contact-us'
+                                    color='#cdcdcd'
+                                >
+                                    Contact Us
+                                </Link>
+                            </motion.div>
                         </Box>
 
                         <Box mb={{ xs: 5, sm: 5, md: 5, lg: 5 }}>
-                            <Link
-                                href='/our-team'
-                                color='cdcdcd'
-                                className='textHover'
+                            <motion.div variants={linkVariants}
+                                whileHover='hover'
+                                transition="transition"
                             >
-                                Our Team
-                            </Link>
+                                <Link
+                                    href='/our-team'
+                                    color='cdcdcd'
+                                >
+                                    Our Team
+                                </Link>
+                            </motion.div>
                         </Box>
                     </Grid>
 
