@@ -11,6 +11,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import FancyLink from 'components/FancyLink'
 import { useHistory } from "react-router-dom";
+import Avatar from '@material-ui/core/Avatar';
 
 /*
 const cardStyle = makeStyles((theme) => ({
@@ -70,6 +71,7 @@ export const BlogCard = ({
     title,
     authorId,
     authorName,
+    authorImage,
     likes,
     tags,
     description,
@@ -100,10 +102,27 @@ export const BlogCard = ({
                 <Link to={'/blog/' + slug}>
                     <Title> <Typography variant="h4">{title}</Typography></Title>
                 </Link>
-                <div>
+                <div style={{display:'flex',flexDirection:'row',flexWrap: 'wrap'}}>
                     {/*<FancyLink href='#'>{author}</FancyLink>*/}
+                    { (
+                        () =>{
+                            if (authorImage == ''){
+                                let name = review.user;
+                                let matches = name.match(/\b(\w)/g); 
+                                console.log(matches);
+                                let firstLast = matches[0]+matches[matches.length-1];
+                                console.log(firstLast);
+                                return <Avatar >{firstLast}</Avatar>
+                            
+                            }
+                            else{
+                                return <Avatar alt={authorName} src={authorImage} />
+                            }
+                        }
+                    )()
+                    }
                     <FancyLink to={'/author/' + authorId}>
-                        <Typography variant="body1">
+                        <Typography variant="body1" style={{paddingLeft:'1rem'}}>
                             {authorName}
                         </Typography>
                     </FancyLink>

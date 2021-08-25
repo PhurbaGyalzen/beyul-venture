@@ -26,10 +26,10 @@ export const TagContainer = ({tagContent}) => {
         <>
             <Container style={{marginTop:'1rem',marginBotton:'1rem'}}>
                 <div>
-                    <div>
+                    <div style={{float:'left'}}>
                         <TagTitle>{tagContent.tagName}</TagTitle>
                     </div>
-                    <div>
+                    <div style={{float:'right',paddingRight:'10px'}}>
                         <Link>Explore all</Link>
                     </div>
                 </div>
@@ -40,7 +40,6 @@ export const TagContainer = ({tagContent}) => {
                             return <PackageCard key={pack.id} tagPackages={pack} />
                         })
                     }
-
 
                 </Grid>
             </Container>

@@ -16,7 +16,7 @@ import ImageDiv from './ImageDiv'
 import { CommentSec } from './CommentSec'
 import AllComments from 'components/CommentViewer'
 import FourZeroFour from 'pages/404'
-
+import Avatar from '@material-ui/core/Avatar';
 const blogStyles = makeStyles((theme) => ({
     blogContainer: {
         maxWidth: '750px',
@@ -97,14 +97,13 @@ const BlogDetail = ({ details }) => {
     const { blogid } = useParams()
     const classes = blogStyles()
     const [blog, setBlog] = useState([])
-    const [author, setAuthor] = useState({})
+    
 
     useEffect(async () => {
         const apiData = await ajax('/api/blog/' + blogid + '/')
         setBlog(apiData)
         if (apiData.error) return
-        const authorData = await ajax(apiData.author)
-        setAuthor(authorData)
+        
     }, [])
     if (blog.error) {
         return <FourZeroFour />
@@ -135,13 +134,13 @@ const BlogDetail = ({ details }) => {
                                 </Typography>
                             </div>
                             <div className={classes.articleInfo}>
-                                <span>
+                                <span style={{display:'inline-flex'}}>
                                     By:{' '}
                                     <Link
                                         to='/jaikant'
                                         className={classes.authorStyle}
                                     >
-                                        {author.email}
+                                        {blog.author_name}
                                     </Link>
                                 </span>
                                 <span>|</span>

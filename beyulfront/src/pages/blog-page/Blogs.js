@@ -237,7 +237,8 @@ const Blogs = (props) => {
                                     thumbnail={blog.thumbnail}
                                     title={blog.title}
                                     authorId={blog.author_id}
-                                    authorName={'Jaikant Shikre'}
+                                    authorName={blog.author_name}
+                                    authorImage={blog.author_profile}
                                     likes={blog.likes}
                                     tags={blog.tags}
                                     description={blog.description}
