@@ -3,6 +3,7 @@ import { Formik, Field, Form, useField } from 'formik'
 import * as yup from 'yup';
 import { makeStyles, TextField, Button, Typography } from '@material-ui/core';
 import LockIcon from '@material-ui/icons/Lock'
+import {motion} from 'framer-motion'
 
 const useStyles = makeStyles((theme) => ({
     form: {
@@ -114,6 +115,13 @@ export const ContactUsForm = () => {
                     multiline rows={5} variant="outlined" size='small'/>
                         <Button
                         variant='contained'
+                        component={motion.div}
+                        whileHover={{
+                            scale:1.03,
+                            textShadow:"0px 0px 8px rgb(205, 205, 205)",
+                        }}
+
+                        transition={{duration:0.4, type:'spring', stiffness:120}}
                         size='large'
                         className={classes.askButton}
                         disabled={isSubmitting}

@@ -8,6 +8,8 @@ import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import { useEffect } from 'react'
 import SortIcon from '@material-ui/icons/Sort'
+import {motion} from 'framer-motion'
+import '../../assets/css/animate.min.css'
 import {
     Drawer,
     List,
@@ -22,7 +24,6 @@ import { List as ListIcon, Label as LabelIcon } from '@material-ui/icons'
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        
     },
 
     menuButton: {
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     links: {
-        color:'#13181e',
+        color: '#13181e',
         marginRight: '2.3rem',
         fontSize: '0.8rem',
         letterSpacing: '0.1rem',
@@ -81,7 +82,6 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up('lg')]: {
             display: 'flex',
         },
-
     },
 
     menuIcon: {
@@ -215,22 +215,20 @@ export default function ButtonAppBar() {
             icon: <LabelIcon />,
             link: '/privacy-policy',
         },
-
-
     ]
     const drawerItems = navItems.concat({
-          text: 'Sign Up',
-          icon: <LabelIcon />,
-          link: '/sign-up',
-      })
+        text: 'Sign Up',
+        icon: <LabelIcon />,
+        link: '/sign-up',
+    })
 
     return (
         <div className={classes.root}>
             <AppBar position='fixed' className={classes[navRef.current]}>
                 <Toolbar disableGutters>
                     <Typography
-                        variant='h6'
-                        className={classes.title}
+                        variant='h1'
+                        className={`${classes.title} animate__animated animate__bounceInLeft animate__slow`}
                         component='h1'
                     >
                         <Link
@@ -242,22 +240,24 @@ export default function ButtonAppBar() {
                         </Link>
                     </Typography>
                     <div className={classes.sectionDesktop}>
-                        {navItems.map((item) => <NavBtn
-                            key={item.link}
-                            to={item.link}
-                            className={classes[navRef1.current]}
-                            component={NavLink}
-                            // style={{mixBlendMode: 'difference'}}
-                        >
-                            {item.text}
-                        </NavBtn>)}
+                        {navItems.map((item) => (
+                            <NavBtn
+                                key={item.link}
+                                to={item.link}
+                                className={classes[navRef1.current]}
+                                component={NavLink}
+                                // style={{mixBlendMode: 'difference'}}
+                            >
+                                {item.text}
+                            </NavBtn>
+                        ))}
                         <Button
                             component={NavLink}
                             to='/sign-up'
                             variant='contained'
                             color='primary'
                             size='medium'
-                            className={classes.signUp}
+                            className={`${classes.signUp} animate__animated animate__pulse animate__infinite`}
                             style={{ fontSize: '0.7rem' }}
                         >
                             Sign Up

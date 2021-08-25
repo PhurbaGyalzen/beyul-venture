@@ -16,14 +16,15 @@ import Parliament from 'components/Owls'
 import PackageDetail from 'pages/package-detail/PackageDetail'
 import InstagramWidget from 'components/InstaWidget'
 import { fetchPosts } from 'utils/instagram'
+import 'assets/css/animate.min.css'
 import trek from 'img/trek_1.png'
 import pck from 'img/pck_1.webp'
 
 const useStyles = makeStyles((theme) => ({
     subHeading: {
-        paddingTop:"2rem",
-        paddingBottom:"1rem",
-        textAlign:"center"
+        paddingTop: '2rem',
+        paddingBottom: '1rem',
+        textAlign: 'center',
     },
     spacious: {
         margin: '2rem auto',
@@ -161,7 +162,8 @@ const HomePage = () => {
             <Box mt='1rem'>
                 <Container>
                     <Typography
-                        variant='h4' components="h3"
+                        variant='h4'
+                        components='h3'
                         className={classes.subHeading}
                     >
                         Popular Packages
@@ -198,8 +200,10 @@ const HomePage = () => {
                 </div>
             </Container>
             <Container>
-                <Typography variant='h4' className={classes.subHeading}>Recommended Trekking</Typography>
-                <Parliament cars={packageData} itemNo={3}/>
+                <Typography variant='h4' className={classes.subHeading}>
+                    Recommended Trekking
+                </Typography>
+                <Parliament cars={packageData} itemNo={3} />
             </Container>
 
             {/*for insta widget*/}

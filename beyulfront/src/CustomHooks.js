@@ -1,3 +1,5 @@
+import React from 'react'
+
 // sauce: https://www.joshwcomeau.com/snippets/react-hooks/use-timeout/
 export default function useTimeout(callback, delay) {
   const timeoutRef = React.useRef(null);
@@ -31,3 +33,5 @@ function useInterval(callback, delay) {
   }, [delay]);
   return intervalRef;
 }
+
+export {useTimeout, useInterval}
