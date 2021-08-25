@@ -27,7 +27,9 @@ export default function UsefulInfo({ title, description }) {
     return (
         <>
             <div className={classes.root}>
-                <Accordion>
+                <Accordion
+                    style={{ marginBottom: '0.5rem', borderRadius: 5 }}
+                >
                     <AccordionSummary
                         className={classes.usefulInfoAccordion}
                         expandIcon={<ExpandMoreIcon />}

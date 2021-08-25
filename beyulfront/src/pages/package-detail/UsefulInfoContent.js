@@ -110,7 +110,11 @@ export default function UsefulInfoContent() {
                 <Typography variant='h6' component='h1'>
                     Useful information related to the trip.
                 </Typography>
-                <Typography variant='body1' color='textSecondary'>
+                <Typography
+                    variant='body1'
+                    color='textSecondary'
+                    style={{ marginBottom: '1rem' }}
+                >
                     Please click on the title to view detail.
                 </Typography>
 
