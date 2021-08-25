@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Box, Container, Card, Grid, Typography } from '@material-ui/core'
 import styled from 'styled-components'
 import Masonry from 'react-masonry-css'
-import {useTimeout} from 'CustomHooks'
+import { useTimeout } from 'CustomHooks'
 import { BlogCard } from './BlogCard'
 import './index.css'
 
@@ -71,12 +71,11 @@ const Section = (props) => {
 }
 
 const filterArray = (s, arr) => {
-    return (arr.filter((item) => {
+    return arr.filter((item) => {
         if (item.includes(s)) {
             return item
         }
     })
-    )
 }
 
 const fetchBlogs = async (query) => {
@@ -100,7 +99,7 @@ const fetchBlogs = async (query) => {
 
 const Blogs = (props) => {
     /*
-    const [blogs, setBlogs] = useState([
+    const [blogs, setBlogsToShow] = useState([
         {
             id: 1,
             title: 'Memories on the trails of Annapurna',
@@ -186,32 +185,47 @@ const Blogs = (props) => {
     const [firstDelay, setFirstDelay] = useState(true)
     const [secondDelay, setSecondDelay] = useState(false)
 
-    useTimeout(() => {
-        console.log('first timeout')
-        handleSubmit()
-    }, firstDelay ? 5000 : null)
-    useTimeout(() => {
-        console.log('second timeout')
-        handleSubmit()
-    }, secondDelay ? 5000 : null)
+    useTimeout(
+        () => {
+            console.log('first timeout')
+            handleSubmit()
+        },
+        firstDelay ? 1000 : null,
+    )
+    useTimeout(
+        () => {
+            console.log('second timeout')
+            handleSubmit()
+        },
+        secondDelay ? 1000 : null,
+    )
     const [query, setQuery] = useState('')
 
-    const [blogs, setBlogs] = useState([])
+    const [blogsToShow, setBlogsToShow] = useState([])
     const [fetchedBlogs, setFetchedBlogs] = useState([])
+
     useEffect(async () => {
+        // when blog first loads
         const tempBlogs = await fetchBlogs()
-        setBlogs(tempBlogs)
+        setBlogsToShow(tempBlogs)
         setFetchedBlogs(tempBlogs)
     }, [])
 
     const handleInput = (event) => {
         const currInput = event.target.value
         setQuery(currInput)
-        setBlogs(fetchedBlogs.filter((blog) => {
-            const filtered = filterArray(currInput, [blog.title, blog.description])
-            console.log({filtered})
-            return filtered.length > 0 ? blog : false
-        }))
+        // filtering on blogsToShow below will break cuz the current filter
+        // will be set on blogsToShow cuz of setBlogsToShow() and so on...
+        setBlogsToShow(
+            fetchedBlogs.filter((blog) => {
+                const filtered = filterArray(currInput.toLowerCase(), [
+                    blog.title.toLowerCase(),
+                    blog.description.toLowerCase(),
+                ])
+                console.log({ filtered })
+                return filtered.length > 0 ? blog : false
+            }),
+        )
 
         // One state is null while other is not-null.
         // not-null delays always get executed cuz internally delay is in a
@@ -223,9 +237,11 @@ const Blogs = (props) => {
     const handleSubmit = async (event) => {
         if (event) event.preventDefault()
         console.log('submitted search query: "' + query + '"')
+        if (!query) return
         const tempBlogs = await fetchBlogs(query)
-        // setBlogs(tempBlogs)
-        setFetchedBlogs(tempBlogs)
+        // first filter on already fetched blogs and display those(see handleInput).
+        // after fetching display only the fetched blogs.
+        setBlogsToShow(tempBlogs)
     }
 
     const breakpointColumnsObj = {
@@ -235,10 +251,7 @@ const Blogs = (props) => {
 
     return (
         <>
-            <Box
-                pt={7}
-                style={{color: '#13181e' }}
-            >
+            <Box pt={7} style={{ color: '#13181e' }}>
                 <Container style={{ paddingTop: '4rem' }}>
                     <TopPart>
                         <BigTitle variant='h4'>All Articles</BigTitle>
@@ -246,23 +259,19 @@ const Blogs = (props) => {
                             <SearchBox
                                 type='search'
                                 id='search-blog'
-                                name='q'
+                                name='search'
                                 placeholder='Search Blogs...'
                                 aria-label='Search all the blogs.'
                                 required
                                 onInput={handleInput}
                             />
-                            <SubmitButton
-                                type='submit'
-                            >
-                                {'>'}
-                            </SubmitButton>
+                            <SubmitButton type='submit'>{'>'}</SubmitButton>
                         </form>
                     </TopPart>
 
                     {/*<Masonry className="col-container" breakpointCols={breakpointColumnsObj}>*/}
                     <MasonryFlex breakpointCols={breakpointColumnsObj}>
-                        {blogs.map((blog) => {
+                        {blogsToShow.map((blog) => {
                             return (
                                 <BlogCard
                                     key={blog.slug}
