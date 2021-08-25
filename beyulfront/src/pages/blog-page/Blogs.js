@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Box, Container, Card, Grid, Typography } from '@material-ui/core'
 import styled from 'styled-components'
 import Masonry from 'react-masonry-css'
+import {useTimeout} from 'CustomHooks'
 import { BlogCard } from './BlogCard'
 import './index.css'
 
@@ -78,6 +79,24 @@ const filterArray = (s, arr) => {
     )
 }
 
+const fetchBlogs = async (query) => {
+    const tempBlogs = []
+    let url = '/api/blog/'
+    // query can be an empty string when typing in search box
+    if (query !== undefined && query !== null) {
+        console.log('query is present')
+        url += '?' + new URLSearchParams([['search', query]])
+    }
+    for (let _ = 0; _ < 10; _++) {
+        const data = await ajax(url)
+        if (!data) break
+        tempBlogs.push(...data.results)
+        const nextPageURL = data.next_page_link
+        if (!nextPageURL) break
+        url = data.next_page_link
+    }
+    return tempBlogs
+}
 
 const Blogs = (props) => {
     /*
@@ -164,36 +183,51 @@ const Blogs = (props) => {
         },
     ])
     */
+    const [firstDelay, setFirstDelay] = useState(true)
+    const [secondDelay, setSecondDelay] = useState(false)
+
+    useTimeout(() => {
+        console.log('first timeout')
+        handleSubmit()
+    }, firstDelay ? 5000 : null)
+    useTimeout(() => {
+        console.log('second timeout')
+        handleSubmit()
+    }, secondDelay ? 5000 : null)
+    const [query, setQuery] = useState('')
+
     const [blogs, setBlogs] = useState([])
     const [fetchedBlogs, setFetchedBlogs] = useState([])
     useEffect(async () => {
-        const tempBlogs = []
-        let url = '/api/blog/'
-        for (let _ = 0; _ < 10; _++) {
-            const data = await ajax(url)
-            if (!data) break
-            tempBlogs.push(...data.results)
-            const nextPageURL = data.next_page_link
-            if (!nextPageURL) break
-            url = data.next_page_link
-        }
+        const tempBlogs = await fetchBlogs()
         setBlogs(tempBlogs)
         setFetchedBlogs(tempBlogs)
     }, [])
 
     const handleInput = (event) => {
         const currInput = event.target.value
+        setQuery(currInput)
         setBlogs(fetchedBlogs.filter((blog) => {
             const filtered = filterArray(currInput, [blog.title, blog.description])
-            console.log(filtered)
+            console.log({filtered})
             return filtered.length > 0 ? blog : false
         }))
-        // a timeout hook
+
+        // One state is null while other is not-null.
+        // not-null delays always get executed cuz internally delay is in a
+        // dependency array of useEffect()
+        setFirstDelay(!firstDelay)
+        setSecondDelay(!secondDelay)
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
+    const handleSubmit = async (event) => {
+        if (event) event.preventDefault()
+        console.log('submitted search query: "' + query + '"')
+        const tempBlogs = await fetchBlogs(query)
+        // setBlogs(tempBlogs)
+        setFetchedBlogs(tempBlogs)
     }
+
     const breakpointColumnsObj = {
         default: 2,
         800: 1,
@@ -208,7 +242,7 @@ const Blogs = (props) => {
                 <Container style={{ paddingTop: '4rem' }}>
                     <TopPart>
                         <BigTitle variant='h4'>All Articles</BigTitle>
-                        <form role='search'>
+                        <form role='search' onSubmit={handleSubmit}>
                             <SearchBox
                                 type='search'
                                 id='search-blog'
@@ -220,7 +254,6 @@ const Blogs = (props) => {
                             />
                             <SubmitButton
                                 type='submit'
-                                onSubmit={handleSubmit}
                             >
                                 {'>'}
                             </SubmitButton>
