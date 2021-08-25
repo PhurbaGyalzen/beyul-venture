@@ -187,7 +187,7 @@ const App = () => {
             {/* <Paper style={{height:"auto"}} elevation={0}> */}
             <Router>
                 <div className='App'>
-                    <CssBaseline />
+                    {/*<CssBaseline />*/}
                     <Toaster />
                     <Navigation />
                     <Routes />

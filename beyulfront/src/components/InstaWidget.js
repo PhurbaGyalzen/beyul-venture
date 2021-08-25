@@ -32,6 +32,7 @@ const Figure = styled.figure`
 const FigCaption = styled.figcaption`
     color: white;
     font-size: 0.75rem;
+    width: 100%;
     padding: 0rem 1rem;
     position: absolute;
     top: 50%;
