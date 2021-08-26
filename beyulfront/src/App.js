@@ -83,7 +83,7 @@ const App = () => {
                 fontWeight: 'bold',
                 fontFamily: 'sans-serif',
                 fontSize: '16px',
-                lineHeight: '24x',
+                lineHeight: '16px',
             },
             body1: {
                 color: '#13181e',
@@ -187,7 +187,7 @@ const App = () => {
             {/* <Paper style={{height:"auto"}} elevation={0}> */}
             <Router>
                 <div className='App'>
-                    {/*<CssBaseline />*/}
+                    <CssBaseline />
                     <Toaster />
                     <Navigation />
                     <Routes />

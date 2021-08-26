@@ -12,6 +12,7 @@ const BrushyText = (props) => {
             backgroundColor: '#ffffff00',
             fontSize: '4rem',
             transform: 'translateY(+50%)',
+            lineHeight: 'normal'
         },
     }
     return (
