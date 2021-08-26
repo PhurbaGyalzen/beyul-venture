@@ -28,6 +28,8 @@ const useStyles = makeStyles((theme) => ({
         letterSpacing: '0.1rem',
         fontSize: '14px',
         lineHeight: '24px',
+        color:'#cdcdcd',
+
         '&:hover': {
             cursor: 'pointer',
             backgroundColor: '#DF9534',
@@ -128,7 +130,8 @@ export default function AboutUsPage() {
                                 the release of Letraset sheets containing Lorem
                                 Ipsum passages.
                             </Typography>
-                            <Button color='#cdcdcd' className={classes.button}>
+                            <Button className={classes.button}                                     style={{color:"#cdcdcd"}}
+>
                                 Readmore
                             </Button>
                         </Grid>
@@ -177,7 +180,7 @@ export default function AboutUsPage() {
                                 electronic typesetting, remaining essentially
                                 unchanged.
                             </Typography>
-                            <Button className={classes.button} color='#cdcdcd'>
+                            <Button className={classes.button} >
                                 Readmore
                             </Button>
                         </Grid>

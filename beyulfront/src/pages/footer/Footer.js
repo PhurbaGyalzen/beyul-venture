@@ -237,7 +237,7 @@ export const Footer = () => {
                             >
                                 <Link
                                     href='/'
-                                    color='#cdcdcd'
+                                    style={{color:"#cdcdcd"}}
                                 >
                                     Home
                                 </Link>
@@ -251,7 +251,7 @@ export const Footer = () => {
                             >
                                 <Link
                                     href='/about'
-                                    color='#cdcdcd'
+                                    style={{color:"#cdcdcd"}}
                                 >
                                     About
                                 </Link>
@@ -265,7 +265,7 @@ export const Footer = () => {
                         >
                                 <Link
                                     href='/blog'
-                                    color='#cdcdcd'
+                                    style={{color:"#cdcdcd"}}
                                 >
                                     Blog
                                 </Link>
@@ -279,7 +279,7 @@ export const Footer = () => {
                             >
                                 <Link
                                     href='contact-us'
-                                    color='#cdcdcd'
+                                    style={{color:"#cdcdcd"}}
                                 >
                                     Contact Us
                                 </Link>
@@ -293,7 +293,7 @@ export const Footer = () => {
                             >
                                 <Link
                                     href='/our-team'
-                                    color='cdcdcd'
+                                    style={{color:"#cdcdcd"}}
                                 >
                                     Our Team
                                 </Link>
