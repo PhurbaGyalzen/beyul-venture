@@ -95,7 +95,9 @@ export const BlogCard = ({
                             let firstLast =
                                 matches[0] + matches[matches.length - 1]
                             console.log(firstLast)
-                            return <Avatar>{firstLast}</Avatar>
+                            const colors = ["#e91e63", "#4caf50", "#ff5722", "#673ab7", "#757575"];
+                            const random = Math.floor(Math.random() * colors.length);
+                            return <Avatar style={{backgroundColor:colors[random],color:'white'}}>{firstLast}</Avatar>
                         } else {
                             return (
                                 <Avatar alt={authorName} src={authorImage} />

@@ -57,12 +57,15 @@ export const Review = ({ reviewList }) => {
                                                 let matches =
                                                     name.match(/\b(\w)/g)
                                                 console.log(matches)
+                                                const colors = ["#e91e63", "#4caf50", "#ff5722", "#673ab7", "#757575"];
+                                                const random = Math.floor(Math.random() * colors.length);
+                                                console.log(random, colors[random]);
                                                 let firstLast =
                                                     matches[0] +
                                                     matches[matches.length - 1]
                                                 console.log(firstLast)
                                                 return (
-                                                    <Avatar>
+                                                    <Avatar style={{backgroundColor:colors[random],color:'white'}}>
                                                         {firstLast}
                                                     </Avatar>
                                                 )
