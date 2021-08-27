@@ -176,7 +176,7 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
         return f"http://127.0.0.1:8000/media/{obj.author.profile_pic}"
 
     def get_read_time(self, obj):
-        result = readtime.of_text(obj.content)
+        result = readtime.of_html(obj.content)
         return result.text
 
 
