@@ -11,6 +11,7 @@ from rest_framework.validators import UniqueTogetherValidator
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
     username = serializers.SerializerMethodField()
+    user_profile = serializers.SerializerMethodField()
     heart_eyes_count = serializers.SerializerMethodField()
     thumbsup_count = serializers.SerializerMethodField()
     thumbsdown_count = serializers.SerializerMethodField()
@@ -24,6 +25,7 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
             'url',
             'body',
             'username',
+            'user_profile',
             'blog',
             'parent',
             'heart_eyes_count',
@@ -41,6 +43,9 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
         if last_name:
             return f"{obj.user.first_name} {last_name}"
         return obj.user.first_name
+
+    def get_user_profile(self, obj):
+        return f"http://127.0.0.1:8000/media/{obj.user.profile_pic}"
 
     def get_heart_eyes_count(self, obj):
         return obj.commentlikes.aggregate(Sum('heart_eyes_count'))['heart_eyes_count__sum']
