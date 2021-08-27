@@ -124,6 +124,25 @@ const flatten = (arr) => {
     return inner(arr)
 }
 
+const insertIndents = (flattened) => {
+    const context = {}
+    flattened.forEach((item) => context[item.id] = item.parent)
+
+    const flattenedWithContext = []
+    flattened.forEach((item) => {
+        let id = item.id
+        let indent = 0
+        while (true) {
+            if (!context[id]) break
+            indent++
+            id = context[id]
+        }
+        item.indent = indent
+        flattenedWithContext.push(item)
+    })
+    return flattenedWithContext
+}
+
 const Comment = (props) => {
     const comment = props.comment
     const [reactions, setReactions] = useState(comment.reactions)
@@ -200,8 +219,10 @@ const AllComments = (props) => {
             time: 1626009900,
             reactions: [
                 { id: '😍', count: 3 },
-                { id: '😇', count: 1 },
+                { id: '👍', count: 1 },
+                { id: '👎', count: 1 },
                 { id: '😎', count: 2 },
+                { id: '🚀', count: 2 },
             ],
             text: 'I am the guardian in the dark. I vow to defend this planet with my life. I shall father no children and love no one. I am the carrier of my sword and my sword shall carry me. I am the saviour of this world and the pace of humanity. I pledge my sword and my soul to the old Gods and the old Gods will protect me from evil. I shall not be tempted by the demon and the Gods will welcome me in heavens gate and feast me in the great Heaven halls of paradise.',
             parent: null,
@@ -220,7 +241,7 @@ const AllComments = (props) => {
                             time: 1626204900,
                             reactions: [{ id: '😍', count: 5 }],
                             text: 'Nice.',
-                            parent: 103,
+                            parent: 109,
                         },
                     ],
                 },
@@ -255,7 +276,7 @@ const AllComments = (props) => {
         },
     ])
     const flatComments = flatten(comments)
-
+    console.log(flatComments)
     return (
         <>
             {flatComments.map((comment) => {

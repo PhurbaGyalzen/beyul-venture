@@ -74,6 +74,7 @@ const errort = (msg) => toast.error(msg)
 
 export const SignUpForm = (props) => {
     const classes = useStyles()
+    const history = useHistory()
     return (
         <>
             <Paper>
@@ -118,11 +119,11 @@ export const SignUpForm = (props) => {
                                     'main sign up jsonData:',
                                     jsonData.data,
                                 )
-                                console.log(jsonData.status)(
-                                    jsonData.status > 400,
-                                )
-                                    ? errort(jsonData.data.detail)
-                                    : successToast(jsonData.data.detail)
+                                console.log(jsonData.status)
+                                jsonData.status >= 400 ? errort(jsonData.data.Errors.email[0])
+                                : (successToast(jsonData.data.Message),
+                                history.push('/sign-in'))
+                                console.log(jsonData.data.Message)
 
                                 // successToast(jsonData.data.detail);
                             })
