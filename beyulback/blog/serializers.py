@@ -74,17 +74,6 @@ class CommentLikeSerializer(serializers.HyperlinkedModelSerializer):
         )
     ]
 
-    def validate_count(self, value):
-        if value > 10:
-            raise serializers.ValidationError(
-                _('You can only clap maximum 10 times.')
-            )
-        elif value < 0:
-            raise serializers.ValidationError(
-                _('Does not support negative claps.')
-            )
-        return value
-
 
 SEARCH_PATTERNN = 'src=\"/media/uploads/'
 SITE_DOMAIN = "http://127.0.0.1:8000"
