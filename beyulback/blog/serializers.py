@@ -121,8 +121,8 @@ class FixAbsolutePathSerializer(serializers.Field):
 
 class BlogSerializer(serializers.HyperlinkedModelSerializer):
     comment = CommentSerializer(many=True, read_only=True, source="comments")
-    clap = ClapSerializer(many=True, read_only=True, source="claps")
     content = FixAbsolutePathSerializer()
+    total_claps = serializers.SerializerMethodField()
     author_name = serializers.SerializerMethodField()
     author_profile = serializers.SerializerMethodField()
 
@@ -143,12 +143,15 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
             'author_profile',
             'status',
             'comment',
-            'clap'
+            'total_claps'
         )
         extra_kwargs = {
             'url': {'view_name': 'blog-detail', 'lookup_field': 'slug'},
             'tags': {'view_name': 'tag-detail', 'lookup_field': 'slug'},
         }
+
+    def get_total_claps(self, obj):
+        return obj.claps.aggregate(Sum('count'))['count__sum']
 
     def get_author_name(self, obj):
         return obj.author.first_name
