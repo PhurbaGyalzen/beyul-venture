@@ -1,3 +1,5 @@
+import readtime
+
 from .customvalidators import validate_comment_like
 from .models import Blog, Tag, Comment, Clap, CommentLike
 
@@ -134,6 +136,7 @@ class FixAbsolutePathSerializer(serializers.Field):
 class BlogSerializer(serializers.HyperlinkedModelSerializer):
     comment = CommentSerializer(many=True, read_only=True, source="comments")
     content = FixAbsolutePathSerializer()
+    read_time = serializers.SerializerMethodField()
     total_claps = serializers.SerializerMethodField()
     author_name = serializers.SerializerMethodField()
     author_profile = serializers.SerializerMethodField()
@@ -147,6 +150,7 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
             'description',
             'tags',
             'content',
+            'read_time',
             'created_on',
             'updated_on',
             'thumbnail',
@@ -170,6 +174,10 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_author_profile(self, obj):
         return f"http://127.0.0.1:8000/media/{obj.author.profile_pic}"
+
+    def get_read_time(self, obj):
+        result = readtime.of_text(obj.content)
+        return result.text
 
 
 class ReadOnlyModelSerializer(serializers.HyperlinkedModelSerializer):
