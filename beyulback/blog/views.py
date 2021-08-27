@@ -1,10 +1,11 @@
-from .models import Blog, Tag, Comment, Clap
+from .models import Blog, Tag, Comment, Clap, CommentLike
 from users.serializers import CustomTokenObtainPairSerializer
 from .serializers import (
     BlogSerializer,
     TagSerializer,
     CommentSerializer,
     ClapSerializer,
+    CommentLikeSerializer,
 )
 from .custompaginations import RemovePageNumberPagination
 from django.contrib.auth import get_user_model
@@ -57,6 +58,15 @@ class CommentViewSet(viewsets.ModelViewSet):
         'blog',
     ).all()
     serializer_class = CommentSerializer
+    pagination_class = RemovePageNumberPagination
+
+
+class CommentLikeViewSet(viewsets.ModelViewSet):
+    queryset = CommentLike.objects.select_related(
+        'user',
+        'comment',
+    ).all()
+    serializer_class = CommentLikeSerializer
     pagination_class = RemovePageNumberPagination
 
 

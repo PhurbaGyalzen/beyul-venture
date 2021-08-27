@@ -11,3 +11,14 @@ def validate_clap(value):
         raise ValidationError(
             _('Does not support negative claps.')
         )
+
+
+def validate_comment_like(value):
+    if value > 1:
+        raise ValidationError(
+            _('Cannot react more than one.')
+        )
+    elif value < 0:
+        raise ValidationError(
+            _('Cannot accept negative values.')
+        )

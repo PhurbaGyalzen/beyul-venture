@@ -1,4 +1,5 @@
-from .models import Blog, Tag, Comment, Clap
+from .customvalidators import validate_comment_like
+from .models import Blog, Tag, Comment, Clap, CommentLike
 
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
@@ -28,6 +29,48 @@ class ClapSerializer(serializers.HyperlinkedModelSerializer):
             queryset=Clap.objects.all(),
             fields=['user', 'blog'],
             message=_("User and blog fields must be unique together")
+        )
+    ]
+
+    def validate_count(self, value):
+        if value > 10:
+            raise serializers.ValidationError(
+                _('You can only clap maximum 10 times.')
+            )
+        elif value < 0:
+            raise serializers.ValidationError(
+                _('Does not support negative claps.')
+            )
+        return value
+
+
+class CommentLikeSerializer(serializers.HyperlinkedModelSerializer):
+    heart_eyes_count = serializers.IntegerField(
+        validators=[validate_comment_like]
+    )  # 😍
+    thumbsup_count = serializers.IntegerField(
+        validators=[validate_comment_like]
+    )  # 👍
+    thumbsdown_count = serializers.IntegerField(
+        validators=[validate_comment_like]
+    )  # 👎
+    sunglasses_count = serializers.IntegerField(
+        validators=[validate_comment_like]
+    )  # 😎
+    rocket_count = serializers.IntegerField(
+        validators=[validate_comment_like]
+    )  # 🚀
+
+    class Meta:
+        model = CommentLike
+        fields = ['url', 'heart_eyes_count', 'thumbsup_count', 'thumbsdown_count',
+                  'sunglasses_count', 'rocket_count', 'user', 'comment']
+
+    validators = [
+        UniqueTogetherValidator(
+            queryset=CommentLike.objects.all(),
+            fields=['user', 'comment'],
+            message=_("User and comment fields must be unique together")
         )
     ]
 

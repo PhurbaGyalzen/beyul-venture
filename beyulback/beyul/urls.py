@@ -6,6 +6,7 @@ from blog.views import (
     TagViewSet,
     CommentViewSet,
     ClapViewSet,
+    CommentLikeViewSet,
 )
 
 from users.views import(
@@ -38,6 +39,7 @@ router.register(r'clap', ClapViewSet)
 router.register(r'package', PackageView)
 router.register(r'review', ReviewView)
 router.register(r'photo', PhotoView)
+router.register(r'comment_like', CommentLikeViewSet)
 
 
 admin_site = OTPAdminSite(name="OTP Admin")

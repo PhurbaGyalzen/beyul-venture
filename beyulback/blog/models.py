@@ -1,4 +1,4 @@
-from .customvalidators import validate_clap
+from .customvalidators import validate_clap, validate_comment_like
 from .ImageCompressor import compress
 
 from datetime import datetime, timezone
@@ -181,6 +181,58 @@ class Comment(MPTTModel):
 
     def __str__(self):
         return f"{self.user.first_name}{self.user.id}, In ({self.blog.title})-> comment: {self.body} "
+
+
+class CommentLike(models.Model):
+
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="commentlikes"
+    )
+
+    comment = models.ForeignKey(
+        Comment,
+        on_delete=models.CASCADE,
+        related_name="commentlikes"
+    )
+
+    created_on = models.DateTimeField(
+        _('create on'),
+        auto_now_add=True
+    )
+
+    updated_on = models.DateTimeField(
+        _('update on'),
+        auto_now=True
+    )
+
+    heart_eyes_count = models.PositiveSmallIntegerField(
+        _('heart eyes'),
+        validators=[validate_comment_like]
+    )  # 😍
+    thumbsup_count = models.PositiveSmallIntegerField(
+        _('thumbsup'),
+        validators=[validate_comment_like]
+    )  # 👍
+    thumbsdown_count = models.PositiveSmallIntegerField(
+        _('thumbsdown'),
+        validators=[validate_comment_like]
+    )  # 👎
+    sunglasses_count = models.PositiveSmallIntegerField(
+        _('sunglasses_count'),
+        validators=[validate_comment_like]
+    )  # 😎
+    rocket_count = models.PositiveSmallIntegerField(
+        _('rocket'),
+        validators=[validate_comment_like]
+    )  # 🚀
+
+    def __str__(self):
+        return f"{self.user.first_name} reacted to {self.comment.id} id comment."
+
+    class Meta:
+        unique_together = ('user', 'comment',)
 
 
 class Clap(models.Model):
