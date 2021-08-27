@@ -10,6 +10,7 @@ from rest_framework.validators import UniqueTogetherValidator
 
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
+    username = serializers.SerializerMethodField()
     heart_eyes_count = serializers.SerializerMethodField()
     thumbsup_count = serializers.SerializerMethodField()
     thumbsdown_count = serializers.SerializerMethodField()
@@ -22,7 +23,7 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
             'id',
             'url',
             'body',
-            'user',
+            'username',
             'blog',
             'parent',
             'heart_eyes_count',
@@ -34,6 +35,12 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
         extra_kwargs = {
             'blog': {'view_name': 'blog-detail', 'lookup_field': 'slug'}
         }
+
+    def get_username(self, obj):
+        last_name = obj.user.last_name
+        if last_name:
+            return f"{obj.user.first_name} {last_name}"
+        return obj.user.first_name
 
     def get_heart_eyes_count(self, obj):
         return obj.commentlikes.aggregate(Sum('heart_eyes_count'))['heart_eyes_count__sum']

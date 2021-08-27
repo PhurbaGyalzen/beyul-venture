@@ -16,12 +16,13 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-    list_display = ('email', 'first_name', 'is_staff',
+    list_display = ('email', 'first_name', 'last_name', 'is_staff',
                     'is_staff', 'is_active',)
     list_filter = ('email', 'first_name', 'is_staff', 'is_staff', 'is_active',)
     # fieldsets are shown in admin form while updating existing users
     fieldsets = (
-        (None, {'fields': ('email', 'profile_pic', 'password')}),
+        (None, {'fields': ('email', 'first_name',
+         'last_name', 'profile_pic', 'password')}),
         (_('Advance Permissions'), {
             'classes': ('collapse',),
             'fields': ('is_superuser', 'is_staff', 'is_active')
