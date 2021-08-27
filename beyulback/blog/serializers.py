@@ -10,7 +10,7 @@ from rest_framework.validators import UniqueTogetherValidator
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Comment
-        fields = ['url', 'body', 'user', 'blog', 'parent']
+        fields = ['id', 'url', 'body', 'user', 'blog', 'parent']
         extra_kwargs = {
             'blog': {'view_name': 'blog-detail', 'lookup_field': 'slug'}
         }
