@@ -3,18 +3,52 @@ from .models import Blog, Tag, Comment, Clap, CommentLike
 
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
+from django.db.models import Sum
 
 from rest_framework import serializers
 from rest_framework.validators import UniqueTogetherValidator
 
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
+    heart_eyes_count = serializers.SerializerMethodField()
+    thumbsup_count = serializers.SerializerMethodField()
+    thumbsdown_count = serializers.SerializerMethodField()
+    sunglasses_count = serializers.SerializerMethodField()
+    rocket_count = serializers.SerializerMethodField()
+
     class Meta:
         model = Comment
-        fields = ['id', 'url', 'body', 'user', 'blog', 'parent']
+        fields = [
+            'id',
+            'url',
+            'body',
+            'user',
+            'blog',
+            'parent',
+            'heart_eyes_count',
+            'thumbsup_count',
+            'thumbsdown_count',
+            'sunglasses_count',
+            'rocket_count',
+        ]
         extra_kwargs = {
             'blog': {'view_name': 'blog-detail', 'lookup_field': 'slug'}
         }
+
+    def get_heart_eyes_count(self, obj):
+        return obj.commentlikes.aggregate(Sum('heart_eyes_count'))['heart_eyes_count__sum']
+
+    def get_thumbsup_count(self, obj):
+        return obj.commentlikes.aggregate(Sum('thumbsup_count'))['thumbsup_count__sum']
+
+    def get_thumbsdown_count(self, obj):
+        return obj.commentlikes.aggregate(Sum('thumbsdown_count'))['thumbsdown_count__sum']
+
+    def get_sunglasses_count(self, obj):
+        return obj.commentlikes.aggregate(Sum('sunglasses_count'))['sunglasses_count__sum']
+
+    def get_rocket_count(self, obj):
+        return obj.commentlikes.aggregate(Sum('rocket_count'))['rocket_count__sum']
 
 
 class ClapSerializer(serializers.HyperlinkedModelSerializer):
