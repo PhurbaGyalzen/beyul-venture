@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Button } from '@material-ui/core'
 import styled, { css } from 'styled-components'
 
@@ -55,6 +55,7 @@ const CommentAction = styled(FlexWrapAlign)`
 `
 
 const Reaction = styled(FlexWrapAlign)`
+    position: relative;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -103,6 +104,37 @@ const ReactionItem = ({ emoji, count, reacted, onClick }) => {
     )
 }
 
+const EmojiChooser = styled.div`
+    display: none;
+    font-size: 1.2rem;
+    position: absolute;
+    top: -200%;
+    left: -5px;
+    gap: 0.2rem;
+    outline: 2px solid #c47d1e;
+    border-radius: 0.6rem;
+    padding: 0.2rem;
+    z-index: 1;
+`
+
+const AddEmoji = styled.span`
+    position: relative;
+    cursor: pointer;
+    &:hover > ${EmojiChooser} {
+        display: flex;
+    }
+`
+
+const PopupEmoji = styled.span`
+    padding: 0.2rem;
+    border-radius: 1rem;
+    &:hover {
+        background-color: #d8dfea;
+        outline: 1px solid;
+        cursor: pointer;
+    }
+`
+
 const flatten = (arr) => {
     let indent = -1
     const inner = (innerArr) => {
@@ -126,7 +158,7 @@ const flatten = (arr) => {
 
 const insertIndents = (flattened) => {
     const context = {}
-    flattened.forEach((item) => context[item.id] = item.parent)
+    flattened.forEach((item) => (context[item.id] = item.parent))
 
     const flattenedWithContext = []
     flattened.forEach((item) => {
@@ -143,56 +175,91 @@ const insertIndents = (flattened) => {
     return flattenedWithContext
 }
 
-const Comment = (props) => {
-    const comment = props.comment
-    const [reactions, setReactions] = useState(comment.reactions)
+const fieldEmoji = {
+    heart_eyes_count: '😍',
+    thumbsup_count: '👍',
+    thumbsdown_count: '👎',
+    sunglasses_count: '😎',
+    rocket_count: '🚀',
+}
 
+const Comment = ({ id, url, by, text, time, indent, reactionsArr }) => {
+    const [reactions, setReactions] = useState(reactionsArr)
+
+    const reactionClicked = (reaction) => {
+        const recs = []
+        for (const r of reactions) {
+            if (r.id === reaction.id) {
+                if (r.reacted) {
+                    r.count = r.count - 1
+                    r.reacted = false
+                } else {
+                    r.count = r.count + 1
+                    r.reacted = true
+                }
+            }
+            recs.push(r)
+        }
+        setReactions(recs)
+    }
+
+    const AddReaction = ({ hiddenReactions }) => {
+        console.log({ hiddenReactions })
+        return (
+            <>
+                <AddEmoji>
+                    ✨
+                    <EmojiChooser>
+                        {hiddenReactions.map((r) => (
+                            <PopupEmoji
+                                key={r.id}
+                                onClick={() => reactionClicked(r)}
+                            >
+                                {r.id}
+                            </PopupEmoji>
+                        ))}
+                    </EmojiChooser>
+                </AddEmoji>
+            </>
+        )
+    }
+    const unusedReactions = reactions.filter((r) => r.count === 0)
     return (
-        <CommentContainer indent={props.indent} data-id={comment.id}>
+        <CommentContainer indent={indent} data-id={id} id={id}>
             <CommentHead>
                 <Author>
                     <AuthorImage src='https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/637629/95087942-1f8d-4160-a644-9a3ff89cf3d8.png' />
-                    <span>{comment.by}</span>
+                    <span>{by}</span>
                     <span className='date'>
-                        {new Date(comment.time).toLocaleString()}
+                        {new Date(time).toLocaleString()}
                     </span>
                 </Author>
                 <Options>
                     <button>...</button>
                 </Options>
             </CommentHead>
-            <CommentText>{comment.text}</CommentText>
+            <CommentText>{text}</CommentText>
             <CommentBottomAction>
                 <CommentAction>
                     <Reaction as='ul'>
                         {reactions.map((reaction) => {
-                            return (
+                            return reaction.count ? (
                                 <ReactionItem
                                     key={reaction.id}
                                     emoji={reaction.id}
                                     count={reaction.count}
                                     reacted={reaction.reacted}
-                                    onClick={() => {
-                                        const recs = []
-                                        for (const r of reactions) {
-                                            if (r.id === reaction.id) {
-                                                if (r.reacted) {
-                                                    r.count = r.count - 1
-                                                    r.reacted = false
-                                                } else {
-                                                    r.count = r.count + 1
-                                                    r.reacted = true
-                                                }
-                                            }
-                                            recs.push(r)
-                                        }
-                                        setReactions(recs)
-                                    }}
+                                    onClick={() => reactionClicked(reaction)}
                                 />
-                                /*<ReactionItem emoji={reaction.id} count={reaction.count} onClick={setReactions} />*/
-                            )
+                            ) : null
                         })}
-                        <li></li>
+                        <li>
+                            {unusedReactions.length > 0 ? (
+                                <AddReaction
+                                    hiddenReactions={unusedReactions}
+                                />
+                            ) : null}
+                        </li>
                     </Reaction>
                     <div className='reply'>
                         <Button
@@ -211,80 +278,28 @@ const Comment = (props) => {
     )
 }
 
-const AllComments = (props) => {
-    const [comments, setComments] = useState([
-        {
-            id: 103,
-            by: 'Nishan Thapa',
-            time: 1626009900,
-            reactions: [
-                { id: '😍', count: 3 },
-                { id: '👍', count: 1 },
-                { id: '👎', count: 1 },
-                { id: '😎', count: 2 },
-                { id: '🚀', count: 2 },
-            ],
-            text: 'I am the guardian in the dark. I vow to defend this planet with my life. I shall father no children and love no one. I am the carrier of my sword and my sword shall carry me. I am the saviour of this world and the pace of humanity. I pledge my sword and my soul to the old Gods and the old Gods will protect me from evil. I shall not be tempted by the demon and the Gods will welcome me in heavens gate and feast me in the great Heaven halls of paradise.',
-            parent: null,
-            kids: [
-                {
-                    id: 109,
-                    by: 'Nischal Parsad Khatri',
-                    time: 1626203900,
-                    reactions: [{ id: '😍', count: 4 }],
-                    text: 'I am 14 and this is deep.',
-                    parent: 103,
-                    kids: [
-                        {
-                            id: 129,
-                            by: 'Another Nischal Parsad Khatri',
-                            time: 1626204900,
-                            reactions: [{ id: '😍', count: 5 }],
-                            text: 'Nice.',
-                            parent: 109,
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            id: 106,
-            by: 'Limbu nimbu',
-            time: 1626009400,
-            reactions: [{ id: '😍', count: 300 }],
-            text: 'Writing could be improved.',
-            parent: null,
-            kids: [
-                {
-                    id: 127,
-                    by: 'Sunil',
-                    time: 1626204900,
-                    reactions: [{ id: '😍', count: 5 }],
-                    text: 'Nice.',
-                    parent: 106,
-                },
-            ],
-        },
-        {
-            id: 107,
-            by: 'galzin',
-            time: 1626009400,
-            reactions: [{ id: '😍', count: 3 }],
-            text: 'Beautiful.',
-            parent: null,
-            kids: [],
-        },
-    ])
-    const flatComments = flatten(comments)
+const AllComments = ({ comments }) => {
+    
+    const flatComments = insertIndents(comments)
     console.log(flatComments)
+
     return (
         <>
             {flatComments.map((comment) => {
+                const reactions = Object.entries(fieldEmoji).map(([k, v]) => ({
+                    id: v,
+                    count: comment[k] || 0,
+                }))
                 return (
                     <Comment
                         key={comment.id}
+                        id={comment.id}
+                        url={comment.url}
+                        by={'Anon'}
+                        text={comment.body}
+                        time={1630048321000}
                         indent={2 * comment.indent}
-                        comment={comment}
+                        reactionsArr={reactions}
                     />
                 )
             })}

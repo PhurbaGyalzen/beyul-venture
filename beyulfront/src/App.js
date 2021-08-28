@@ -15,6 +15,7 @@ import IconButton from '@material-ui/core/IconButton'
 import Tooltip from '@material-ui/core/Tooltip'
 import Fade from '@material-ui/core/Fade'
 import Breadcrumb from './components/Breadcrumb'
+import { motion } from 'framer-motion'
 
 // import { default as SignUp } from 'components/SignUpDialog'
 import { Routes } from './Routes'

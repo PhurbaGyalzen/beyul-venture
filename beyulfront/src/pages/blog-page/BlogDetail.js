@@ -169,7 +169,7 @@ const BlogDetail = ({ details }) => {
                     <CommentSec />
                 </Container>
                 <Container>
-                    <AllComments />
+                    <AllComments comments={blog.comment} />
                 </Container>
 
                 <Container>

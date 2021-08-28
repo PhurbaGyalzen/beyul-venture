@@ -26,8 +26,15 @@ import InstagramIcon from '@material-ui/icons/Instagram'
 import TwitterIcon from '@material-ui/icons/Twitter'
 import Tooltip from '@material-ui/core/Tooltip'
 import Fade from '@material-ui/core/Fade'
+import { motion } from 'framer-motion'
 
 // All images import
+
+const variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+    change: { delay: 2, duration: 5 },
+}
 
 //Defining CustomStyles for AboutUs Page
 const useStyles = makeStyles((theme) => ({
@@ -90,7 +97,15 @@ export default function OurTeam() {
     return (
         <>
             <div className={classes.root}>
-                <Container maxWidth='lg' className={classes.organizingTeam}>
+                <Container
+                    maxWidth='lg'
+                    className={classes.organizingTeam}
+                    component={motion.div}
+                    initial='hidden'
+                    animate='visible'
+                    transition={{ delay:1, duration: 2 }}
+                    variants={variants}
+                >
                     <Typography
                         variant='h4'
                         className={classes.organizationTeamTitle}
