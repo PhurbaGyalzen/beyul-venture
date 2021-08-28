@@ -1,4 +1,4 @@
-from .models import Blog, Tag, Comment, Clap
+from .models import Blog, Tag, Comment, Clap, CommentLike
 
 from mptt.admin import MPTTModelAdmin
 
@@ -21,3 +21,4 @@ admin.site.register(Blog, BlogAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Comment, MPTTModelAdmin)
 admin.site.register(Clap)
+admin.site.register(CommentLike)

@@ -49,13 +49,43 @@ export default function EnquiryForm() {
     return (
         <>
             <div className={classes.root}>
-                <form className={classes.root} noValidate autoComplete='off'>
-                    <Grid container justifyContent='space-around'>
+            <Formik
+                validateOnChange={false}
+                validateOnBlur={false}
+                initialValues={{
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    phone: '',
+                    messages: '',
+                }}
+                validationSchema={validationSchema}
+                onSubmit={(data, { setSubmitting, resetForm }) => {
+                    // validate(data);
+                    setSubmitting(true)
+                    //make async call
+                    console.log('Submit:', data)
+                    setSubmitting(false)
+                    resetForm()
+                }}
+            >
+                {({
+                    values,
+                    errors,
+                    touched,
+                    isSubmitting,
+                    // handleChange,
+                    // handleBlur,
+                    handleSubmit,
+                }) => (
+                    <Form className={classes.root}>
+                        <Grid container justifyContent='space-around'>
                         <Box style={{ paddingTop: '1rem' }}>
                             <Grid item xs={12}>
                                 <TextField
                                     label='Full Name'
                                     required
+                                    name='fullName'
                                     id='standard-size-small'
                                     size='small'
                                     className={classes.enquiryTextField}
@@ -68,6 +98,7 @@ export default function EnquiryForm() {
                                 <TextField
                                     label='Email Address'
                                     required
+                                    name='email'
                                     id='standard-size-small'
                                     size='small'
                                     className={classes.enquiryTextField}
@@ -80,6 +111,7 @@ export default function EnquiryForm() {
                                 <TextField
                                     id='standard-multiline-static'
                                     label='Your Enquiry'
+                                    name='enquiry'
                                     multiline
                                     rows={3}
                                     required
@@ -135,13 +167,17 @@ export default function EnquiryForm() {
                                 <Button
                                     variant='contained'
                                     className={classes.enquiryButton}
+                                    disabled={isSubmitting}
+                                    type='submit'
                                 >
                                     SUBMIT ENQUIRY
                                 </Button>
                             </Grid>
                         </Box>
                     </Grid>
-                </form>
+                    </Form>
+                )}
+            </Formik>
             </div>
         </>
     )
