@@ -14,6 +14,7 @@ import StripePaymentPage from 'pages/stripe/StripePay'
 import TermsAndConditions from 'pages/TermsAndConditions'
 import { PackagesMain } from './pages/packages-page/PackagesMain'
 import PrivacyPolicy from 'pages/PrivacyPolicy'
+import { TagPackage } from './pages/packages-page/TagPackage'
 const CustomRoute = ({ ...args }) => {
     return (
         <>
@@ -29,6 +30,7 @@ const Routes = () => {
         <Switch>
             <CustomRoute exact path='/about' component={AboutUsPage} />
             <CustomRoute exact path='/package/all' component={PackagesMain} />
+            <CustomRoute exact path='/package/tag/:id' component={TagPackage} />
             <CustomRoute exact path='/package/:packageId'>
                 <PackDetail packageId={params} />
             </CustomRoute>

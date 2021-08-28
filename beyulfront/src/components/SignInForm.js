@@ -1,14 +1,14 @@
-import React from 'react'
+import {useState} from 'react'
 import { Formik, Field, Form, useField } from 'formik'
 import * as yup from 'yup'
 import {
     makeStyles,
     TextField,
     Button,
-    Typography,
     Grid,
 } from '@material-ui/core'
-import LockIcon from '@material-ui/icons/Lock'
+
+
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import Link from '@material-ui/core/Link'
@@ -65,6 +65,7 @@ const errort = (msg) => toast.error(msg)
 export const SignInForm = () => {
     const classes = useStyles()
     const history = useHistory()
+
     return (
         <>
             <Paper>
@@ -153,10 +154,9 @@ export const SignInForm = () => {
                                 fullWidth
                                 name='password'
                                 label='Password'
-                                type='password'
                                 id='password'
-                                autoComplete='current-password'
                                 className={classes.textfield}
+                                type='password'
                             />
                             <FormControlLabel
                                 control={

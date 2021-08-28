@@ -1,5 +1,5 @@
 import { Formik, Field, Form, useField } from 'formik'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import * as yup from 'yup'
 import {
     makeStyles,
@@ -7,10 +7,10 @@ import {
     Button,
     Typography,
     Grid,
+    InputAdornment, IconButton 
 } from '@material-ui/core'
-import LockIcon from '@material-ui/icons/Lock'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
+import Visibility from "@material-ui/icons/Visibility"
+import VisibilityOff from "@material-ui/icons/VisibilityOff"
 import Link from '@material-ui/core/Link'
 import toast from 'react-hot-toast'
 import { useHistory } from 'react-router'
@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+        marginTop:'2rem',
         backgroundColor: '#DF9534',
         border: '2px solid #DF9534',
         color: '#13181e',
@@ -60,7 +61,7 @@ const validationSchema = yup.object({
     password: yup
         .string()
         .min(8, 'Password is too short - should be 8 chars minimum.')
-        .max(32, 'Password should be in between 8-32 characters')
+        // .max(12, 'Password should be in between 8-12 characters')
         .required('Password is required to register')
         .matches(
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
@@ -75,6 +76,9 @@ const errort = (msg) => toast.error(msg)
 export const SignUpForm = (props) => {
     const classes = useStyles()
     const history = useHistory()
+    const [showPassword, setShowPassword] = useState(true);
+    const handleClickShowPassword = () => setShowPassword(!showPassword);
+    const handleMouseDownPassword = () => setShowPassword(!showPassword);
     return (
         <>
             <Paper>
@@ -191,9 +195,23 @@ export const SignUpForm = (props) => {
                                             fullWidth
                                             name='password'
                                             label='Password'
-                                            type='password'
                                             className={classes.textfield}
                                             id='password'
+                                            type={showPassword ? "text" : "password"} // <-- This is where the magic happens
+                                            // onChange={someChangeHandler}
+                                            InputProps={{ // <-- This is where the toggle button is added.
+                                                endAdornment: (
+                                                <InputAdornment position="end">
+                                                    <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    onClick={handleClickShowPassword}
+                                                    onMouseDown={handleMouseDownPassword}
+                                                    >
+                                                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                                                    </IconButton>
+                                                </InputAdornment>
+                                                )
+                                            }}
                                         />
                                     </Grid>
                                 </Grid>
