@@ -26,6 +26,12 @@ const CommentHead = styled(FlexWrapAlign)`
 const Author = styled(FlexWrapAlign)`
     gap: 0.4rem;
     flex: 1 1 0;
+    & > ::before {
+        content: "· ";
+    }
+    span:first-of-type::before {
+        content: "";
+    }
 `
 
 const Options = styled.div``
@@ -36,9 +42,6 @@ const AuthorImage = styled.img`
     object-fit: cover;
     border-radius: 50%;
 
-    & ~ .date::before {
-        content: '· ';
-    }
 `
 
 const CommentText = styled.div`
@@ -183,7 +186,16 @@ const fieldEmoji = {
     rocket_count: '🚀',
 }
 
-const Comment = ({ id, url, by, text, time, indent, reactionsArr }) => {
+const Comment = ({
+    id,
+    url,
+    by,
+    text,
+    time,
+    edited,
+    indent,
+    reactionsArr,
+}) => {
     const [reactions, setReactions] = useState(reactionsArr)
 
     const reactionClicked = (reaction) => {
@@ -233,6 +245,7 @@ const Comment = ({ id, url, by, text, time, indent, reactionsArr }) => {
                     <span className='date'>
                         {new Date(time).toLocaleString()}
                     </span>
+                    {edited ? <span><i>{'edited'}</i></span> : null}
                 </Author>
                 <Options>
                     <button>...</button>
@@ -279,7 +292,6 @@ const Comment = ({ id, url, by, text, time, indent, reactionsArr }) => {
 }
 
 const AllComments = ({ comments }) => {
-    
     const flatComments = insertIndents(comments)
     console.log(flatComments)
 
@@ -297,7 +309,8 @@ const AllComments = ({ comments }) => {
                         url={comment.url}
                         by={'Anon'}
                         text={comment.body}
-                        time={1630048321000}
+                        time={comment.updated_on}
+                        edited={!(comment.updated_on === comment.created_on)}
                         indent={2 * comment.indent}
                         reactionsArr={reactions}
                     />
