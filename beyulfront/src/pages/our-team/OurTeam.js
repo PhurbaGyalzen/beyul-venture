@@ -1,19 +1,10 @@
 // All dependences import
 import { Container } from '@material-ui/core'
 import Card from '@material-ui/core/Card'
-import CardActionArea from '@material-ui/core/CardActionArea'
-import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
-import { Box } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
-import { Grid } from '@material-ui/core'
 import { useState, useEffect } from 'react'
-import { blue, grey } from '@material-ui/core/colors'
-import { Button } from '@material-ui/core'
-import TextField from '@material-ui/core/TextField'
-import { Divider } from '@material-ui/core'
-import Avatar from '@material-ui/core/Avatar'
 import Link from '@material-ui/core/Link'
 import './index.css'
 import { makeStyles } from '@material-ui/core'
@@ -27,14 +18,8 @@ import TwitterIcon from '@material-ui/icons/Twitter'
 import Tooltip from '@material-ui/core/Tooltip'
 import Fade from '@material-ui/core/Fade'
 import { motion } from 'framer-motion'
-
-// All images import
-
-const variants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-    change: { delay: 2, duration: 5 },
-}
+import { useInView } from 'react-intersection-observer'
+import { useAnimation } from 'framer-motion'
 
 //Defining CustomStyles for AboutUs Page
 const useStyles = makeStyles((theme) => ({
@@ -49,15 +34,26 @@ const useStyles = makeStyles((theme) => ({
     },
 
     organizationTeamTitle: {
-        paddingBottom: theme.spacing(5),
+        paddingBottom: theme.spacing(10),
     },
 
     card: {
         height: 'auto',
         display: 'flex',
         flexDirection: 'column',
+        [theme.breakpoints.down('sm')]: {
+            marginTop: '2rem',
+            marginBottom: '2rem',
+        },
+
+        [theme.breakpoints.down('md')]: {
+            marginTop: '2rem',
+            marginBottom: '2rem',
+        },
+
         boxShadow:
             '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+        padding: '2%',
         '&:hover': {
             '& $cardImage': {
                 filter: 'none',
@@ -84,6 +80,29 @@ const useStyles = makeStyles((theme) => ({
 
 // ContactUs component
 export default function OurTeam() {
+    const { ref, inView, entry } = useInView()
+    const animation = useAnimation()
+
+    useEffect(() => {
+        if (inView) {
+            animation.start({
+                opacity: 1,
+                scale: 1,
+                transition: {
+                    type: 'spring',
+                    duration: 3,
+                    bounce: 0.3,
+                },
+            })
+        }
+
+        if (!inView) {
+            animation.start({
+                scale: 1.05,
+            })
+        }
+    }, [inView])
+
     const classes = useStyles()
     const [teamData, setTeamData] = useState(datas)
     const [guide, setGuide] = useState(guides)
@@ -94,18 +113,11 @@ export default function OurTeam() {
         700: 2,
         500: 1,
     }
+
     return (
         <>
             <div className={classes.root}>
-                <Container
-                    maxWidth='lg'
-                    className={classes.organizingTeam}
-                    component={motion.div}
-                    initial='hidden'
-                    animate='visible'
-                    transition={{ delay:1, duration: 2 }}
-                    variants={variants}
-                >
+                <Container maxWidth='lg' className={classes.organizingTeam}>
                     <Typography
                         variant='h4'
                         className={classes.organizationTeamTitle}
@@ -117,13 +129,21 @@ export default function OurTeam() {
                         breakpointCols={breakpoints}
                         className='my-masonry-grid'
                         columnClassName='my-masonry-grid_column'
+                        spacing={2}
                     >
                         {teamData.map((data) => (
                             <div
                                 key={data.id}
                                 style={{ borderRadius: '0.5rem' }}
                             >
-                                <Card className={classes.card}>
+                                <Card
+                                    className={classes.card}
+                                    ref={ref}
+                                    component={motion.div}
+                                    animate={animation}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 1.1 }}
+                                >
                                     <div className={classes.imageContainer}>
                                         <CardMedia
                                             component='img'
@@ -235,13 +255,21 @@ export default function OurTeam() {
                         breakpointCols={breakpoints}
                         className='my-masonry-grid'
                         columnClassName='my-masonry-grid_column'
+                        spacing={2}
                     >
                         {guide.map((data) => (
                             <div
                                 key={data.id}
                                 style={{ borderRadius: '0.5rem' }}
                             >
-                                <Card className={classes.card}>
+                                <Card
+                                    className={classes.card}
+                                    ref={ref}
+                                    component={motion.div}
+                                    animate={animation}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 1.1 }}
+                                >
                                     <div className={classes.imageContainer}>
                                         <CardMedia
                                             component='img'
@@ -349,13 +377,21 @@ export default function OurTeam() {
                         breakpointCols={breakpoints}
                         className='my-masonry-grid'
                         columnClassName='my-masonry-grid_column'
+                        spacing={2}
                     >
                         {assistant.map((data) => (
                             <div
                                 key={data.id}
                                 style={{ borderRadius: '0.5rem' }}
                             >
-                                <Card className={classes.card}>
+                                <Card
+                                    className={classes.card}
+                                    ref={ref}
+                                    component={motion.div}
+                                    animate={animation}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 1.1 }}
+                                >
                                     <div className={classes.imageContainer}>
                                         <CardMedia
                                             component='img'
