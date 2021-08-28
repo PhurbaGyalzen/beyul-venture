@@ -6,7 +6,7 @@ from .models import Blog, Tag, Comment, Clap, CommentLike
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from django.db.models import Sum
-
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import serializers
 from rest_framework.validators import UniqueTogetherValidator
 
@@ -19,6 +19,8 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
     thumbsdown_count = serializers.SerializerMethodField()
     sunglasses_count = serializers.SerializerMethodField()
     rocket_count = serializers.SerializerMethodField()
+    created_on = serializers.SerializerMethodField()
+    updated_on = serializers.SerializerMethodField()
 
     class Meta:
         model = Comment
@@ -29,6 +31,8 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
             'username',
             'user_profile',
             'blog',
+            'created_on',
+            'updated_on',
             'parent',
             'heart_eyes_count',
             'thumbsup_count',
@@ -62,8 +66,22 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
         return obj.commentlikes.aggregate(Sum('sunglasses_count'))['sunglasses_count__sum']
 
     def get_rocket_count(self, obj):
-        return obj.commentlikes.aggregate(Sum('rocket_count'))['rocket_count__sum']
+        # return obj.commentlikes.aggregate(Sum('rocket_count'))['rocket_count__sum']
+        return self._return_field(obj, 'rocket_count')
 
+    def _return_field(self, obj, field):
+        try:
+            return obj.commentlikes.get().__getattribute__(field)
+        except ObjectDoesNotExist:
+            return None
+
+    def get_created_on(self, obj):
+        return obj.created_on
+
+    def get_updated_on(self, obj):
+        return obj.updated_on
+
+    
 
 class ClapSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
