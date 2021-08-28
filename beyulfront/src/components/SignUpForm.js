@@ -60,7 +60,7 @@ const validationSchema = yup.object({
     password: yup
         .string()
         .min(8, 'Password is too short - should be 8 chars minimum.')
-        .max(12, 'Password should be in between 8-12 characters')
+        .max(32, 'Password should be in between 8-32 characters')
         .required('Password is required to register')
         .matches(
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
