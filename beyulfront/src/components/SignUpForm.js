@@ -1,5 +1,5 @@
+import { useState, useEffect, useRef } from 'react'
 import { Formik, Field, Form, useField } from 'formik'
-import { useState, useEffect } from 'react'
 import * as yup from 'yup'
 import {
     makeStyles,
@@ -7,14 +7,17 @@ import {
     Button,
     Typography,
     Grid,
-    InputAdornment, IconButton 
+    InputAdornment,
+    IconButton,
 } from '@material-ui/core'
-import Visibility from "@material-ui/icons/Visibility"
-import VisibilityOff from "@material-ui/icons/VisibilityOff"
+import Visibility from '@material-ui/icons/Visibility'
+import VisibilityOff from '@material-ui/icons/VisibilityOff'
 import Link from '@material-ui/core/Link'
 import toast from 'react-hot-toast'
 import { useHistory } from 'react-router'
 import Paper from '@material-ui/core/Paper'
+import {randRange, shuffle} from 'utils/general'
+
 
 const useStyles = makeStyles((theme) => ({
     form: {
@@ -23,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
-        marginTop:'2rem',
+        marginTop: '2rem',
         backgroundColor: '#DF9534',
         border: '2px solid #DF9534',
         color: '#13181e',
@@ -73,12 +76,38 @@ const successToast = (msg) => toast.success(msg)
 
 const errort = (msg) => toast.error(msg)
 
+const generateRandomPassword = () => {
+    const lowerCaseAlphabets = 'abcdefghijklmnopqrstuvwxyz'
+    const upperCaseAlphabets = lowerCaseAlphabets.toUpperCase()
+    const numbers = '0123456789'
+    const symbols = '!@#$%^&*'
+    const lA = shuffle(lowerCaseAlphabets.split(''))
+    const sA = shuffle(upperCaseAlphabets.split(''))
+    const n = shuffle(numbers.split(''))
+    const s = shuffle(symbols.split(''))
+    const combinations = [
+        ...lA.slice(0, randRange(3, 6)),
+        ...sA.slice(0, randRange(3, 6)),
+        ...n.slice(0, randRange(3, 6)),
+        ...s.slice(0, randRange(3, 6)),
+    ]
+
+    const shuffledCombinations = shuffle(combinations)
+    return shuffledCombinations.join('')
+}
+
 export const SignUpForm = (props) => {
     const classes = useStyles()
     const history = useHistory()
-    const [showPassword, setShowPassword] = useState(true);
-    const handleClickShowPassword = () => setShowPassword(!showPassword);
-    const handleMouseDownPassword = () => setShowPassword(!showPassword);
+    const [showPassword, setShowPassword] = useState(true)
+    const handleClickShowPassword = () => setShowPassword(!showPassword)
+    const handleMouseDownPassword = () => setShowPassword(!showPassword)
+
+    const updatePasswordValue = (setter, field) => {
+        const password = generateRandomPassword()
+        setter(field, password)
+    }
+
     return (
         <>
             <Paper>
@@ -124,9 +153,10 @@ export const SignUpForm = (props) => {
                                     jsonData.data,
                                 )
                                 console.log(jsonData.status)
-                                jsonData.status >= 400 ? errort(jsonData.data.Errors.email[0])
-                                : (successToast(jsonData.data.Message),
-                                history.push('/sign-in'))
+                                jsonData.status >= 400
+                                    ? errort(jsonData.data.Errors.email[0])
+                                    : (successToast(jsonData.data.Message),
+                                      history.push('/sign-in'))
                                 console.log(jsonData.data.Message)
 
                                 // successToast(jsonData.data.detail);
@@ -141,6 +171,7 @@ export const SignUpForm = (props) => {
                 >
                     {({
                         values,
+                        setFieldValue,
                         errors,
                         touched,
                         isSubmitting,
@@ -197,20 +228,46 @@ export const SignUpForm = (props) => {
                                             label='Password'
                                             className={classes.textfield}
                                             id='password'
-                                            type={showPassword ? "text" : "password"} // <-- This is where the magic happens
-                                            // onChange={someChangeHandler}
-                                            InputProps={{ // <-- This is where the toggle button is added.
+                                            type={
+                                                showPassword
+                                                    ? 'text'
+                                                    : 'password'
+                                            } // <-- This is where the magic happens
+                                            InputProps={{
+                                                // <-- This is where the toggle button is added.
                                                 endAdornment: (
-                                                <InputAdornment position="end">
-                                                    <IconButton
-                                                    aria-label="toggle password visibility"
-                                                    onClick={handleClickShowPassword}
-                                                    onMouseDown={handleMouseDownPassword}
-                                                    >
-                                                    {showPassword ? <Visibility /> : <VisibilityOff />}
-                                                    </IconButton>
-                                                </InputAdornment>
-                                                )
+                                                    <>
+                                                        <InputAdornment position='end'>
+                                                            <IconButton
+                                                                aria-label='toggle password visibility'
+                                                                onClick={
+                                                                    handleClickShowPassword
+                                                                }
+                                                                onMouseDown={
+                                                                    handleMouseDownPassword
+                                                                }
+                                                            >
+                                                                {showPassword ? (
+                                                                    <Visibility />
+                                                                ) : (
+                                                                    <VisibilityOff />
+                                                                )}
+                                                            </IconButton>
+                                                        </InputAdornment>
+                                                        <InputAdornment position='end'>
+                                                            <span
+                                                                onClick={() =>
+                                                                    updatePasswordValue(
+                                                                        setFieldValue,
+                                                                        'password',
+                                                                    )
+                                                                }
+                                                            >
+                                                                Random
+                                                            </span>
+                                                        </InputAdornment>
+                                                    </>
+                                                ),
                                             }}
                                         />
                                     </Grid>
