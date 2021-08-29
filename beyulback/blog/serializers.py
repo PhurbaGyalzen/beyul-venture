@@ -197,6 +197,12 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
         result = readtime.of_html(obj.content)
         return result.text
 
+class BlogListSerialzer(BlogSerializer):
+
+    class Meta(BlogSerializer.Meta):
+        model = Blog
+        fields = sorted(tuple(set(BlogSerializer.Meta.fields) - set(['comment'])))
+
 
 class ReadOnlyModelSerializer(serializers.HyperlinkedModelSerializer):
     """

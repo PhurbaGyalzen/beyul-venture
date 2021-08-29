@@ -1,13 +1,9 @@
-import {useState} from 'react'
 import { Formik, Field, Form, useField } from 'formik'
 import * as yup from 'yup'
-import {
-    makeStyles,
-    TextField,
-    Button,
-    Grid,
-} from '@material-ui/core'
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 
+import { makeStyles, TextField, Button, Grid } from '@material-ui/core'
 
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
@@ -146,6 +142,16 @@ export const SignInForm = () => {
                                 autoComplete='email'
                                 autoFocus
                                 className={classes.textfield}
+                                component={motion.div}
+                                initial={{ opacity: 0.8 }}
+                                whileHover={{
+                                    scale: 1.03,
+                                    opacity: 1,
+                                }}
+                                whileTap={{
+                                    scale: 1.1,
+                                }}
+                                transition={{ duration: 0.1 }}
                             />
                             <ValidatingTextField
                                 variant='outlined'
@@ -157,6 +163,16 @@ export const SignInForm = () => {
                                 id='password'
                                 className={classes.textfield}
                                 type='password'
+                                component={motion.div}
+                                initial={{ opacity: 0.8 }}
+                                whileHover={{
+                                    scale: 1.03,
+                                    opacity: 1,
+                                }}
+                                whileTap={{
+                                    scale: 1.1,
+                                }}
+                                transition={{ duration: 0.1 }}
                             />
                             <FormControlLabel
                                 control={
@@ -173,6 +189,7 @@ export const SignInForm = () => {
                                 variant='contained'
                                 className={classes.submit}
                                 disabled={isSubmitting}
+                                size='large'
                             >
                                 Sign In
                             </Button>

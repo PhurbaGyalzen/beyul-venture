@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Formik, Field, Form, useField } from 'formik'
+import { motion } from 'framer-motion'
 import * as yup from 'yup'
 import {
     makeStyles,
@@ -195,7 +196,17 @@ export const SignUpForm = (props) => {
                                             label='First Name'
                                             className={classes.textfield}
                                             autoFocus
-                                        />
+                                            component={motion.div}
+                                            initial={{ opacity: 0.8 }}
+                                            whileHover={{
+                                                scale: 1.03,
+                                                opacity: 1,
+                                            }}
+                                            whileTap={{
+                                                scale: 1.1,
+                                            }}
+                                            transition={{ duration: 0.1 }}
+                                                    />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <ValidatingTextField
@@ -207,7 +218,17 @@ export const SignUpForm = (props) => {
                                             name='lastName'
                                             autoComplete='lname'
                                             className={classes.textfield}
-                                        />
+                                            component={motion.div}
+                                            initial={{ opacity: 0.8 }}
+                                            whileHover={{
+                                                scale: 1.03,
+                                                opacity: 1,
+                                            }}
+                                            whileTap={{
+                                                scale: 1.1,
+                                            }}
+                                            transition={{ duration: 0.1 }}
+                                                    />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <ValidatingTextField
@@ -219,7 +240,17 @@ export const SignUpForm = (props) => {
                                             name='email'
                                             className={classes.textfield}
                                             autoComplete='email'
-                                        />
+                                            component={motion.div}
+                                            initial={{ opacity: 0.8 }}
+                                            whileHover={{
+                                                scale: 1.03,
+                                                opacity: 1,
+                                            }}
+                                            whileTap={{
+                                                scale: 1.1,
+                                            }}
+                                            transition={{ duration: 0.1 }}
+                                                    />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <ValidatingTextField
@@ -230,6 +261,16 @@ export const SignUpForm = (props) => {
                                             label='Password'
                                             className={classes.textfield}
                                             id='password'
+                                            component={motion.div}
+                                            initial={{ opacity: 0.8 }}
+                                            whileHover={{
+                                                scale: 1.03,
+                                                opacity: 1,
+                                            }}
+                                            whileTap={{
+                                                scale: 1.1,
+                                            }}
+                                            transition={{ duration: 0.1 }}
                                             type={
                                                 showPassword
                                                     ? 'text'
@@ -281,6 +322,8 @@ export const SignUpForm = (props) => {
                                     variant='contained'
                                     className={classes.submit}
                                     disabled={isSubmitting}
+                                    size='large'
+                                    
                                 >
                                     Sign Up
                                 </Button>
