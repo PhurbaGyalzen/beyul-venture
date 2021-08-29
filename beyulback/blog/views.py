@@ -2,6 +2,7 @@ from .models import Blog, Tag, Comment, Clap, CommentLike
 from users.serializers import CustomTokenObtainPairSerializer
 from .serializers import (
     BlogSerializer,
+    BlogListSerialzer,
     TagSerializer,
     CommentSerializer,
     ClapSerializer,
@@ -11,6 +12,7 @@ from .custompaginations import RemovePageNumberPagination
 from django.contrib.auth import get_user_model
 
 from rest_framework import viewsets
+from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -39,6 +41,15 @@ class BlogView(viewsets.ModelViewSet):
     # pagination_class = RemovePageNumberPagination
     filter_backends = [SearchFilter]
     search_fields = ['title', 'description']
+
+    def list(self, request):
+        # authentication works properly?
+        queryset = Blog.objects.select_related('author').prefetch_related(
+            'tags',
+            'claps',
+        ).filter(status=1)
+        serializer = BlogListSerialzer(queryset, many=True, context={'request': request})
+        return Response(serializer.data)
 
 
 class TagViewSet(viewsets.ReadOnlyModelViewSet):
