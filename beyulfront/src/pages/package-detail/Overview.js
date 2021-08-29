@@ -49,7 +49,7 @@ export default function Overview() {
         <>
             <div className={classes.root}>
                 {overview.map((data) => (
-                    <Grid container>
+                    <Grid container key={data.id}>
                         <Box pt={3}>
                             <Typography variant='body1'>
                                 {data.title}

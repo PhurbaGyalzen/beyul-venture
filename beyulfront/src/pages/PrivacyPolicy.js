@@ -164,7 +164,7 @@ export default function PrivacyPolicy() {
                 </Box>
 
                 {privacyPolicy.map((data) => (
-                    <Grid container>
+                    <Grid container key={data.id}>
                         <Grid item xs={12}>
                             <Box
                                 p={3}

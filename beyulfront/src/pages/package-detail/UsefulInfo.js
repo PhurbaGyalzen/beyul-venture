@@ -22,11 +22,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-export default function UsefulInfo({ title, description }) {
+export default function UsefulInfo({ id, title, description }) {
     const classes = useStyles()
     return (
         <>
-            <div className={classes.root}>
+            <div className={classes.root} key={id}>
                 <Accordion
                     style={{ marginBottom: '0.5rem', borderRadius: 5 }}
                 >

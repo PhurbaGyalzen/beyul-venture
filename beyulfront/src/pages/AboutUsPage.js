@@ -9,6 +9,10 @@ import { CardMedia } from '@material-ui/core'
 import { blue, grey } from '@material-ui/core/colors'
 import { Button } from '@material-ui/core'
 import Hidden from '@material-ui/core/Hidden'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { useAnimation } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 // All image import
 import aboutUs from 'img/another.svg'
@@ -28,6 +32,8 @@ const useStyles = makeStyles((theme) => ({
         letterSpacing: '0.1rem',
         fontSize: '14px',
         lineHeight: '24px',
+        color: '#cdcdcd',
+
         '&:hover': {
             cursor: 'pointer',
             backgroundColor: '#DF9534',
@@ -46,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '2rem',
         lineHeight: '4rem',
         fontWeight: 'bold',
+        marginBottom:'2rem'
     },
 
     aboutUs: {
@@ -74,6 +81,30 @@ const useStyles = makeStyles((theme) => ({
 
 // Card Information
 export default function AboutUsPage() {
+    const { ref, inView, entry } = useInView({
+        threshold: 0.1,
+    })
+    const animation = useAnimation()
+
+    useEffect(() => {
+        if (inView) {
+            animation.start({
+                opacity: 1,
+                scale: 1,
+                transition: {
+                    type: 'spring',
+                    duration: 3,
+                    bounce: 0.3,
+                },
+            })
+        }
+
+        if (!inView) {
+            animation.start({
+                scale: 1.05,
+            })
+        }
+    }, [inView])
     const classes = useStyles()
     return (
         <>
@@ -128,7 +159,10 @@ export default function AboutUsPage() {
                                 the release of Letraset sheets containing Lorem
                                 Ipsum passages.
                             </Typography>
-                            <Button color='#cdcdcd' className={classes.button}>
+                            <Button
+                                className={classes.button}
+                                style={{ color: '#cdcdcd' }}
+                            >
                                 Readmore
                             </Button>
                         </Grid>
@@ -177,7 +211,7 @@ export default function AboutUsPage() {
                                 electronic typesetting, remaining essentially
                                 unchanged.
                             </Typography>
-                            <Button className={classes.button} color='#cdcdcd'>
+                            <Button className={classes.button}>
                                 Readmore
                             </Button>
                         </Grid>
@@ -211,6 +245,11 @@ export default function AboutUsPage() {
                                 className={classes.card}
                                 align='center'
                                 sm={12}
+                                ref={ref}
+                                component={motion.div}
+                                animate={animation}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 1.1 }}
                             >
                                 <CardMedia
                                     image={globe_1}
@@ -239,7 +278,12 @@ export default function AboutUsPage() {
 
                         {/* Second Card */}
                         <Grid item xs={12} sm={6} md={3}>
-                            <Card className={classes.card} align='center'>
+                            <Card className={classes.card} align='center'
+                                ref={ref}
+                                component={motion.div}
+                                animate={animation}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 1.1 }}>
                                 <CardMedia
                                     image={price_1}
                                     style={{
@@ -270,7 +314,12 @@ export default function AboutUsPage() {
                         {/* Third Card */}
 
                         <Grid item xs={12} sm={6} md={3}>
-                            <Card className={classes.card} align='center'>
+                            <Card className={classes.card} align='center'
+                                ref={ref}
+                                component={motion.div}
+                                animate={animation}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 1.1 }}>
                                 <CardMedia
                                     image={service}
                                     style={{
@@ -301,7 +350,15 @@ export default function AboutUsPage() {
                         {/* Fourth Card */}
 
                         <Grid item xs={12} sm={6} md={3}>
-                            <Card className={classes.card} align='center'>
+                            <Card
+                                className={classes.card}
+                                align='center'
+                                ref={ref}
+                                component={motion.div}
+                                animate={animation}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 1.1 }}
+                            >
                                 <CardMedia
                                     image={save_1}
                                     style={{

@@ -86,6 +86,17 @@ export const ContactUsForm = () => {
                             label='First Name'
                             variant='outlined'
                             size='small'
+                            component={motion.div}
+                            initial={{ opacity: 0.8 }}
+                            whileHover={{
+                                scale: 1.03,
+                                opacity: 1,
+                            }}
+                            whileTap={{
+                                scale: 1.1,
+                            }}
+
+                            transition={{duration:0.1}}
                         />
 
                         <ValidatingTextField
@@ -95,6 +106,17 @@ export const ContactUsForm = () => {
                             label='Last Name'
                             variant='outlined'
                             size='small'
+                            component={motion.div}
+                            initial={{ opacity: 0.8 }}
+                            whileHover={{
+                                scale: 1.03,
+                                opacity: 1,
+                            }}
+                            whileTap={{
+                                scale: 1.1,
+                            }}
+
+                            transition={{duration:0.1}}
                         />
 
                         <ValidatingTextField
@@ -103,6 +125,17 @@ export const ContactUsForm = () => {
                             label='Email'
                             variant='outlined'
                             size='small'
+                            component={motion.div}
+                            initial={{ opacity: 0.8 }}
+                            whileHover={{
+                                scale: 1.03,
+                                opacity: 1,
+                            }}
+                            whileTap={{
+                                scale: 1.1,
+                            }}
+
+                            transition={{duration:0.1}}
                         />
 
                         <ValidatingTextField
@@ -111,6 +144,17 @@ export const ContactUsForm = () => {
                             label='Phone'
                             variant='outlined'
                             size='small'
+                            component={motion.div}
+                            initial={{ opacity: 0.8 }}
+                            whileHover={{
+                                scale: 1.03,
+                                opacity: 1,
+                            }}
+                            whileTap={{
+                                scale: 1.1,
+                            }}
+
+                            transition={{duration:0.1}}
                         />
 
                         <ValidatingTextField
@@ -122,6 +166,17 @@ export const ContactUsForm = () => {
                             rows={5}
                             variant='outlined'
                             size='small'
+                            component={motion.div}
+                            initial={{ opacity: 0.8 }}
+                            whileHover={{
+                                scale: 1.03,
+                                opacity: 1,
+                            }}
+                            whileTap={{
+                                scale: 1.1,
+                            }}
+
+                            transition={{duration:0.1}}
                         />
                         <Button
                             variant='contained'

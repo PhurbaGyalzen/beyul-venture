@@ -77,7 +77,7 @@ export default function WhyBeyulVenture() {
                         </Typography>
                     </Box>
                     {whyBeyulVenture.map((data) => (
-                        <Box pt={4} pl={4}>
+                        <Box pt={4} pl={4} key={data.id}>
                             <Grid container>
                                 <Grid item md={2}>
                                     <CheckIcon style={{ color: '#DF9534' }} />
