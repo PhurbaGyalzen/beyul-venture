@@ -17,6 +17,8 @@ import toast from 'react-hot-toast'
 import { useHistory } from 'react-router'
 import Paper from '@material-ui/core/Paper'
 import {randRange, shuffle} from 'utils/general'
+import AutorenewIcon from '@material-ui/icons/Autorenew';
+import Tooltip from '@material-ui/core/Tooltip';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -255,16 +257,17 @@ export const SignUpForm = (props) => {
                                                             </IconButton>
                                                         </InputAdornment>
                                                         <InputAdornment position='end'>
-                                                            <span
-                                                                onClick={() =>
-                                                                    updatePasswordValue(
-                                                                        setFieldValue,
-                                                                        'password',
-                                                                    )
-                                                                }
-                                                            >
-                                                                Random
-                                                            </span>
+                                                            <Tooltip title="Generate Random" style={{cursor:'pointer'}}>
+                                                                <AutorenewIcon
+                                                                    onClick={() =>
+                                                                        updatePasswordValue(
+                                                                            setFieldValue,
+                                                                            'password',
+                                                                        )
+                                                                    }
+                                                                />
+                                                            </Tooltip>
+                                                                
                                                         </InputAdornment>
                                                     </>
                                                 ),

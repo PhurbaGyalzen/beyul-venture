@@ -27,6 +27,7 @@ export const TagPackage = () => {
                     currentPrice: 38000,
                     duration: 14,
                     packageImage: '/static/images/adventure.jpg',
+                    description:' A scenic country loaded with the best of beauty, Vietnam exhibits the marvels of nature through its splendid beaches and green-carpeted slopes. Inviting adventurous souls for years, this place has been a hot go-to destination for many tourists. Taking a Vietnam package from Delhi will guide you towards the amount of fun, thrill and adventure required on any memorable trip.',
                 },
                 {
                     id: 2,
@@ -37,6 +38,8 @@ export const TagPackage = () => {
                     currentPrice: 20000,
                     duration: 3,
                     packageImage: '/static/images/chitwan.jpg',
+                    description:' A scenic country loaded with the best of beauty, Vietnam exhibits the marvels of nature through its splendid beaches and green-carpeted slopes. Inviting adventurous souls for years, this place has been a hot go-to destination for many tourists. Taking a Vietnam package from Delhi will guide you towards the amount of fun, thrill and adventure required on any memorable trip.',
+
                 },
                 {
                     id: 3,
@@ -47,6 +50,8 @@ export const TagPackage = () => {
                     currentPrice: 18000,
                     duration: 10,
                     packageImage: '/static/images/langtang.jpg',
+                    description:' A scenic country loaded with the best of beauty, Vietnam exhibits the marvels of nature through its splendid beaches and green-carpeted slopes. Inviting adventurous souls for years, this place has been a hot go-to destination for many tourists. Taking a Vietnam package from Delhi will guide you towards the amount of fun, thrill and adventure required on any memorable trip.',
+
                 },
                 {
                     id: 4,
@@ -57,6 +62,7 @@ export const TagPackage = () => {
                     currentPrice: 10000,
                     duration: 13,
                     packageImage: '/static/images/langtang.jpg',
+                    description:' A scenic country loaded with the best of beauty, Vietnam exhibits the marvels of nature through its splendid beaches and green-carpeted slopes. Inviting adventurous souls for years, this place has been a hot go-to destination for many tourists. Taking a Vietnam package from Delhi will guide you towards the amount of fun, thrill and adventure required on any memorable trip.',
                 },
                 {
                     id: 1,
@@ -67,6 +73,7 @@ export const TagPackage = () => {
                     currentPrice: 38000,
                     duration: 14,
                     packageImage: '/static/images/adventure.jpg',
+                    description:' A scenic country loaded with the best of beauty, Vietnam exhibits the marvels of nature through its splendid beaches and green-carpeted slopes. Inviting adventurous souls for years, this place has been a hot go-to destination for many tourists. Taking a Vietnam package from Delhi will guide you towards the amount of fun, thrill and adventure required on any memorable trip.',
                 },
                 {
                     id: 2,
@@ -77,6 +84,8 @@ export const TagPackage = () => {
                     currentPrice: 20000,
                     duration: 3,
                     packageImage: '/static/images/chitwan.jpg',
+                    description:' A scenic country loaded with the best of beauty, Vietnam exhibits the marvels of nature through its splendid beaches and green-carpeted slopes. Inviting adventurous souls for years, this place has been a hot go-to destination for many tourists. Taking a Vietnam package from Delhi will guide you towards the amount of fun, thrill and adventure required on any memorable trip.',
+
                 },
                 {
                     id: 3,
@@ -87,6 +96,7 @@ export const TagPackage = () => {
                     currentPrice: 18000,
                     duration: 10,
                     packageImage: '/static/images/langtang.jpg',
+                    description:' A scenic country loaded with the best of beauty, Vietnam exhibits the marvels of nature through its splendid beaches and green-carpeted slopes. Inviting adventurous souls for years, this place has been a hot go-to destination for many tourists. Taking a Vietnam package from Delhi will guide you towards the amount of fun, thrill and adventure required on any memorable trip.',
                 },
                 {
                     id: 4,
@@ -97,6 +107,7 @@ export const TagPackage = () => {
                     currentPrice: 10000,
                     duration: 13,
                     packageImage: '/static/images/langtang.jpg',
+                    description:' A scenic country loaded with the best of beauty, Vietnam exhibits the marvels of nature through its splendid beaches and green-carpeted slopes. Inviting adventurous souls for years, this place has been a hot go-to destination for many tourists. Taking a Vietnam package from Delhi will guide you towards the amount of fun, thrill and adventure required on any memorable trip.',
                 },
             ],
         }
@@ -104,11 +115,13 @@ export const TagPackage = () => {
     const packageD = tagPackage.packages
     return (
         <>
-            <Box>
+            <Box mt={'4rem'}>
                 <Container>
-                    {packageD.map((content)=> {
-                        return <HorizontalCard key={content.id} tagPackages={content} />
-                    })}
+                    <Grid container spacing={4}>
+                        {packageD.map((content)=> {
+                            return <HorizontalCard key={content.id} tagPackages={content} tagName={tagPackage.tagName}/>
+                        })}
+                    </Grid>
                 </Container>
             </Box>
         </>

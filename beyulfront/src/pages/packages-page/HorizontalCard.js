@@ -7,6 +7,7 @@ import {
     CardMedia,
     Typography,
     makeStyles,
+    Container,
 } from '@material-ui/core'
 import Rating from '@material-ui/lab/Rating'
 import FavoriteIcon from '@material-ui/icons/Favorite'
@@ -26,6 +27,14 @@ const useStyles = makeStyles((theme) => ({
                 transition: 'transform 0.9s ease-in-out, filter 2s',
             },
         },
+        [theme.breakpoints.down('md')]: {
+            display: 'flex',
+            flexDirection: 'column',
+          },
+          [theme.breakpoints.down('sm')]: {
+            display: 'flex',
+            flexDirection: 'column',
+          },
     },
     cardImage: {
         height: '15rem',
@@ -37,6 +46,15 @@ const useStyles = makeStyles((theme) => ({
     imageContainer: {
         overflow: 'hidden',
     },
+    descriptionSec:{
+        maxHeight:'5rem',
+        maxWidth:'500px',
+        textOverflow:'ellipsis',
+        fontSize:'.8rem',
+        lineHeight:'1.5rem',
+        color:'#545454'
+
+    }
 }))
 
 const StyledRating = withStyles({
@@ -52,7 +70,7 @@ const CustomLink = styled(Link)`
     text-decoration: none;
 `
 
-export const HorizontalCard = ({ tagPackages }) => {
+export const HorizontalCard = ({ tagPackages, tagName }) => {
     const classes = useStyles()
     return (
         <>
@@ -79,7 +97,7 @@ export const HorizontalCard = ({ tagPackages }) => {
                                 Duration: {tagPackages.duration} days
                             </Typography>
                             <Typography
-                                variant='h5'
+                                variant='h4'
                                 align='justify'
                                 style={{
                                     fontWeight: 'bold',
@@ -90,12 +108,10 @@ export const HorizontalCard = ({ tagPackages }) => {
                             </Typography>
                             <Box
                                 display='flex'
-                                justifyContent='space-between'
                                 alignItems='center'
                                 style={{
                                     fontSize: '0.9rem',
                                     color: 'grey',
-                                    gap: '1rem',
                                 }}
                             >
                                 <StyledRating
@@ -105,7 +121,15 @@ export const HorizontalCard = ({ tagPackages }) => {
                                     readOnly
                                     size='medium'
                                 />
-                                <Typography
+                                <Typography style={{fontSize:'.9rem',color:'#545454',marginLeft:'.7rem'}}>
+                                    {tagPackages.ratedBy} <span style={{fontSize:'.7rem'}}>reviews</span>
+                                </Typography>
+                            </Box>
+                            <Typography className={classes.descriptionSec}>{tagPackages.description}</Typography>
+                            
+                        </CardContent>
+                        <CardContent>
+                        <Typography
                                     style={{
                                         fontSize: '0.8rem',
                                         fontWeight: 'bold',
@@ -114,9 +138,7 @@ export const HorizontalCard = ({ tagPackages }) => {
                                 >
                                     Price: Rs. {tagPackages.currentPrice}
                                 </Typography>
-                            </Box>
                         </CardContent>
-                        
                         
                     </Card>
                 </CustomLink>
