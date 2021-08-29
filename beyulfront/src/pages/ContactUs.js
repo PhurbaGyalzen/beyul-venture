@@ -244,6 +244,7 @@ export default function ContactUs() {
                     </Grid>
                     <Grid item xs={12} md={6} sm={6}>
                         <Box pt={{ xs: 5, md: 0, sm: 0, lg: 0 }}>
+                            
                             <img
                                 src={mapImg}
                                 alt='Beyul Venture in World Map'
