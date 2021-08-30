@@ -1,3 +1,4 @@
+from rest_framework.serializers import Serializer
 from .models import Blog, Tag, Comment, Clap, CommentLike
 from users.serializers import CustomTokenObtainPairSerializer
 from .serializers import (
@@ -8,7 +9,7 @@ from .serializers import (
     ClapSerializer,
     CommentLikeSerializer,
 )
-from .custompaginations import RemovePageNumberPagination
+from .custompaginations import RemovePageNumberPagination, CustomPageNumberPagination
 from django.contrib.auth import get_user_model
 
 from rest_framework import viewsets
@@ -48,8 +49,10 @@ class BlogView(viewsets.ModelViewSet):
             'tags',
             'claps',
         ).filter(status=1)
-        serializer = BlogListSerialzer(queryset, many=True, context={'request': request})
-        return Response(serializer.data)
+        page = self.paginate_queryset(queryset)
+        serializer = BlogListSerialzer(page, many=True, context={'request': request})
+        return self.get_paginated_response(serializer.data)
+        
 
 
 class TagViewSet(viewsets.ReadOnlyModelViewSet):

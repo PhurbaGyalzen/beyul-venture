@@ -1,5 +1,3 @@
-from collections import OrderedDict
-
 from django.utils.translation import gettext_lazy as _
 
 from rest_framework.pagination import PageNumberPagination
@@ -34,12 +32,12 @@ class CustomPageNumberPagination(PageNumberPagination):
         """
         Custom pagination resoponse style
         """
-        return Response(OrderedDict([
-            ('total_records', self.page.paginator.count),
-            ('next_page_link', self.get_next_link()),
-            ('previous_page_link', self.get_previous_link()),
-            ('results', data)
-        ]))
+        return Response({
+            'total_records': self.page.paginator.count,
+            'next_page_link': self.get_next_link(),
+            'previous_page_link': self.get_previous_link(),
+            'results': data,
+        })
 
 
 class RemovePageNumberPagination(PageNumberPagination):
