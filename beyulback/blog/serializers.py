@@ -54,27 +54,23 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
         return f"http://127.0.0.1:8000/media/{obj.user.profile_pic}"
 
     def get_heart_eyes_count(self, obj):
-        return obj.commentlikes.aggregate(Sum('heart_eyes_count'))['heart_eyes_count__sum']
+        return self._aggregate_field(obj, 'heart_eyes_count')
 
     def get_thumbsup_count(self, obj):
-        return obj.commentlikes.aggregate(Sum('thumbsup_count'))['thumbsup_count__sum']
+        return self._aggregate_field(obj, 'thumbsup_count')
 
     def get_thumbsdown_count(self, obj):
-        return obj.commentlikes.aggregate(Sum('thumbsdown_count'))['thumbsdown_count__sum']
+        return self._aggregate_field(obj, 'thumbsdown_count')
 
     def get_sunglasses_count(self, obj):
-        return obj.commentlikes.aggregate(Sum('sunglasses_count'))['sunglasses_count__sum']
+        return self._aggregate_field(obj, 'sunglasses_count')
 
     def get_rocket_count(self, obj):
-        # return obj.commentlikes.aggregate(Sum('rocket_count'))['rocket_count__sum']
-        return self._return_field(obj, 'rocket_count')
+        return self._aggregate_field(obj, 'rocket_count')
 
-    def _return_field(self, obj, field):
-        try:
-            return obj.commentlikes.get().__getattribute__(field)
-        except ObjectDoesNotExist:
-            return None
-
+    def _aggregate_field(self, obj, field):
+        return obj.commentlikes.aggregate(Sum(field))[field + '__sum']
+        
     def get_created_on(self, obj):
         return obj.created_on
 

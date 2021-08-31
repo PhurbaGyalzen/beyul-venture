@@ -197,6 +197,7 @@ class CommentLike(models.Model):
         related_name="commentlikes"
     )
 
+    # needed?
     created_on = models.DateTimeField(
         _('create on'),
         auto_now_add=True
