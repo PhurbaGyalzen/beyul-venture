@@ -276,7 +276,7 @@ export default function ContactUs() {
                         <Box
                             ref={ref}
                             component={motion.div}
-                            animate={animation1}
+                            animate={animation}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 1.1 }}
                             style={{ height: '100%', width: '100%' }}
