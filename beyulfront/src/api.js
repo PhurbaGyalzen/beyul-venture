@@ -63,10 +63,13 @@ const ajax = async (path, rest) => {
             await refreshJWT()
             lastTms = new Date().getTime()
         }
-        console.log('expires in mins:', tokenTimeout - ((currTms - lastTms) / (60 * 1000)))
+        console.log(
+            'expires in mins:',
+            tokenTimeout - (currTms - lastTms) / (60 * 1000),
+        )
         const allHeaders = new Headers(headers || {})
         allHeaders.set('Authorization', 'Bearer ' + access)
-        if (opts.method === 'POST') {
+        if (['POST', 'PUT', 'PATCH'].includes(opts.method)) {
             allHeaders.set('Content-Type', 'application/json;charset=UTF-8')
         }
         const resp = await fetch(path, { ...{ headers: allHeaders }, ...opts })

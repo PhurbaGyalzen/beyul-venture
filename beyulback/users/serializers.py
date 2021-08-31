@@ -40,7 +40,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
 
-
+from rest_framework.reverse import reverse
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
     @classmethod
@@ -51,3 +51,10 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['email'] = user.email
         token['first_name'] = user.first_name
         return token
+
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        data['user'] = reverse(
+            'customuser-detail', args=[self.user.id], request=self.context.get('request')
+        )
+        return data
