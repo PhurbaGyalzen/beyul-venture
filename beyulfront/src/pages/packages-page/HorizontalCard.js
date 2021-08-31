@@ -8,6 +8,7 @@ import {
     Typography,
     makeStyles,
     Container,
+    Button
 } from '@material-ui/core'
 import Rating from '@material-ui/lab/Rating'
 import FavoriteIcon from '@material-ui/icons/Favorite'
@@ -17,6 +18,7 @@ import { Link } from 'react-router-dom'
 const useStyles = makeStyles((theme) => ({
     card: {
         height: '100%',
+        maxWidth:'1000px',
         display: 'flex',
         flexDirection: 'row',
         '&:hover': {
@@ -37,24 +39,36 @@ const useStyles = makeStyles((theme) => ({
           },
     },
     cardImage: {
+        
+        
         height: '15rem',
-        width:'15rem',
         filter: 'brightness(0.6)',
         transform: 'scale(1)',
         transition: 'transform 2.5s ease-in-out, filter 2s',
+        [theme.breakpoints.up('lg')]: {
+            width:'15rem',
+        },
     },
     imageContainer: {
         overflow: 'hidden',
     },
     descriptionSec:{
         maxHeight:'5rem',
-        maxWidth:'500px',
+        maxWidth:'470px',
+        paddingBottom:'1rem',
         textOverflow:'ellipsis',
         fontSize:'.8rem',
         lineHeight:'1.5rem',
         color:'#545454'
-
+    },
+    viewButton:{
+        fontSize: '.8rem',
+        padding: '10px 10px',
+        fontWeight: '700',
+        background:'#0a7bbd',
+        color:'white'
     }
+
 }))
 
 const StyledRating = withStyles({
@@ -74,7 +88,7 @@ export const HorizontalCard = ({ tagPackages, tagName }) => {
     const classes = useStyles()
     return (
         <>
-            <Grid item xs={12} md={12} sm={6}>
+            <Grid item xs={12} md={9} sm={6}>
                 <CustomLink to='package/1'>
                     <Card className={classes.card}>
                         <div className={classes.imageContainer}>
@@ -86,16 +100,7 @@ export const HorizontalCard = ({ tagPackages, tagName }) => {
                             />
                         </div>
                         <CardContent>
-                            <Typography
-                                align='left'
-                                style={{
-                                    color: '#9d9fa5',
-                                    fontSize: '0.8rem',
-                                    fontWeight: 'bold',
-                                }}
-                            >
-                                Duration: {tagPackages.duration} days
-                            </Typography>
+                            
                             <Typography
                                 variant='h4'
                                 align='justify'
@@ -129,15 +134,68 @@ export const HorizontalCard = ({ tagPackages, tagName }) => {
                             
                         </CardContent>
                         <CardContent>
-                        <Typography
-                                    style={{
-                                        fontSize: '0.8rem',
-                                        fontWeight: 'bold',
-                                        color: '#505050',
-                                    }}
-                                >
-                                    Price: Rs. {tagPackages.currentPrice}
-                                </Typography>
+                            <div>
+                            <Typography
+                                align='left'
+                                style={{
+                                    color: '#9d9fa5',
+                                    fontSize: '0.7rem',
+                                }}
+                            >
+                                Tour length:
+                            </Typography>
+                            </div>
+                            <div>
+                            <Typography
+                                align='left'
+                                style={{
+                                    fontSize: '0.8rem',
+                                    fontWeight: 'bold',
+                                }}
+                            >
+                                {tagPackages.duration} days
+                            </Typography>
+                            </div>
+                            
+                            <div>
+                            <Typography
+                                align='left'
+                                style={{
+                                    fontSize: '0.8rem',
+                                    fontWeight: 'bold',
+                                }}
+                            >
+                                From
+                            </Typography>
+                            </div>
+                            <div>
+                            <Typography
+                                align='left'
+                                style={{
+                                    fontSize: '1.2rem',
+                                    fontWeight: 'bold',
+                                    color: '#505050',
+                                }}
+                            >
+                                <span style={{
+                                    fontSize: '0.7rem',
+                                    fontWeight: 'bold',
+                                    color: '#505050',
+                                }}>NPR</span> {tagPackages.currentPrice}
+                            </Typography>
+                            </div>
+                            {/* <Typography
+                                        style={{
+                                            fontSize: '0.8rem',
+                                            fontWeight: 'bold',
+                                            color: '#505050',
+                                        }}
+                                    >
+                                        Price: 
+                            </Typography> */}
+                            <div>
+                                <Button className={classes.viewButton}>View Package</Button>
+                            </div>
                         </CardContent>
                         
                     </Card>
