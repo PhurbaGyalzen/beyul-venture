@@ -10,6 +10,11 @@ import contactUsImg from 'img/contactUs2.jpg'
 import mapImg from 'img/map.png'
 import question from 'img/question1.png'
 
+//animation import
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { useAnimation } from 'framer-motion'
+
 //validation import
 import { ContactUsForm } from '../components/ContactUsForm'
 import { DeveloperCard } from '../components/DeveloperCard'
@@ -128,6 +133,58 @@ const useStyles = makeStyles((theme) => ({
 export default function ContactUs() {
     const classes = useStyles()
 
+    //animaton
+    const { ref, inView, entry } = useInView({
+        threshold: 0.1,
+    })
+    const animation = useAnimation()
+    const animation1 = useAnimation()
+    const contactBox = useAnimation()
+
+    useEffect(() => {
+        if (inView) {
+            animation.start({
+                y: 0,
+                opacity: 1,
+                transition: {
+                    type: 'tween',
+                    duration: 1,
+                },
+            })
+
+            animation1.start({
+                y: 0,
+                transition: {
+                    type: 'tween',
+                    duration: 1,
+                },
+            })
+
+            contactBox.start({
+                y:0,
+                transition: {
+                    type: 'spring',
+                    duration: 2,
+                },
+            })
+        }
+
+        if (!inView) {
+            animation.start({
+                y: '10vh',
+                opacity: 0,
+            })
+
+            animation1.start({
+                y: '-10vh',
+            })
+
+            contactBox.start({
+                y:'-5vh'
+            })
+        }
+    }, [inView])
+
     return (
         <>
             <Box
@@ -149,17 +206,7 @@ export default function ContactUs() {
                             md={12}
                             sm={12}
                             className={classes.firstRowItem1}
-                        >
-                            {/* <Typography
-                                variant='h3'
-                                className={classes.contactUsTitle}
-                            >
-                                {' '}
-                                Beyul Venture
-                            </Typography>
-                            <Typography style={{color:"#13181e"}}>Need a help? Or a high five?</Typography>
-                            <Typography style={{color:"#13181e"}}>Here's how to reach us</Typography> */}
-                        </Grid>
+                        ></Grid>
                     </Grid>
                 </Box>
 
@@ -185,7 +232,12 @@ export default function ContactUs() {
                     </Grid>
 
                     <Grid item xs={12} md={6} sm={6}>
-                        <Box pl={{ xs: 0, sm: 5, md: 5, lg: 5 }}>
+                        <Box
+                            pl={{ xs: 0, sm: 5, md: 5, lg: 5 }}
+                            ref={ref}
+                            component={motion.div}
+                            animate={contactBox}
+                        >
                             <img
                                 src={question}
                                 alt='have any question'
@@ -221,14 +273,23 @@ export default function ContactUs() {
                         sm={6}
                         style={{ position: 'relative' }}
                     >
-                        <iframe
-                            src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56516.276891975016!2d85.29111309519689!3d27.709031933725658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu%2044600!5e0!3m2!1sen!2snp!4v1626018943682!5m2!1sen!2snp'
-                            width='100%'
-                            height='100%'
-                            style={{ border: 0 }}
-                            loading='lazy'
-                            className={classes.map}
-                        ></iframe>
+                        <Box
+                            ref={ref}
+                            component={motion.div}
+                            animate={animation1}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 1.1 }}
+                            style={{ height: '100%', width: '100%' }}
+                        >
+                            <iframe
+                                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56516.276891975016!2d85.29111309519689!3d27.709031933725658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu%2044600!5e0!3m2!1sen!2snp!4v1626018943682!5m2!1sen!2snp'
+                                width='100%'
+                                height='100%'
+                                style={{ border: 0 }}
+                                loading='lazy'
+                                className={classes.map}
+                            ></iframe>
+                        </Box>
 
                         <Typography
                             variant='h6'
@@ -243,8 +304,14 @@ export default function ContactUs() {
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={6} sm={6}>
-                        <Box pt={{ xs: 5, md: 0, sm: 0, lg: 0 }}>
-                            
+                        <Box
+                            pt={{ xs: 5, md: 0, sm: 0, lg: 0 }}
+                            ref={ref}
+                            component={motion.div}
+                            animate={animation}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 1.1 }}
+                        >
                             <img
                                 src={mapImg}
                                 alt='Beyul Venture in World Map'

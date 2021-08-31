@@ -16,6 +16,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Fade from '@material-ui/core/Fade'
 import Breadcrumb from './components/Breadcrumb'
 import { motion } from 'framer-motion'
+import ScrollIndicator from 'components/scrollIndicator/ScrollIndicator'
 
 // import { default as SignUp } from 'components/SignUpDialog'
 import { Routes } from './Routes'

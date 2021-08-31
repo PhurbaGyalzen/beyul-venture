@@ -10,6 +10,7 @@ import { useEffect } from 'react'
 import SortIcon from '@material-ui/icons/Sort'
 import { motion } from 'framer-motion'
 import '../../assets/css/animate.min.css'
+import ScrollIndicator from '../scrollIndicator/ScrollIndicator'
 import {
     Drawer,
     List,
@@ -137,7 +138,7 @@ export default function ButtonAppBar() {
 
     useEffect(() => {
         const textColor = () => {
-            const show = window.scrollY > 310
+            const show = window.scrollY > 110
             if (show) {
                 setTextColor('textDark')
             } else {
@@ -152,7 +153,7 @@ export default function ButtonAppBar() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const show = window.scrollY > 310
+            const show = window.scrollY > 110
             if (show) {
                 setNavBackground('appBarSolid')
             } else {
@@ -215,6 +216,12 @@ export default function ButtonAppBar() {
             icon: <LabelIcon />,
             link: '/privacy-policy',
         },
+
+        {
+            text: 'Profile',
+            icon: <LabelIcon />,
+            link: '/user-profile',
+        },
     ]
     const drawerItems = navItems.concat({
         text: 'Sign Up',
@@ -223,88 +230,94 @@ export default function ButtonAppBar() {
     })
 
     return (
-        <div className={classes.root}>
-            <AppBar position='fixed' className={classes[navRef.current]}>
-                <Toolbar disableGutters>
-                    <Typography
-                        variant='h1'
-                        className={`${classes.title} animate__animated animate__bounceInLeft animate__slow`}
-                        component='h1'
-                    >
-                        <Link
-                            component={NavLink}
-                            to='/'
-                            style={{ color: '#c47d1e' }}
+        <>
+            <div className={classes.root}>
+                <AppBar position='fixed' className={classes[navRef.current]}>
+                    <Toolbar disableGutters>
+                        <Typography
+                            variant='h1'
+                            className={`${classes.title} animate__animated animate__bounceInLeft animate__slow`}
+                            component='h1'
                         >
-                            BEYUL VENTURE
-                        </Link>
-                    </Typography>
-                    <div className={classes.sectionDesktop}>
-                        {navItems.map((item) => (
-                            <NavBtn
-                                key={item.link}
-                                to={item.link}
-                                className={classes[navRef1.current]}
+                            <Link
                                 component={NavLink}
-                                // style={{mixBlendMode: 'difference'}}
+                                to='/'
+                                style={{ color: '#c47d1e' }}
                             >
-                                {item.text}
-                            </NavBtn>
-                        ))}
-                        <Button
-                            component={NavLink}
-                            to='/sign-up'
-                            variant='contained'
-                            color='primary'
-                            size='medium'
-                            className={`${classes.signUp} animate__animated animate__pulse animate__infinite`}
-                            style={{ fontSize: '0.7rem' }}
-                        >
-                            Sign Up
-                        </Button>
-                    </div>
-
-                    <IconButton
-                        onClick={toggleDrawer}
-                        className={classes.menuIcon}
-                        edge='start'
-                        aria-label='menu'
-                    >
-                        <SortIcon fontSize='large' />
-                    </IconButton>
-
-                    <Drawer
-                        anchor='left'
-                        variant='temporary'
-                        onClose={toggleDrawer}
-                        open={drawerOpen}
-                    >
-                        <List className={classes.list}>
-                            {drawerItems.map((prop) => (
-                                <Link
-                                    className={classes.link}
-                                    to={prop.link}
-                                    key={prop.text}
-                                    component={RouterLink}
+                                BEYUL VENTURE
+                            </Link>
+                        </Typography>
+                        <div className={classes.sectionDesktop}>
+                            {navItems.map((item) => (
+                                <NavBtn
+                                    key={item.link}
+                                    to={item.link}
+                                    className={classes[navRef1.current]}
+                                    component={NavLink}
+                                    // style={{mixBlendMode: 'difference'}}
                                 >
-                                    <ListItem onClick={toggleDrawer} button>
-                                        <ListItemIcon
-                                            style={{ color: '#c47d1e' }}
-                                        >
-                                            {prop.icon}
-                                        </ListItemIcon>
-                                        <ListItemText
-                                            style={{ color: '#000000' }}
-                                        >
-                                            {prop.text}
-                                        </ListItemText>
-                                    </ListItem>
-                                </Link>
+                                    {item.text}
+                                </NavBtn>
                             ))}
-                        </List>
-                    </Drawer>
-                </Toolbar>
-            </AppBar>
-        </div>
+                            <Button
+                                component={NavLink}
+                                to='/sign-up'
+                                variant='contained'
+                                color='primary'
+                                size='medium'
+                                className={`${classes.signUp} animate__animated animate__pulse animate__infinite`}
+                                style={{ fontSize: '0.7rem' }}
+                            >
+                                Sign Up
+                            </Button>
+                        </div>
+
+                        <IconButton
+                            onClick={toggleDrawer}
+                            className={classes.menuIcon}
+                            edge='start'
+                            aria-label='menu'
+                        >
+                            <SortIcon fontSize='large' />
+                        </IconButton>
+
+                        <Drawer
+                            anchor='left'
+                            variant='temporary'
+                            onClose={toggleDrawer}
+                            open={drawerOpen}
+                        >
+                            <List className={classes.list}>
+                                {drawerItems.map((prop) => (
+                                    <Link
+                                        className={classes.link}
+                                        to={prop.link}
+                                        key={prop.text}
+                                        component={RouterLink}
+                                    >
+                                        <ListItem
+                                            onClick={toggleDrawer}
+                                            button
+                                        >
+                                            <ListItemIcon
+                                                style={{ color: '#c47d1e' }}
+                                            >
+                                                {prop.icon}
+                                            </ListItemIcon>
+                                            <ListItemText
+                                                style={{ color: '#000000' }}
+                                            >
+                                                {prop.text}
+                                            </ListItemText>
+                                        </ListItem>
+                                    </Link>
+                                ))}
+                            </List>
+                        </Drawer>
+                    </Toolbar>
+                    <ScrollIndicator />
+                </AppBar>
+            </div>
+        </>
     )
 }

@@ -1,6 +1,7 @@
 import { Route, Switch, useParams, useLocation } from 'react-router-dom'
 import ContactUs from 'pages/ContactUs.js'
 import OurTeam from 'pages/our-team/OurTeam'
+import userProfile from 'pages/user-profile/userProfile'
 import FourZeroFour from 'pages/404'
 import SignIn from 'components/SignIn'
 import SignUp from 'components/SignUp'
@@ -42,6 +43,7 @@ const Routes = () => {
             <CustomRoute path='/blog' component={BlogRoutes} />
             <CustomRoute exact path='/contact-us' component={ContactUs} />
             <CustomRoute exact path='/our-team' component={OurTeam} />
+            <CustomRoute exact path='/user-profile' component={userProfile} />
             <CustomRoute
                 exact
                 path='/terms-and-conditions'
