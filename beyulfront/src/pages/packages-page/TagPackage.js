@@ -11,6 +11,8 @@ import {
 } from '@material-ui/core'
 import { useParams } from 'react-router'
 import {HorizontalCard} from './HorizontalCard'
+import Paper from '@material-ui/core/Paper'
+import SearchBar from 'material-ui-search-bar'
 
 export const TagPackage = () => {
     const [tagPackage, setTagPackage] = useState(
@@ -116,6 +118,11 @@ export const TagPackage = () => {
     return (
         <>
             <Box mt={'4rem'}>
+                <Container style={{padding:'2rem 0'}}>
+                    <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+                        <SearchBar style={{width:'400px'}} />
+                    </div>
+                </Container>
                 <Container>
                     <Grid container justifyContent="center" spacing={4}>
                         {packageD.map((content)=> {
