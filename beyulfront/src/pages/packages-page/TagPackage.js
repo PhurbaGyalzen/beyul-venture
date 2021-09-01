@@ -117,7 +117,7 @@ export const TagPackage = () => {
         <>
             <Box mt={'4rem'}>
                 <Container>
-                    <Grid container spacing={4}>
+                    <Grid container justifyContent="center" spacing={4}>
                         {packageD.map((content)=> {
                             return <HorizontalCard key={content.id} tagPackages={content} tagName={tagPackage.tagName}/>
                         })}
