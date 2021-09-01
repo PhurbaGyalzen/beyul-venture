@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('md')]: {
             height: '100%',
         },
-        backgroundColor: '#13181e',
+        backgroundColor:'#13181e'
     },
 }))
 

@@ -3,6 +3,7 @@ let refresh
 const tokenTimeout = 5 // in mins
 let lastTms = new Date().getTime()
 const origin = 'http://127.0.0.1:8000'
+let user
 
 const post = async (path, body) => {
     const resp = await fetch(origin + path, {
@@ -14,17 +15,23 @@ const post = async (path, body) => {
     return data
 }
 
-const storeJWT = async () => {
+const loginUser = async (email, password) => {
     const data = await post('/api/login/', {
         email: 'admin@gmail.com',
         password: 'admin',
     })
     if (!data.access) {
         console.log('Error when fetching token:', data)
-        throw new Error('Potential Bad Credentials error.')
+        throw new Error('Bad Credentials error.')
     }
+    return data
+}
+
+const storeJWT = async () => {
+    const data = await loginUser('admin@gmail.com', 'admin',)
     access = data.access
     refresh = data.refresh
+    user = data.user
 }
 
 const refreshJWT = async () => {
@@ -63,10 +70,14 @@ const ajax = async (path, rest) => {
             await refreshJWT()
             lastTms = new Date().getTime()
         }
-        console.log('expires in mins:', tokenTimeout - ((currTms - lastTms) / (60 * 1000)))
+        console.log(
+            'expires in mins:',
+            tokenTimeout - (currTms - lastTms) / (60 * 1000),
+        )
+        console.log('current user:', user)
         const allHeaders = new Headers(headers || {})
         allHeaders.set('Authorization', 'Bearer ' + access)
-        if (opts.method === 'POST') {
+        if (['POST', 'PUT', 'PATCH'].includes(opts.method)) {
             allHeaders.set('Content-Type', 'application/json;charset=UTF-8')
         }
         const resp = await fetch(path, { ...{ headers: allHeaders }, ...opts })
@@ -82,3 +93,4 @@ const ajax = async (path, rest) => {
 }
 
 export default ajax
+export {user}

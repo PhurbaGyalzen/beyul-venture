@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Button } from '@material-ui/core'
 import styled, { css } from 'styled-components'
+import {user} from 'api'
 
 const FlexWrapAlign = styled.div`
     display: flex;
@@ -27,10 +28,10 @@ const Author = styled(FlexWrapAlign)`
     gap: 0.4rem;
     flex: 1 1 0;
     & > ::before {
-        content: "· ";
+        content: '· ';
     }
     span:first-of-type::before {
-        content: "";
+        content: '';
     }
 `
 
@@ -41,7 +42,6 @@ const AuthorImage = styled.img`
     height: 2rem;
     object-fit: cover;
     border-radius: 50%;
-
 `
 
 const CommentText = styled.div`
@@ -186,9 +186,14 @@ const fieldEmoji = {
     rocket_count: '🚀',
 }
 
+const emojiField = Object.fromEntries(
+    Object.entries(fieldEmoji).map(([k, v]) => [v, k]),
+)
+
 const Comment = ({
     id,
     url,
+    reactionUrl,
     by,
     text,
     time,
@@ -209,9 +214,24 @@ const Comment = ({
                     r.count = r.count + 1
                     r.reacted = true
                 }
+                const payload = {
+                    // url: '',
+                    user: user,
+                    comment: url,
+                }
+                payload[emojiField[r.id]] = 1
+                /*
+                1) login as another user.
+                2) return below url.
+                */
+                ajax(reactionUrl, {
+                    method: 'PATCH',
+                    body: JSON.stringify(payload),
+                })
             }
             recs.push(r)
         }
+
         setReactions(recs)
     }
 
@@ -245,7 +265,11 @@ const Comment = ({
                     <span className='date'>
                         {new Date(time).toLocaleString()}
                     </span>
-                    {edited ? <span><i>{'edited'}</i></span> : null}
+                    {edited ? (
+                        <span>
+                            <i>{'edited'}</i>
+                        </span>
+                    ) : null}
                 </Author>
                 <Options>
                     <button>...</button>
@@ -307,6 +331,7 @@ const AllComments = ({ comments }) => {
                         key={comment.id}
                         id={comment.id}
                         url={comment.url}
+                        reactionUrl={comment.reaction_url}
                         by={'Anon'}
                         text={comment.body}
                         time={comment.updated_on}
