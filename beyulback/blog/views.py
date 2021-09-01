@@ -3,7 +3,7 @@ from .models import Blog, Tag, Comment, Clap, CommentLike
 from users.serializers import CustomTokenObtainPairSerializer
 from .serializers import (
     BlogSerializer,
-    BlogListSerialzer,
+    BlogListSerializer,
     TagSerializer,
     CommentSerializer,
     ClapSerializer,
@@ -50,7 +50,7 @@ class BlogView(viewsets.ModelViewSet):
             'claps',
         ).filter(status=1)
         page = self.paginate_queryset(queryset)
-        serializer = BlogListSerialzer(page, many=True, context={'request': request})
+        serializer = BlogListSerializer(page, many=True, context={'request': request})
         return self.get_paginated_response(serializer.data)
         
 
@@ -70,7 +70,8 @@ class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.select_related(
         'user',
         'blog',
-    ).all()
+        'parent'
+    ).prefetch_related('commentlikes__user').all()
     serializer_class = CommentSerializer
     pagination_class = RemovePageNumberPagination
 
