@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Button } from '@material-ui/core'
 import styled, { css } from 'styled-components'
-import {user} from 'api'
+import { user } from 'api'
 
 const FlexWrapAlign = styled.div`
     display: flex;
@@ -202,36 +202,48 @@ const Comment = ({
     reactionsArr,
 }) => {
     const [reactions, setReactions] = useState(reactionsArr)
-
-    const reactionClicked = (reaction) => {
+    const reactionClicked = async (reaction) => {
         const recs = []
         for (const r of reactions) {
             if (r.id === reaction.id) {
-                if (r.reacted) {
-                    r.count = r.count - 1
-                    r.reacted = false
-                } else {
-                    r.count = r.count + 1
-                    r.reacted = true
-                }
+                const removeReaction = !!(r.reacted)
+
                 const payload = {
-                    // url: '',
                     user: user,
                     comment: url,
                 }
-                payload[emojiField[r.id]] = 1
-                /*
-                1) login as another user.
-                2) return below url.
-                */
-                ajax(reactionUrl, {
-                    method: 'PATCH',
-                    body: JSON.stringify(payload),
-                })
+                payload[emojiField[r.id]] = removeReaction ? 0 : 1
+
+                // setLoadingIndicator(r.id, true)
+                let data
+                if (reactionUrl) {
+                    data = await ajax(reactionUrl, {
+                        method: 'PATCH',
+                        body: JSON.stringify(payload),
+                    })
+                } else {
+                    data = await ajax('/api/comment/2/', {
+                        method: 'POST',
+                        body: JSON.stringify({}),
+                    })
+                }
+                // setLoadingIndicator(r.id, false)
+                if (data.error) {
+                    // showToast('failed')
+                } else {
+                    // if (r.currentUserReactCount < data[emojiField[r.id]]) {
+                    //     // count was same on server
+                    // }
+                    if (removeReaction) {
+                        r.count--
+                    } else {
+                        r.count++
+                    }
+                    r.reacted = !r.reacted
+                }
             }
             recs.push(r)
         }
-
         setReactions(recs)
     }
 
@@ -245,7 +257,7 @@ const Comment = ({
                         {hiddenReactions.map((r) => (
                             <PopupEmoji
                                 key={r.id}
-                                onClick={() => reactionClicked(r)}
+                                onClick={async () => await reactionClicked(r)}
                             >
                                 {r.id}
                             </PopupEmoji>
@@ -286,7 +298,9 @@ const Comment = ({
                                     emoji={reaction.id}
                                     count={reaction.count}
                                     reacted={reaction.reacted}
-                                    onClick={() => reactionClicked(reaction)}
+                                    onClick={async () =>
+                                        await reactionClicked(reaction)
+                                    }
                                 />
                             ) : null
                         })}
@@ -322,16 +336,24 @@ const AllComments = ({ comments }) => {
     return (
         <>
             {flatComments.map((comment) => {
+                const thisUserReaction = comment.user_reaction
                 const reactions = Object.entries(fieldEmoji).map(([k, v]) => ({
                     id: v,
                     count: comment[k] || 0,
+                    reacted: thisUserReaction
+                        ? thisUserReaction[k] > 0
+                        : false,
+                    // currentUserReactCount: thisUserReaction
+                    //     ? thisUserReaction[k]
+                    //     : 0,
                 }))
+                console.log({ reactions })
                 return (
                     <Comment
                         key={comment.id}
                         id={comment.id}
                         url={comment.url}
-                        reactionUrl={comment.reaction_url}
+                        reactionUrl={thisUserReaction?.url}
                         by={'Anon'}
                         text={comment.body}
                         time={comment.updated_on}
