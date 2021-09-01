@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Button } from '@material-ui/core'
 import styled, { css } from 'styled-components'
+import {user} from 'api'
 
 const FlexWrapAlign = styled.div`
     display: flex;
@@ -192,6 +193,7 @@ const emojiField = Object.fromEntries(
 const Comment = ({
     id,
     url,
+    reactionUrl,
     by,
     text,
     time,
@@ -214,11 +216,16 @@ const Comment = ({
                 }
                 const payload = {
                     // url: '',
-                    user: 'current_users_url',
+                    user: user,
                     comment: url,
                 }
                 payload[emojiField[r.id]] = 1
-                ajax('PATCH', {
+                /*
+                1) login as another user.
+                2) return below url.
+                */
+                ajax(reactionUrl, {
+                    method: 'PATCH',
                     body: JSON.stringify(payload),
                 })
             }
@@ -324,6 +331,7 @@ const AllComments = ({ comments }) => {
                         key={comment.id}
                         id={comment.id}
                         url={comment.url}
+                        reactionUrl={comment.reaction_url}
                         by={'Anon'}
                         text={comment.body}
                         time={comment.updated_on}
