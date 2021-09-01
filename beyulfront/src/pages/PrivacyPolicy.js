@@ -93,6 +93,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         width: '100%',
         overflow: 'hidden',
+        paddingTop: '10%',
     },
 
     photoDiv: {
@@ -129,23 +130,31 @@ export default function PrivacyPolicy() {
     return (
         <>
             <div className={classes.root}>
-                <Box pb={5}>
-                    <Grid container>
-                        <Grid item xs={12}>
-                            <div className={classes.photoDiv}>
-                                <img
-                                    src={photo}
-                                    alt='privacy policy images'
-                                    className={classes.photo}
-                                />
-                            </div>
-                        </Grid>
-                    </Grid>
-                </Box>
-
                 <Box p={3} style={{ width: '80%', margin: 'auto' }}>
                     <Grid container>
                         <Grid item>
+                            <Box
+                                pt={{
+                                    xs: '15%',
+                                    sm: '10%',
+                                    md: '5%',
+                                    lg: 0,
+                                    xl: 0,
+                                }}
+                            >
+                                <Typography
+                                    variant='h4'
+                                    style={{
+                                        textAlign: 'center',
+                                        paddingBottom: '2%',
+                                        fontSize: '2rem',
+                                        paddingLeft: '1rem',
+                                        lineHeight: '3rem',
+                                    }}
+                                >
+                                    OUR PRIVACY POLICY
+                                </Typography>
+                            </Box>
                             <Typography variant='body2'>
                                 Beyul Venture collects information about their
                                 customers as per our Know Your Customer Policy.

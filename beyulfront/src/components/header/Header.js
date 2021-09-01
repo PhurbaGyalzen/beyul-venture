@@ -11,6 +11,7 @@ import SortIcon from '@material-ui/icons/Sort'
 import { motion } from 'framer-motion'
 import '../../assets/css/animate.min.css'
 import ScrollIndicator from '../scrollIndicator/ScrollIndicator'
+import Company from './Company'
 import {
     Drawer,
     List,
@@ -194,40 +195,31 @@ export default function ButtonAppBar() {
             icon: <LabelIcon />,
             link: '/contact-us',
         },
-        {
-            text: 'Team',
-            icon: <LabelIcon />,
-            link: '/our-team',
-        },
+        
         {
             text: 'Log In',
             icon: <LabelIcon />,
             link: '/sign-in',
         },
 
-        {
-            text: 'Terms & Conditions',
-            icon: <LabelIcon />,
-            link: '/terms-and-conditions',
-        },
-
-        {
-            text: 'Privacy Policy',
-            icon: <LabelIcon />,
-            link: '/privacy-policy',
-        },
-
+        
         {
             text: 'Profile',
             icon: <LabelIcon />,
             link: '/user-profile',
         },
     ]
-    const drawerItems = navItems.concat({
+    const drawerItems = navItems.concat(
+        {
         text: 'Sign Up',
         icon: <LabelIcon />,
         link: '/sign-up',
-    })
+        },
+
+        
+    )
+
+    
 
     return (
         <>
@@ -259,6 +251,8 @@ export default function ButtonAppBar() {
                                     {item.text}
                                 </NavBtn>
                             ))}
+
+                            {/* <Company/> */}
                             <Button
                                 component={NavLink}
                                 to='/sign-up'
@@ -266,7 +260,8 @@ export default function ButtonAppBar() {
                                 color='primary'
                                 size='medium'
                                 className={`${classes.signUp} animate__animated animate__pulse animate__infinite`}
-                                style={{ fontSize: '0.7rem' }}
+                                style={{ fontSize: '0.7rem' , marginLeft:'1rem'}}
+
                             >
                                 Sign Up
                             </Button>
@@ -310,9 +305,13 @@ export default function ButtonAppBar() {
                                                 {prop.text}
                                             </ListItemText>
                                         </ListItem>
+                                        
                                     </Link>
                                 ))}
-                            </List>
+                                {/* <ListItem button>
+                                    <Company/>
+                                </ListItem> */}
+                                </List>
                         </Drawer>
                     </Toolbar>
                     <ScrollIndicator />

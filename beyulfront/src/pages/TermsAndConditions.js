@@ -94,28 +94,7 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         overflow: 'hidden',
         backgroundColor: 'primary',
-    },
-
-    photoDiv: {
-        width: '100vw',
-        height: '100vh',
-        boxSizing: 'borderBox',
-        overflow: 'hidden',
-    },
-
-    photo: {
-        width: '100%',
-        height: '100%',
-        backgroundRepeat: 'noRepeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-    },
-
-    photoText: {
-        fontSize: '2rem',
-        fontWeight: 'bold',
-        color: '#ffffff',
-        letterSpacing: '0.1rem',
+        paddingTop: '10%',
     },
 
     content: {
@@ -130,20 +109,20 @@ export default function TermsAndConditions() {
     return (
         <>
             <div className={classes.root}>
-                <Box pb={5}>
-                    <Grid container>
-                        <Grid item xs={12}>
-                            <div className={classes.photoDiv}>
-                                <img
-                                    src={photo}
-                                    alt='terms and conditions images'
-                                    className={classes.photo}
-                                />
-                            </div>
-                        </Grid>
-                    </Grid>
+                <Box pt={{ xs: '15%', sm: '10%', md: '5%', lg: 0, xl: 0 }}>
+                    <Typography
+                        variant='h4'
+                        style={{
+                            textAlign: 'center',
+                            paddingBottom: '2%',
+                            fontSize: '2rem',
+                            paddingLeft:"1rem",
+                            lineHeight:"3rem"
+                        }}
+                    >
+                        OUR TERMS AND CONDITIONS
+                    </Typography>
                 </Box>
-
                 {termsAndConditions.map((data) => (
                     <Grid container key={data.id}>
                         <Grid item xs={12}>

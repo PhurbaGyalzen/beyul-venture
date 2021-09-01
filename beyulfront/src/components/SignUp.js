@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     },
     imgContainer: {
         backgroundImage:
-            'linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("/static/images/mountain.jpg")',
+            'linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("/static/images/laptopGirl.jpg")',
         padding: '0',
         width: '100%',
         height: '100%',
@@ -50,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('md')]: {
             height: '100%',
         },
+        backgroundColor:'#13181e'
     },
 }))
 
@@ -99,7 +100,7 @@ export default function SignUp() {
 
                                     <Typography
                                         variant='body1'
-                                        style={{ color: '#13181e' }}
+                                        style={{ color: '#fcfcfc' }}
                                     >
                                         To an unforgettable Journey
                                     </Typography>

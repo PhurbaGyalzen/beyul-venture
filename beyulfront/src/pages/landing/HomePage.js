@@ -19,6 +19,7 @@ import { fetchPosts } from 'utils/instagram'
 import 'assets/css/animate.min.css'
 import trek from 'img/trek_1.png'
 import pck from 'img/pck_1.webp'
+import {motion} from 'framer-motion'
 
 const useStyles = makeStyles((theme) => ({
     subHeading: {
@@ -189,13 +190,20 @@ const HomePage = () => {
                         justifyContent='space-evenly'
                         alignItems='center'
                     >
-                        {places.map((place) => {
-                            return (
-                                <Grid key={place.id} item>
-                                    <Place place={place} />
-                                </Grid>
-                            )
-                        })}
+                        
+                            {places.map((place) => {
+                                return (
+                                    <Grid key={place.id} item>
+                                        <Box
+                                            component={motion.div}
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 1.1 }}
+                                        >
+                                        <Place place={place} />
+                                        </Box>
+                                    </Grid>
+                                )
+                            })}
                     </Grid>
                 </div>
             </Container>
