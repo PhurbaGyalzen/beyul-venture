@@ -2,6 +2,7 @@ from blog.serializers import BlogSerializer, ReadOnlyModelSerializer
 from django.contrib.auth import get_user_model
 
 from rest_framework import serializers
+from rest_framework.reverse import reverse
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
@@ -40,7 +41,6 @@ class RegistrationSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
 
-
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
     @classmethod
@@ -51,3 +51,10 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['email'] = user.email
         token['first_name'] = user.first_name
         return token
+
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        data['user'] = reverse(
+            'customuser-detail', args=[self.user.id], request=self.context.get('request')
+        )
+        return data

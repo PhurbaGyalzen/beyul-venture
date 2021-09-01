@@ -8,6 +8,7 @@ from django.conf import settings
 from django.db.models import Sum
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import serializers
+from rest_framework.reverse import reverse
 from rest_framework.validators import UniqueTogetherValidator
 
 
@@ -21,12 +22,14 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
     rocket_count = serializers.SerializerMethodField()
     created_on = serializers.SerializerMethodField()
     updated_on = serializers.SerializerMethodField()
+    reaction_url = serializers.SerializerMethodField()
 
     class Meta:
         model = Comment
         fields = [
             'id',
             'url',
+            'reaction_url',
             'body',
             'username',
             'user_profile',
@@ -54,34 +57,43 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
         return f"http://127.0.0.1:8000/media/{obj.user.profile_pic}"
 
     def get_heart_eyes_count(self, obj):
-        return obj.commentlikes.aggregate(Sum('heart_eyes_count'))['heart_eyes_count__sum']
+        return self._aggregate_field(obj, 'heart_eyes_count')
 
     def get_thumbsup_count(self, obj):
-        return obj.commentlikes.aggregate(Sum('thumbsup_count'))['thumbsup_count__sum']
+        return self._aggregate_field(obj, 'thumbsup_count')
 
     def get_thumbsdown_count(self, obj):
-        return obj.commentlikes.aggregate(Sum('thumbsdown_count'))['thumbsdown_count__sum']
+        return self._aggregate_field(obj, 'thumbsdown_count')
 
     def get_sunglasses_count(self, obj):
-        return obj.commentlikes.aggregate(Sum('sunglasses_count'))['sunglasses_count__sum']
+        return self._aggregate_field(obj, 'sunglasses_count')
 
     def get_rocket_count(self, obj):
-        # return obj.commentlikes.aggregate(Sum('rocket_count'))['rocket_count__sum']
-        return self._return_field(obj, 'rocket_count')
+        return self._aggregate_field(obj, 'rocket_count')
 
-    def _return_field(self, obj, field):
-        try:
-            return obj.commentlikes.get().__getattribute__(field)
-        except ObjectDoesNotExist:
-            return None
-
+    def _aggregate_field(self, obj, field):
+        return obj.commentlikes.aggregate(Sum(field))[field + '__sum']
+        
     def get_created_on(self, obj):
         return obj.created_on
 
     def get_updated_on(self, obj):
         return obj.updated_on
 
-    
+    def get_reaction_url(self, obj):
+        user_id = self.context['request'].user.id
+        print(obj, user_id)
+        if user_id is None:
+            return None
+        result = obj.commentlikes.filter(user__id=user_id)
+        if not result:
+            return None
+        return reverse(
+            'commentlike-detail',
+            args=[result[0].id],
+            request=self.context['request']
+        )
+
 
 class ClapSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -140,7 +152,6 @@ class CommentLikeSerializer(serializers.HyperlinkedModelSerializer):
         )
     ]
 
-
 SEARCH_PATTERNN = 'src=\"/media/uploads/'
 SITE_DOMAIN = "http://127.0.0.1:8000"
 REPLACE_WITH = 'src=\"%s/media/uploads/' % SITE_DOMAIN
@@ -152,7 +163,8 @@ class FixAbsolutePathSerializer(serializers.Field):
 
 
 class BlogSerializer(serializers.HyperlinkedModelSerializer):
-    comment = CommentSerializer(many=True, read_only=True, source="comments")
+    comments = CommentSerializer(many=True, read_only=True)
+
     content = FixAbsolutePathSerializer()
     read_time = serializers.SerializerMethodField()
     total_claps = serializers.SerializerMethodField()
@@ -176,7 +188,7 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
             'author_name',
             'author_profile',
             'status',
-            'comment',
+            'comments',
             'total_claps'
         )
         extra_kwargs = {
@@ -197,11 +209,13 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
         result = readtime.of_html(obj.content)
         return result.text
 
-class BlogListSerialzer(BlogSerializer):
+
+class BlogListSerializer(BlogSerializer):
 
     class Meta(BlogSerializer.Meta):
-        model = Blog
-        fields = sorted(tuple(set(BlogSerializer.Meta.fields) - set(['comment'])))
+        fields = sorted(tuple(
+            set(BlogSerializer.Meta.fields) - set(['comments'])
+        ))
 
 
 class ReadOnlyModelSerializer(serializers.HyperlinkedModelSerializer):
