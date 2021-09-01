@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Grid, Typography, Link } from '@material-ui/core'
+import { Box, Grid, Typography} from '@material-ui/core'
 import CallIcon from '@material-ui/icons/Call'
 import EmailIcon from '@material-ui/icons/Email'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
@@ -17,11 +17,23 @@ import './index.css'
 import Tooltip from '@material-ui/core/Tooltip'
 import Fade from '@material-ui/core/Fade'
 import { motion } from 'framer-motion'
+import {Link} from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
 
 //All images import
 import visa from 'img/visa.png'
 import affilated from 'img/affilated.png'
 import footMount from 'img/footer_mountain.jpg'
+
+const useStyles = makeStyles((theme) => ({
+    subscribeBtn:{
+        width: '30%',
+        '&:hover':{
+            width:'35%'
+        },
+        transitionDuration:'700ms'
+    }
+}))
 
 const linkVariants = {
     hover: {
@@ -49,6 +61,7 @@ const DarkerBox = styled(Box)`
 `
 
 export const Footer = () => {
+    const classes = useStyles()
     return (
         <FooterWithBg>
             <DarkerBox color='white' mt={10}>
@@ -236,8 +249,8 @@ export const Footer = () => {
                                 transition="transition"
                             >
                                 <Link
-                                    href='/'
-                                    style={{color:"#cdcdcd"}}
+                                    to='/'
+                                    color='inherit'
                                 >
                                     Home
                                 </Link>
@@ -250,8 +263,9 @@ export const Footer = () => {
                                 transition="transition"
                             >
                                 <Link
-                                    href='/about'
-                                    style={{color:"#cdcdcd"}}
+                                    to='/about'
+                                    color='inherit'
+
                                 >
                                     About
                                 </Link>
@@ -264,8 +278,8 @@ export const Footer = () => {
                                 transition="transition"
                         >
                                 <Link
-                                    href='/blog'
-                                    style={{color:"#cdcdcd"}}
+                                    to='/blog'
+                                    color='inherit'
                                 >
                                     Blog
                                 </Link>
@@ -278,8 +292,9 @@ export const Footer = () => {
                                 transition="transition"
                             >
                                 <Link
-                                    href='contact-us'
-                                    style={{color:"#cdcdcd"}}
+                                    to='contact-us'
+                                    color='inherit'
+
                                 >
                                     Contact Us
                                 </Link>
@@ -292,8 +307,9 @@ export const Footer = () => {
                                 transition="transition"
                             >
                                 <Link
-                                    href='/our-team'
-                                    style={{color:"#cdcdcd"}}
+                                    to='/our-team'
+                                    color='inherit'
+
                                 >
                                     Our Team
                                 </Link>
@@ -325,17 +341,18 @@ export const Footer = () => {
                                     backgroundColor: '#ffffff',
                                     color: '#7f7f7f',
                                     marginTop: '1.25rem',
+                                    borderRadius:'0.5rem'
                                 }}
                             />
                             <br />
                             <Button
                                 variant='outlined'
+                                className={classes.subscribeBtn}
                                 style={{
                                     marginTop: '1.25rem',
-                                    width: '30%',
-                                    backgroundColor: '#c47d1e',
                                     height: 'auto',
                                     padding: '0.625rem',
+                                    backgroundColor: '#c47d1e',
                                     color: '#ffffff',
                                 }}
                             >
@@ -448,7 +465,7 @@ export const Footer = () => {
                             }}
                         >
                             <Link
-                                href='#'
+                                to='/terms-and-conditions'
                                 style={{ color: '#c47d1e' }}
                                 className='textHover'
                             >
@@ -465,7 +482,7 @@ export const Footer = () => {
                             }}
                         >
                             <Link
-                                href='#'
+                                to ='/privacy-policy'
                                 style={{ color: '#c47d1e' }}
                                 className='textHover'
                             >
