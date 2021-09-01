@@ -14,7 +14,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Copyright from 'components/Copyright'
 import { SignUpForm } from './SignUpForm'
-
+import Lottie from 'react-lottie'
+import animationData from 'img/lotties/42632-travel-typo.json'
 const useStyles = makeStyles((theme) => ({
     paper: {
         // marginTop: theme.spacing(3),
@@ -40,8 +41,8 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
     },
     imgContainer: {
-        backgroundImage:
-            'linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("/static/images/laptopGirl.jpg")',
+        // backgroundImage:
+        //     'linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url("/static/images/laptopGirl.jpg")',
         padding: '0',
         width: '100%',
         height: '100%',
@@ -56,7 +57,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
     const classes = useStyles()
-
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice',
+        },
+    }
     return (
         <div
             style={{ backgroundColor: '#EDEEF0' }}
@@ -72,7 +80,8 @@ export default function SignUp() {
                 <Grid container pt={5}>
                     <Grid item xs={12} md={6}>
                         <div className={classes.imgContainer}>
-                            <div
+                            <Lottie options={defaultOptions} style={{maxHeight:'400',maxWidth:'350'}} />
+                            {/* <div
                                 style={{
                                     paddingTop: '70%',
                                     width: '100%',
@@ -105,7 +114,7 @@ export default function SignUp() {
                                         To an unforgettable Journey
                                     </Typography>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </Grid>
                     <Grid item xs={12} md={6}>
