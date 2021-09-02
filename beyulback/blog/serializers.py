@@ -64,6 +64,7 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
             'user_reaction',
             'reactions_url',
             'body',
+            'user',
             'username',
             'user_profile',
             'blog',
@@ -106,7 +107,7 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
 
     def _aggregate_field(self, obj, field):
         return obj.commentlikes.aggregate(Sum(field))[field + '__sum']
-        
+
     def get_created_on(self, obj):
         return obj.created_on
 
