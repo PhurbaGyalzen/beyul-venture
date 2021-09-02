@@ -135,63 +135,12 @@ const PopupEmoji = styled.span`
     }
 `
 
-/*
-const FIELD_EMOJI = {
-    heart_eyes_count: '😍',
-    thumbsup_count: '👍',
-    thumbsdown_count: '👎',
-    sunglasses_count: '😎',
-    rocket_count: '🚀',
-}
-
-const EMOJI_FIELD = Object.fromEntries(
-    Object.entries(FIELD_EMOJI).map(([k, v]) => [v, k]),
-)
-const createReactions = async (createEndpoint, payload) => {
-    // dont optimize
-    const fieldsDefault = Object.fromEntries(
-        Object.entries(FIELD_EMOJI).map(([k, v]) => [k, 0]),
-    )
-    const data = await ajax(createEndpoint, {
-        method: 'POST',
-        body: JSON.stringify({
-            ...fieldsDefault,
-            ...payload,
-        }),
-    })
-    return data
-}
-
-const updateReactions = async (updateEndpoint, payload) => {
-    const data = await ajax(updateEndpoint, {
-        method: 'PATCH',
-        body: JSON.stringify(payload),
-    })
-    return data
-}
-
-const onReact = async (reactionId, reactionRemoved, rest) => {
-    let data
-    const payload = {
-        user: rest.userUrl,
-        comment: rest.commentUrl,
-    }
-    payload[EMOJI_FIELD[reactionId]] = reactionRemoved ? 0 : 1
-    if (rest.updateEndpoint) {
-        data = await updateReactions(rest.updateEndpoint, payload)
-    } else {
-        data = await createReactions(rest.createEndpoint, payload)
-    }
-    return [data, data.url]
-}*/
-
-
 const Comment = ({
     id,
     url,
-    updateEndpoint,
-    createEndpoint,
+    reactionUpdateEndpoint,
     by,
+    profileImg,
     text,
     time,
     edited,
@@ -207,21 +156,12 @@ const Comment = ({
             if (r.id === reaction.id) {
                 // setLoadingIndicator(reactionId, true)
                 const reactionRemoved = !!r.reacted
-                // const [data, createdUrl] = await onReact(
-                //     r.id,
-                //     reactionRemoved,
-                //     {
-                //         userUrl: CURR_USER,
-                //         commentUrl: url,
-                //         updateEndpoint: updateEndpoint,
-                //         createEndpoint: createEndpoint,
-                //     },
-                // )
+
                 const [data, createdUrl] = await onReactAsync(r.id, reactionRemoved)
-                if (!updateEndpoint) {
+                if (!reactionUpdateEndpoint) {
                     // if the POST succeeded, then we now know the PATCH url.
                     // if failed, will be null which is what we want.
-                    updateEndpoint = createdUrl
+                    reactionUpdateEndpoint = createdUrl
                 }
 
                 // setLoadingIndicator(reactionId, false)
@@ -266,7 +206,7 @@ const Comment = ({
         <CommentContainer indent={indent} data-id={id} id={id}>
             <CommentHead>
                 <Author>
-                    <AuthorImage src='https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/637629/95087942-1f8d-4160-a644-9a3ff89cf3d8.png' />
+                    <AuthorImage src={profileImg} />
                     <span>{by}</span>
                     <span className='date'>
                         {new Date(time).toLocaleString()}

@@ -180,7 +180,7 @@ class Comment(MPTTModel):
         order_insertion_by = ['created_on']
 
     def __str__(self):
-        return f"{self.user.first_name}{self.user.id}, In ({self.blog.title})-> comment: {self.body} "
+        return f"<Model {self.__class__.__name__}> {self.user.first_name}{self.user.id}, In ({self.blog.title})-> comment: {self.body} "
 
 
 class CommentLike(models.Model):

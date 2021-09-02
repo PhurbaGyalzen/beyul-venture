@@ -10,10 +10,10 @@ const formStyle = makeStyles((theme) => ({
 }))
 
 const validationSchema = yup.object({
-    comment: yup
+    content: yup
         .string()
         .max(800)
-        .required('Comment should not be Empty if you are submitting'),
+        .required('Comment should not be Empty.'),
 })
 
 const ValidatingComment = ({ ...props }) => {
@@ -29,20 +29,21 @@ const ValidatingComment = ({ ...props }) => {
     )
 }
 
-export const CommentForm = () => {
+export const CommentForm = ({onComment}) => {
     const classes = formStyle()
     return (
         <div>
             <Formik
                 validateOnChange={false}
                 validateOnBlur={false}
-                initialValues={{ comment: '' }}
+                initialValues={{ content: '' }}
                 validationSchema={validationSchema}
-                onSubmit={(data, { setSubmitting, resetForm }) => {
+                onSubmit={async (data, { setSubmitting, resetForm }) => {
                     // validate(data)
                     setSubmitting(true)
+                    console.log('Submit:', data, data.content)
                     //make async call
-                    console.log('Submit:', data)
+                    await onComment(data.content)
                     setSubmitting(false)
                     resetForm()
                 }}
@@ -59,13 +60,13 @@ export const CommentForm = () => {
                     <Form>
                         <ValidatingComment
                             variant='outlined'
-                            name='comment'
+                            name='content'
                             placeholder='Write a Comment'
                             multiline={true}
                             rows={7}
                             rowsmax={10}
                             fullWidth={true}
-                            value={values.comment}
+                            value={values.content}
                         />
                         <div style={{ marginTop: '0.8rem' }}>
                             <Button

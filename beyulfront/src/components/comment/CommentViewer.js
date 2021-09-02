@@ -24,18 +24,21 @@ const flatten = (arr) => {
     return inner(arr)
 }
 
-const insertIndents = (flattened) => {
+const insertIndents = (flattened, key, parentKey) => {
+    let MAX_DEPTH = 100
     const context = {}
-    flattened.forEach((item) => (context[item.id] = item.parent))
+    flattened.forEach((item) => (context[item[key]] = item[parentKey]))
 
     const flattenedWithContext = []
     flattened.forEach((item) => {
-        let id = item.id
+        let id = item[key]
         let indent = 0
         while (true) {
+            // even if parent key is not present, below will break the loop.
             if (!context[id]) break
             indent++
             id = context[id]
+            if (indent > 100) break
         }
         item.indent = indent
         flattenedWithContext.push(item)
@@ -54,6 +57,19 @@ const FIELD_EMOJI = {
 const EMOJI_FIELD = Object.fromEntries(
     Object.entries(FIELD_EMOJI).map(([k, v]) => [v, k]),
 )
+
+const createComment = async (content, userUrl, blogUrl, parentCommentUrl = null) => {
+    const data = await ajax('/api/comment/', {
+        method: 'POST',
+        body: JSON.stringify({
+            body: content,
+            user: userUrl,
+            blog: blogUrl,
+            parent: parentCommentUrl,
+        }),
+    })
+    return data
+}
 
 const createReactions = async (createEndpoint, payload) => {
     // dont optimize
@@ -101,10 +117,11 @@ const onReact = async (
     return [data, data.url]
 }
 
-const AllComments = ({ comments }) => {
-    const [flatComments, setFlatComment] = useState(insertIndents(comments))
-    const [replyId, setReplyId] = useState()
-
+const AllComments = ({ blogUrl, comments, refresh, refreshSetter }) => {
+    const [nestedComments, setNestedComments] = useState(comments)
+    const flatComments = insertIndents(nestedComments, 'url', 'parent')
+    const [replyId, setReplyId] = useState(null)
+    console.log({flatComments})
     return (
         <>
             {flatComments.map((comment) => {
@@ -120,15 +137,14 @@ const AllComments = ({ comments }) => {
                 )
 
                 return (
-                    <>
+                    <React.Fragment key={comment.id}>
                         <Comment
                             // TODO remove unrequired kwargs
-                            key={comment.id}
                             id={comment.id}
                             url={comment.url}
-                            updateEndpoint={thisUserReaction?.url}
-                            createEndpoint={comment.reactions_url}
-                            by={'Anon'}
+                            reactionUpdateEndpoint={thisUserReaction?.url}
+                            by={comment.author.name}
+                            profileImg={comment.author.profile_pic}
                             text={comment.body}
                             time={comment.updated_on}
                             edited={
@@ -145,14 +161,26 @@ const AllComments = ({ comments }) => {
                                     comment.url,
                                     CURR_USER,
                                     thisUserReaction?.url,
-                                    comment.reactions_url,
+                                    '/api/comment_like/',
                                     reactionId,
                                     reactionRemoved,
                                 )
                             }
                         />
-                        {comment.id === replyId ? <CommentForm /> : null}
-                    </>
+                        {comment.id === replyId ? (
+                            <CommentForm
+                                onComment={async (content) => {
+                                    await createComment(
+                                        content,
+                                        CURR_USER,
+                                        comment.blog,
+                                        comment.url,
+                                    )
+                                    refreshSetter(!refresh)
+                                }}
+                            />
+                        ) : null}
+                    </React.Fragment>
                 )
             })}
         </>
