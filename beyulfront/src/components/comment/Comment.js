@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Button } from '@material-ui/core'
 import styled, { css } from 'styled-components'
+import { CommentForm } from './CommentForm'
 import { CURR_USER } from 'api'
 
 const FlexWrapAlign = styled.div`
@@ -195,6 +196,7 @@ const Comment = ({
     time,
     edited,
     indent,
+    replyIdSetter,
     reactionsArr,
     onReactAsync,
 }) => {
@@ -215,7 +217,6 @@ const Comment = ({
                 //         createEndpoint: createEndpoint,
                 //     },
                 // )
-                console.log(onReactAsync)
                 const [data, createdUrl] = await onReactAsync(r.id, reactionRemoved)
                 if (!updateEndpoint) {
                     // if the POST succeeded, then we now know the PATCH url.
@@ -308,9 +309,7 @@ const Comment = ({
                     <div className='reply'>
                         <Button
                             variant='outlined'
-                            onClick={function () {
-                                console.log(this)
-                            }}
+                            onClick={() => replyIdSetter(id)}
                         >
                             Reply
                         </Button>

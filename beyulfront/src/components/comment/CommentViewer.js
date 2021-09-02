@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Comment from './Comment'
 import { CURR_USER } from 'api'
+import { CommentForm } from './CommentForm'
 
 const flatten = (arr) => {
     let indent = -1
@@ -101,45 +102,57 @@ const onReact = async (
 }
 
 const AllComments = ({ comments }) => {
-    const flatComments = insertIndents(comments)
+    const [flatComments, setFlatComment] = useState(insertIndents(comments))
+    const [replyId, setReplyId] = useState()
 
     return (
         <>
             {flatComments.map((comment) => {
                 const thisUserReaction = comment.user_reaction
-                const reactions = Object.entries(FIELD_EMOJI).map(([k, v]) => ({
-                    id: v,
-                    count: comment[k] || 0,
-                    reacted: thisUserReaction
-                        ? thisUserReaction[k] > 0
-                        : false,
-                }))
+                const reactions = Object.entries(FIELD_EMOJI).map(
+                    ([k, v]) => ({
+                        id: v,
+                        count: comment[k] || 0,
+                        reacted: thisUserReaction
+                            ? thisUserReaction[k] > 0
+                            : false,
+                    }),
+                )
 
                 return (
-                    // TODO remove unrequired kwargs
-                    <Comment
-                        key={comment.id}
-                        id={comment.id}
-                        url={comment.url}
-                        updateEndpoint={thisUserReaction?.url}
-                        createEndpoint={comment.reactions_url}
-                        by={'Anon'}
-                        text={comment.body}
-                        time={comment.updated_on}
-                        edited={!(comment.updated_on === comment.created_on)}
-                        indent={2 * comment.indent}
-                        reactionsArr={reactions}
-                        onReactAsync={async (reactionId, reactionRemoved) => {
-                            return await onReact(
-                                comment.url,
-                                CURR_USER,
-                                thisUserReaction?.url,
-                                comment.reactions_url,
-                                reactionId, 
-                                reactionRemoved
-                            )
-                        }}
-                    />
+                    <>
+                        <Comment
+                            // TODO remove unrequired kwargs
+                            key={comment.id}
+                            id={comment.id}
+                            url={comment.url}
+                            updateEndpoint={thisUserReaction?.url}
+                            createEndpoint={comment.reactions_url}
+                            by={'Anon'}
+                            text={comment.body}
+                            time={comment.updated_on}
+                            edited={
+                                !(comment.updated_on === comment.created_on)
+                            }
+                            indent={2 * comment.indent}
+                            replyIdSetter={setReplyId}
+                            reactionsArr={reactions}
+                            onReactAsync={async (
+                                reactionId,
+                                reactionRemoved,
+                            ) =>
+                                await onReact(
+                                    comment.url,
+                                    CURR_USER,
+                                    thisUserReaction?.url,
+                                    comment.reactions_url,
+                                    reactionId,
+                                    reactionRemoved,
+                                )
+                            }
+                        />
+                        {comment.id === replyId ? <CommentForm /> : null}
+                    </>
                 )
             })}
         </>
