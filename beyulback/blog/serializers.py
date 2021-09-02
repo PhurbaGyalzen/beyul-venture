@@ -44,8 +44,7 @@ class CommentLikeSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
-    username = serializers.SerializerMethodField()
-    user_profile = serializers.SerializerMethodField()
+    author = serializers.SerializerMethodField()
     heart_eyes_count = serializers.SerializerMethodField()
     thumbsup_count = serializers.SerializerMethodField()
     thumbsdown_count = serializers.SerializerMethodField()
@@ -54,7 +53,6 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
     created_on = serializers.SerializerMethodField()
     updated_on = serializers.SerializerMethodField()
     user_reaction = serializers.SerializerMethodField()
-    reactions_url = serializers.SerializerMethodField()
 
     class Meta:
         model = Comment
@@ -62,11 +60,8 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
             'id',
             'url',
             'user_reaction',
-            'reactions_url',
             'body',
-            'user',
-            'username',
-            'user_profile',
+            'author',
             'blog',
             'created_on',
             'updated_on',
@@ -81,13 +76,16 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
             'blog': {'view_name': 'blog-detail', 'lookup_field': 'slug'}
         }
 
-    def get_username(self, obj):
+    def get_author(self, obj):
+        return {'name': self._get_fullname(obj), 'profile_pic': self._get_user_profile(obj)}
+
+    def _get_fullname(self, obj):
         last_name = obj.user.last_name
         if last_name:
             return f"{obj.user.first_name} {last_name}"
         return obj.user.first_name
 
-    def get_user_profile(self, obj):
+    def _get_user_profile(self, obj):
         return f"http://127.0.0.1:8000/media/{obj.user.profile_pic}"
 
     def get_heart_eyes_count(self, obj):
@@ -125,12 +123,6 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
             result[0],
             context={'request': self.context['request']}
         ).data
-
-    def get_reactions_url(self, obj):
-        return reverse(
-            'commentlike-list',
-            request=self.context['request']
-        )
 
 
 class ClapSerializer(serializers.HyperlinkedModelSerializer):
