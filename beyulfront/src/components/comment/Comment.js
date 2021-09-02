@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import { Button } from '@material-ui/core'
 import styled, { css } from 'styled-components'
-import { user } from 'api'
+import { CommentForm } from './CommentForm'
+import { CURR_USER } from 'api'
 
 const FlexWrapAlign = styled.div`
     display: flex;
@@ -63,10 +64,6 @@ const Reaction = styled(FlexWrapAlign)`
     margin: 0;
     padding: 0;
 `
-
-const reacted = (fn, emoji) => {
-    return
-}
 
 const ReactionList = styled(FlexWrapAlign)`
     gap: 0.2rem;
@@ -138,47 +135,8 @@ const PopupEmoji = styled.span`
     }
 `
 
-const flatten = (arr) => {
-    let indent = -1
-    const inner = (innerArr) => {
-        indent += 1
-        const r = []
-        for (const parent of innerArr) {
-            if (parent.kids && parent.kids.length > 0) {
-                const { kids, ...rest } = parent
-                r.push({ ...{ indent: indent }, ...rest })
-                r.push(...inner(parent['kids']))
-            } else {
-                r.push({ ...{ indent: indent }, ...parent })
-            }
-        }
-        indent -= 1
-        return r
-    }
-
-    return inner(arr)
-}
-
-const insertIndents = (flattened) => {
-    const context = {}
-    flattened.forEach((item) => (context[item.id] = item.parent))
-
-    const flattenedWithContext = []
-    flattened.forEach((item) => {
-        let id = item.id
-        let indent = 0
-        while (true) {
-            if (!context[id]) break
-            indent++
-            id = context[id]
-        }
-        item.indent = indent
-        flattenedWithContext.push(item)
-    })
-    return flattenedWithContext
-}
-
-const fieldEmoji = {
+/*
+const FIELD_EMOJI = {
     heart_eyes_count: '😍',
     thumbsup_count: '👍',
     thumbsdown_count: '👎',
@@ -186,65 +144,91 @@ const fieldEmoji = {
     rocket_count: '🚀',
 }
 
-const emojiField = Object.fromEntries(
-    Object.entries(fieldEmoji).map(([k, v]) => [v, k]),
+const EMOJI_FIELD = Object.fromEntries(
+    Object.entries(FIELD_EMOJI).map(([k, v]) => [v, k]),
 )
+const createReactions = async (createEndpoint, payload) => {
+    // dont optimize
+    const fieldsDefault = Object.fromEntries(
+        Object.entries(FIELD_EMOJI).map(([k, v]) => [k, 0]),
+    )
+    const data = await ajax(createEndpoint, {
+        method: 'POST',
+        body: JSON.stringify({
+            ...fieldsDefault,
+            ...payload,
+        }),
+    })
+    return data
+}
+
+const updateReactions = async (updateEndpoint, payload) => {
+    const data = await ajax(updateEndpoint, {
+        method: 'PATCH',
+        body: JSON.stringify(payload),
+    })
+    return data
+}
+
+const onReact = async (reactionId, reactionRemoved, rest) => {
+    let data
+    const payload = {
+        user: rest.userUrl,
+        comment: rest.commentUrl,
+    }
+    payload[EMOJI_FIELD[reactionId]] = reactionRemoved ? 0 : 1
+    if (rest.updateEndpoint) {
+        data = await updateReactions(rest.updateEndpoint, payload)
+    } else {
+        data = await createReactions(rest.createEndpoint, payload)
+    }
+    return [data, data.url]
+}*/
+
 
 const Comment = ({
     id,
     url,
-    currUserReactionUrl,
-    reactionsUrl,
+    updateEndpoint,
+    createEndpoint,
     by,
     text,
     time,
     edited,
     indent,
+    replyIdSetter,
     reactionsArr,
+    onReactAsync,
 }) => {
     const [reactions, setReactions] = useState(reactionsArr)
     const reactionClicked = async (reaction) => {
         const recs = []
         for (const r of reactions) {
             if (r.id === reaction.id) {
-                const removeReaction = !!r.reacted
-
-                const payload = {
-                    user: user,
-                    comment: url,
-                }
-                payload[emojiField[r.id]] = removeReaction ? 0 : 1
-
-                // setLoadingIndicator(r.id, true)
-                let data
-                if (currUserReactionUrl) {
-                    data = await ajax(currUserReactionUrl, {
-                        method: 'PATCH',
-                        body: JSON.stringify(payload),
-                    })
-                } else {
-                    const fieldsDefault = Object.fromEntries(
-                        Object.entries(fieldEmoji).map(([k, v]) => [k, 0]),
-                    )
-                    data = await ajax(reactionsUrl, {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            ...fieldsDefault,
-                            ...payload,
-                        }),
-                    })
+                // setLoadingIndicator(reactionId, true)
+                const reactionRemoved = !!r.reacted
+                // const [data, createdUrl] = await onReact(
+                //     r.id,
+                //     reactionRemoved,
+                //     {
+                //         userUrl: CURR_USER,
+                //         commentUrl: url,
+                //         updateEndpoint: updateEndpoint,
+                //         createEndpoint: createEndpoint,
+                //     },
+                // )
+                const [data, createdUrl] = await onReactAsync(r.id, reactionRemoved)
+                if (!updateEndpoint) {
                     // if the POST succeeded, then we now know the PATCH url.
                     // if failed, will be null which is what we want.
-                    currUserReactionUrl = data.url 
+                    updateEndpoint = createdUrl
                 }
-                // setLoadingIndicator(r.id, false)
+
+                // setLoadingIndicator(reactionId, false)
                 if (data.error) {
                     // showToast('failed')
                 } else {
-                    // if (r.currentUserReactCount < data[emojiField[r.id]]) {
-                    //     // count was same on server
-                    // }
-                    if (removeReaction) {
+                    if (reactionRemoved) {
                         r.count--
                     } else {
                         r.count++
@@ -258,7 +242,7 @@ const Comment = ({
     }
 
     const AddReaction = ({ hiddenReactions }) => {
-        console.log({ hiddenReactions })
+        // console.log({ hiddenReactions })
         return (
             <>
                 <AddEmoji>
@@ -325,9 +309,7 @@ const Comment = ({
                     <div className='reply'>
                         <Button
                             variant='outlined'
-                            onClick={function () {
-                                console.log(this)
-                            }}
+                            onClick={() => replyIdSetter(id)}
                         >
                             Reply
                         </Button>
@@ -339,43 +321,4 @@ const Comment = ({
     )
 }
 
-const AllComments = ({ comments }) => {
-    const flatComments = insertIndents(comments)
-    console.log(flatComments)
-
-    return (
-        <>
-            {flatComments.map((comment) => {
-                const thisUserReaction = comment.user_reaction
-                const reactions = Object.entries(fieldEmoji).map(([k, v]) => ({
-                    id: v,
-                    count: comment[k] || 0,
-                    reacted: thisUserReaction
-                        ? thisUserReaction[k] > 0
-                        : false,
-                    // currentUserReactCount: thisUserReaction
-                    //     ? thisUserReaction[k]
-                    //     : 0,
-                }))
-                console.log({ reactions })
-                return (
-                    <Comment
-                        key={comment.id}
-                        id={comment.id}
-                        url={comment.url}
-                        currUserReactionUrl={thisUserReaction?.url}
-                        reactionsUrl={comment.reactions_url}
-                        by={'Anon'}
-                        text={comment.body}
-                        time={comment.updated_on}
-                        edited={!(comment.updated_on === comment.created_on)}
-                        indent={2 * comment.indent}
-                        reactionsArr={reactions}
-                    />
-                )
-            })}
-        </>
-    )
-}
-
-export default AllComments
+export default Comment

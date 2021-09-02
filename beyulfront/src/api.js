@@ -3,7 +3,7 @@ let refresh
 const tokenTimeout = 5 // in mins
 let lastTms = new Date().getTime()
 const origin = 'http://127.0.0.1:8000'
-let user
+let CURR_USER
 
 const post = async (path, body) => {
     const resp = await fetch(origin + path, {
@@ -31,7 +31,7 @@ const storeJWT = async () => {
     const data = await loginUser('admin@gmail.com', 'admin',)
     access = data.access
     refresh = data.refresh
-    user = data.user
+    CURR_USER = data.user
 }
 
 const refreshJWT = async () => {
@@ -74,7 +74,7 @@ const ajax = async (path, rest) => {
             'expires in mins:',
             tokenTimeout - (currTms - lastTms) / (60 * 1000),
         )
-        console.log('current user:', user)
+        console.log('current user:', CURR_USER)
         const allHeaders = new Headers(headers || {})
         allHeaders.set('Authorization', 'Bearer ' + access)
         if (['POST', 'PUT', 'PATCH'].includes(opts.method)) {
@@ -93,4 +93,4 @@ const ajax = async (path, rest) => {
 }
 
 export default ajax
-export {user}
+export {CURR_USER}

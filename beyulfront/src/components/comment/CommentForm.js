@@ -1,6 +1,7 @@
 import { Formik, useField, Form } from 'formik'
 import { TextField, makeStyles, Button } from '@material-ui/core'
 import * as yup from 'yup'
+
 const formStyle = makeStyles((theme) => ({
     commentField: {
         width: 'inherit',
@@ -14,6 +15,7 @@ const validationSchema = yup.object({
         .max(800)
         .required('Comment should not be Empty if you are submitting'),
 })
+
 const ValidatingComment = ({ ...props }) => {
     const [field, meta] = useField(props)
     const errorText = meta.error && meta.touched ? meta.error : ''
@@ -27,7 +29,7 @@ const ValidatingComment = ({ ...props }) => {
     )
 }
 
-export const CommentSec = () => {
+export const CommentForm = () => {
     const classes = formStyle()
     return (
         <div>
