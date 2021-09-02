@@ -193,7 +193,8 @@ const emojiField = Object.fromEntries(
 const Comment = ({
     id,
     url,
-    reactionUrl,
+    currUserReactionUrl,
+    reactionsUrl,
     by,
     text,
     time,
@@ -206,7 +207,7 @@ const Comment = ({
         const recs = []
         for (const r of reactions) {
             if (r.id === reaction.id) {
-                const removeReaction = !!(r.reacted)
+                const removeReaction = !!r.reacted
 
                 const payload = {
                     user: user,
@@ -216,16 +217,25 @@ const Comment = ({
 
                 // setLoadingIndicator(r.id, true)
                 let data
-                if (reactionUrl) {
-                    data = await ajax(reactionUrl, {
+                if (currUserReactionUrl) {
+                    data = await ajax(currUserReactionUrl, {
                         method: 'PATCH',
                         body: JSON.stringify(payload),
                     })
                 } else {
-                    data = await ajax('/api/comment/2/', {
+                    const fieldsDefault = Object.fromEntries(
+                        Object.entries(fieldEmoji).map(([k, v]) => [k, 0]),
+                    )
+                    data = await ajax(reactionsUrl, {
                         method: 'POST',
-                        body: JSON.stringify({}),
+                        body: JSON.stringify({
+                            ...fieldsDefault,
+                            ...payload,
+                        }),
                     })
+                    // if the POST succeeded, then we now know the PATCH url.
+                    // if failed, will be null which is what we want.
+                    currUserReactionUrl = data.url 
                 }
                 // setLoadingIndicator(r.id, false)
                 if (data.error) {
@@ -353,7 +363,8 @@ const AllComments = ({ comments }) => {
                         key={comment.id}
                         id={comment.id}
                         url={comment.url}
-                        reactionUrl={thisUserReaction?.url}
+                        currUserReactionUrl={thisUserReaction?.url}
+                        reactionsUrl={comment.reactions_url}
                         by={'Anon'}
                         text={comment.body}
                         time={comment.updated_on}
