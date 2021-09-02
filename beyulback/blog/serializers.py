@@ -62,6 +62,7 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
             'user_reaction',
             'body',
             'author',
+            'user',
             'blog',
             'created_on',
             'updated_on',
