@@ -12,6 +12,37 @@ from rest_framework.reverse import reverse
 from rest_framework.validators import UniqueTogetherValidator
 
 
+class CommentLikeSerializer(serializers.HyperlinkedModelSerializer):
+    heart_eyes_count = serializers.IntegerField(
+        validators=[validate_comment_like]
+    )  # 😍
+    thumbsup_count = serializers.IntegerField(
+        validators=[validate_comment_like]
+    )  # 👍
+    thumbsdown_count = serializers.IntegerField(
+        validators=[validate_comment_like]
+    )  # 👎
+    sunglasses_count = serializers.IntegerField(
+        validators=[validate_comment_like]
+    )  # 😎
+    rocket_count = serializers.IntegerField(
+        validators=[validate_comment_like]
+    )  # 🚀
+
+    class Meta:
+        model = CommentLike
+        fields = ['url', 'heart_eyes_count', 'thumbsup_count', 'thumbsdown_count',
+                  'sunglasses_count', 'rocket_count', 'user', 'comment']
+
+    validators = [
+        UniqueTogetherValidator(
+            queryset=CommentLike.objects.all(),
+            fields=['user', 'comment'],
+            message=_("User and comment fields must be unique together")
+        )
+    ]
+
+
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
     username = serializers.SerializerMethodField()
     user_profile = serializers.SerializerMethodField()
@@ -22,14 +53,14 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
     rocket_count = serializers.SerializerMethodField()
     created_on = serializers.SerializerMethodField()
     updated_on = serializers.SerializerMethodField()
-    reaction_url = serializers.SerializerMethodField()
+    user_reaction = serializers.SerializerMethodField()
 
     class Meta:
         model = Comment
         fields = [
             'id',
             'url',
-            'reaction_url',
+            'user_reaction',
             'body',
             'username',
             'user_profile',
@@ -80,19 +111,19 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
     def get_updated_on(self, obj):
         return obj.updated_on
 
-    def get_reaction_url(self, obj):
+    def get_user_reaction(self, obj):
         user_id = self.context['request'].user.id
-        print(obj, user_id)
         if user_id is None:
             return None
         result = obj.commentlikes.filter(user__id=user_id)
         if not result:
             return None
-        return reverse(
-            'commentlike-detail',
-            args=[result[0].id],
-            request=self.context['request']
-        )
+        return CommentLikeSerializer(
+            result[0],
+            context={'request': self.context['request']}
+        ).data
+
+    
 
 
 class ClapSerializer(serializers.HyperlinkedModelSerializer):
@@ -121,36 +152,6 @@ class ClapSerializer(serializers.HyperlinkedModelSerializer):
             )
         return value
 
-
-class CommentLikeSerializer(serializers.HyperlinkedModelSerializer):
-    heart_eyes_count = serializers.IntegerField(
-        validators=[validate_comment_like]
-    )  # 😍
-    thumbsup_count = serializers.IntegerField(
-        validators=[validate_comment_like]
-    )  # 👍
-    thumbsdown_count = serializers.IntegerField(
-        validators=[validate_comment_like]
-    )  # 👎
-    sunglasses_count = serializers.IntegerField(
-        validators=[validate_comment_like]
-    )  # 😎
-    rocket_count = serializers.IntegerField(
-        validators=[validate_comment_like]
-    )  # 🚀
-
-    class Meta:
-        model = CommentLike
-        fields = ['url', 'heart_eyes_count', 'thumbsup_count', 'thumbsdown_count',
-                  'sunglasses_count', 'rocket_count', 'user', 'comment']
-
-    validators = [
-        UniqueTogetherValidator(
-            queryset=CommentLike.objects.all(),
-            fields=['user', 'comment'],
-            message=_("User and comment fields must be unique together")
-        )
-    ]
 
 SEARCH_PATTERNN = 'src=\"/media/uploads/'
 SITE_DOMAIN = "http://127.0.0.1:8000"

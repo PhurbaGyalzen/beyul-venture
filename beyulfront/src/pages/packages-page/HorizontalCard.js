@@ -17,7 +17,6 @@ import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
     card: {
-        height: '100%',
         maxWidth:'1000px',
         display: 'flex',
         flexDirection: 'row',
@@ -53,13 +52,17 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'hidden',
     },
     descriptionSec:{
-        maxHeight:'5rem',
+        
         maxWidth:'470px',
-        paddingBottom:'1rem',
+        
         textOverflow:'ellipsis',
         fontSize:'.8rem',
         lineHeight:'1.5rem',
-        color:'#545454'
+        color:'#545454',
+        [theme.breakpoints.up('lg')]: {
+            maxHeight:'5rem',
+            paddingBottom:'1rem',
+        },
     },
     viewButton:{
         fontSize: '.8rem',
@@ -135,29 +138,29 @@ export const HorizontalCard = ({ tagPackages, tagName }) => {
                         </CardContent>
                         <CardContent>
                             <div>
-                            <Typography
-                                align='left'
-                                style={{
-                                    color: '#9d9fa5',
-                                    fontSize: '0.7rem',
-                                }}
-                            >
-                                Tour length:
-                            </Typography>
+                                <Typography
+                                    align='left'
+                                    style={{
+                                        color: '#9d9fa5',
+                                        fontSize: '0.7rem',
+                                    }}
+                                >
+                                    Tour length:
+                                </Typography>
                             </div>
-                            <div>
-                            <Typography
-                                align='left'
-                                style={{
-                                    fontSize: '0.8rem',
-                                    fontWeight: 'bold',
-                                }}
-                            >
-                                {tagPackages.duration} days
-                            </Typography>
+                            <div style={{borderBottom:'1px solid grey'}}>
+                                <Typography
+                                    align='left'
+                                    style={{
+                                        fontSize: '0.8rem',
+                                        fontWeight: 'bold',
+                                    }}
+                                >
+                                    {tagPackages.duration} days
+                                </Typography>
                             </div>
                             
-                            <div>
+                            <div style={{marginTop:'1rem'}}>
                             <Typography
                                 align='left'
                                 style={{
