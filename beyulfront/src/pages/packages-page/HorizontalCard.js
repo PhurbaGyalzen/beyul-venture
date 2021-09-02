@@ -70,6 +70,11 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: '700',
         background:'#0a7bbd',
         color:'white'
+    },
+    linkTitle:{
+        '&:hover':{
+            textDecoration:'underline'
+        }
     }
 
 }))
@@ -92,18 +97,18 @@ export const HorizontalCard = ({ tagPackages, tagName }) => {
     return (
         <>
             <Grid item xs={12} md={9} sm={6}>
-                <CustomLink to='package/1'>
-                    <Card className={classes.card}>
-                        <div className={classes.imageContainer}>
-                            <CardMedia
-                                component='img'
-                                className={classes.cardImage}
-                                image={tagPackages.packageImage}
-                                title={tagPackages.title}
-                            />
-                        </div>
-                        <CardContent>
-                            
+                
+                <Card className={classes.card}>
+                    <div className={classes.imageContainer}>
+                        <CardMedia
+                            component='img'
+                            className={classes.cardImage}
+                            image={tagPackages.packageImage}
+                            title={tagPackages.title}
+                        />
+                    </div>
+                    <CardContent>
+                        <Link to={`/package/${tagPackages.title}`} >
                             <Typography
                                 variant='h4'
                                 align='justify'
@@ -111,56 +116,47 @@ export const HorizontalCard = ({ tagPackages, tagName }) => {
                                     fontWeight: 'bold',
                                     margin: '0.2rem auto',
                                 }}
+                                className={classes.linkTitle}
                             >
                                 {tagPackages.title}
                             </Typography>
-                            <Box
-                                display='flex'
-                                alignItems='center'
+                        </Link>
+                        
+                        <Box
+                            display='flex'
+                            alignItems='center'
+                            style={{
+                                fontSize: '0.9rem',
+                                color: 'grey',
+                            }}
+                        >
+                            <StyledRating
+                                name='Average Rating'
+                                value={tagPackages.rating}
+                                precision={0.5}
+                                readOnly
+                                size='medium'
+                            />
+                            <Typography style={{fontSize:'.9rem',color:'#545454',marginLeft:'.7rem'}}>
+                                {tagPackages.ratedBy} <span style={{fontSize:'.7rem'}}>reviews</span>
+                            </Typography>
+                        </Box>
+                        <Typography className={classes.descriptionSec}>{tagPackages.description}</Typography>
+                        
+                    </CardContent>
+                    <CardContent>
+                        <div>
+                            <Typography
+                                align='left'
                                 style={{
-                                    fontSize: '0.9rem',
-                                    color: 'grey',
+                                    color: '#9d9fa5',
+                                    fontSize: '0.7rem',
                                 }}
                             >
-                                <StyledRating
-                                    name='Average Rating'
-                                    value={tagPackages.rating}
-                                    precision={0.5}
-                                    readOnly
-                                    size='medium'
-                                />
-                                <Typography style={{fontSize:'.9rem',color:'#545454',marginLeft:'.7rem'}}>
-                                    {tagPackages.ratedBy} <span style={{fontSize:'.7rem'}}>reviews</span>
-                                </Typography>
-                            </Box>
-                            <Typography className={classes.descriptionSec}>{tagPackages.description}</Typography>
-                            
-                        </CardContent>
-                        <CardContent>
-                            <div>
-                                <Typography
-                                    align='left'
-                                    style={{
-                                        color: '#9d9fa5',
-                                        fontSize: '0.7rem',
-                                    }}
-                                >
-                                    Tour length:
-                                </Typography>
-                            </div>
-                            <div style={{borderBottom:'1px solid grey'}}>
-                                <Typography
-                                    align='left'
-                                    style={{
-                                        fontSize: '0.8rem',
-                                        fontWeight: 'bold',
-                                    }}
-                                >
-                                    {tagPackages.duration} days
-                                </Typography>
-                            </div>
-                            
-                            <div style={{marginTop:'1rem'}}>
+                                Tour length:
+                            </Typography>
+                        </div>
+                        <div style={{borderBottom:'1px solid grey'}}>
                             <Typography
                                 align='left'
                                 style={{
@@ -168,41 +164,53 @@ export const HorizontalCard = ({ tagPackages, tagName }) => {
                                     fontWeight: 'bold',
                                 }}
                             >
-                                From
+                                {tagPackages.duration} days
                             </Typography>
-                            </div>
-                            <div>
-                            <Typography
-                                align='left'
-                                style={{
-                                    fontSize: '1.2rem',
-                                    fontWeight: 'bold',
-                                    color: '#505050',
-                                }}
-                            >
-                                <span style={{
-                                    fontSize: '0.7rem',
-                                    fontWeight: 'bold',
-                                    color: '#505050',
-                                }}>NPR</span> {tagPackages.currentPrice}
-                            </Typography>
-                            </div>
-                            {/* <Typography
-                                        style={{
-                                            fontSize: '0.8rem',
-                                            fontWeight: 'bold',
-                                            color: '#505050',
-                                        }}
-                                    >
-                                        Price: 
-                            </Typography> */}
-                            <div>
-                                <Button className={classes.viewButton}>View Package</Button>
-                            </div>
-                        </CardContent>
+                        </div>
                         
-                    </Card>
-                </CustomLink>
+                        <div style={{marginTop:'1rem'}}>
+                        <Typography
+                            align='left'
+                            style={{
+                                fontSize: '0.8rem',
+                                fontWeight: 'bold',
+                            }}
+                        >
+                            From
+                        </Typography>
+                        </div>
+                        <div>
+                        <Typography
+                            align='left'
+                            style={{
+                                fontSize: '1.2rem',
+                                fontWeight: 'bold',
+                                color: '#505050',
+                            }}
+                        >
+                            <span style={{
+                                fontSize: '0.7rem',
+                                fontWeight: 'bold',
+                                color: '#505050',
+                            }}>NPR</span> {tagPackages.currentPrice}
+                        </Typography>
+                        </div>
+                        {/* <Typography
+                                    style={{
+                                        fontSize: '0.8rem',
+                                        fontWeight: 'bold',
+                                        color: '#505050',
+                                    }}
+                                >
+                                    Price: 
+                        </Typography> */}
+                        <div>
+                            <Button className={classes.viewButton}>View Package</Button>
+                        </div>
+                    </CardContent>
+                    
+                </Card>
+                
             </Grid>
         </>
     )

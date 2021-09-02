@@ -36,6 +36,11 @@ const useStyles = makeStyles((theme) => ({
     imageContainer: {
         overflow: 'hidden',
     },
+    linkTitle:{
+        '&:hover':{
+            textDecoration:'underline'
+        }
+    }
 }))
 
 const StyledRating = withStyles({
@@ -56,7 +61,7 @@ export const PackageCard = ({ tagPackages }) => {
     return (
         <>
             <Grid item xs={12} md={3} sm={6}>
-                <CustomLink to='package/1'>
+                
                     <Card className={classes.card}>
                         <div className={classes.imageContainer}>
                             <CardMedia
@@ -78,16 +83,21 @@ export const PackageCard = ({ tagPackages }) => {
                             >
                                 Duration: {tagPackages.duration} days
                             </Typography>
-                            <Typography
-                                variant='h5'
-                                align='justify'
-                                style={{
-                                    fontWeight: 'bold',
-                                    margin: '0.2rem auto',
-                                }}
-                            >
-                                {tagPackages.title}
-                            </Typography>
+                            <Link to={`/package/${tagPackages.title}`}>
+                                <Typography
+                                    variant='h5'
+                                    align='justify'
+                                    style={{
+                                        fontWeight: 'bold',
+                                        margin: '0.2rem auto',
+                                    }}
+                                    className={classes.linkTitle}
+                                >
+                                    {tagPackages.title}
+                                </Typography>
+                            </Link>
+
+                            
                             <Box
                                 display='flex'
                                 justifyContent='space-between'
@@ -117,7 +127,7 @@ export const PackageCard = ({ tagPackages }) => {
                             </Box>
                         </CardContent>
                     </Card>
-                </CustomLink>
+                
             </Grid>
         </>
     )
