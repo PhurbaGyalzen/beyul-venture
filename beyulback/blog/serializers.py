@@ -54,6 +54,7 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
     created_on = serializers.SerializerMethodField()
     updated_on = serializers.SerializerMethodField()
     user_reaction = serializers.SerializerMethodField()
+    reactions_url = serializers.SerializerMethodField()
 
     class Meta:
         model = Comment
@@ -61,6 +62,7 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
             'id',
             'url',
             'user_reaction',
+            'reactions_url',
             'body',
             'username',
             'user_profile',
@@ -123,7 +125,11 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
             context={'request': self.context['request']}
         ).data
 
-    
+    def get_reactions_url(self, obj):
+        return reverse(
+            'commentlike-list',
+            request=self.context['request']
+        )
 
 
 class ClapSerializer(serializers.HyperlinkedModelSerializer):
