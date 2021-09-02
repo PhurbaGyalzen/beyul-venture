@@ -45,7 +45,6 @@ class CommentLikeSerializer(serializers.HyperlinkedModelSerializer):
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
     author = serializers.SerializerMethodField()
-    parent_key = serializers.SerializerMethodField()
     heart_eyes_count = serializers.SerializerMethodField()
     thumbsup_count = serializers.SerializerMethodField()
     thumbsdown_count = serializers.SerializerMethodField()
@@ -67,7 +66,7 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
             'blog',
             'created_on',
             'updated_on',
-            'parent_key',
+            'parent',
             'heart_eyes_count',
             'thumbsup_count',
             'thumbsdown_count',
@@ -77,12 +76,6 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
         extra_kwargs = {
             'blog': {'view_name': 'blog-detail', 'lookup_field': 'slug'}
         }
-
-    def get_parent_key(self, obj):
-        parent_obj = obj.parent
-        if parent_obj is None:
-            return None
-        return parent_obj.pk
 
     def get_author(self, obj):
         return {'name': self._get_fullname(obj), 'profile_pic': self._get_user_profile(obj)}
