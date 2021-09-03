@@ -195,6 +195,12 @@ export default function ButtonAppBar() {
             icon: <LabelIcon />,
             link: '/contact-us',
         },
+
+        {
+            text: 'Team',
+            icon: <LabelIcon />,
+            link: '/our-team',
+        },
         
         {
             text: 'Log In',

@@ -6,6 +6,10 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Avatar from '@material-ui/core/Avatar'
 import { makeStyles } from '@material-ui/core/styles'
 import contactUsImg from 'img/contactUs2.jpg'
+import Profile from './Profile'
+import Paper from '@material-ui/core/Paper'
+import { BookedPackage } from './BookedPackage'
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -19,14 +23,16 @@ const userProfile = () => {
         <>
             <container className={classes.root}>
                 <Grid container>
-                    <Grid item xs={12} sm={12} md={4}>
-                        <div className='sidebar'>
-                            <h1>Hello</h1>
-                        </div>
+                    <Grid item xs={12} sm={12} md={4} lg={3}>
+                       <Profile />
                     </Grid>
 
-                    <Grid item xs={12} sm={12} md={8}>
-                        <Typography>Middlebar</Typography>
+                    <Grid item xs >
+                        <Paper style={{marginRight:'2%', marginTop:'8%', marginLeft:'2%', padding:'5%'}}>
+                            <div className='main_container'>
+                                <BookedPackage/>
+                            </div>
+                        </Paper>
                     </Grid>
                 </Grid>
             </container>
