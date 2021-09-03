@@ -16,6 +16,8 @@ import TermsAndConditions from 'pages/TermsAndConditions'
 import { PackagesMain } from './pages/packages-page/PackagesMain'
 import PrivacyPolicy from 'pages/PrivacyPolicy'
 import { TagPackage } from './pages/packages-page/TagPackage'
+import BookingDetail from './pages/user-profile/BookingDetail'
+import EditProfile from './pages/user-profile/EditProfile'
 const CustomRoute = ({ ...args }) => {
     return (
         <>
@@ -44,6 +46,8 @@ const Routes = () => {
             <CustomRoute exact path='/contact-us' component={ContactUs} />
             <CustomRoute exact path='/our-team' component={OurTeam} />
             <CustomRoute exact path='/user-profile' component={userProfile} />
+            <CustomRoute exact path='/booking-detail' component={BookingDetail} />
+            <CustomRoute exact path='/edit-profile' component={EditProfile} />
             <CustomRoute
                 exact
                 path='/terms-and-conditions'

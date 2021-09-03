@@ -8,9 +8,9 @@ import {
     CardMedia,
     Box,
     Container,
-    Link,
+    
 } from '@material-ui/core'
-
+import {Link} from 'react-router-dom'
 import { PackageCard } from './PackageCard'
 
 import styled from 'styled-components'
@@ -30,7 +30,7 @@ export const TagContainer = ({ tagContent }) => {
                         <TagTitle>{tagContent.tagName}</TagTitle>
                     </div>
                     <div style={{ float: 'right', paddingRight: '10px' }}>
-                        <Link>Explore all</Link>
+                        <Link to={`tag/${tagContent.tagName}`}>Explore all</Link>
                     </div>
                 </div>
                 <Grid container spacing={2}>

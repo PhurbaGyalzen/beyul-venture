@@ -44,6 +44,12 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         width: '350px',
         height: '450px',
+        [theme.breakpoints.down('md')]: {
+            display: 'none',
+          },
+        [theme.breakpoints.down('sm')]: {
+            display: 'none',
+          },
     },
 
     title: {

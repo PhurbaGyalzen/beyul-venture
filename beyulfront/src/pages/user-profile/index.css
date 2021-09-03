@@ -1,3 +1,106 @@
-.sidebar{
-    background-color: #fff;
+.profile {
+    /* background-col; */
+    width: 100%;
+    display: inline-block;
+    padding-top: 15%;
+}
+
+.profile_name {
+    line-height: 18px;
+    padding-left: 10%;
+    padding-bottom: 5%;
+}
+
+.profile_name .name {
+    text-transform: uppercase;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.profile_name .user_name {
+    font-size: 13px;
+    color: #777;
+}
+
+.profile_image {
+    margin-top: -10px;
+    -webkit-clip-path: polygon(0 9%, 100% 0, 1005 94%, 0% 100%);
+    clip-path: polygon(0 9%, 100% 0, 100% 94%, 0% 100%);
+}
+
+.profile_image img {
+    width: 100%;
+}
+
+/* Timeline section */
+
+.timeline {
+    padding: 0 !important;
+}
+
+.timeline .timeline_header {
+    padding-top: 7px;
+}
+
+.timeline .timeline_firstItem {
+    min-height: 70px !important;
+    padding-left: 10%;
+}
+
+.timeline_text {
+    padding-top: 0.9rem;
+}
+
+.timeline_description {
+    font-size: '1rem';
+    font-weight: normal;
+}
+
+.timeline .MuiTimelineItem-root {
+    min-height: 0px;
+}
+
+.timeline .MuiTimelineItem-missingOppositeContent:before {
+    display: none;
+}
+
+.timeline .timeline_dot_header {
+    color: #000 !important;
+    background-color: #df9534 !important;
+    font-size: small !important;
+    /* padding: 12px !important; */
+}
+
+.MuiTimelineSeparator-root {
+    height: 20px !important;
+}
+
+.connector {
+    background-color: #000 !important;
+}
+
+.image_upload {
+    text-align: center;
+    padding-bottom: 10%;
+}
+
+.container_shadow {
+    box-shadow: 0px 2px 92px 0px rgba(0, 0, 0, 0.13);
+    -webkit-box-shadow: 0px 2px 92px 0px rgba(0, 0, 0, 0.13);
+    -moz-box-shadow: 0px 2px 92px 0px rgba(0, 0, 0, 0.13);
+}
+
+.main_container{
+    min-height: 100vh;
+    border-radius: 6px;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+}
+
+.section_title{
+    font-size: 18px;
+    font-weight: 600;
+    position:'relative';
+    margin:0;
+
 }
