@@ -177,6 +177,9 @@ class Review(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(5)]
     )
 
+    class Meta:
+        ordering = ['-created_on']
+
     def __str__(self):
         return str(self.writer) + " review"
 
