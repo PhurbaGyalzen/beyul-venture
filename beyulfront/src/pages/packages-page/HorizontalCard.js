@@ -52,15 +52,15 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'hidden',
     },
     descriptionSec:{
-        
+        maxHeight:'8rem',
         maxWidth:'470px',
-        
+        overflow:'hidden',
         textOverflow:'ellipsis',
         fontSize:'.8rem',
-        lineHeight:'1.5rem',
+        lineHeight:'1.6rem',
         color:'#545454',
         [theme.breakpoints.up('lg')]: {
-            maxHeight:'5rem',
+            
             paddingBottom:'1rem',
         },
     },

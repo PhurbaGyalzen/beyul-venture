@@ -24,12 +24,12 @@ export const TagContainer = ({ tagContent }) => {
     const packages = tagContent.packages
     return (
         <>
-            <Container style={{ marginTop: '1rem', marginBotton: '1rem' }}>
+            <Container style={{ marginTop: '2rem', marginBotton: '1rem' }}>
                 <div>
                     <div style={{ float: 'left' }}>
                         <TagTitle>{tagContent.tagName}</TagTitle>
                     </div>
-                    <div style={{ float: 'right', paddingRight: '10px' }}>
+                    <div style={{ float: 'right', paddingRight: '10px',color:'#DF9534', fontWeight:'bold' }}>
                         <Link to={`tag/${tagContent.tagName}`}>Explore all</Link>
                     </div>
                 </div>

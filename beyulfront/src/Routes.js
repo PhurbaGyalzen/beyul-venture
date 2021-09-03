@@ -32,7 +32,7 @@ const Routes = () => {
     return (
         <Switch>
             <CustomRoute exact path='/about' component={AboutUsPage} />
-            <CustomRoute exact path='/package/all' component={PackagesMain} />
+            <CustomRoute exact path='/package/explore' component={PackagesMain} />
             <CustomRoute exact path='/package/tag/:id' component={TagPackage} />
             <CustomRoute exact path='/package/:packageId'>
                 <PackDetail packageId={params} />

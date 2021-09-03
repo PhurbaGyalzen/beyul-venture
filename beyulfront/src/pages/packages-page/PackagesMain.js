@@ -154,7 +154,7 @@ export const PackagesMain = () => {
     ])
     return (
         <>
-            <Box pt={6}>
+            <Box pt={8}>
                 <Container>
                     {packages.map((content) => {
                         return (

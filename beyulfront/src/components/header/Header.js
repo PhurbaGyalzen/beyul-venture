@@ -188,7 +188,7 @@ export default function ButtonAppBar() {
         {
             text: 'Package',
             icon: <LabelIcon />,
-            link: '/package/all',
+            link: '/package/explore',
         },
         {
             text: 'Blog',

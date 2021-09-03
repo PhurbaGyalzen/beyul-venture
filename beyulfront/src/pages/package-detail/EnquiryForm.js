@@ -14,6 +14,17 @@ import * as yup from 'yup'
 
 //All images import
 
+
+
+const validationSchema = yup.object({
+    fullname: yup.string().max(50).required(),
+    
+    email: yup.string().email().required(),
+    enquiry: yup.string(),
+})
+
+
+
 //Defining custom styles
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -53,11 +64,9 @@ export default function EnquiryForm() {
                 validateOnChange={false}
                 validateOnBlur={false}
                 initialValues={{
-                    firstName: '',
-                    lastName: '',
+                    fullName: '',
                     email: '',
-                    phone: '',
-                    messages: '',
+                    enquiry: '',
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(data, { setSubmitting, resetForm }) => {
