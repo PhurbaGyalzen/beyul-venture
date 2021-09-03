@@ -14,7 +14,8 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { datas } from './BookedPackageData'
 import Popper from '@material-ui/core/Popper'
-
+import Button from '@material-ui/core/Button'
+import EditProfile from './EditProfile'
 const useStyles = makeStyles((theme) => ({
     card: {
         height: '100%',
@@ -69,80 +70,79 @@ export const BookedPackage = () => {
         <>
             <Grid container className=''>
                 <Grid item className='section_title' xs={12}>
-                    <Typography variant='h4'>My Packages</Typography>
+                    <Box style={{ marginLeft: '5%' }}>
+                        <EditProfile />
+                    </Box>
+                    <Typography variant='h4' style={{ textAlign: 'center' }}>
+                        My Packages
+                    </Typography>
                     {packages.map((data) => (
                         <div style={{ margin: '5%' }}>
-                            {/* <CustomLink to='package/1'> */}
-                            <Card
-                                className={classes.card}
-                                onClick={handleClick}
-                            >
-                                <div className={classes.imageContainer}>
-                                    <CardMedia
-                                        component='img'
-                                        className={classes.cardImage}
-                                        image={data.packageImage}
-                                        title={data.title}
-                                    />
-                                </div>
-
-                                <CardContent>
-                                    <Typography
-                                        align='left'
-                                        style={{
-                                            color: '#9d9fa5',
-                                            fontSize: '0.8rem',
-                                            fontWeight: 'bold',
-                                        }}
-                                    >
-                                        Duration: {data.duration} days
-                                    </Typography>
-                                    <Typography
-                                        variant='h5'
-                                        align='justify'
-                                        style={{
-                                            fontWeight: 'bold',
-                                            margin: '0.2rem auto',
-                                        }}
-                                    >
-                                        {data.title}
-                                    </Typography>
-                                    <Box
-                                        display='flex'
-                                        justifyContent='space-between'
-                                        alignItems='center'
-                                        style={{
-                                            fontSize: '0.9rem',
-                                            color: 'grey',
-                                            gap: '1rem',
-                                        }}
-                                    >
-                                        <StyledRating
-                                            name='Average Rating'
-                                            value={data.rating}
-                                            precision={0.5}
-                                            readOnly
-                                            size='medium'
+                            <CustomLink to='/booking-detail'>
+                                <Card
+                                    className={classes.card}
+                                    onClick={handleClick}
+                                >
+                                    <div className={classes.imageContainer}>
+                                        <CardMedia
+                                            component='img'
+                                            className={classes.cardImage}
+                                            image={data.packageImage}
+                                            title={data.title}
                                         />
+                                    </div>
+
+                                    <CardContent>
                                         <Typography
+                                            align='left'
                                             style={{
+                                                color: '#9d9fa5',
                                                 fontSize: '0.8rem',
                                                 fontWeight: 'bold',
-                                                color: '#505050',
                                             }}
                                         >
-                                            Price: Rs. {data.currentPrice}
+                                            Duration: {data.duration} days
                                         </Typography>
-                                    </Box>
-                                </CardContent>
-                            </Card>
-
-                            {/* <Popper id={id} open={open} anchorEl={anchorEl}>
-                                <div className={classes.paper}>
-                                    The content of the Popper.
-                                </div>
-                            </Popper> */}
-                            {/* </CustomLink> */}
+                                        <Typography
+                                            variant='h5'
+                                            align='justify'
+                                            style={{
+                                                fontWeight: 'bold',
+                                                margin: '0.2rem auto',
+                                            }}
+                                        >
+                                            {data.title}
+                                        </Typography>
+                                        <Box
+                                            display='flex'
+                                            justifyContent='space-between'
+                                            alignItems='center'
+                                            style={{
+                                                fontSize: '0.9rem',
+                                                color: 'grey',
+                                                gap: '1rem',
+                                            }}
+                                        >
+                                            <StyledRating
+                                                name='Average Rating'
+                                                value={data.rating}
+                                                precision={0.5}
+                                                readOnly
+                                                size='medium'
+                                            />
+                                            <Typography
+                                                style={{
+                                                    fontSize: '0.8rem',
+                                                    fontWeight: 'bold',
+                                                    color: '#505050',
+                                                }}
+                                            >
+                                                Price: Rs. {data.currentPrice}
+                                            </Typography>
+                                        </Box>
+                                    </CardContent>
+                                </Card>
+                            </CustomLink>
                         </div>
                     ))}
                 </Grid>
