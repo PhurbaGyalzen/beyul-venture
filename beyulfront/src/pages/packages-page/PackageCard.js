@@ -12,7 +12,7 @@ import Rating from '@material-ui/lab/Rating'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-
+import {motion} from 'framer-motion'
 const useStyles = makeStyles((theme) => ({
     card: {
         height: '100%',
@@ -61,8 +61,8 @@ export const PackageCard = ({ tagPackages }) => {
     return (
         <>
             <Grid item xs={12} md={3} sm={6}>
-                
-                    <Card className={classes.card}>
+                    
+                    <Card className={classes.card} component={motion.div} whileHover={{scale:1.05}} whileTap={{scale:1.01}}>
                         <div className={classes.imageContainer}>
                             <CardMedia
                                 component='img'
