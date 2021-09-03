@@ -50,8 +50,6 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
     thumbsdown_count = serializers.SerializerMethodField()
     sunglasses_count = serializers.SerializerMethodField()
     rocket_count = serializers.SerializerMethodField()
-    created_on = serializers.SerializerMethodField()
-    updated_on = serializers.SerializerMethodField()
     user_reaction = serializers.SerializerMethodField()
 
     class Meta:
@@ -106,12 +104,6 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
 
     def _aggregate_field(self, obj, field):
         return obj.commentlikes.aggregate(Sum(field))[field + '__sum']
-
-    def get_created_on(self, obj):
-        return obj.created_on
-
-    def get_updated_on(self, obj):
-        return obj.updated_on
 
     def get_user_reaction(self, obj):
         user_id = self.context['request'].user.id
