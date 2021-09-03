@@ -14,6 +14,7 @@ DIFFICULTY_LEVELS = [
     ('⚒️ Hard', '⚒️ Hard'),
 ]
 
+from blog.models import Tag
 
 class Package(models.Model):
     name = models.CharField(
@@ -138,6 +139,11 @@ class Package(models.Model):
         _('duration'),
         help_text=_('Enter package duration in days'),
         default=1
+    )
+    tags = models.ManyToManyField(
+        Tag,
+        help_text=_('choose suitable tags for your blog'),
+        related_name='packages'
     )
 
     def save(self, *args, **kwargs):

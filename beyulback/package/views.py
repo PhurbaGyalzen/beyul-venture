@@ -9,7 +9,16 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework import viewsets
 
 from django_auto_prefetching import AutoPrefetchViewSetMixin
-from rest_framework.filters import SearchFilter
+from django_filters.rest_framework import DjangoFilterBackend
+import django_filters
+
+
+class PackageFilter(django_filters.FilterSet):
+    tag = django_filters.CharFilter(field_name='tags__name', lookup_expr='iexact')
+
+    class Meta:
+        model = Package
+        fields = ['tag']
 
 
 class PackageView(AutoPrefetchViewSetMixin, viewsets.ModelViewSet):
@@ -21,8 +30,8 @@ class PackageView(AutoPrefetchViewSetMixin, viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
     lookup_field = 'slug'
     # pagination_class = RemovePageNumberPagination
-    filter_backends = [SearchFilter]
-    search_fields = ['name', 'description']
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = PackageFilter
 
 
 class ReviewView(viewsets.ModelViewSet):

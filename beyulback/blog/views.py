@@ -54,16 +54,18 @@ class BlogView(viewsets.ModelViewSet):
         return self.get_paginated_response(serializer.data)
         
 
-
 class TagViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Tag.objects.prefetch_related(
         'post__comments',
         'post__claps',
         'post__tags',
+        'packages'
     ).all()
     serializer_class = TagSerializer
     pagination_class = RemovePageNumberPagination
     lookup_field = 'slug'
+    # filter_backends = [SearchFilter]
+    # search_fields = ['packages__name']
 
 
 class CommentViewSet(viewsets.ModelViewSet):

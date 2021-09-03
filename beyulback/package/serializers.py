@@ -111,6 +111,7 @@ class PackageSerializer(serializers.HyperlinkedModelSerializer):
         read_only=True,
         source='usefulinformations'
     )
+    tags = serializers.SerializerMethodField()
 
     class Meta:
         model = Package
@@ -132,10 +133,14 @@ class PackageSerializer(serializers.HyperlinkedModelSerializer):
             'useful_info',
             'reviews',
             'photos',
+            'tags'
         )
         extra_kwargs = {
             'url': {'view_name': 'package-detail', 'lookup_field': 'slug'},
         }
+
+    def get_tags(self, obj):
+        return [o.name for o in obj.tags.all()]
 
     def get_total_reviews(self, obj):
         return obj.reviews.count()
