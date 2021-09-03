@@ -86,15 +86,6 @@ export default function EditProfile() {
                             />
                         </Box>
 
-                        <Box style={{ padding: '5%', paddingLeft: '18%' }}>
-                            <TextField
-                                id='outlined-basic'
-                                label='Password'
-                                variant='outlined'
-                                type='password'
-                            />
-                        </Box>
-
                         <Button
                             variant='contained'
                             size='large'
