@@ -14,9 +14,11 @@ import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import ImageDiv from './ImageDiv'
 import { CommentForm } from 'components/comment/CommentForm'
-import AllComments from 'components/comment/CommentViewer'
+import AllComments, {createComment} from 'components/comment/CommentViewer'
 import FourZeroFour from 'pages/404'
 import Avatar from '@material-ui/core/Avatar'
+import { CURR_USER } from 'api'
+
 
 const blogStyles = makeStyles((theme) => ({
     blogContainer: {
@@ -98,12 +100,17 @@ const BlogDetail = ({ details }) => {
     const { blogid } = useParams()
     const classes = blogStyles()
     const [blog, setBlog] = useState([])
+    const [allComments, setAllComments] = useState([])
+    console.log('rendering blog')
 
     useEffect(async () => {
         const apiData = await ajax('/api/blog/' + blogid + '/')
-        setBlog(apiData)
         if (apiData.error) return
+        setBlog(apiData)
+        setAllComments(apiData.comments)
+
     }, [])
+
     if (blog.error) {
         return <FourZeroFour />
     } else if (blog.status) {
@@ -167,13 +174,24 @@ const BlogDetail = ({ details }) => {
                 />
 
                 <Container mt={6} mb={6} className={classes.commentSection}>
-                    <CommentForm />
+                    <CommentForm
+                        onComment={async (content) => {
+                            const data = await createComment(
+                                content,
+                                CURR_USER,
+                                blog.url,
+                                null,
+                            )
+                            // is this properly ordered? seems not
+                            setAllComments((comms) => {
+                                // new top level comment can be appended at the end
+                                return [...comms, ...[data]]
+                            })
+                        }}
+                    />
                 </Container>
                 <Container>
-                    <AllComments
-                        blogUrl={blog.url}
-                        comments={blog.comments}
-                    />
+                    <AllComments blogUrl={blog.url} comments={allComments} />
                 </Container>
 
                 <Container>

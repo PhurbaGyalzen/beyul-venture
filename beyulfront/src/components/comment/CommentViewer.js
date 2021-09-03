@@ -58,7 +58,7 @@ const EMOJI_FIELD = Object.fromEntries(
     Object.entries(FIELD_EMOJI).map(([k, v]) => [v, k]),
 )
 
-const createComment = async (
+export const createComment = async (
     content,
     userUrl,
     blogUrl,
@@ -124,7 +124,10 @@ const onReact = async (
 }
 
 const AllComments = ({ blogUrl, comments }) => {
+    // const [nestedComments, setNestedComments] = useState([...comments]) // cannot use props directly in state
     const [nestedComments, setNestedComments] = useState(comments)
+    useEffect(() => setNestedComments(comments), [comments])
+    
     console.log({ nestedComments })
     const flatComments = insertIndents(nestedComments, 'url', 'parent')
     console.log({ flatComments })
@@ -194,11 +197,11 @@ const AllComments = ({ blogUrl, comments }) => {
                                     )
                                     // is this properly ordered? seems not
                                     setNestedComments((comms) => {
-                                        // comms.splice(index + 1, 0, data)
-                                        // comms.push(data)
+                                        const updatedComms = [...comms]
+                                        updatedComms.splice(index + 1, 0, data)
                                         // console.log(index + 1, { comms })
-                                        // console.log([comms, ...[data]])
-                                        return [...comms, ...[data]]
+                                        return updatedComms
+                                        // return [...comms, ...[data]]
                                     })
                                 }}
                             />
