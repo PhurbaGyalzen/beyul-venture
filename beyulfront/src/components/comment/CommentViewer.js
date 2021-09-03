@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import Comment from './Comment'
 import { CURR_USER } from 'api'
 import { CommentForm } from './CommentForm'
@@ -128,9 +128,7 @@ const AllComments = ({ blogUrl, comments }) => {
     const [nestedComments, setNestedComments] = useState(comments)
     useEffect(() => setNestedComments(comments), [comments])
     
-    console.log({ nestedComments })
     const flatComments = insertIndents(nestedComments, 'url', 'parent')
-    console.log({ flatComments })
     const [replyId, setReplyId] = useState(null)
     return (
         <>
@@ -195,13 +193,13 @@ const AllComments = ({ blogUrl, comments }) => {
                                         comment.blog,
                                         comment.url,
                                     )
-                                    // is this properly ordered? seems not
+                                    // nested reply is at top. should be at bottom
+                                    // because comment follows cronological order.
+                                    // but its-not-a-bug-its-a-feature
                                     setNestedComments((comms) => {
                                         const updatedComms = [...comms]
                                         updatedComms.splice(index + 1, 0, data)
-                                        // console.log(index + 1, { comms })
                                         return updatedComms
-                                        // return [...comms, ...[data]]
                                     })
                                 }}
                             />

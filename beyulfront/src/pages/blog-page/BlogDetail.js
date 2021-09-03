@@ -76,9 +76,6 @@ const blogStyles = makeStyles((theme) => ({
             paddingTop: '50vh',
             padding: '0 1rem',
         },
-        // [theme.breakpoints.up('md')]:{
-        //     padding: "0 2rem"
-        // }
     },
     commentSection: {
         maxWidth: '750px',
@@ -182,7 +179,6 @@ const BlogDetail = ({ details }) => {
                                 blog.url,
                                 null,
                             )
-                            // is this properly ordered? seems not
                             setAllComments((comms) => {
                                 // new top level comment can be appended at the end
                                 return [...comms, ...[data]]
