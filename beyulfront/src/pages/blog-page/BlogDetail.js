@@ -13,10 +13,11 @@ import {
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import ImageDiv from './ImageDiv'
-import { CommentSec } from './CommentSec'
-import AllComments from 'components/CommentViewer'
+import { CommentForm } from 'components/comment/CommentForm'
+import AllComments from 'components/comment/CommentViewer'
 import FourZeroFour from 'pages/404'
 import Avatar from '@material-ui/core/Avatar'
+
 const blogStyles = makeStyles((theme) => ({
     blogContainer: {
         maxWidth: '750px',
@@ -97,6 +98,7 @@ const BlogDetail = ({ details }) => {
     const { blogid } = useParams()
     const classes = blogStyles()
     const [blog, setBlog] = useState([])
+    const [refreshComments, setRefreshComments] = useState(false)
 
     useEffect(async () => {
         const apiData = await ajax('/api/blog/' + blogid + '/')
@@ -166,10 +168,15 @@ const BlogDetail = ({ details }) => {
                 />
 
                 <Container mt={6} mb={6} className={classes.commentSection}>
-                    <CommentSec />
+                    <CommentForm />
                 </Container>
                 <Container>
-                    <AllComments comments={blog.comments} />
+                    <AllComments
+                        blogUrl={blog.url}
+                        comments={blog.comments}
+                        refresh={refreshComments}
+                        refreshSetter={setRefreshComments}
+                    />
                 </Container>
 
                 <Container>
@@ -182,7 +189,5 @@ const BlogDetail = ({ details }) => {
     }
     return null
 }
-
-BlogDetail.propTypes = {}
 
 export default BlogDetail

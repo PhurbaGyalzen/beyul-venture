@@ -186,6 +186,11 @@ export default function ButtonAppBar() {
             link: '/about',
         },
         {
+            text: 'Package',
+            icon: <LabelIcon />,
+            link: '/package/all',
+        },
+        {
             text: 'Blog',
             icon: <LabelIcon />,
             link: '/blog',
@@ -214,6 +219,7 @@ export default function ButtonAppBar() {
             icon: <LabelIcon />,
             link: '/user-profile',
         },
+
     ]
     const drawerItems = navItems.concat(
         {

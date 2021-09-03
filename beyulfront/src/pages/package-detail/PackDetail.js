@@ -38,6 +38,9 @@ const packageStyles = makeStyles((theme) => ({
     packageCont: {
         // marginTop:'10rem',
         paddingTop: '3rem',
+        [theme.breakpoints.up('lg')]: {
+            padding:'3rem 4rem'
+        },
     },
     ratingDesc: {
         color: '#545454',
@@ -89,6 +92,12 @@ export const PackDetail = (props) => {
     const loc = useLocation()
 
     const classes = packageStyles()
+    // const [package, setPackage] = useState();
+    // useEffect(async () => {
+    //     const apiData = await ajax('/api/blog/' + blogid + '/')
+    //     setBlog(apiData)
+    //     if (apiData.error) return
+    // }, [])
     useEffect(() => {
         if (loc.search) {
             const paymentQuery = new URLSearchParams(loc.search).get(
@@ -161,8 +170,9 @@ export const PackDetail = (props) => {
                         // justifyContent='space-evenly'
                         spacing={4}
                         alignItems='center'
+                        
                     >
-                        <Grid item xs={12} md={8} sm={6}>
+                        <Grid item xs={12} md={8} sm={12}>
                             <OwlCarousel
                                 className='owl-theme'
                                 loop={true}
@@ -180,7 +190,7 @@ export const PackDetail = (props) => {
                                 })}
                             </OwlCarousel>
                         </Grid>
-                        <Grid item xs={12} md={4} sm={6}>
+                        <Grid item xs={12} md={4} sm={12}>
                             <div>
                                 <Typography
                                     variant='h4'

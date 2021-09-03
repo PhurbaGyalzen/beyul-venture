@@ -13,7 +13,9 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useAnimation } from 'framer-motion'
 import { useState, useEffect } from 'react'
-
+import Lottie from 'react-lottie'
+import natureVisit from 'img/lotties/46541-nature-visite-travel.json'
+import traveler from 'img/lotties/65726-traveler.json'
 // All image import
 import aboutUs from 'img/another.svg'
 import history from 'img/history.svg'
@@ -85,7 +87,22 @@ export default function AboutUsPage() {
         threshold: 0.1,
     })
     const animation = useAnimation()
-
+    const firstOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: traveler,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice',
+        },
+    }
+    const secondOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: natureVisit,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice',
+        },
+    }
     useEffect(() => {
         if (inView) {
             animation.start({
@@ -168,17 +185,19 @@ export default function AboutUsPage() {
                         </Grid>
 
                         <Grid item xs={12} md={6} sm={6} mt={{ xs: '3rem' }}>
-                            <img
+                            {/* <img
                                 src={aboutUs}
                                 className={classes.aboutUsImg}
-                            />
+                            /> */}
+                            <Lottie options={firstOptions} style={{maxHeight:'400',maxWidth:'350'}} />
                         </Grid>
                         <Hidden only='xs'>
                             <Grid item xs={12} md={6} sm={6} ml={5}>
-                                <img
+                                {/* <img
                                     src={history}
                                     className={classes.aboutUsImg}
-                                />
+                                /> */}
+                                <Lottie options={secondOptions} style={{maxHeight:'400',maxWidth:'350'}} />
                             </Grid>
                         </Hidden>
 

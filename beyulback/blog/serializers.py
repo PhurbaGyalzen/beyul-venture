@@ -44,8 +44,7 @@ class CommentLikeSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
-    username = serializers.SerializerMethodField()
-    user_profile = serializers.SerializerMethodField()
+    author = serializers.SerializerMethodField()
     heart_eyes_count = serializers.SerializerMethodField()
     thumbsup_count = serializers.SerializerMethodField()
     thumbsdown_count = serializers.SerializerMethodField()
@@ -62,8 +61,8 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
             'url',
             'user_reaction',
             'body',
-            'username',
-            'user_profile',
+            'author',
+            'user', # imp
             'blog',
             'created_on',
             'updated_on',
@@ -78,13 +77,16 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
             'blog': {'view_name': 'blog-detail', 'lookup_field': 'slug'}
         }
 
-    def get_username(self, obj):
+    def get_author(self, obj):
+        return {'name': self._get_fullname(obj), 'profile_pic': self._get_user_profile(obj)}
+
+    def _get_fullname(self, obj):
         last_name = obj.user.last_name
         if last_name:
             return f"{obj.user.first_name} {last_name}"
         return obj.user.first_name
 
-    def get_user_profile(self, obj):
+    def _get_user_profile(self, obj):
         return f"http://127.0.0.1:8000/media/{obj.user.profile_pic}"
 
     def get_heart_eyes_count(self, obj):
@@ -104,7 +106,7 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
 
     def _aggregate_field(self, obj, field):
         return obj.commentlikes.aggregate(Sum(field))[field + '__sum']
-        
+
     def get_created_on(self, obj):
         return obj.created_on
 
@@ -122,8 +124,6 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
             result[0],
             context={'request': self.context['request']}
         ).data
-
-    
 
 
 class ClapSerializer(serializers.HyperlinkedModelSerializer):
