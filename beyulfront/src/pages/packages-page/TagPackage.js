@@ -67,7 +67,7 @@ export const TagPackage = () => {
                     description:' A scenic country loaded with the best of beauty, Vietnam exhibits the marvels of nature through its splendid beaches and green-carpeted slopes. Inviting adventurous souls for years, this place has been a hot go-to destination for many tourists. Taking a Vietnam package from Delhi will guide you towards the amount of fun, thrill and adventure required on any memorable trip.',
                 },
                 {
-                    id: 1,
+                    id: 5,
                     title: 'Everest Base Camp Trek',
                     location: 'Solukhumbu',
                     rating: 4,
@@ -78,7 +78,7 @@ export const TagPackage = () => {
                     description:' A scenic country loaded with the best of beauty, Vietnam exhibits the marvels of nature through its splendid beaches and green-carpeted slopes. Inviting adventurous souls for years, this place has been a hot go-to destination for many tourists. Taking a Vietnam package from Delhi will guide you towards the amount of fun, thrill and adventure required on any memorable trip.',
                 },
                 {
-                    id: 2,
+                    id: 6,
                     title: 'Chitwan Safari',
                     location: 'Chitwan',
                     rating: 5,
@@ -90,7 +90,7 @@ export const TagPackage = () => {
 
                 },
                 {
-                    id: 3,
+                    id: 7,
                     title: 'Langtang Trek',
                     location: 'Langtang',
                     rating: 3,
@@ -101,7 +101,7 @@ export const TagPackage = () => {
                     description:' A scenic country loaded with the best of beauty, Vietnam exhibits the marvels of nature through its splendid beaches and green-carpeted slopes. Inviting adventurous souls for years, this place has been a hot go-to destination for many tourists. Taking a Vietnam package from Delhi will guide you towards the amount of fun, thrill and adventure required on any memorable trip.',
                 },
                 {
-                    id: 4,
+                    id: 8,
                     title: 'Annapurna Trek',
                     location: 'Pokhara',
                     rating: 4,
@@ -115,12 +115,24 @@ export const TagPackage = () => {
         }
     )
     const packageD = tagPackage.packages
+
+    const [query, setQuery] = useState('')
+
+    const performSearch = (q) => {
+        console.log('about to search for:', q)
+    }
+
+    const handleChange = (val) => {
+        setQuery(val)
+        performSearch(val)
+    }
+
     return (
         <>
             <Box mt={'4rem'}>
                 <Container style={{padding:'2rem 0'}}>
                     <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                        <SearchBar style={{width:'400px'}} />
+                        <SearchBar style={{width:'400px'}} value={query} onChange={handleChange} onRequestSearch={performSearch} />
                     </div>
                 </Container>
                 <Container>

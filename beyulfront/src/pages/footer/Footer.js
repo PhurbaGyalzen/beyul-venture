@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Grid, Typography} from '@material-ui/core'
+import { Box, Grid, Typography } from '@material-ui/core'
 import CallIcon from '@material-ui/icons/Call'
 import EmailIcon from '@material-ui/icons/Email'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
@@ -17,7 +17,7 @@ import './index.css'
 import Tooltip from '@material-ui/core/Tooltip'
 import Fade from '@material-ui/core/Fade'
 import { motion } from 'framer-motion'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 
 //All images import
@@ -26,13 +26,13 @@ import affilated from 'img/affilated.png'
 import footMount from 'img/footer_mountain.jpg'
 
 const useStyles = makeStyles((theme) => ({
-    subscribeBtn:{
+    subscribeBtn: {
         width: '30%',
-        '&:hover':{
-            width:'35%'
+        '&:hover': {
+            width: '35%',
         },
-        transitionDuration:'700ms'
-    }
+        transitionDuration: '700ms',
+    },
 }))
 
 const linkVariants = {
@@ -43,10 +43,10 @@ const linkVariants = {
         originX: 0,
     },
 
-    transition:{
-        type:'spring',
-        stiffness:120,
-    }
+    transition: {
+        type: 'spring',
+        stiffness: 120,
+    },
 }
 
 const FooterWithBg = styled.footer`
@@ -89,7 +89,7 @@ export const Footer = () => {
                             <motion.div
                                 variants={linkVariants}
                                 whileHover='hover'
-                                transition="transition"
+                                transition='transition'
                             >
                                 <Link
                                     href='#'
@@ -113,8 +113,7 @@ export const Footer = () => {
                             <motion.div
                                 variants={linkVariants}
                                 whileHover='hover'
-                                transition="transition"
-
+                                transition='transition'
                             >
                                 <Link
                                     href='#'
@@ -134,9 +133,10 @@ export const Footer = () => {
                         </Box>
 
                         <Box>
-                            <motion.div variants={linkVariants}
+                            <motion.div
+                                variants={linkVariants}
                                 whileHover='hover'
-                                transition="transition"
+                                transition='transition'
                             >
                                 <Link
                                     href='#'
@@ -244,74 +244,88 @@ export const Footer = () => {
                         </Box>
 
                         <Box>
-                            <motion.div variants={linkVariants}
+                            <motion.div
+                                variants={linkVariants}
                                 whileHover='hover'
-                                transition="transition"
+                                transition='transition'
                             >
-                                <Link
-                                    to='/'
-                                    color='inherit'
-                                >
+                                <Link to='/' color='inherit'>
                                     Home
                                 </Link>
                             </motion.div>
                         </Box>
 
                         <Box>
-                            <motion.div variants={linkVariants}
+                            <motion.div
+                                variants={linkVariants}
                                 whileHover='hover'
-                                transition="transition"
+                                transition='transition'
                             >
-                                <Link
-                                    to='/about'
-                                    color='inherit'
-
-                                >
+                                <Link to='/about' color='inherit'>
                                     About
                                 </Link>
                             </motion.div>
                         </Box>
 
                         <Box>
-                            <motion.div variants={linkVariants}
+                            <motion.div
+                                variants={linkVariants}
                                 whileHover='hover'
-                                transition="transition"
-                        >
-                                <Link
-                                    to='/blog'
-                                    color='inherit'
-                                >
+                                transition='transition'
+                            >
+                                <Link to='/blog' color='inherit'>
                                     Blog
                                 </Link>
                             </motion.div>
                         </Box>
 
                         <Box>
-                            <motion.div variants={linkVariants}
+                            <motion.div
+                                variants={linkVariants}
                                 whileHover='hover'
-                                transition="transition"
+                                transition='transition'
                             >
-                                <Link
-                                    to='contact-us'
-                                    color='inherit'
-
-                                >
+                                <Link to='contact-us' color='inherit'>
                                     Contact Us
                                 </Link>
                             </motion.div>
                         </Box>
 
-                        <Box mb={{ xs: 5, sm: 5, md: 5, lg: 5 }}>
-                            <motion.div variants={linkVariants}
+                        <Box>
+                            <motion.div
+                                variants={linkVariants}
                                 whileHover='hover'
-                                transition="transition"
+                                transition='transition'
+                            >
+                                <Link to='/our-team' color='inherit'>
+                                    Our Team
+                                </Link>
+                            </motion.div>
+                        </Box>
+
+                        <Box>
+                            <motion.div
+                                variants={linkVariants}
+                                whileHover='hover'
+                                transition='transition'
                             >
                                 <Link
-                                    to='/our-team'
+                                    to='/terms-and-conditions'
                                     color='inherit'
-
                                 >
-                                    Our Team
+                                    Terms & Conditions
+                                </Link>
+                            </motion.div>
+                        </Box>
+
+                        <Box mb={{ xs: 5, sm: 5, md: 5, lg: 5 }}>
+                            <motion.div
+                                variants={linkVariants}
+                                whileHover='hover'
+                                transition='transition'
+                            >
+                                <Link to='/privacy-policy' color='inherit'>
+                                    Privacy Policy
                                 </Link>
                             </motion.div>
                         </Box>
@@ -341,7 +355,7 @@ export const Footer = () => {
                                     backgroundColor: '#ffffff',
                                     color: '#7f7f7f',
                                     marginTop: '1.25rem',
-                                    borderRadius:'0.5rem'
+                                    borderRadius: '0.5rem',
                                 }}
                             />
                             <br />
@@ -457,78 +471,12 @@ export const Footer = () => {
                         }}
                     />
 
-                    <Grid item md={1} xs={11} sm={6} mb={{ md: 5 }}>
+                    <Grid item xs={11} xs={11} sm={6} md={12} lg={12} sm={12}>
                         <Box
                             style={{
-                                marginRight: '0.625rem',
-                                marginTop: '0.625rem',
+                                textAlign: 'center',
                             }}
-                        >
-                            <Link
-                                to='/terms-and-conditions'
-                                style={{ color: '#c47d1e' }}
-                                className='textHover'
-                            >
-                                Terms & Conditions
-                            </Link>
-                        </Box>
-                    </Grid>
-
-                    <Grid item md={1} xs={11} sm={6} mb={{ md: 5 }}>
-                        <Box
-                            style={{
-                                marginRight: '0.625rem',
-                                marginTop: '0.625rem',
-                            }}
-                        >
-                            <Link
-                                to ='/privacy-policy'
-                                style={{ color: '#c47d1e' }}
-                                className='textHover'
-                            >
-                                Privacy Policy
-                            </Link>
-                        </Box>
-                    </Grid>
-
-                    <Grid item md={1} xs={11} sm={6} mb={{ md: 5 }}>
-                        <Box
-                            style={{
-                                marginRight: '0.625rem',
-                                marginTop: '0.625rem',
-                            }}
-                        >
-                            <Link
-                                href='#'
-                                style={{ color: '#c47d1e' }}
-                                className='textHover'
-                            >
-                                We are Hiring
-                            </Link>
-                        </Box>
-                    </Grid>
-
-                    <Grid item md={1} xs={11} sm={6} mb={{ md: 5 }}>
-                        <Box
-                            style={{
-                                marginRight: '0.625rem',
-                                marginTop: '0.625rem',
-                            }}
-                        >
-                            <Link
-                                href='#'
-                                style={{ color: '#c47d1e' }}
-                                className='textHover'
-                            >
-                                Share Your Travel Experience
-                            </Link>
-                        </Box>
-                    </Grid>
-
-                    <Grid item xs={11} xs={11} sm={6} md={5} lg={7} sm={6}>
-                        <Box
-                            style={{ marginTop: '0.625rem' }}
-                            pt={{ xs: 0, sm: 6, md: 5 }}
+                            pt={{ xs: 0, sm: 6, md: 3 }}
                             pb={{ xs: 0, sm: 0 }}
                         >
                             <Copyright />

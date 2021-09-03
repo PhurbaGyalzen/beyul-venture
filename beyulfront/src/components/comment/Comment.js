@@ -137,7 +137,6 @@ const PopupEmoji = styled.span`
 
 const Comment = ({
     id,
-    url,
     reactionUpdateEndpoint,
     by,
     profileImg,
@@ -150,6 +149,8 @@ const Comment = ({
     onReactAsync,
 }) => {
     const [reactions, setReactions] = useState(reactionsArr)
+    const [reactionUpdateUrl, setReactionUpdateUrl] = useState(reactionUpdateEndpoint)
+
     const reactionClicked = async (reaction) => {
         const recs = []
         for (const r of reactions) {
@@ -158,10 +159,10 @@ const Comment = ({
                 const reactionRemoved = !!r.reacted
 
                 const [data, createdUrl] = await onReactAsync(r.id, reactionRemoved)
-                if (!reactionUpdateEndpoint) {
+                if (!reactionUpdateUrl) {
                     // if the POST succeeded, then we now know the PATCH url.
                     // if failed, will be null which is what we want.
-                    reactionUpdateEndpoint = createdUrl
+                    setReactionUpdateUrl(createdUrl)
                 }
 
                 // setLoadingIndicator(reactionId, false)

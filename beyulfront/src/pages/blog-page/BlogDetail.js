@@ -14,9 +14,11 @@ import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import ImageDiv from './ImageDiv'
 import { CommentForm } from 'components/comment/CommentForm'
-import AllComments from 'components/comment/CommentViewer'
+import AllComments, {createComment} from 'components/comment/CommentViewer'
 import FourZeroFour from 'pages/404'
 import Avatar from '@material-ui/core/Avatar'
+import { CURR_USER } from 'api'
+
 
 const blogStyles = makeStyles((theme) => ({
     blogContainer: {
@@ -74,9 +76,6 @@ const blogStyles = makeStyles((theme) => ({
             paddingTop: '50vh',
             padding: '0 1rem',
         },
-        // [theme.breakpoints.up('md')]:{
-        //     padding: "0 2rem"
-        // }
     },
     commentSection: {
         maxWidth: '750px',
@@ -98,13 +97,17 @@ const BlogDetail = ({ details }) => {
     const { blogid } = useParams()
     const classes = blogStyles()
     const [blog, setBlog] = useState([])
-    const [refreshComments, setRefreshComments] = useState(false)
+    const [allComments, setAllComments] = useState([])
+    console.log('rendering blog')
 
     useEffect(async () => {
         const apiData = await ajax('/api/blog/' + blogid + '/')
-        setBlog(apiData)
         if (apiData.error) return
+        setBlog(apiData)
+        setAllComments(apiData.comments)
+
     }, [])
+
     if (blog.error) {
         return <FourZeroFour />
     } else if (blog.status) {
@@ -168,15 +171,23 @@ const BlogDetail = ({ details }) => {
                 />
 
                 <Container mt={6} mb={6} className={classes.commentSection}>
-                    <CommentForm />
+                    <CommentForm
+                        onComment={async (content) => {
+                            const data = await createComment(
+                                content,
+                                CURR_USER,
+                                blog.url,
+                                null,
+                            )
+                            setAllComments((comms) => {
+                                // new top level comment can be appended at the end
+                                return [...comms, ...[data]]
+                            })
+                        }}
+                    />
                 </Container>
                 <Container>
-                    <AllComments
-                        blogUrl={blog.url}
-                        comments={blog.comments}
-                        refresh={refreshComments}
-                        refreshSetter={setRefreshComments}
-                    />
+                    <AllComments blogUrl={blog.url} comments={allComments} />
                 </Container>
 
                 <Container>

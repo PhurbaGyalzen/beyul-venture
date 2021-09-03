@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import Comment from './Comment'
 import { CURR_USER } from 'api'
 import { CommentForm } from './CommentForm'
@@ -58,7 +58,12 @@ const EMOJI_FIELD = Object.fromEntries(
     Object.entries(FIELD_EMOJI).map(([k, v]) => [v, k]),
 )
 
-const createComment = async (content, userUrl, blogUrl, parentCommentUrl = null) => {
+export const createComment = async (
+    content,
+    userUrl,
+    blogUrl,
+    parentCommentUrl = null,
+) => {
     const data = await ajax('/api/comment/', {
         method: 'POST',
         body: JSON.stringify({
@@ -106,7 +111,7 @@ const onReact = async (
         comment: commentUrl,
         user: userUrl,
     }
-    console.log(userUrl, reactionId, updateEndpoint)
+    console.log(userUrl, reactionId, { updateEndpoint }, { createEndpoint })
     payload[EMOJI_FIELD[reactionId]] = reactionRemoved ? 0 : 1
     let data
     if (updateEndpoint) {
@@ -114,17 +119,20 @@ const onReact = async (
     } else {
         data = await createReactions(createEndpoint, payload)
     }
+    console.log('data.url', data.url)
     return [data, data.url]
 }
 
-const AllComments = ({ blogUrl, comments, refresh, refreshSetter }) => {
+const AllComments = ({ blogUrl, comments }) => {
+    // const [nestedComments, setNestedComments] = useState([...comments]) // cannot use props directly in state
     const [nestedComments, setNestedComments] = useState(comments)
+    useEffect(() => setNestedComments(comments), [comments])
+    
     const flatComments = insertIndents(nestedComments, 'url', 'parent')
     const [replyId, setReplyId] = useState(null)
-    console.log({flatComments})
     return (
         <>
-            {flatComments.map((comment) => {
+            {flatComments.map((comment, index) => {
                 const thisUserReaction = comment.user_reaction
                 const reactions = Object.entries(FIELD_EMOJI).map(
                     ([k, v]) => ({
@@ -141,7 +149,6 @@ const AllComments = ({ blogUrl, comments, refresh, refreshSetter }) => {
                         <Comment
                             // TODO remove unrequired kwargs
                             id={comment.id}
-                            url={comment.url}
                             reactionUpdateEndpoint={thisUserReaction?.url}
                             by={comment.author.name}
                             profileImg={comment.author.profile_pic}
@@ -156,8 +163,8 @@ const AllComments = ({ blogUrl, comments, refresh, refreshSetter }) => {
                             onReactAsync={async (
                                 reactionId,
                                 reactionRemoved,
-                            ) =>
-                                await onReact(
+                            ) => {
+                                const data = await onReact(
                                     comment.url,
                                     CURR_USER,
                                     thisUserReaction?.url,
@@ -165,18 +172,35 @@ const AllComments = ({ blogUrl, comments, refresh, refreshSetter }) => {
                                     reactionId,
                                     reactionRemoved,
                                 )
-                            }
+                                setNestedComments((cs) =>
+                                    cs.map((c, i) => {
+                                        if (i === index)
+                                            c.user_reaction = { url: data[1] }
+                                        // no need to add reaction count cuz
+                                        // the count is internally managed in Comment
+                                        return c
+                                    }),
+                                )
+                                return data
+                            }}
                         />
                         {comment.id === replyId ? (
                             <CommentForm
                                 onComment={async (content) => {
-                                    await createComment(
+                                    const data = await createComment(
                                         content,
                                         CURR_USER,
                                         comment.blog,
                                         comment.url,
                                     )
-                                    refreshSetter(!refresh)
+                                    // nested reply is at top. should be at bottom
+                                    // because comment follows cronological order.
+                                    // but its-not-a-bug-its-a-feature
+                                    setNestedComments((comms) => {
+                                        const updatedComms = [...comms]
+                                        updatedComms.splice(index + 1, 0, data)
+                                        return updatedComms
+                                    })
                                 }}
                             />
                         ) : null}
