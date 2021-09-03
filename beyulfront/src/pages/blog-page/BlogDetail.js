@@ -98,7 +98,6 @@ const BlogDetail = ({ details }) => {
     const { blogid } = useParams()
     const classes = blogStyles()
     const [blog, setBlog] = useState([])
-    const [refreshComments, setRefreshComments] = useState(false)
 
     useEffect(async () => {
         const apiData = await ajax('/api/blog/' + blogid + '/')
@@ -174,8 +173,6 @@ const BlogDetail = ({ details }) => {
                     <AllComments
                         blogUrl={blog.url}
                         comments={blog.comments}
-                        refresh={refreshComments}
-                        refreshSetter={setRefreshComments}
                     />
                 </Container>
 

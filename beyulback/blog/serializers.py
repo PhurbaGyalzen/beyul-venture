@@ -120,6 +120,7 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
         result = obj.commentlikes.filter(user__id=user_id)
         if not result:
             return None
+        # also returns comment, url which is not needed
         return CommentLikeSerializer(
             result[0],
             context={'request': self.context['request']}
