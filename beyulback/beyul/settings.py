@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'blog.apps.BlogConfig',
     'package.apps.PackageConfig',
+    'booking.apps.BookingConfig',
     'cacheops',
     'django_filters',
     'django_otp',

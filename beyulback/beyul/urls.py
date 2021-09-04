@@ -19,6 +19,8 @@ from package.views import (
     ReviewView,
     PhotoView,
 )
+
+from booking.views import BookingView
 from django.urls import path, include
 from django.contrib import admin
 from django.conf import settings
@@ -40,6 +42,7 @@ router.register(r'package', PackageView)
 router.register(r'review', ReviewView)
 router.register(r'photo', PhotoView)
 router.register(r'comment_like', CommentLikeViewSet)
+router.register(r'booking', BookingView)
 
 
 admin_site = OTPAdminSite(name="OTP Admin")
